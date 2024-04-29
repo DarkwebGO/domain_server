@@ -10,17 +10,23 @@
     <h2 style="text-align: center">다크웹 엔트리</h2>
     <table>
         <tr>
-            <th>domain</th>
-            <th>Url</th>
-            <th>depth</th>
-            <th>content</th>
+            <th>ID</th>
+            <th>Domain</th>
+            <th>URL</th>
+            <th>Depth</th>
+            <th>Parameter</th>
+            <th>Title</th>
+            <th>Words</th>
         </tr>
         {% for entry in entries %}
         <tr>
             <td>{{ entry.id }}</td>
-            <td>{{ entry.username }}</td>
-            <td>{{ entry.password }}</td>
-            <td>{{ entry.email }}</td>
+            <td>{{ entry.domain }}</td>
+            <td>{{ entry.url }}</td>
+            <td>{{ entry.depth }}</td>
+            <td>{{ entry.parameter }}</td>
+            <td>{{ entry.title }}</td>
+            <td>{{ entry.words }}</td>
         </tr>
         {% endfor %}
     </table>
