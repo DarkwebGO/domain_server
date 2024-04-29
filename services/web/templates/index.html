@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <h1 style="text-align: center">구름망 다크웹 크롤러 과제</h1>
+    <h2 style="text-align: center">다크웹 엔트리</h2>
+    <table>
+        <tr>
+            <th>domain</th>
+            <th>Url</th>
+            <th>depth</th>
+            <th>content</th>
+        </tr>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry.id }}</td>
+            <td>{{ entry.username }}</td>
+            <td>{{ entry.password }}</td>
+            <td>{{ entry.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

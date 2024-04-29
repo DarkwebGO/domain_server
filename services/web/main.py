@@ -1,61 +1,27 @@
-from flask import Flask, g
-import sqlite3
+from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 
-# Flask 앱 생성
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
-# 데이터베이스 경로 설정
-DATABASE = 'database.db'
+class Darkweb(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
 
-# 데이터베이스 초기화 함수
+@app.before_request
 def init_db():
-    # 데이터베이스 연결
-    conn = sqlite3.connect(DATABASE)
-    cur = conn.cursor()
-    
-    # 'darkweb' 테이블 생성
-    cur.execute('''
-        CREATE TABLE IF NOT EXISTS darkweb (
-            id INTEGER PRIMARY KEY,
-            username TEXT NOT NULL,
-            password TEXT NOT NULL,
-            email TEXT NOT NULL
-        )
-    ''')
-    
-    # 변경 사항 저장
-    conn.commit()
+    db.create_all()
     print("Database initialized successfully!")
-    conn.close()
 
-# 데이터베이스 연결 함수
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
-    return db
-
-# 앱 종료 시 데이터베이스 연결 해제
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
-
-# 라우트 정의
 @app.route('/')
-def hello_world():
-    # 'darkweb' 테이블의 스키마 조회
-    conn = get_db()
-    cur = conn.cursor() 
-    cur.execute("PRAGMA table_info('darkweb')")
-    columns = cur.fetchall()
-    print("Columns in 'darkweb' table:")
-    for column in columns:
-        print(column[1], "-", column[2])
-    return 'Hello, World!'
+def home():
+    # Darkweb 테이블의 모든 데이터 조회
+    all_entries = Darkweb.query.all()
+    return render_template('index.html', entries=all_entries)
 
-# 앱 실행
 if __name__ == '__main__':
-    init_db()
     app.run(debug=True)
