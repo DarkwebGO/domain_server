@@ -65,7 +65,7 @@ def crawl_onion_bfs(start_url, max_depth, proxies, save_path):
         except Exception as e:
             print(f"Error accessing {current_url}: {str(e)}")
 
-save_path = ".//dark-web-database"
+save_path = ".//darkweb-json-databset"
 onions_list = []
 
 if __name__ == "__main__":
