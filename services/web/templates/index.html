@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to Flask</title>
+    <title>우리들의 크롤러</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 </head>
 <body>
@@ -17,6 +17,7 @@
             <th>Parameter</th>
             <th>Title</th>
             <th>Words</th>
+            <th>html_content</th>
         </tr>
         {% for entry in entries %}
         <tr>
@@ -27,6 +28,7 @@
             <td>{{ entry.parameter }}</td>
             <td>{{ entry.title }}</td>
             <td>{{ entry.words }}</td>
+            <td><a href="{{ entry.html_content }}" target="_blank">{{ entry.html_content }}</a></td>
         </tr>
         {% endfor %}
     </table>
