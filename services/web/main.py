@@ -32,7 +32,7 @@ def print_all_entries():
 
 
 def init_db():
-    db.drop_all()  # 기존 데이터베이스의 모든 테이블 삭제, 다시 재구성할때만 실행
+    #db.drop_all()  # 기존 데이터베이스의 모든 테이블 삭제, 다시 재구성할때만 실행
     db.create_all()
     import_excel_to_db()  # Excel 데이터 가져오기 실행
     # print_all_entries()  # 데이터베이스에 저장된 모든 데이터 출력
