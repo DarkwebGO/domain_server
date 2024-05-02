@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import os
 import pandas as pd
@@ -8,6 +8,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+
+role = {
+    "insuck" : "인석",
+    "minsu" : "민수",
+    "seohyun" : "서현",
+    "yubin" : "유빈"
+}
+
 # 현재 파일의 위치 (main.py)
 current_path = os.path.dirname(os.path.abspath(__file__))
 # 상대 경로를 사용하여 insuck 디렉토리 위치를 계산
@@ -15,59 +23,114 @@ json_directory = os.path.join(current_path, '..', '..', 'function', 'insuck')
 
 class Darkweb(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    conductor = db.Column(db.String(10), nullable=False)
     domain = db.Column(db.String(100), nullable=False)
+
+class DomainToURL(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    darkweb_id = db.Column(db.Integer, db.ForeignKey('darkweb.id'), nullable=False)
     url = db.Column(db.String(200), nullable=False)
     depth = db.Column(db.Integer, nullable=False)
-    parameter = db.Column(db.String(200), nullable=True)  # 파라미터는 선택적이라 가정
+    parameter = db.Column(db.String(200), nullable=True)
     title = db.Column(db.String(200), nullable=False)
-    words = db.Column(db.String(5000),nullable=False)
-    html_content = db.Column(db.String(100),nullable=True) #우선적으로 
+    words = db.Column(db.String(5000), nullable=False)
+    html_content = db.Column(db.String(100), nullable=True)
+
+    darkweb = db.relationship('Darkweb', backref=db.backref('urls', lazy=True))
+
+class UrlWeb(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    domain = db.Column(db.String(100),nullable=False)
+    last_mdate = db.Column(db.String(10),nullable=True)
+    status = db.Column(db.String(8),nullable=False)
 
 
 def print_all_entries():
     # Darkweb 테이블의 모든 데이터 조회
-    all_entries = Darkweb.query.all()
+    all_entries = UrlWeb.query.all()
     for entry in all_entries:
-        print(f"ID: {entry.id}, Domain: {entry.domain}, URL: {entry.url}, Depth: {entry.depth}, Parameter: {entry.parameter}, Title: {entry.title}, Words: {entry.words}")
-
+        print(f"ID: {entry.id}, Domain: {entry.domain}")
 
 def init_db():
-    #db.drop_all()  # 기존 데이터베이스의 모든 테이블 삭제, 다시 재구성할때만 실행
+    db.drop_all()  # 기존 데이터베이스의 모든 테이블 삭제, 다시 재구성할때만 실행
     db.create_all()
     import_excel_to_db()  # Excel 데이터 가져오기 실행
-    # print_all_entries()  # 데이터베이스에 저장된 모든 데이터 출력
+    init_onion()
+    #print_all_entries()  # 데이터베이스에 저장된 모든 데이터 출력
 
-app.before_request(init_db)
+
+def init_onion():
+    # onions.txt 파일 읽기
+    try:
+        with open('./onions.txt', 'r') as file:
+            lines = file.readlines()
+        
+        # 데이터베이스 세션 시작
+        for line in lines:
+            domain = line.strip()  # 줄바꿈 제거
+            # UrlWeb 인스턴스 생성 및 추가
+            url_web = UrlWeb(domain=domain, last_mdate=None, status='false')
+            db.session.add(url_web)
+        
+        # 변경 사항 커밋
+        db.session.commit()
+    except Exception as e:
+        print(f"Error: {e}")
+
 
 def import_excel_to_db():
     base_directory = os.path.join(os.path.dirname(__file__), '..', 'function')
     for root, dirs, files in os.walk(base_directory):
         for file in files:
             if file.endswith('.xlsx'):
+                file_dir_name = os.path.basename(root)
+                file_dir_name = role[file_dir_name]
                 excel_path = os.path.join(root, file)
                 df = pd.read_excel(excel_path)
                 for _, row in df.iterrows():
-                    html_here = row['URL'].replace('http://', '').replace('/', '_')
-                    darkweb_entry = Darkweb(
-                        domain=row['Domain'],
+                    darkweb_entry = Darkweb.query.filter_by(domain=row['Domain']).first()
+                    if not darkweb_entry:
+                        darkweb_entry = Darkweb(
+                            conductor=file_dir_name,
+                            domain=row['Domain']
+                        )
+                        db.session.add(darkweb_entry)
+                        db.session.commit()
+                    urlweb_entry = DomainToURL(
+                        darkweb_id=darkweb_entry.id,
                         url=row['URL'],
                         depth=row['Depth'],
                         parameter=row.get('Parameter'),
                         title=row['Title'],
                         words=row['Words'],
-                        html_content=html_here
+                        html_content=row['URL'].replace('http://', '').replace('/', '_')
                     )
-                    db.session.add(darkweb_entry)
+                    db.session.add(urlweb_entry)
                 db.session.commit()
+
 
 @app.route('/')
 def home():
     # Darkweb 테이블의 모든 데이터 조회
     all_entries = Darkweb.query.all()
-    return render_template('index.html', entries=all_entries)
+    all_url = DomainToURL.query.all()
+    return render_template('index.html', entries=all_entries, urlList=all_url)
+
+@app.route('/api')
+def false_domain():
+    # status가 'false'인 UrlWeb 레코드 랜덤 선택
+    url_web = UrlWeb.query.filter_by(status='false').order_by(db.func.random()).first()
+    if url_web:
+        # 해당 레코드의 status 값을 'true'로 변경
+        url_web.status = 'true'
+        db.session.commit()  # 변경 사항 커밋
+        return jsonify({'id': url_web.id})
+    else:
+        return jsonify({'error': 'No entries found'}), 404
 
 @app.route('/<html_content>')
 def crawl_html(html_content):
+    print(html_content)
     # 서비스 기능 폴더 경로
     base_directory = os.path.join(os.path.dirname(__file__), '..', 'function')
     
@@ -83,5 +146,7 @@ def crawl_html(html_content):
     return 'Not Found', 404
 
 if __name__ == '__main__':
+    with app.app_context():
+        init_db()
     ## 저장된 json 불러오는 코드 작성하기... 
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
