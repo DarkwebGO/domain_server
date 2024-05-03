@@ -1,7 +1,8 @@
-from flask import Flask, render_template, send_from_directory, jsonify
+from flask import Flask, render_template, send_from_directory, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 import os
 import pandas as pd
+import math
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -56,9 +57,22 @@ def init_db():
     db.create_all()
     import_excel_to_db()  # Excel 데이터 가져오기 실행
     init_onion()
+    init_db_status()
     #print_all_entries()  # 데이터베이스에 저장된 모든 데이터 출력
 
-
+def init_db_status():
+    base_directory = os.path.join(os.path.dirname(__file__), '..', 'function')
+    for root, dirs, files in os.walk(base_directory):
+        for file in files:
+            if file.endswith('.xlsx'):
+                excel_path = os.path.join(root, file)
+                df = pd.read_excel(excel_path)
+                for _, row in df.iterrows():
+                    domain = row['Domain']
+                    ## UrlWeb Table에서 해당 domain에 대한 row의 status 값을 True로 설정.
+                    UrlWeb.query.filter_by(domain=domain).update({'status': 'true'})
+                    db.session.commit()  # 변경 사항을 데이터베이스에 커밋
+                
 def init_onion():
     # onions.txt 파일 읽기
     try:
@@ -69,7 +83,7 @@ def init_onion():
         for line in lines:
             domain = line.strip()  # 줄바꿈 제거
             # UrlWeb 인스턴스 생성 및 추가
-            url_web = UrlWeb(domain=domain, last_mdate=None, status='false')
+            url_web = UrlWeb(domain=domain, last_mdate="None", status='false')
             db.session.add(url_web)
         
         # 변경 사항 커밋
@@ -114,7 +128,32 @@ def home():
     # Darkweb 테이블의 모든 데이터 조회
     all_entries = Darkweb.query.all()
     all_url = DomainToURL.query.all()
-    return render_template('index.html', entries=all_entries, urlList=all_url)
+    return render_template('index.html', entries=all_entries)
+
+@app.route('/todo')
+def todo_onion():
+    page_active = int(request.args.get('page_active', 1))
+    page_inactive = int(request.args.get('page_inactive', 1))
+    items_per_page = 10
+
+    # Active tasks query and pagination
+    query_active = UrlWeb.query.filter_by(status='true')
+    total_active = query_active.count()
+    pagination_active = query_active.paginate(page=page_active, per_page=items_per_page, error_out=False)
+    active_list = pagination_active.items
+    total_pages_active = pagination_active.pages
+
+    # Inactive tasks query and pagination
+    query_inactive = UrlWeb.query.filter_by(status='false')
+    total_inactive = query_inactive.count()
+    pagination_inactive = query_inactive.paginate(page=page_inactive, per_page=items_per_page, error_out=False)
+    inactive_list = pagination_inactive.items
+    total_pages_inactive = pagination_inactive.pages
+
+    return render_template('TodoOnion.html', activeList=active_list, numPagesActive=total_pages_active, pageActive=page_active,
+                           inactiveList=inactive_list, numPagesInactive=total_pages_inactive, pageInactive=page_inactive,
+                           totalActive=total_active, totalInactive=total_inactive)
+
 
 @app.route('/api')
 def false_domain():
@@ -123,8 +162,8 @@ def false_domain():
     if url_web:
         # 해당 레코드의 status 값을 'true'로 변경
         url_web.status = 'true'
-        db.session.commit()  # 변경 사항 커밋
-        return jsonify({'id': url_web.id})
+        db.session.commit() 
+        return jsonify({'domain': url_web.domain})
     else:
         return jsonify({'error': 'No entries found'}), 404
 
