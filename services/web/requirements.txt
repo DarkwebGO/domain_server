@@ -1,0 +1,1 @@
+    !pip install requests beautifulsoup4 rake-nltk matplotlib pandas

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Onion</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Todo Onion List</h1>
+
+        <h2>Active Tasks (Total: {{ totalActive }})</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Domain</th>
+                    <th>Last Modified Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in activeList %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.domain }}</td>
+                    <td>{{ item.last_mdate }}</td>
+                    <td>{{ item.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!-- Active Tasks Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item {% if pageActive <= 1 %}disabled{% endif %}">
+                    <a class="page-link" href="{{ url_for('todo_onion', page_active=pageActive-1, page_inactive=pageInactive) }}">Previous</a>
+                </li>
+                {% set max_links = 10 %}
+                {% set start_page = [pageActive - max_links//2, 1] | max %}
+                {% set end_page = [start_page + max_links - 1, numPagesActive] | min %}
+                {% for i in range(start_page, end_page + 1) %}
+                <li class="page-item {% if i == pageActive %}active{% endif %}">
+                    <a class="page-link" href="{{ url_for('todo_onion', page_active=i, page_inactive=pageInactive) }}">{{ i }}</a>
+                </li>
+                {% endfor %}
+                <li class="page-item {% if pageActive >= numPagesActive %}disabled{% endif %}">
+                    <a class="page-link" href="{{ url_for('todo_onion', page_active=pageActive+1, page_inactive=pageInactive) }}">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+        <h2>Inactive Tasks (Total: {{ totalInactive }})</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Domain</th>
+                    <th>Last Modified Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in inactiveList %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.domain }}</td>
+                    <td>{{ item.last_mdate }}</td>
+                    <td>{{ item.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!-- Inactive Tasks Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item {% if pageInactive <= 1 %}disabled{% endif %}">
+                    <a class="page-link" href="{{ url_for('todo_onion', page_inactive=pageInactive-1, page_active=pageActive) }}">Previous</a>
+                </li>
+                {% set start_page = [pageInactive - max_links//2, 1] | max %}
+                {% set end_page = [start_page + max_links - 1, numPagesInactive] | min %}
+                {% for i in range(start_page, end_page + 1) %}
+                <li class="page-item {% if i == pageInactive %}active{% endif %}">
+                    <a class="page-link" href="{{ url_for('todo_onion', page_inactive=i, page_active=pageActive) }}">{{ i }}</a>
+                </li>
+                {% endfor %}
+                <li class="page-item {% if pageInactive >= numPagesInactive %}disabled{% endif %}">
+                    <a class="page-link" href="{{ url_for('todo_onion', page_inactive=pageInactive+1, page_active=pageActive) }}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
