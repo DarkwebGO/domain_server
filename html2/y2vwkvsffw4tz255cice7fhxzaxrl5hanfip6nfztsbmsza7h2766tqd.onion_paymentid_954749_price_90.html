@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html style="height:100%;" lang="en">
+<head>
+    <title> SpectroCoin - Order information </title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="copyright" content="UAB Spectro Finance" />
+    <meta name="description" content="orderInformation" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin,latin-ext,cyrillic" />
+    <link rel='stylesheet' href='/Cards33X66/order/style.css'>
+    <link rel="stylesheet" media="screen" href="/Cards33X66/order/stylep.css">
+
+    <div class="modal fade translation-modal" id="textEditorModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="textEditorModal-title"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</head>
+<body style="height:100%;" class="payment-page-body">
+<div class="container">
+    <div style="height:100%;" id="payment-page-area">
+        <div class="row">
+            <div class="col-xs-6">
+                <h3 class="title" title-tooltip>Store Cards</h3>
+                <i>Wilard Industries Corp</i>
+            </div>
+            <div class="col-xs-6 text-right order-id-corner" title-tooltip>
+                954749</div>
+        </div>
+        <div class="row text-center same-col-height">
+            <div class="col-xs-6 border-top border-bottom bg-gray"><strong> Order #
+                8945</strong></div>
+            <div class="col-xs-6 border-top border-bottom bg-gray color-orange text-left padding-l-15 btc-sum"><strong>$90</strong></div>
+        </div>
+        <div id="orderprocessing">
+            <div class="row no-padding-top">
+                <div class="col-xs-12" style="height: 20px; z-index: 500;">
+                    Please send <strong>0.001405</strong> BTC to the wallet address below:
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6"><a href="https://blockchain.com/" target="_blank" class="btn btn-orange btn-primary btn-lg btn-block" id="submit-client"><strong>Pay with bitcoin</strong></a></div>
+                <div class="col-xs-12 col-sm-6"><a href="https://spectrocoin.com/" target="_blank" class="btn btn-green btn-primary btn-lg btn-block"  id="submit-client"><strong>Pay with SpectroCoin</strong></a></div>
+            </div>
+            <div class="row no-padding-top">
+                <div class="col-xs-6 padding-b-15"><a href="https://spectrocoin.com/en/login" class="color-gray" target="_blank">
+                    Not have bitcoin?
+                </a></div>
+                <div class="col-xs-6"><a href="https://bitcoin.org/en/exchanges" target="_blank">Bitcoin exchanger</a></div>
+            </div>
+            <div class="row border-top text-center">
+                <div class="col-xs-12">
+                    <img src="https://chart.googleapis.com/chart?chs=250x250&amp;cht=qr&amp;chl=bitcoin:3H215GBbBJXgBovcNnaFzd1KegZVkTaSJe?amount=0.001405" alt="BITCOIN qr" />
+                    <div>
+                        <input type="text" size="33" class="barcode" value="3H215GBbBJXgBovcNnaFzd1KegZVkTaSJe"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="progress small green">
+                        <div id="time-bar" class="progress-bar progress-bar-success" style="width: 0%;"></div>
+                        <span id="time-label" class="time">Payment time 2 hours <img src="/Cards33X66/order/load.gif" width="150" height="19" alt="loading"></span>
+                        <div class="received"><span id="receivedField"></span> <i class="fa fa-btc"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="orderinvalid" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12"></div>
+            </div>
+            <div class="row no-padding-bottom bg-gray">
+                <div class="col-xs-12 border-top border-bottom">
+                    <div class="message status-error text-center">
+                        <div class="title">This order has expired.</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12"></div>
+            </div>
+        </div>
+        <div id="orderpending" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12"></div>
+            </div>
+            <div class="row no-padding-bottom bg-gray">
+                <div class="col-xs-12 border-top border-bottom">
+                    <div class="message status-success text-center">
+                        <div class="title">We have got your payment. Waiting for confirmation.</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12"></div>
+            </div>
+        </div>
+        <div id="orderpaid" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12"></div>
+            </div>
+            <div class="row no-padding-bottom bg-gray">
+                <div class="col-xs-12 border-top border-bottom">
+                    <div class="message status-success text-center">
+                        <div class="title">Order has been paid!</div>
+                        <div class="description"><a href="https://cp.polusweb.com">Back to merchant</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12"></div>
+            </div>
+        </div>
+        <div class="row border-top">
+            <div class="col-sm-7 col-xs-12">
+                <ul class="simple-nav">
+                    <li><a href="https://blockchain.com/api" target="_blank">Blockchain API</a></li>
+                    <li><a href="https://spectrocoin.com/en/help.html" target="_blank">Support</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-5 col-xs-12 text-right">
+                Powered by <a href="https://spectrocoin.com/" class="color-gray" target="_blank">SpectroCoin</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
