@@ -1,3 +1,4 @@
-**/*.py
-
 **/onions.txt
+
+app/instance
+__pycache__/

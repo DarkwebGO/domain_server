@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif; /* 폰트 스타일 설정 */
+}
+body * {
+    margin-bottom: 40px; /* 모든 요소에 아래쪽 여백 추가 */
+}
+
+
+table {
+    width: 80%; /* 테이블 너비 설정 */
+    margin: 20px auto; /* 테이블 중앙 정렬 및 상하 여백 설정 */
+    border-collapse: collapse; /* 테이블 셀 간격 제거 */
+    table-layout: fixed;
+}
+th, td {
+    border: 1px solid #dddddd; /* 테이블 셀 테두리 설정 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    padding: 8px; /* 셀 내부 패딩 설정 */
+    width: auto;
+}
+th {
+    background-color: #f2f2f2; /* 헤더 셀 배경색 설정 */
+}
+td {
+    word-break: break-all;
+  }
+
+  /* home.css에 추가 */
+.view-details {
+    cursor: pointer; /* 마우스 포인터를 손가락 모양으로 변경 */
+    color: #007BFF; /* 텍스트 색상 설정 */
+}
+
+.view-details:hover {
+    text-decoration: underline; /* 마우스 오버 시 밑줄 */
+    color: #0056b3; /* 마우스 오버 시 색상 변경 */
+}
+.details {
+    max-height: 300px; /* 예시로 설정한 높이 */
+    overflow-y: auto; /* 세부 정보가 넘칠 경우 수직 스크롤 표시 */
+    padding: 5px; /* 내용과 상하좌우 여백 설정 */
+}
+table th:nth-child(1) { width: 5%; }
+table th:nth-child(2) { width: 10%; }
+table th:nth-child(3) { width: 65%; }
+table th:nth-child(4) { width: 10%; }
+table th:nth-child(5) { width: 10%; }
