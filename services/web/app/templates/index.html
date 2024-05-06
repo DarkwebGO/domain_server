@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>우리들의 크롤러</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
+    <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+</head>
+<body>
+    <h1 style="text-align: center">구름망 다크웹 크롤러 과제</h1>
+    <h2 style="text-align: center">다크웹 엔트리</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Conductor</th>
+            <th>Domain</th>
+            <th>Details</th>
+            <th>Summary</th>
+        </tr>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry.id }}</td>
+            <td>{{ entry.conductor }}</td>
+            <td>{{ entry.domain }}</td>
+            <td class="view-details" onclick="toggleDomain('domain{{ entry.id }}', event)">View Details</td>
+            <td><button class="visualize-button" data-entry-id="{{ entry.id }}">View Visualization</button></td>
+        </tr>
+        {% for url in entry.urls %}
+        <tr class="domain{{ entry.id }}" style="display: none;">
+            <td colspan="5">
+                <div class="details">
+                    <strong>URL:</strong> {{ url.url }}<br>
+                    <strong>Depth:</strong> {{ url.depth }}<br>
+                    <strong>Parameter:</strong> {{ url.parameter }}<br>
+                    <strong>Title:</strong> {{ url.title }}<br>
+                    <strong>Words:</strong> {{ url.words }}<br>
+                    <strong>HTML Content:</strong> <a href="{{ url_for('main.crawl_html', html_content=url.html_content) }}" target="_blank">바로가기</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+    </table>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="summaryText">여기에 요약 정보가 표시됩니다.</p>
+            <img id="modalImageContainer" style="width:100%;">
+        </div>
+    </div>
+</body>
+</html>
