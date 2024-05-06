@@ -23,7 +23,9 @@ def setup_app_commands(app, db):
     def import_data():
         """Import data from Excel files and other sources."""
         import_excel_to_db(db)
+        print("import_excel_to_db end")
         init_onion(db)
+        print("init_onion end")
         init_db_status(db)
         print('Data imported successfully.')
 
@@ -60,33 +62,44 @@ def init_onion(db):
     except Exception as e:
         print(f"Error: {e}")
 
-
 def import_excel_to_db(db):
-    base_directory = os.path.join(os.path.dirname(__file__), '..','..', 'function')
+    base_directory = os.path.join(os.path.dirname(__file__), '..', '..', 'function')
+    dir_names = []
     for root, dirs, files in os.walk(base_directory):
-        for file in files:
-            if file.endswith('.xlsx'):
-                file_dir_name = os.path.basename(root)
-                file_dir_name = role[file_dir_name]
-                excel_path = os.path.join(root, file)
-                df = pd.read_excel(excel_path)
-                for _, row in df.iterrows():
-                    darkweb_entry = Darkweb.query.filter_by(domain=row['Domain']).first()
-                    if not darkweb_entry:
-                        darkweb_entry = Darkweb(
-                            conductor=file_dir_name,
-                            domain=row['Domain']
+        # function의 바로 아래 하위 폴더인 경우 변수 direct_function_dir_name에 저장. 
+        for directory in dirs:
+            directory_path = os.path.join(root, directory)
+            dir_name = os.path.basename(root)  # 상위 폴더의 이름 추출
+            if dir_name not in dir_names and dir_name != "function":  # 중복 방지를 위해 확인
+                dir_names.append(dir_name)  # 새로운 상위 폴더 이름 추가
+                print(dir_name)
+            for file in os.listdir(directory_path):
+                if file.endswith('.xlsx'):
+                    excel_path = os.path.join(directory_path, file)
+                    df = pd.read_excel(excel_path)
+                    for _, row in df.iterrows():
+                        darkweb_entry = Darkweb.query.filter_by(domain=row['Domain']).first()
+                        if not darkweb_entry:
+                            conductor = dir_name
+                            darkweb_entry = Darkweb(
+                                conductor= conductor,
+                                domain=row['Domain']
+                            )
+                            db.session.add(darkweb_entry)
+                            db.session.commit()
+                        # URL이 문자열이 아닌 경우 처리
+                        url = str(row['URL']) if not isinstance(row['URL'], str) else row['URL']
+                        html_content = url.replace('http://', '').replace('/', '_')
+                        urlweb_entry = DomainToURL(
+                            darkweb_id=darkweb_entry.id,
+                            url=url,
+                            depth=row['Depth'],
+                            parameter=row.get('Parameter'),
+                            title=row['Title'],
+                            keyword=row['Keyword'],
+                            html_content=html_content
                         )
-                        db.session.add(darkweb_entry)
-                        db.session.commit()
-                    urlweb_entry = DomainToURL(
-                        darkweb_id=darkweb_entry.id,
-                        url=row['URL'],
-                        depth=row['Depth'],
-                        parameter=row.get('Parameter'),
-                        title=row['Title'],
-                        words=row['Words'],
-                        html_content=row['URL'].replace('http://', '').replace('/', '_')
-                    )
-                    db.session.add(urlweb_entry)
-                db.session.commit()
+                        db.session.add(urlweb_entry)
+                    db.session.commit()
+
+

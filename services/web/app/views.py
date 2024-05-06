@@ -13,8 +13,8 @@ def home():
 @main.route('/visualize/<int:darkweb_id>')
 def visualize_combined(darkweb_id):
     entry = Darkweb.query.get_or_404(darkweb_id)
-    words = ' '.join(url.words for url in entry.urls)
-    plot_url = plot_combined_charts(words)
+    keyword = ' '.join(url.keyword for url in entry.urls)
+    plot_url = plot_combined_charts(keyword)
     return jsonify({'plot_url': plot_url})
 
 

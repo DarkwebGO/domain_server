@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from . import db  # db 인스턴스 임포트
+from .database import db  # 변경된 임포트 경로
 
 class Darkweb(db.Model):
     __tablename__ = 'darkweb'
@@ -16,8 +16,8 @@ class DomainToURL(db.Model):
     url = db.Column(db.String(200), nullable=False)
     depth = db.Column(db.Integer, nullable=False)
     parameter = db.Column(db.String(200), nullable=True)
-    title = db.Column(db.String(200), nullable=False)
-    words = db.Column(db.String(5000), nullable=False)
+    title = db.Column(db.String(200), nullable=True)
+    keyword = db.Column(db.String(5000), nullable=True)
     html_content = db.Column(db.String(100), nullable=True)
 
     darkweb = db.relationship('Darkweb', backref=db.backref('urls', lazy=True))
