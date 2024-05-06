@@ -5,7 +5,18 @@ body * {
     margin-bottom: 40px; /* 모든 요소에 아래쪽 여백 추가 */
 }
 
+.category {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 80px;
+}
 
+.table_name{
+    width: 80%; /* 테이블 너비 설정 */
+    margin: 20px auto; /* 테이블 중앙 정렬 및 상하 여백 설정 */
+    border-bottom: 2px solid lightgray; /* 하단에 연한 회색의 두꺼운 선 추가 */
+    padding-bottom: 20px; /* 하단 패딩 추가 */
+}
 table {
     width: 80%; /* 테이블 너비 설정 */
     margin: 20px auto; /* 테이블 중앙 정렬 및 상하 여백 설정 */
