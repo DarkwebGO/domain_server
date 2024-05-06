@@ -34,18 +34,18 @@
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li class="page-item {% if pageActive <= 1 %}disabled{% endif %}">
-                    <a class="page-link" href="{{ url_for('todo_onion', page_active=pageActive-1, page_inactive=pageInactive) }}">Previous</a>
+                    <a class="page-link" href="{{ url_for('main.todo_onion', page_active=pageActive-1, page_inactive=pageInactive) }}">Previous</a>
                 </li>
                 {% set max_links = 10 %}
                 {% set start_page = [pageActive - max_links//2, 1] | max %}
                 {% set end_page = [start_page + max_links - 1, numPagesActive] | min %}
                 {% for i in range(start_page, end_page + 1) %}
                 <li class="page-item {% if i == pageActive %}active{% endif %}">
-                    <a class="page-link" href="{{ url_for('todo_onion', page_active=i, page_inactive=pageInactive) }}">{{ i }}</a>
+                    <a class="page-link" href="{{ url_for('main.todo_onion', page_active=i, page_inactive=pageInactive) }}">{{ i }}</a>
                 </li>
                 {% endfor %}
                 <li class="page-item {% if pageActive >= numPagesActive %}disabled{% endif %}">
-                    <a class="page-link" href="{{ url_for('todo_onion', page_active=pageActive+1, page_inactive=pageInactive) }}">Next</a>
+                    <a class="page-link" href="{{ url_for('main.todo_onion', page_active=pageActive+1, page_inactive=pageInactive) }}">Next</a>
                 </li>
             </ul>
         </nav>
@@ -75,17 +75,17 @@
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li class="page-item {% if pageInactive <= 1 %}disabled{% endif %}">
-                    <a class="page-link" href="{{ url_for('todo_onion', page_inactive=pageInactive-1, page_active=pageActive) }}">Previous</a>
+                    <a class="page-link" href="{{ url_for('main.todo_onion', page_inactive=pageInactive-1, page_active=pageActive) }}">Previous</a>
                 </li>
                 {% set start_page = [pageInactive - max_links//2, 1] | max %}
                 {% set end_page = [start_page + max_links - 1, numPagesInactive] | min %}
                 {% for i in range(start_page, end_page + 1) %}
                 <li class="page-item {% if i == pageInactive %}active{% endif %}">
-                    <a class="page-link" href="{{ url_for('todo_onion', page_inactive=i, page_active=pageActive) }}">{{ i }}</a>
+                    <a class="page-link" href="{{ url_for('main.todo_onion', page_inactive=i, page_active=pageActive) }}">{{ i }}</a>
                 </li>
                 {% endfor %}
                 <li class="page-item {% if pageInactive >= numPagesInactive %}disabled{% endif %}">
-                    <a class="page-link" href="{{ url_for('todo_onion', page_inactive=pageInactive+1, page_active=pageActive) }}">Next</a>
+                    <a class="page-link" href="{{ url_for('main.todo_onion', page_inactive=pageInactive+1, page_active=pageActive) }}">Next</a>
                 </li>
             </ul>
         </nav>
