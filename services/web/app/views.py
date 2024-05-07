@@ -1,20 +1,25 @@
 from flask import Blueprint, render_template, request, jsonify, send_from_directory
-from .services import get_all_entries, get_active_tasks, get_inactive_tasks, get_random_false_domain, update_false_domain_to_true
+from .services import get_all_entries, get_active_tasks, get_inactive_tasks, get_random_false_domain, update_false_domain_to_true,get_all_keywords
 from .models import Darkweb, DomainToURL, UrlWeb
 import os
-from .util.visualize import plot_combined_charts
+from .util.visualize import plot_combined_charts, word_cloud
 main = Blueprint('main', __name__)
 
 @main.route('/')
 def home():
     entries = get_all_entries()
-    return render_template('index.html', entries=entries)
+    keywords = get_all_keywords()
+
+    # 키워드 시각화를 위한 이미지 URL 생성
+    plot_url = plot_combined_charts(keywords)
+    cloud = word_cloud(keywords)
+    return render_template('index.html', entries=entries,plot_url=plot_url, cloud=cloud)
 
 @main.route('/visualize/<int:darkweb_id>')
 def visualize_combined(darkweb_id):
     entry = Darkweb.query.get_or_404(darkweb_id)
-    words = ' '.join(url.words for url in entry.urls)
-    plot_url = plot_combined_charts(words)
+    keyword = ' '.join(url.keyword for url in entry.urls)
+    plot_url = plot_combined_charts(keyword)
     return jsonify({'plot_url': plot_url})
 
 
@@ -52,11 +57,15 @@ def crawl_html(html_content):
     
     # 요청된 HTML 파일을 찾기 위해 서비스 기능 폴더 안의 모든 폴더를 검색
     for root, dirs, files in os.walk(base_directory):
-        for subdir in dirs:
-            html_file_path = os.path.join(root, subdir, f'{html_content}.html')
-            if os.path.exists(html_file_path):
-                print("hihi")
-                return send_from_directory(os.path.join(base_directory, subdir), f'{html_content}.html')
+        for file in files:
+            if file == f'{html_content}.html':
+                html_file_path = os.path.join(root, file)
+                if os.path.exists(html_file_path):
+                    print("hihi")
+                    print(html_file_path)
+                    # html_file_path에서 파일 이름을 제외한 디렉토리 경로만 추출하여 전달
+                    directory_path = os.path.dirname(html_file_path)
+                    return send_from_directory(directory_path, file)
     
     # 해당하는 HTML 파일을 찾지 못한 경우 404 에러 반환
     return 'Not Found', 404

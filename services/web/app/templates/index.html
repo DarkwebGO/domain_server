@@ -10,6 +10,18 @@
 <body>
     <h1 style="text-align: center">구름망 다크웹 크롤러 과제</h1>
     <h2 style="text-align: center">다크웹 엔트리</h2>
+
+    <div class="category">
+        <h2>기간동안 조사한 크롤링사이트 분류</h2>
+
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Top 10 Keywords Visualization"><br>
+        <h3>워드클라우드</h3>
+        <img src="data:image/png;base64,{{ cloud }}" alt="word_cloud">
+    </div>
+
+
+    <h2 class="table_name">조사한 onion 엔트리</h2>
+    
     <table>
         <tr>
             <th>ID</th>
@@ -34,7 +46,7 @@
                     <strong>Depth:</strong> {{ url.depth }}<br>
                     <strong>Parameter:</strong> {{ url.parameter }}<br>
                     <strong>Title:</strong> {{ url.title }}<br>
-                    <strong>Words:</strong> {{ url.words }}<br>
+                    <strong>Keyword:</strong> {{ url.keyword }}<br>
                     <strong>HTML Content:</strong> <a href="{{ url_for('main.crawl_html', html_content=url.html_content) }}" target="_blank">바로가기</a>
                 </div>
             </td>

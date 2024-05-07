@@ -4,6 +4,7 @@ matplotlib.use('Agg')
 
 import matplotlib.pyplot as plt
 from collections import Counter
+from wordcloud import WordCloud
 from io import BytesIO
 import base64
 
@@ -22,6 +23,7 @@ def plot_combined_charts(words):
     ax1.set_xlabel('Words')
     ax1.set_ylabel('Frequency')
     ax1.set_title('Top Words in Entry')
+    ax1.tick_params(axis='x', rotation=45)  # x축 라벨 회전
 
     # 파이 차트 플로팅
     ax2.pie(frequencies, labels=words, autopct='%1.1f%%', startangle=140)
@@ -31,6 +33,27 @@ def plot_combined_charts(words):
     # 이미지를 Base64 인코딩 문자열로 변환
     img = BytesIO()
     plt.savefig(img, format='png', bbox_inches='tight')
+    img.seek(0)
+    plot_url = base64.b64encode(img.getvalue()).decode()
+    plt.close()  # 메모리 관리를 위해 그래프 닫기
+
+    return plot_url
+
+def word_cloud(keywords):
+    # 워드클라우드 객체 생성
+    wc = WordCloud(width=800, height=400, background_color='white', colormap='viridis')
+    
+    # 워드클라우드 생성
+    cloud = wc.generate(keywords)
+
+    # 이미지 생성
+    fig, ax = plt.subplots(figsize=(8, 4))
+    ax.imshow(cloud, interpolation='bilinear')
+    ax.axis('off')  # 축 제거
+
+    # 이미지를 Base64 인코딩 문자열로 변환
+    img = BytesIO()
+    plt.savefig(img, format='png', bbox_inches='tight', pad_inches=0)
     img.seek(0)
     plot_url = base64.b64encode(img.getvalue()).decode()
     plt.close()  # 메모리 관리를 위해 그래프 닫기

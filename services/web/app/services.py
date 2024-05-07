@@ -18,3 +18,13 @@ def update_false_domain_to_true(url_web):
         models.db.session.commit()
         return url_web
     return None
+
+def get_all_keywords():
+    all_keywords = []
+    entries = models.Darkweb.query.all()
+    for entry in entries:
+        if entry.urls:
+            for url in entry.urls:
+                if url.keyword:
+                    all_keywords.extend(url.keyword.split())
+    return ' '.join(all_keywords)
