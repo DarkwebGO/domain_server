@@ -1,4 +1,11 @@
 from . import models
+from sqlalchemy import func
+
+def conductor_count():
+    return models.db.session.query(
+        models.Darkweb.conductor,
+        func.count(models.Darkweb.id).label('count')
+    ).group_by(models.Darkweb.conductor).all()
 
 def get_all_entries():
     return models.Darkweb.query.all()

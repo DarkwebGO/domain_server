@@ -21,7 +21,14 @@
 
 
     <h2 class="table_name">조사한 onion 엔트리</h2>
-    
+    <div class="conductors">
+        <h3 style="margin-bottom: 10px;">Conductor Counts</h3>
+        <ul>
+            {% for conductor, count in conductors %}
+            <li>{{ conductor }}: {{ count }}</li>
+            {% endfor %}
+        </ul>
+    </div>
     <table>
         <tr>
             <th>ID</th>
