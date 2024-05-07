@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Quantifying autonomy in planning</title><style>
+body{margin:auto;max-width:50em;padding-left:0.5em;padding-right:0.5em}
+img{max-width:100%}
+#banner h1{font-size:2.5em;margin-top:5px;margin-bottom:5px;text-align:center}
+#banner h1 a:link,#banner h1 a:visited{color:#111;text-decoration:none}
+pre{padding:0.5em;background:#ddd;border:1px solid #000;overflow:auto}
+.entry-title{font-size:2em;margin-bottom:0.5em}
+.tags{margin-top:0px;margin-bottom:0px}
+.article-link{font-weight:bold}
+.post-info{float:right;margin:0.5em;padding:0.5em;border:1px solid #000;max-width:16em}
+footer div{column-count:3;column-width:18em;column-rule:1px solid #ddd}
+footer div div{display:inline-block}
+nav ul{list-style-type:none;margin:0;padding:0;overflow:hidden;background-color:#eee}
+nav ul li{float:left}
+nav ul li a{display:block;color:#333;text-align:center;font-size:1.5em;padding:14px 16px;text-decoration:none}
+nav ul li a:hover{background-color:#ddd}
+table,td,th{padding:0.2em;border:1px solid gray;border-collapse:collapse}
+</style><link href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tomas' place in cyber&shy;space Atom Feed"/><link href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Tomas' place in cyber&shy;space RSS Feed"/></head><body>
+<header id="banner">
+<h1><a href="../../../../../">Tomas' place in cyber&shy;space </a></h1>
+<nav><ul>
+<li><a href="/">Home</a></li>
+<li><a href="/category/blog.html">Blog</a></li>
+<li><a href="/category/demoscene.html">Demoscene</a></li>
+<li><a href="/files">Files</a></li>
+<li><a href="/pages/consulting.html">Consulting</a></li>
+<li><a href="/pages/contact.html">Contact</a></li>
+</ul></nav>
+</header>
+<section><article><header>
+<aside class="post-info">
+<abbr class="published" title="2023-05-21T19:59:46+02:00">
+Published: 2023-05-21</abbr>
+in <a href="../../../../../category/blog.html">Blog</a>
+<p class="tags">Tags: <a href="../../../../../tag/cybernetics.html">cybernetics</a> <a href="../../../../../tag/math.html">math</a> </p>
+</aside><h1 class="entry-title">
+<a href="../../../../../blog/2023/05/21/quantifying-autonomy-in-planning/" rel="bookmark"
+title="Permalink to Quantifying autonomy in planning">Quantifying autonomy in planning</a></h1>
+</header>
+<div class="entry-content"><p>In the previous posts <a href="../../../../../blog/2023/02/26/feasibility-is-optimal/">Feasibility is optimal</a> and <a href="../../../../../blog/2023/04/23/on-self-concordant-convergence/">On self-concordant convergence</a> I have made the case that seeking centrality may be better than trying to optimize on some objective function.
+The reason for this is two-fold:</p>
+<ul>
+<li>there is uncertainty in the data that make up the constraints</li>
+<li>seeking centrality gives each workplace more leeway</li>
+</ul>
+<p>In this post I will go into the second point, describing how we might quantify the amount of leeway/autonomy that can be provided to each workplace "no questions asked" by the system as a whole.</p>
+<h2>Defining workplace autonomy</h2>
+<p>What I mean by autonomy in this post is the extent to which each workplace can govern itself without threatening the feasibility of the system as a whole.
+The less constrained each workplace is the more "free" the workers in that workplace are likely to be.
+The more orthogonal its actions can be to the rest of the economy, the freeër it is.
+But at the same time, no workplace is an island.</p>
+<p>Excessive production of some products may induce demand or side-effects in other parts in the system that exceed the system's capabilities, thus violating feasibility.
+Greenhouse gas emissions are the obvious example, but other issues like eutrophication are also a concern, as happens currently with the southern parts of the Baltic sea (<a href="https://jordbruksverket.se/jordbruket-miljon-och-klimatet/overgodning-och-lackage-av-vaxtnaring">Övergödning och läckage av växtnäring, <em>Eutrophication and leakage of plant fertilizer</em></a>, Jordbruksverket, fetched 2023-05-15).
+Likewise insufficient production will cause shortages in downstream workplaces, also violating feasibility.</p>
+<p>A maker of electric motors may speculatively try to make products in excess of the supply of rare-earth elements for magnets, which obviously will cause shortages in other parts of the economy, and thus such production should be discouraged.
+But if they don't exceed said supply, then it may be worthwhile to produce more than is currently demanded because tooling costs amortize.
+This would lower the cost of the products overall, and allow the workers there to take time off.
+Therefore for work scheduling purposes it would be useful to know within what bounds production can be guaranteed to proceed smoothly, assuming sufficiently accurate data in the relevant parts of the system.
+The more orthogonal a workplace is to the rest of the economy, the easier the scheduling of its work becomes.</p>
+<p>Being able to answer these questions by machine quickly means less bureaucracy, also an obvious boon to workplace autonomy.</p>
+<p>Finally, when workers in a workplace know that they can reduce production by a certain amount for a certain length of time, this allows exploring other production methods.
+For example another type of plant can be planted or another gizmo invented using the resources so freed up.
+We can imagine many remuneration schemes encouraging such exploration.
+There is always a tradeoff between exploration and exploitation, a problem known as the <a href="https://en.wikipedia.org/wiki/Multi-armed_bandit">multi-armed bandit</a>.</p>
+<h2>The geometry of workplace autonomy</h2>
+<p>I have mentioned orthogonality above.
+In this section I will show what this means.</p>
+<p>Let us for simplicity in visualization imagine two workplaces, A and B.
+A makes product a and B makes product b.
+It is estimated by both workplaces independently that for some time period A can produce between 0-100 units of a and B can produce 0-50 units of b.
+Each unit of a and b produces one unit of emissions, and the total amount of emissions are to be kept below 110.
+The estimated demand for a is 40 and the estimated demand for b is 10.
+Let us assume that the center of the system is at <math>
+<mrow><mi>a</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>60</mn></mrow>
+</math>, <math>
+<mrow><mi>b</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>20</mn></mrow>
+</math>.
+The situation looks like the following figure:</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/system.svg" alt="The system in question. A rectangle with one corner lopped off."/></p>
+<p>The diagonal line corresponds to the emissions constraint.
+It may be tempting for each workplace to look at this and derive updated bounds on their own production without taking the other into consideration,
+namely <math>
+<mrow><mn>40</mn><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mi>a</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mn>90</mn></mrow>
+</math> and <math>
+<mrow><mn>10</mn><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mi>b</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mn>50</mn></mrow>
+</math>:</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/system2.svg" alt="Lines drawn vertically and horizontally from the center of the system"/></p>
+<p>However as sharp-eyed readers may realize, if both workplaces act entirely autonomously using only these bounds as reference then feasibility cannot be guaranteed.
+The Cartesian product of the two bounds is a rectangle, part of which lies outside of the feasible region:</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/system3.svg" alt="A rectangle laid on top with the infeasible part of it colored red"/></p>
+<p>The orthogonality I have mentioned is here apparent.
+The rectangle's sides are orthogonal (at 90°) to one another.</p>
+<p>There are many choices for feasible rectangles in this system, and the most straightforward one seems to be to scale the limits on both a and b down so that the upper-right corner of the rectangle lies on the emissions constraint, like so:</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/system4.svg" alt="A smaller rectangle that is entirely within the feasible region"/></p>
+<p>The updated bounds are <math>
+<mrow><mn>40</mn><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mi>a</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mn>75</mn></mrow>
+</math> and <math>
+<mrow><mn>10</mn><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mi>b</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mn>35</mn></mrow>
+</math>.
+Many other feasible bounds are possible.
+This approach generalizes to any number of workplaces and production methods, meaning we can always fit some n-dimensional rectangle (<em>orthotope</em> or <em>box</em>) inside the system.
+All that is necessary is that all corners of the box lie within the feasible region.</p>
+<p>Other geometries are also possible.
+Production within one workplace having two production methods available could be limited not just to a rectangle but any convex polygon, for example a hexagon.
+The Cartesian product of such a polygon with another workplace having just one production method results in a <a href="https://en.wikipedia.org/wiki/Prism_(geometry)">prism</a>.</p>
+<p><img style="display:block;width:33%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/prism.svg" alt="A hexagonal prism"/></p>
+<p>Note that the sides of the prism are orthogonal to its ends.
+This orthogonality is again key to why autonomy can be guaranteed.
+That the edges of the hexagons are not orthogonal to one another is here a strength, since this allows more autonomy <em>within</em> the associated workplace.
+We can quantify the <em>degree</em> of autonomy by the area of the hexagon.
+For the other workplace it is the length of the sides between the two hexagons.
+For the system as a whole the <em>total</em> autonomy is the volume of the prism, which is just the product of the hexagon's area and the side length.</p>
+<p>If the number of production methods <math>
+<mi>n</mi>
+</math> is larger than three then the result is a <a href="https://en.wikipedia.org/wiki/Prism_(geometry)#Prismatic_polytope">prismatic polytope</a>,
+which are difficult to illustrate for obvious reasons.
+Such polytopes have properties that make them easier to deal with computationally than polytopes in general.</p>
+<p>Note that two or more workplaces coordinating their actions more tightly can get a combined larger volume to work within, at the cost of reduced autonomy and at the cost of more infernal meetings.
+The figure below illustrates a situation where the heaxgonal workplace has more room to work within when the linear workplace is closer to the "lower" state.
+The resulting shape is a frustrum.</p>
+<p><img style="display:block;width:33%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/frustrum.svg" alt="A hexagonal frustrum"/></p>
+<p>It should hopefully be clear that the two workplaces are now dependent on more communication than before.
+Note that the amount of necessary communication can be attenuated by an automatic plan solver.
+But the roundtrip time inherent in that may be irritating to workplace coordination, for example when assigning shifts.
+Hence a preference to autonomy.</p>
+<h3>A small demo</h3>
+<p>Apologies to those who are even more averse to JavaScript than I am, but I know of no way to do the following using just HTML+CSS.</p>
+<p>The system below is the same as the one before.
+Try dragging the slider and see what happens.
+The dot doesn't move, sorry.
+Patch welcome!</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/system4.svg" alt="A smaller rectangle that is entirely within the feasible region"/></p>
+<script type="text/javascript">
+function updateslider() {
+  var a = document.getElementById("a");
+  var b = document.getElementById("b");
+  var al = document.getElementById("al");
+  var bl = document.getElementById("bl");
+  var as = document.getElementById("as");
+  var bs = document.getElementById("bs");
+  var abs = document.getElementById("abs");
+  var ab = parseFloat(a.value) + parseFloat(b.value);
+  al.innerHTML = "a = " + a.value;
+  bl.innerHTML = "b = " + b.value;
+  abs.innerHTML = "a + b = " + ab;
+
+  if (ab > 110) {
+    as.style = bs.style = "background:red";
+    al.innerHTML += " BAD!";
+    bl.innerHTML += " BAD!";
+    abs.style = "font-weight:bold";
+  } else {
+    abs.style = "font-weight:none";
+    if (a.value > 75) {
+      as.style = "background:yellow";
+      al.innerHTML += " sus";
+    } else {
+      as.style = "background:green";
+    }
+    if (b.value > 35) {
+      bs.style = "background:yellow";
+      bl.innerHTML += " sus";
+    } else {
+      bs.style = "background:green";
+    }
+  }
+}
+window.onload = updateslider;
+</script>
+
+<div style="text-align: center">
+40 <span id="as"><input type=range id=a min=40 max=100 value=60 onchange="updateslider()" oninput="updateslider()" list="markers" /></span> 100<br/>
+<label for=a id=al></label>
+</div>
+
+<div style="text-align: center">
+10 <span id="bs"><input type=range id=b min=10 max=50 value=20 onchange="updateslider()" oninput="updateslider()" list="markers" /></span> 50&nbsp;<br/>
+<label for=b id=bl></label><br/>
+
+<span id=abs></span>
+</div>
+
+<p>A more complicated example would use multiple workplaces with multiple production methods and a simulated delay, showing how two or more workplaces stepping outside the box can result in infeasibility that isn't immediately visible.
+Perhaps something for the future..</p>
+<h2>A fast box fitting algorithm</h2>
+<p>Consider the closed polytope <math>
+<mrow><msup><mi>A</mi><mo lspace="0" rspace="0">&#x2032;</mo></msup><mspace width="0"/><mi>x</mi><mo lspace="0.278em" rspace="0.278em">&#x2265;</mo><msup><mi>b</mi><mo lspace="0" rspace="0">&#x2032;</mo></msup></mrow>
+</math> with <math>
+<mrow><msup><mi>A</mi><mo lspace="0" rspace="0">&#x2032;</mo></msup><mo lspace="0.278em" rspace="0.278em">&#x2208;</mo><msup><mi mathvariant="double-struck">R</mi><mrow><mi>m</mi><mo lspace="0" rspace="0">&#xd7;</mo><mi>n</mi></mrow></msup></mrow>
+</math> and a non-zero internal volume, and some internal point <math>
+<mi>&#x3be;</mi>
+</math> around which we'd like to find a large n-dimensional box <math>
+<mi>B</mi>
+</math>.
+Without loss of generality we can change the coordinate system to make the origin <math>
+<mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>0</mn><mo lspace="0" rspace="0.167em">,</mo><mn>0</mn><mo lspace="0" rspace="0.167em">,</mo><mo lspace="0" rspace="0.167em">&#x2026;</mo><mo lspace="0" rspace="0.167em">,</mo><mn>0</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> correspond to <math>
+<mi>&#x3be;</mi>
+</math>.
+The updated system is <math>
+<mrow><mi>A</mi><mspace width="0"/><mi>x</mi><mo lspace="0.278em" rspace="0.278em">&#x2265;</mo><mi>b</mi></mrow>
+</math> where all entries in <math>
+<mi>b</mi>
+</math> by necessity are negative.
+If we want we can again without loss of generality scale each row in <math>
+<mi>A</mi>
+</math> so that all entries in <math>
+<mi>b</mi>
+</math> are -1.
+The implementation does this, but for clarity the description does not.</p>
+<p>Next introduce the positive vectors <math>
+<mi>l</mi>
+</math> and <math>
+<mi>u</mi>
+</math>, the lower and upper bounds that make up <math>
+<mi>B</mi>
+</math>, like so:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>B</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0" stretchy="false">{</mo><mi>x</mi><mtext>&#xa0;|&#xa0;</mtext><mo lspace="0" rspace="0">&#x2200;</mo><mi>i</mi><mo lspace="0.278em" rspace="0.278em">&#x2208;</mo><mo lspace="0" rspace="0" stretchy="false">[</mo><mn>1</mn><mo lspace="0" rspace="0.167em">,</mo><mi>n</mi><mo lspace="0" rspace="0.278em" stretchy="false">]</mo><mo lspace="0" rspace="0.278em">:</mo><mo lspace="0" rspace="0">-</mo><msub><mi>l</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><msub><mi>x</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mo lspace="0" rspace="0">+</mo><msub><mi>u</mi><mi>i</mi></msub><mo lspace="0" rspace="0" stretchy="false">}</mo></mrow>
+</math>
+</span></p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/lu.svg" alt="l and u in context"/></p>
+<p>The <math>
+<msup><mn>2</mn><mi>n</mi></msup>
+</math> corners <math>
+<mi>h</mi>
+</math> of <math>
+<mi>B</mi>
+</math> have the coordinates <math>
+<mrow><mi>h</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mo lspace="0" rspace="0">-</mo><msub><mi>l</mi><mn>1</mn></msub><mtext>&#xa0;or&#xa0;</mtext><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>u</mi><mn>1</mn></msub><mo lspace="0" rspace="0.167em">,</mo><mo lspace="0" rspace="0">-</mo><msub><mi>l</mi><mn>2</mn></msub><mtext>&#xa0;or&#xa0;</mtext><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>u</mi><mn>2</mn></msub><mo lspace="0" rspace="0.167em">,</mo><mo lspace="0" rspace="0.167em">&#x2026;</mo><mo lspace="0" rspace="0.167em">,</mo><mo lspace="0" rspace="0">-</mo><msub><mi>l</mi><mi>n</mi></msub><mtext>&#xa0;or&#xa0;</mtext><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>u</mi><mi>n</mi></msub><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> and because <math>
+<mrow><msub><mi>l</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">&gt;</mo><mn>0</mn></mrow>
+</math> and <math>
+<mrow><msub><mi>u</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">&gt;</mo><mn>0</mn></mrow>
+</math> the origin is always contained in the box.
+It is easy to see that the (hyper)volume of the box is</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>V</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0.167em" stretchy="false">&#x220f;</mo><msub><mi>l</mi><mi>i</mi></msub><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>u</mi><mi>i</mi></msub></mrow>
+</math>
+</span></p>
+<p>We would ideally like to compute the largest feasible box that contains the origin, or if we can't guarantee optimality then we at least want a box that is not unreasonably small.
+The algorithm proposed here is one that produces a reasonable, but not necessarily optimal, <math>
+<mi>B</mi>
+</math>.</p>
+<p>We start by observing that for all rows <math>
+<msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup>
+</math> there is a set of corners that minimize the scalar product with <math>
+<msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup>
+</math>.
+In other words the corners that violates the constraint <math>
+<mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><mi>h</mi><mo lspace="0.278em" rspace="0.278em">&#x2265;</mo><mi>b</mi></mrow>
+</math> the most, or if they don't violate it then they are the least slack.
+These corners have signs opposite of <math>
+<msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup>
+</math>.
+Dimensions corresponding to zeros in <math>
+<msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup>
+</math> are irrelevant.
+We can therefore describe the entire set of corners by <math>
+<msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math> with signs opposite of <math>
+<msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup>
+</math>, including zeros (which are set to zero in <math>
+<msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math>), like so:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msubsup><mi>h</mi><mi>j</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msubsup><mo lspace="0.278em" rspace="0.278em">=</mo><mrow><mo stretchy="true">{</mo><mrow><mstyle scriptlevel="0"><mtable columnalign="left"><mtr><mtd><mo lspace="0" rspace="0">-</mo><msub><mi>l</mi><mi>j</mi></msub></mtd><mtd><mtext>if&#xa0;</mtext><msub><mi>a</mi><mrow><mi>i</mi><mo lspace="0" rspace="0">,</mo><mi>j</mi></mrow></msub><mo lspace="0.278em" rspace="0.278em">&gt;</mo><mn>0</mn></mtd></mtr><mtr><mtd><mo lspace="0" rspace="0">+</mo><msub><mi>u</mi><mi>j</mi></msub></mtd><mtd><mtext>if&#xa0;</mtext><msub><mi>a</mi><mrow><mi>i</mi><mo lspace="0" rspace="0">,</mo><mi>j</mi></mrow></msub><mo lspace="0.278em" rspace="0.278em">&lt;</mo><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mtext>if&#xa0;</mtext><msub><mi>a</mi><mrow><mi>i</mi><mo lspace="0" rspace="0">,</mo><mi>j</mi></mrow></msub><mo lspace="0.278em" rspace="0.278em">=</mo><mn>0</mn></mtd></mtr></mtable></mstyle></mrow></mrow></mrow>
+</math>
+</span></p>
+<p>If <math>
+<msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math> violates the constraint then we have</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.278em" rspace="0.278em">&lt;</mo><msub><mi>b</mi><mi>i</mi></msub></mrow>
+</math>
+</span></p>
+<p>with both sides of the inequality negative.
+We can easily compute a <math>
+<msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math> that turns this violated inequality into an equality:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.278em" rspace="0.278em">=</mo><mfrac><msub><mi>b</mi><mi>i</mi></msub><mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup></mrow></mfrac><mo lspace="0.278em" rspace="0.278em">&#x21d2;</mo><msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mspace width="0"/><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.278em" rspace="0.278em">=</mo><msub><mi>b</mi><mi>i</mi></msub></mrow>
+</math>
+</span></p>
+<p>Therefore diminishing the elements in <math>
+<mi>l</mi>
+</math> and <math>
+<mi>u</mi>
+</math> corresponding to the positive and negative elements in <math>
+<msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup>
+</math> respectively, by multiplying them by <math>
+<msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math>, results in a new <math>
+<msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math> that is feasible and as a result all other corners in <math>
+<mi>B</mi>
+</math> are also feasible with respect to <math>
+<msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup>
+</math>.
+This because for entries corresponding to non-zeroes in <math>
+<msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math> flipping the sign always results in a scalar product that is greater than <math>
+<mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup></mrow>
+</math>, that is they are more slack.
+Note that the diminishing of any entry in <math>
+<mi>l</mi>
+</math> or <math>
+<mi>u</mi>
+</math> moves entire sets of corners because <math>
+<mi>B</mi>
+</math> is parametrized in terms of these two vectors.
+The corners move as a result of modifying the constraints that make up <math>
+<mi>B</mi>
+</math>.</p>
+<p>The above implies that no feasible corner can ever be made infeasible by diminishing any of its corresponding elements in <math>
+<mi>l</mi>
+</math> and <math>
+<mi>u</mi>
+</math>.
+The new box is always contained within the old box.
+In the extreme we can diminish <math>
+<mi>l</mi>
+</math> and <math>
+<mi>u</mi>
+</math> so they are arbitrarily close to the origin, and we can always find some finite <math>
+<mi>l</mi>
+</math> and <math>
+<mi>u</mi>
+</math> that will fit the bill because the origin is strictly feasible by definition (<math>
+<mrow><mi>A</mi><mn>0</mn><mo lspace="0.278em" rspace="0.278em">=</mo><mn>0</mn><mo lspace="0.278em" rspace="0.278em">&gt;</mo><mi>b</mi></mrow>
+</math>) and so we can always squeeze <math>
+<mi>l</mi>
+</math> and <math>
+<mi>u</mi>
+</math> into the gap.
+In fact this algorithm is motivated partly by improving the lower bound on the volume of <math>
+<mi>B</mi>
+</math>.
+We can always compute a box that will fit by first fitting an <a href="https://en.wikipedia.org/wiki/Cross-polytope">orthoplex</a>, or more specifically a type of asymmetric <a href="https://en.wikipedia.org/wiki/Hyperrectangle#Dual_polytope">lozenge</a>, by tracing in the positive and negative cardinal directions, resulting in initial values for <math>
+<mi>l</mi>
+</math> and <math>
+<mi>u</mi>
+</math>.</p>
+<p>To make the above less abstract let's look at some figures. Let's start with a polygon with the origin in its interior:</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/algo1.svg" alt="A convex polygon with the origin in its interior"/></p>
+<p>By tracing in the cardinal directions we can fit a lozenge within it, which is guaranteed to always work because the polygon is convex:</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/algo2.svg" alt="Foo"/></p>
+<p>Finding the rectangle that is the dual to this lozenge (blue) is easy, as is finding the rectangle to which the lozenge itself is the dual (red):</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/algo3.svg" alt="Foo"/></p>
+<p>In general the lozenge has the following hypervolume:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msub><mi>V</mi><mi>lozenge</mi></msub><mo lspace="0.278em" rspace="0.278em">=</mo><mfrac><mn>1</mn><mrow><mi>n</mi><mo lspace="0" rspace="0">!</mo></mrow></mfrac><mo lspace="0.167em" rspace="0.167em" stretchy="false">&#x220f;</mo><msub><mi>l</mi><mi>i</mi></msub><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>u</mi><mi>i</mi></msub></mrow>
+</math>
+</span></p>
+<p>The smaller box provides a lower bound on the volume of the large box we seek:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msub><mi>V</mi><mi>lower</mi></msub><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0.167em" stretchy="false">&#x220f;</mo><mfrac><mrow><msub><mi>l</mi><mi>i</mi></msub><mo lspace="0" rspace="0">+</mo><msub><mi>u</mi><mi>i</mi></msub></mrow><mi>n</mi></mfrac><mo lspace="0.278em" rspace="0.278em">=</mo><mfrac><mn>1</mn><msup><mi>n</mi><mi>n</mi></msup></mfrac><mo lspace="0.167em" rspace="0.167em" stretchy="false">&#x220f;</mo><msub><mi>l</mi><mi>i</mi></msub><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>u</mi><mi>i</mi></msub></mrow>
+</math>
+</span></p>
+<p>The larger box naturally provides the upper bound:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msub><mi>V</mi><mi>upper</mi></msub><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0.167em" stretchy="false">&#x220f;</mo><msub><mi>l</mi><mi>i</mi></msub><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>u</mi><mi>i</mi></msub></mrow>
+</math>
+</span></p>
+<p>Obviously <math>
+<mrow><msub><mi>V</mi><mi>upper</mi></msub><mo lspace="0" rspace="0" stretchy="false">/</mo><msub><mi>V</mi><mi>lower</mi></msub><mo lspace="0.278em" rspace="0.278em">=</mo><msup><mi>n</mi><mi>n</mi></msup></mrow>
+</math> is a rather large range,
+so the chances of us finding a box that is not so horrible are probably good.
+Keeping in mind that <math>
+<mrow><mi>n</mi><mo lspace="0.278em" rspace="0.278em">&#x2248;</mo><msup><mn>10</mn><mn>10</mn></msup></mrow>
+</math>, the <math>
+<msub><mi>V</mi><mi>lower</mi></msub>
+</math> bound is equivalent to say a cobbler having leeway to make anywhere between 9.999999999 and 10.000000001 shoes in a given period.
+Not hooray.
+So the point is to widen these bounds to something more reasonable, perhaps 5 to 15 shoes.</p>
+<p>We are now ready to list the algorithm:</p>
+<ol>
+<li>Compute initial <math>
+<mi>l</mi>
+</math> and <math>
+<mi>u</mi>
+</math> by tracing lines in the positive and negative cardinal directions from the origin, assigning each entry based on the closest constraint encountered</li>
+<li>For <math>
+<mrow><mi>i</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0.167em" rspace="0.167em">&#x2026;</mo><mi>m</mi></mrow>
+</math>:<ol>
+<li>For <math>
+<mrow><mi>j</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0.167em" rspace="0.167em">&#x2026;</mo><mi>n</mi></mrow>
+</math> let <math>
+<mrow><msubsup><mi>h</mi><mi>j</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msubsup><mo lspace="0.278em" rspace="0.278em">=</mo><mrow><mo stretchy="true">{</mo><mrow><mstyle scriptlevel="0"><mtable columnalign="left"><mtr><mtd><mo lspace="0" rspace="0">-</mo><msub><mi>l</mi><mi>j</mi></msub></mtd><mtd><mtext>if&#xa0;</mtext><msub><mi>a</mi><mrow><mi>i</mi><mo lspace="0" rspace="0">,</mo><mi>j</mi></mrow></msub><mo lspace="0.278em" rspace="0.278em">&gt;</mo><mn>0</mn></mtd></mtr><mtr><mtd><mo lspace="0" rspace="0">+</mo><msub><mi>u</mi><mi>j</mi></msub></mtd><mtd><mtext>if&#xa0;</mtext><msub><mi>a</mi><mrow><mi>i</mi><mo lspace="0" rspace="0">,</mo><mi>j</mi></mrow></msub><mo lspace="0.278em" rspace="0.278em">&lt;</mo><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mtext>if&#xa0;</mtext><msub><mi>a</mi><mrow><mi>i</mi><mo lspace="0" rspace="0">,</mo><mi>j</mi></mrow></msub><mo lspace="0.278em" rspace="0.278em">=</mo><mn>0</mn></mtd></mtr></mtable></mstyle></mrow></mrow></mrow>
+</math></li>
+<li>If <math>
+<mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.278em" rspace="0.278em">&lt;</mo><msub><mi>b</mi><mi>i</mi></msub></mrow>
+</math><ol>
+<li>Let <math>
+<mrow><msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.278em" rspace="0.278em">=</mo><msub><mi>b</mi><mi>i</mi></msub><mo lspace="0" rspace="0" stretchy="false">/</mo><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup></mrow>
+</math></li>
+<li>For <math>
+<mrow><mi>j</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0.167em" rspace="0.167em">&#x2026;</mo><mi>n</mi></mrow>
+</math> if <math>
+<mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mo lspace="0.278em" rspace="0.278em">&gt;</mo><mn>0</mn></mrow>
+</math> then update <math>
+<mrow><msub><mi>l</mi><mi>j</mi></msub><mo lspace="0.278em" rspace="0">:</mo><mo lspace="0" rspace="0.278em">=</mo><msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mspace width="0"/><msub><mi>l</mi><mi>j</mi></msub></mrow>
+</math></li>
+<li>For <math>
+<mrow><mi>j</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0.167em" rspace="0.167em">&#x2026;</mo><mi>n</mi></mrow>
+</math> if <math>
+<mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mo lspace="0.278em" rspace="0.278em">&lt;</mo><mn>0</mn></mrow>
+</math> then update <math>
+<mrow><msub><mi>u</mi><mi>j</mi></msub><mo lspace="0.278em" rspace="0">:</mo><mo lspace="0" rspace="0.278em">=</mo><msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mspace width="0"/><msub><mi>u</mi><mi>j</mi></msub></mrow>
+</math></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>This results in something like the green rectangle in the figure below:</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/algo4.svg" alt="Foo"/></p>
+<p>The complexity of a sparse implementation of the above algorithm is <math>
+<mrow><mi>O</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>nnz</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>A</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math>.
+The basic idea can be modified in various ways, for example permuting the rows in the system so that the algorithm processes them either in increasing or decreasing order of slackness.
+Another possibility is making multiple passes, using smaller fractions of <math>
+<msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math> (say 10%), only using the full <math>
+<msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math> in the last pass.
+Finally the elements in <math>
+<mi>l</mi>
+</math> and <math>
+<mi>u</mi>
+</math> need not be adjusted by the same <math>
+<msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math> but could use some other weighting as long as the result is that the corner is feasible.
+Formulated as a diagonal matrix <math>
+<msup><mi>K</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math>, we would then seek:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>K</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mspace width="0"/><msup><mi>h</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.278em" rspace="0.278em">=</mo><msub><mi>b</mi><mi>i</mi></msub></mrow>
+</math>
+</span></p>
+<p>Paralellizing the algorithm should also be possible, and should work well when there are few off-diagonal elements.
+Such elements would need to be taken care of in a set of finishing passes.</p>
+<p>Because <math>
+<mi>l</mi>
+</math> and <math>
+<mi>u</mi>
+</math> are very likely not equal, we can recenter the system by adding half their difference to <math>
+<mi>&#x3be;</mi>
+</math>:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>&#x3be;</mi><mo lspace="0.278em" rspace="0">:</mo><mo lspace="0" rspace="0.278em">=</mo><mi>&#x3be;</mi><mo lspace="0.222em" rspace="0.222em">+</mo><mfrac><mrow><mi>u</mi><mo lspace="0" rspace="0">-</mo><mi>l</mi></mrow><mn>2</mn></mfrac></mrow>
+</math>
+</span></p>
+<p>I am not sure what the convergence properties are of a method like this,
+but one useful property is that no linear system solves are required.
+That makes such a method similar to Katta Murty's most recent work.
+In case it isn't obvious: after recentering, the above algorithm can be repeated and then the system recentered yet again etc.</p>
+<p>A GNU Octave implementation is listed at the end of this post.</p>
+<h2>Other shapes</h2>
+<p>The algorithm above is limited to the box geometry and does not play well with for example sum constraints.
+To make the problem more visible, let's take a farm as an example.</p>
+<p>Let us presume that we can plant three types of crops in a region: potatoes, barley and wheat.
+Because we have a fixed amount of land available, let's say 30 hectares, we might quantify this as:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mn>0</mn><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mtext>potatoes</mtext></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mn>0</mn><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mtext>barley</mtext></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mn>0</mn><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mtext>wheat</mtext></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mtext>potatoes</mtext><mo lspace="0.222em" rspace="0.222em">+</mo><mtext>barley</mtext><mo lspace="0.222em" rspace="0.222em">+</mo><mtext>wheat</mtext><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mn>30</mn></mrow>
+</math>
+</span></p>
+<p>The algorithm above may output that 5-10 hectares of each of the three crops can be planted without inconveniencing anyone else.
+This doesn't sound so bad, until one considers what happens if instead 3000 different crops are made available to the solver.
+After all, why should the choice of crops be limited to only three?
+In this case the solver would have little choice but to spit out 3000 individual bounds, each one something like "plant 50-100 square <em>meters</em> of this crop". For 3000 crops.</p>
+<p>A more reasonable parametrization might be one that outputs a total area to plant, and perhaps minimum amounts of certain crucial crops.
+Something like "plant 15-30 hectares in total of which at least 5 hectares are potatoes".
+Geometrically this corresponds to a <a href="https://en.wikipedia.org/wiki/Simplex">simplex</a> which has had a smaller simplex subtracted from it.
+In two dimensions this is a triangle with a smaller triangle taken out:</p>
+<p><img style="display:block;width:33%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/simplices.svg" alt="One triangle with a smaller triangle removed"/></p>
+<p>This shape has <math>
+<mrow><mn>2</mn><mi>n</mi></mrow>
+</math> corners.
+It would be nice if we could also introduce maximum constraints, but the resulting shape (a truncated simplex) has more than <math>
+<msup><mn>2</mn><mi>n</mi></msup>
+</math> corners in some cases.
+Compare for example the <a href="https://en.wikipedia.org/wiki/8-simplex">8-simplex</a> (9 corners) to the <a href="https://en.wikipedia.org/wiki/Truncated_8-simplexes#Quadritruncated_8-simplex">quadritruncated 8-simplex</a> (<math>
+<mrow><mn>9</mn><mo lspace="0" rspace="0">!</mo><mo lspace="0" rspace="0" stretchy="false">/</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>4</mn><mo lspace="0" rspace="0">!</mo><msup><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mn>2</mn></msup><mo lspace="0" rspace="0.278em">=</mo><mn>630</mn><mo lspace="0.278em" rspace="0.278em">&gt;</mo><msup><mn>2</mn><mn>8</mn></msup></mrow>
+</math> corners).
+This may or may not be a problem, depending on whether the corners that minimize slackness with respect to a given constraint can be found quickly.
+Perhaps a reader has a solution. If so, let me know!
+For a box the problem is easy, as demonstrated by the algorithm earlier.
+The figure below of a <a href="https://en.wikipedia.org/wiki/Truncated_tetrahedron">truncated tetrahedron</a> with 12 corners drawn using <a href="https://solvespace.com/index.pl">SolveSpace</a> hopefully illustrates the problem:</p>
+<p><img style="display:block;width:25%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/truncated.png" alt="A truncated tetrahedron"/></p>
+<p>Moving on, it bears repeating that these shapes represent the bounds within which production can happen with minimal coordination.
+The necessary inputs will always be provided if staying within it.
+It might be possible to "color outside the lines", but doing so means a risk of having to go to anywhere between zero and 10,000 meetings.
+The illustration below might represent a typical situation:</p>
+<p><img style="display:block;width:33%;margin-left:auto;margin-right:auto;" src="../../../../../images/autonomy/simplices2.svg" alt="Similar as above but with colors"/></p>
+<p>The green area is the same "safe" area as before, but around it is an orange area that will at least require a roundtrip to the planning cloud which may either accept or reject the proposal.
+It might also be necessary to go to meetings with workplaces both upstream and downstream.
+Yes dear reader, I hate meetings.</p>
+<h2>Appendix</h2>
+<p>GNU Octave implementation of the algorithm.</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="p">=</span> <span class="mi">64</span><span class="p">;</span>
+<span class="n">m</span> <span class="p">=</span> <span class="n">n</span><span class="o">*</span><span class="mi">100</span><span class="p">;</span> <span class="c">% the larger the ratio m:n the lower max_k becomes</span>
+<span class="n">q</span> <span class="p">=</span> <span class="mi">160</span><span class="p">;</span>
+
+<span class="c">% generate system</span>
+<span class="k">function</span><span class="w"> </span>[A,b,x]<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span>m, n, q<span class="p">)</span>
+<span class="w">  </span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">q</span>
+  <span class="n">A</span> <span class="p">=</span> <span class="nb">sprandn</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">q</span><span class="o">/</span><span class="n">m</span><span class="p">));</span>
+  <span class="c">% without loss of generality we can let b be all -1&#39;s</span>
+  <span class="c">% this makes loz() a bit simpler</span>
+  <span class="n">b</span> <span class="p">=</span> <span class="o">-</span><span class="nb">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">endfunction</span>
+
+<span class="c">% compute largest lozenge centered on x</span>
+<span class="k">function</span><span class="w"> </span>[l,u]<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">loz</span><span class="p">(</span>A, b, x<span class="p">)</span>
+<span class="w">  </span><span class="n">n</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">l</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="c">% minuses</span>
+  <span class="n">u</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="c">% pluses</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+    <span class="c">% this can fail for very sparse A because sometimes there are no positives and/or negatives in a column</span>
+    <span class="c">% this only works when b is all -1&#39;s, I can&#39;t be bothered making it prettier because it&#39;s not necessary</span>
+    <span class="n">l</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">=</span>  <span class="mf">1.</span><span class="o">/</span><span class="nb">full</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">A</span><span class="p">(:,</span><span class="n">i</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">),</span><span class="n">i</span><span class="p">)));</span>
+    <span class="n">u</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">=</span> <span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="nb">full</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">A</span><span class="p">(:,</span><span class="n">i</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">),</span><span class="n">i</span><span class="p">)));</span>
+  <span class="k">endfor</span>
+<span class="k">endfunction</span>
+
+<span class="k">function</span><span class="w"> </span>[L,U]<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">loz2box</span><span class="p">(</span>A, b, x, l, u<span class="p">)</span>
+<span class="w">  </span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">m</span>
+    <span class="c">% compute several times, checking each pass after the first one</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span>
+      <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span><span class="p">=</span> <span class="mi">2</span>
+        <span class="c">% pick the corner that is most ornery the first two times</span>
+        <span class="n">s</span> <span class="p">=</span> <span class="nb">full</span><span class="p">(</span><span class="nb">sign</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,:)));</span>
+      <span class="k">else</span>
+        <span class="c">% pick a random corner in subsequent passes</span>
+        <span class="n">s</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="nb">floor</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="c">% the following also picks points on edges, but they are never as nasty</span>
+        <span class="c">% s = floor(rand(1,n)*3)-1;</span>
+      <span class="k">endif</span>
+
+      <span class="n">l0u</span> <span class="p">=</span> <span class="p">[</span><span class="n">l</span><span class="p">,</span><span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">u</span><span class="p">];</span>
+      <span class="n">delta</span> <span class="p">=</span> <span class="o">-</span><span class="p">(</span><span class="n">l0u</span><span class="p">((</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">.*</span><span class="n">s</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span>
+      <span class="n">d</span> <span class="p">=</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,:)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">delta</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="o">-</span><span class="nb">eps</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="mi">1</span>
+          <span class="c">% this should never happen if we got l and u right</span>
+          <span class="n">s</span><span class="p">,</span> <span class="n">d</span>
+          <span class="nb">error</span><span class="p">(</span><span class="s">&quot;d &lt; 0 with p == 2&quot;</span><span class="p">);</span>
+        <span class="k">endif</span>
+        <span class="n">f</span> <span class="p">=</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,:)</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="n">k</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">d</span> <span class="o">/</span> <span class="p">(</span><span class="n">f</span> <span class="o">-</span> <span class="n">d</span><span class="p">);</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+          <span class="k">if</span> <span class="n">s</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="n">u</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">*=</span> <span class="n">k</span><span class="p">;</span>
+          <span class="k">elseif</span> <span class="n">s</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="n">l</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">*=</span> <span class="n">k</span><span class="p">;</span>
+          <span class="k">endif</span>
+        <span class="k">endfor</span>
+      <span class="k">endif</span>
+    <span class="k">endfor</span>
+  <span class="k">endfor</span>
+  <span class="n">L</span> <span class="p">=</span> <span class="n">l</span><span class="p">;</span>
+  <span class="n">U</span> <span class="p">=</span> <span class="n">u</span><span class="p">;</span>
+<span class="k">endfunction</span>
+
+<span class="c">% generate system and compute largest inscribed lozenge at x</span>
+<span class="p">[</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">]</span> <span class="p">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
+<span class="p">[</span><span class="n">l</span><span class="p">,</span><span class="n">u</span><span class="p">]</span> <span class="p">=</span> <span class="n">loz</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+
+<span class="c">% compute volume of enclosing (max) and enclosed (min) boxes</span>
+<span class="n">Vmin</span> <span class="p">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">log10</span><span class="p">((</span><span class="n">l</span><span class="o">+</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">))</span>
+<span class="n">Vmax</span> <span class="p">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">log10</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">u</span><span class="p">))</span>
+<span class="c">% the lozenge is certainly larger than Vmin but also much smaller than Vmax</span>
+<span class="n">Vloz</span> <span class="p">=</span> <span class="n">Vmax</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">log10</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">))</span>
+
+<span class="c">% find a large box that is enclosed by Ax &gt;= b</span>
+<span class="p">[</span><span class="n">L</span><span class="p">,</span><span class="n">U</span><span class="p">]</span> <span class="p">=</span> <span class="n">loz2box</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">u</span><span class="p">);</span>
+<span class="n">V</span> <span class="p">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">log10</span><span class="p">(</span><span class="n">L</span><span class="o">+</span><span class="n">U</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">V</span> <span class="o">&lt;</span> <span class="n">Vmin</span> <span class="o">||</span> <span class="n">V</span> <span class="o">&gt;</span> <span class="n">Vmax</span>
+  <span class="nb">error</span><span class="p">(</span><span class="s">&quot;bad V&quot;</span><span class="p">);</span>
+<span class="k">endif</span>
+
+<span class="c">% compute the maximum and geometric mean k either element were adjusted by</span>
+<span class="n">a</span> <span class="p">=</span> <span class="p">[</span><span class="n">l</span><span class="o">./</span><span class="n">L</span><span class="p">;</span><span class="n">u</span><span class="o">./</span><span class="n">U</span><span class="p">];</span>
+<span class="n">min_k</span> <span class="p">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">geometric_k</span> <span class="p">=</span> <span class="nb">mean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="s">&quot;g&quot;</span><span class="p">)</span>
+<span class="n">max_k</span> <span class="p">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Example output:</p>
+<div class="highlight"><pre><span></span><code><span class="n">octave</span><span class="o">:</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cube</span>
+<span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6400</span>
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span>
+<span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">160</span>
+<span class="n">Vmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">123.27</span>
+<span class="n">Vmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">7.6718</span>
+<span class="n">Vloz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">96.775</span>
+<span class="n">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">34.632</span>
+<span class="n">min_k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.1804</span>
+<span class="n">geometric_k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.7335</span>
+<span class="n">max_k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.760</span>
+</code></pre></div>
+
+<p>What we see here is that the volume of the computed <math>
+<mi>B</mi>
+</math> is between Vmax and Vloz.
+The <math>
+<msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>i</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math>'s encountered are between 1/1.1804 and 1/10.760 with the geometric mean being 1/2.7335.
+So the amount of leeway per workplace in the model above is around one third of the naïve min/max bounds computed locally in the lozenge step.
+What these values are for a real economy would require research.
+And again, a different geometry that plays more nicely with sum constraints would be desirable.</p></div>
+</article></section>
+<hr />
+<footer>
+<div>
+<div><h2>Useful links</h2><ul><li><a href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> Atom feed</a></li><li><a href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> RSS feed</a></li><li><a href="http://pfcgmo5hwfffwhis3zty2u2ufryrnzypue34h74va6ykw5iazgcvvtqd.onion/"><img src="/theme/images/icons/onion.png" alt="Tor logo"/> Tor .onion service</a></li></ul></div>
+<div><h2>Comments</h2>Got comments? E-mail them to comments at haerdin dot se</div>
+</div>
+<hr/>
+<p>This site is 100% PHP free and is <a href="https://anybrowser.org/campaign/"><img src="/theme/images/icons/w3cab.gif" alt="W3C any browser logo"/> viewable with any browser</a>!</p>
+</footer><script type="text/javascript">
+var d=document.createElement("div"),b;d.innerHTML="<math><mpadded height='23px' width='77px'/></math>";document.body.appendChild(d);b=d.firstChild.firstChild.getBoundingClientRect();document.body.removeChild(d);if(Math.abs(b.height-23)>1||Math.abs(b.width-77)>1){b=document.createElement("script");b.setAttribute("src","/theme/mathjax/mml-chtml.js");document.getElementsByTagName("head")[0].appendChild(b);}
+</script></body></html>

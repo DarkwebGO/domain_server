@@ -1,0 +1,3120 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>/_cp/ - Центральные Процессоры</title>
+<link rel="apple-touch-icon" sizes="57x57" href="/fav/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/fav/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/fav/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/fav/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/fav/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/fav/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/fav/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/fav/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="/fav/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="/fav/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="/fav/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/fav/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/fav/favicon-16x16.png" sizes="16x16">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-TileImage" content="/fav/mstile-144x144.png">
+<link rel="gettext" type="application/x-po" href="/inc/lang/ru/LC_MESSAGES/kusaba.po" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="Sat, 17 Mar 1990 00:00:01 GMT" /><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+<meta property="i0:buildtime" content="1714678816"/>
+<script type="text/javascript">
+var captchaTimeout = 150 - 0.5;
+var liveupd_api = 'http://127.0.0.1:1337';
+var liveupd_ena = '';
+var liveupd_sitename = 'your_chan_id:';
+var this_board_dir = '_cp';
+var ku_boardspath = '';
+var ku_boardsfolder = '/';
+var ku_cgipath = '';
+var style_cookie = "kustyle";
+var locale = 'ru';
+var this_board_defaultName = 'Педофил';
+var boardid = '47';
+var opmod = '0';
+var is_overboard = false;
+var overboard_dir = "over";
+var overboard_desc = "Overboard";
+var force_html_nocache = !!'1';
+var ispage =  true ;
+</script>
+<noscript><style>.yesscript { display: none!important; }</style></noscript>
+<link rel="stylesheet" type="text/css" href="/css/img_global.css?v=001" />
+<script>document.write('<link rel="stylesheet" type="text/css"href="/css/thorium.css?v=001"title="Thorium"/><link rel="alternate stylesheet" type="text/css"href="/css/modern.css?v=001"title="Modern"/><link rel="alternate stylesheet" type="text/css"href="/css/newdark.css?v=001"title="Newdark"/><link rel="alternate stylesheet" type="text/css"href="/css/photon.css?v=001"title="Photon"/>')</script>
+<noscript><link rel="stylesheet" href="/getpreferredstylesheet.php?allowed=thorium,modern,newdark,photon&default=thorium&v=001"></noscript>
+<link href="/css/prettify.css" type="text/css" rel="stylesheet" />
+<script src="/lib/javascript/gettext.js"></script>
+<script src="/lib/javascript/head.load.min.js"></script>
+<script src="/lib/javascript/jquery-3.6.3.min.js"></script>
+<script src="/lib/javascript/lodash.min.js"></script>
+<script src="/lib/javascript/prettify/prettify.js"></script>
+<script src="/lib/javascript/Sortable.min.js"></script>
+<script src="/inc/javascript/kusaba.new.js?v=001"></script>
+<script>if(localStorage['constrainWidth']=='true') document.write('<style id="injector:constrainWidth">body\{max-width:960px;margin:0px auto\}</style>')</script>
+</head>
+<body>
+<script>
+document.body.classList.add('js-supported')
+$.get("/css/icons/icons.svg?v=001", function(data) {
+  var div = document.createElement("div");
+  div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
+  document.body.insertBefore(div, document.body.childNodes[0]);
+});
+</script>
+<div class="content-background content">
+<header class="decor-header" style="display: none"></header>
+<div class="adminbar">
+[<a href="/_cp/catalog.html"><b>Каталог</b></a>]&nbsp;[<a href="/modlog.php"><b>Лог модераторов</b></a>]&nbsp;[<a href="/kusaba.php" target="_top">Фреймы</a>]&nbsp;[<a href="/manage.php" target="_top">Админка</a>]
+<svg class="icon b-icon history-toggle yesscript" onclick="pups.historyToggle()"><use title="Показать историю уведомлений" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-bell"></use></svg>
+</div>
+<div id="boardlist_header">
+<noscript id="ns_oldmenu">
+[<a title="Overboard" href="/over/">over</a>]
+[<label class="collapsible-menu">
+<input type="checkbox"  checked>
+<span class="collapsible-menu-name">all</span>
+<span class="collapsed-menu-contents">
+<a title="Meta" href="/meta/">meta</a></span>
+</label>]
+[<label class="collapsible-menu">
+<input type="checkbox" >
+<span class="collapsible-menu-name">2.0</span>
+<span class="collapsed-menu-contents">
+<a title="долгожданное слияние и2п и метарта)" href="/_2chzoii2p/">_2chzoii2p</a> / <a title="олдскул" href="/_8/">_8</a> / <a title="Аниме" href="/_a/">_a</a> / <a title="Разговоры про аниме" href="/_ad/">_ad</a> / <a title="Бред" href="/_b/">_b</a> / <a title="Бред+" href="/_bb/">_bb</a> / <a title="blackhat" href="/_blackhat/">_blackhat</a> / <a title="bred" href="/_bred/">_bred</a> / <a title="complaint received" href="/_c/">_c</a> / <a title="Центральные Процессоры" href="/_cp/">_cp</a> / <a title="Рисунки" href="/_d/">_d</a> / <a title="Наркотики" href="/_drag/">_drag</a> / <a title="Flash" href="/_f/">_f</a> / <a title="Хентай" href="/_h/">_h</a> / <a title="Курятник" href="/_ko/">_ko</a> / <a title="Dialectics." href="/_leftypol/">_leftypol</a> / <a title="Музыка" href="/_m/">_m</a> / <a title="me" href="/_me/">_me</a> / <a title="милые мамуличьки" href="/_milf/">_milf</a> / <a title="My Little Pony" href="/_mlp/">_mlp</a> / <a title="жирный омега хуесос" href="/_oa/">_oa</a> / <a title="Питурд" href="/_pitard/">_pitard</a> / <a title="sosnooly" href="/_s/">_s</a> / <a title="мой личный саит." href="/_skakdollar/">_skakdollar</a> / <a title="(раздел для геев)" href="/_vg/">_vg</a> / <a title="Творчество" href="/_webm/">_webm</a></span>
+</label>]
+[<label class="collapsible-menu">
+<input type="checkbox">
+<span class="collapsible-menu-name"><i>Стиль</i></span>
+<span class="collapsed-menu-contents">
+<a href='/setstylesheet.php?style=Thorium' onclick="javascript:Styles.change('Thorium');return false;">Thorium</a>
+ / <a href='/setstylesheet.php?style=Modern' onclick="javascript:Styles.change('Modern');return false;">Modern</a>
+ / <a href='/setstylesheet.php?style=Newdark' onclick="javascript:Styles.change('Newdark');return false;">Newdark</a>
+ / <a href='/setstylesheet.php?style=Photon' onclick="javascript:Styles.change('Photon');return false;">Photon</a>
+</span>
+</label>]
+</noscript>
+<script>
+if (getCookie('ku_oldmenu') == 'yes') toggle_oldmenu(true)
+var isTouch = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) || false;
+if(localStorage['interfaceType'] == 'desktop')
+  isTouch = false;
+if(localStorage['interfaceType'] == 'touch')
+  isTouch = true;
+if (isTouch) {
+injector.inject('mb', `
+#overlay_menu {
+display: none;
+}
+  body {
+    margin-bottom: 350px;
+  }
+  #postclone {
+    bottom: 0px;
+    left: 0px;
+    position: fixed;
+    opacity: 1
+  }
+  .logo {
+    margin-left: 40px;
+  }
+  @media only screen and (max-width: 768px) {
+    .logo {
+      margin-left: 60px;
+    }
+  }`)
+}
+</script>
+<div id="overlay_menu" class="content-background overlay-menu yesscript">
+<span style="display: none" class="olm-link mgoback">[<a href="/_cp/"> &lt; </a>]</span>
+<span class="olm-link">[<a href="/">home</a>]</span>
+<span class="olm-link">[<a title="Overboard" href="/over/">over</a>]</span><b  class="olm-link">[<a href="/register" class="sect-exr" data-toexpand="all">all</a>]</b>
+<b  class="olm-link">[<a href="/register" class="sect-exr" data-toexpand="20">2.0</a>]</b>
+<span class="olm-link">[<a href="#" class="sect-exr" data-toexpand="_options">options</a>]</span>
+<div class="menu-sect" id="ms-all">
+<a class="menu-item" title="Meta" href="/meta/">/meta/ - Meta</a>
+</div>
+<div class="menu-sect" id="ms-20">
+<input type="text" id="boardselect" placeholder="Фильтр" />
+<div id="boards20">
+</div>
+</div>
+<div class="menu-sect" id="ms-_options">
+Стили:
+[<a href="#" onclick="javascript:Styles.change('Thorium');return false;">Thorium</a>]
+[<a href="#" onclick="javascript:Styles.change('Modern');return false;">Modern</a>]
+[<a href="#" onclick="javascript:Styles.change('Newdark');return false;">Newdark</a>]
+[<a href="#" onclick="javascript:Styles.change('Photon');return false;">Photon</a>]
+<br />
+<a href="#" onclick="javascript:menu_pin();return false;">Прикрепить/Открепить</a>  |
+<a href="#" onclick="javascript:toggle_oldmenu(true);return false;">Обычный список</a>
+<div id="js_settings"></div>
+</div>
+</div>
+</div>
+<table style="width:100%" border="0">
+<tbody><tr><td valign="center">
+<div class="logo">/_cp/ - Центральные Процессоры</div>
+</td><td align="right"></td></tr></tbody></table>
+<hr /><div class="postarea">
+<a id="postbox"></a>
+<div class="i0svcel">!i0-pb</div><form name="postform" id="postform" action="/board.php" method="post" enctype="multipart/form-data" class="main-reply-form" data-maxfiles="8" data-allowed-filetypes="css,gif,jpg,mp3,mp4,ogg,png,swf,webm" data-allowed-all-filetypes="*">
+<input type="hidden" name="board" value="_cp" />
+<input type="hidden" name="replythread" value="0" />
+<input type="hidden" name="makepost" value="1" />
+<input type="text" name="email" size="28" maxlength="4" value="" style="display: none;" />
+<table class="postform">
+<tbody>
+<tr class="sage-row">
+<td class="postblock">
+Sage</td>
+<td>
+<label for="sage">
+ <input id="sage" type="checkbox" name="em" value="sage" style="vertical-align: middle;">(не поднимать этот тред)
+ </label>
+</td>
+</tr>
+<tr class="subject-send-row">
+<td class="postblock">
+Тема</td>
+<td class="subject-submit">
+<input type="text" name="subject" placeholder="Тема" size="35" maxlength="75" accesskey="s" />&nbsp;<input class="primary styled-button" type="submit" value="Отправить" accesskey="z" />
+</td>
+</tr>
+<tr class="message-row">
+<td class="postblock">
+Текст</td>
+<td>
+<div class="markupbtns yesscript"><a title="Жирный" href="#" class="uibutton uib-mup" data-mups="**" data-mupe="**"><b>Ж</b></a>
+<a title="Курсив" href="#" class="uibutton uib-mup" data-mups="*" data-mupe="*"><i>К</i></a>
+<a title="Подчеркнутый" href="#" class="uibutton uib-mup" data-mups="[u]" data-mupe="[/u]"><u>П</u></a>
+<a title="Зачеркнутый" href="#" class="uibutton uib-mup" data-mups="~~" data-mupe="~~"><s>З</s></a>
+<a title="Спойлер" href="#" class="uibutton uib-mup uib-spoiler" data-mups="%%" data-mupe="%%">С</a>
+<a title="Код" href="#" class="uibutton opt-exp" data-mups="[code]" data-mupe="[/code]" data-imups="`" data-imupe="`"><span class="uib-code">(); ▼</span><div class="expandee code_markup markup-popup"><select size="8" class="code_markup_select"><option value="text">Простой текст</option><option value="actionscript">ActionScript</option><option value="actionscript3">ActionScript 3</option><option value="apache">Apache configuration</option><option value="asm">ASM</option><option value="bash">Bash</option><option value="batch">Windows Batch file</option><option value="bf">Brainfuck</option><option value="c">C</option><option value="clojure">Clojure</option><option value="coffeescript">CoffeeScript</option><option value="cpp">C++</option><option value="csharp">C#</option><option value="css">CSS</option><option value="d">D</option><option value="dart">Dart</option><option value="delphi">Delphi</option><option value="erlang">Erlang</option><option value="fsharp">F#</option><option value="glsl">glSlang</option><option value="go">Go</option><option value="groovy">Groovy</option><option value="haskell">Haskell</option><option value="haxe">Haxe</option><option value="html5">HTML5</option><option value="ini">INI</option><option value="io">Io</option><option value="java">Java</option><option value="javascript">Javascript</option><option value="kotlin">Kotlin</option><option value="latex">LaTeX</option><option value="lisp">Lisp</option><option value="lolcode">LOLcode</option><option value="lua">Lua</option><option value="make">GNU make</option><option value="mathematica">Mathematica</option><option value="matlab">Matlab M</option><option value="nginx">nginx</option><option value="objc">Objective-C</option><option value="ocaml">OCaml</option><option value="pcre">PCRE</option><option value="perl">Perl</option><option value="php">PHP</option><option value="python">Python</option><option value="racket">Racket</option><option value="rails">Rails</option><option value="ruby">Ruby</option><option value="rust">Rust</option><option value="sass">Sass</option><option value="scala">Scala</option><option value="scheme">Scheme</option><option value="smalltalk">Smalltalk</option><option value="smarty">Smarty</option><option value="sql">SQL</option><option value="systemverilog">SystemVerilog</option><option value="vb">Visual Basic</option><option value="vbnet">vb.net</option><option value="vbscript">VBScript</option><option value="verilog">Verilog</option><option value="vhdl">VHDL</option><option value="whitespace">Whitespace</option><option value="xml">XML</option><option value="yaml">YAML</option></select></div></a>
+<a title="Цитирование" href="#" class="uibutton opt-exp" data-bul="&gt;" data-imups="&gt;" data-imupe="&lt;"><span class="uib-imply">&gt; ▼</span>
+<div class="expandee quote_markup markup-popup">
+<select size="3" class="quote_select">
+<option value="g" title="Зеленые стрелки">&gt;</option>
+<option value="r" title="Красные стрелки">&lt;</option>
+<option value="x" title="Перекрестное цитирование">&gt;/&lt;</option>
+</select>
+</div>
+</a>
+<a title="Ненумерованный список" href="#" class="uibutton uib-bul" data-bul="• "><span>•</span></a>
+<a title="Нумерованный список" href="#" class="uibutton uib-bul" data-bul="# "><span>#</span></a>
+<a title="Открыть редактор формул" href="#" class="uibutton uib-tx">TeX</a>
+<a title="Cut" href="#" class="uibutton uib-mup" data-mups="[cut]" data-mupe="">Cut</a>
+<!-- </nobr> --></div>
+<textarea name="message" cols="50" rows="4" accesskey="m"></textarea>
+</td>
+</tr>
+<tr class="captcha-row">
+<td class="postblock"></td>
+<td><nobr class="captcharow">
+<input type="text" name="captcha" placeholder="Капча" size="28" accesskey="c" style="vertical-align: middle" autocomplete="off">
+<div class="captchawrap cw-initial yesscript" title="Обновить капчу">
+<div class="captcha-show msg">Показать капчу</div>
+<img class="captchaimage" valign="middle" border="0" alt="Изоражение капчи">
+<div class="rotting-indicator"></div>
+<div class="rotten-msg msg">Captcha has expired.</div>
+</div>
+<noscript><iframe class="captchawrap" src="/nojscaptcha.php" frameborder="0" width="150" height="32" style="vertical-align: middle;"></iframe></noscript>
+</nobr></td>
+</tr>
+<input type="hidden" name="legacy-posting" value="1" />
+<tr class="file-row">
+<td class="postblock">
+<span class="file-count">Файл</span>
+<a href="#" onclick="togglePassword(); return false;" style="text-decoration: none;" accesskey="x">&nbsp;</a>
+</td>
+<td>
+<div class="noscript">
+<div class="multiembedwrap" data-pos="file-1">
+<input type="file" multiple name="imagefile[]" size="35" accesskey="f" />
+<label class="icon-checkbox-wrap" title="Скрыть имя файла" for="hidename-0">
+<input type="checkbox" name="hidename-0" id="hidename-0" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon"><strike>N</strike></noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-hide-name"></use>
+</svg>
+</span>
+</label>
+<label class="icon-checkbox-wrap" title="Спойлер" for="spoiler-0">
+<input type="checkbox" name="spoiler-0" id="spoiler-0" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+<button class="remove-file remove-file-legacy icon-wraping-button yesscript" title="Убрать файл"><svg class="icon b-icon">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-x"></use>
+</svg></button>
+</div>
+<input type="checkbox" name="addfile-1" id="addfile-1" class="add-embed">
+<label for="addfile-1" title="Добавить файл" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="file-2">
+<input type="file" multiple name="imagefile[]" size="35" accesskey="f" />
+<label class="icon-checkbox-wrap" title="Скрыть имя файла" for="hidename-1">
+<input type="checkbox" name="hidename-1" id="hidename-1" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon"><strike>N</strike></noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-hide-name"></use>
+</svg>
+</span>
+</label>
+<label class="icon-checkbox-wrap" title="Спойлер" for="spoiler-1">
+<input type="checkbox" name="spoiler-1" id="spoiler-1" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+<button class="remove-file remove-file-legacy icon-wraping-button yesscript" title="Убрать файл"><svg class="icon b-icon">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-x"></use>
+</svg></button>
+</div>
+<input type="checkbox" name="addfile-2" id="addfile-2" class="add-embed">
+<label for="addfile-2" title="Добавить файл" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="file-3">
+<input type="file" multiple name="imagefile[]" size="35" accesskey="f" />
+<label class="icon-checkbox-wrap" title="Скрыть имя файла" for="hidename-2">
+<input type="checkbox" name="hidename-2" id="hidename-2" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon"><strike>N</strike></noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-hide-name"></use>
+</svg>
+</span>
+</label>
+<label class="icon-checkbox-wrap" title="Спойлер" for="spoiler-2">
+<input type="checkbox" name="spoiler-2" id="spoiler-2" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+<button class="remove-file remove-file-legacy icon-wraping-button yesscript" title="Убрать файл"><svg class="icon b-icon">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-x"></use>
+</svg></button>
+</div>
+<input type="checkbox" name="addfile-3" id="addfile-3" class="add-embed">
+<label for="addfile-3" title="Добавить файл" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="file-4">
+<input type="file" multiple name="imagefile[]" size="35" accesskey="f" />
+<label class="icon-checkbox-wrap" title="Скрыть имя файла" for="hidename-3">
+<input type="checkbox" name="hidename-3" id="hidename-3" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon"><strike>N</strike></noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-hide-name"></use>
+</svg>
+</span>
+</label>
+<label class="icon-checkbox-wrap" title="Спойлер" for="spoiler-3">
+<input type="checkbox" name="spoiler-3" id="spoiler-3" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+<button class="remove-file remove-file-legacy icon-wraping-button yesscript" title="Убрать файл"><svg class="icon b-icon">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-x"></use>
+</svg></button>
+</div>
+<input type="checkbox" name="addfile-4" id="addfile-4" class="add-embed">
+<label for="addfile-4" title="Добавить файл" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="file-5">
+<input type="file" multiple name="imagefile[]" size="35" accesskey="f" />
+<label class="icon-checkbox-wrap" title="Скрыть имя файла" for="hidename-4">
+<input type="checkbox" name="hidename-4" id="hidename-4" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon"><strike>N</strike></noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-hide-name"></use>
+</svg>
+</span>
+</label>
+<label class="icon-checkbox-wrap" title="Спойлер" for="spoiler-4">
+<input type="checkbox" name="spoiler-4" id="spoiler-4" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+<button class="remove-file remove-file-legacy icon-wraping-button yesscript" title="Убрать файл"><svg class="icon b-icon">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-x"></use>
+</svg></button>
+</div>
+<input type="checkbox" name="addfile-5" id="addfile-5" class="add-embed">
+<label for="addfile-5" title="Добавить файл" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="file-6">
+<input type="file" multiple name="imagefile[]" size="35" accesskey="f" />
+<label class="icon-checkbox-wrap" title="Скрыть имя файла" for="hidename-5">
+<input type="checkbox" name="hidename-5" id="hidename-5" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon"><strike>N</strike></noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-hide-name"></use>
+</svg>
+</span>
+</label>
+<label class="icon-checkbox-wrap" title="Спойлер" for="spoiler-5">
+<input type="checkbox" name="spoiler-5" id="spoiler-5" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+<button class="remove-file remove-file-legacy icon-wraping-button yesscript" title="Убрать файл"><svg class="icon b-icon">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-x"></use>
+</svg></button>
+</div>
+<input type="checkbox" name="addfile-6" id="addfile-6" class="add-embed">
+<label for="addfile-6" title="Добавить файл" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="file-7">
+<input type="file" multiple name="imagefile[]" size="35" accesskey="f" />
+<label class="icon-checkbox-wrap" title="Скрыть имя файла" for="hidename-6">
+<input type="checkbox" name="hidename-6" id="hidename-6" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon"><strike>N</strike></noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-hide-name"></use>
+</svg>
+</span>
+</label>
+<label class="icon-checkbox-wrap" title="Спойлер" for="spoiler-6">
+<input type="checkbox" name="spoiler-6" id="spoiler-6" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+<button class="remove-file remove-file-legacy icon-wraping-button yesscript" title="Убрать файл"><svg class="icon b-icon">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-x"></use>
+</svg></button>
+</div>
+<input type="checkbox" name="addfile-7" id="addfile-7" class="add-embed">
+<label for="addfile-7" title="Добавить файл" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="file-8">
+<input type="file" multiple name="imagefile[]" size="35" accesskey="f" />
+<label class="icon-checkbox-wrap" title="Скрыть имя файла" for="hidename-7">
+<input type="checkbox" name="hidename-7" id="hidename-7" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon"><strike>N</strike></noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-hide-name"></use>
+</svg>
+</span>
+</label>
+<label class="icon-checkbox-wrap" title="Спойлер" for="spoiler-7">
+<input type="checkbox" name="spoiler-7" id="spoiler-7" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+<button class="remove-file remove-file-legacy icon-wraping-button yesscript" title="Убрать файл"><svg class="icon b-icon">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-x"></use>
+</svg></button>
+</div>
+</div class="noscript">
+<div class="yesscript drop-area">
+<div class="fe-sort-wrapper"></div>
+<button class="add-files" title="Приложить файлы">
+<span class="add-files-text">Приложить файлы...</span>
+<div class="add-files-plus"></div>
+</button>
+</div>
+</td>
+</tr>
+<tr class="embed-row">
+<td class="postblock">
+Встроить</td>
+<td>
+<div class="multiembedwrap" data-pos="embed-1">
+<input type="text" name="embed[]" placeholder="Встроить" size="28" maxlength="75" accesskey="e" />
+<label class="icon-checkbox-wrap" title="Спойлер" for="embed-spoiler-0">
+<input type="checkbox" name="embed-spoiler-0" id="embed-spoiler-0" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+</div>
+<input type="checkbox" name="addembed-1" id="addembed-1" class="add-embed">
+<label for="addembed-1" title="Добавить вложение" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="embed-2">
+<input type="text" name="embed[]" placeholder="Встроить" size="28" maxlength="75" accesskey="e" />
+<label class="icon-checkbox-wrap" title="Спойлер" for="embed-spoiler-1">
+<input type="checkbox" name="embed-spoiler-1" id="embed-spoiler-1" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+</div>
+<input type="checkbox" name="addembed-2" id="addembed-2" class="add-embed">
+<label for="addembed-2" title="Добавить вложение" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="embed-3">
+<input type="text" name="embed[]" placeholder="Встроить" size="28" maxlength="75" accesskey="e" />
+<label class="icon-checkbox-wrap" title="Спойлер" for="embed-spoiler-2">
+<input type="checkbox" name="embed-spoiler-2" id="embed-spoiler-2" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+</div>
+<input type="checkbox" name="addembed-3" id="addembed-3" class="add-embed">
+<label for="addembed-3" title="Добавить вложение" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="embed-4">
+<input type="text" name="embed[]" placeholder="Встроить" size="28" maxlength="75" accesskey="e" />
+<label class="icon-checkbox-wrap" title="Спойлер" for="embed-spoiler-3">
+<input type="checkbox" name="embed-spoiler-3" id="embed-spoiler-3" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+</div>
+<input type="checkbox" name="addembed-4" id="addembed-4" class="add-embed">
+<label for="addembed-4" title="Добавить вложение" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="embed-5">
+<input type="text" name="embed[]" placeholder="Встроить" size="28" maxlength="75" accesskey="e" />
+<label class="icon-checkbox-wrap" title="Спойлер" for="embed-spoiler-4">
+<input type="checkbox" name="embed-spoiler-4" id="embed-spoiler-4" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+</div>
+<input type="checkbox" name="addembed-5" id="addembed-5" class="add-embed">
+<label for="addembed-5" title="Добавить вложение" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="embed-6">
+<input type="text" name="embed[]" placeholder="Встроить" size="28" maxlength="75" accesskey="e" />
+<label class="icon-checkbox-wrap" title="Спойлер" for="embed-spoiler-5">
+<input type="checkbox" name="embed-spoiler-5" id="embed-spoiler-5" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+</div>
+<input type="checkbox" name="addembed-6" id="addembed-6" class="add-embed">
+<label for="addembed-6" title="Добавить вложение" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="embed-7">
+<input type="text" name="embed[]" placeholder="Встроить" size="28" maxlength="75" accesskey="e" />
+<label class="icon-checkbox-wrap" title="Спойлер" for="embed-spoiler-6">
+<input type="checkbox" name="embed-spoiler-6" id="embed-spoiler-6" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+</div>
+<input type="checkbox" name="addembed-7" id="addembed-7" class="add-embed">
+<label for="addembed-7" title="Добавить вложение" class="add-embed-button b-icon">+</label>
+<br>
+<div class="multiembedwrap" data-pos="embed-8">
+<input type="text" name="embed[]" placeholder="Встроить" size="28" maxlength="75" accesskey="e" />
+<label class="icon-checkbox-wrap" title="Спойлер" for="embed-spoiler-7">
+<input type="checkbox" name="embed-spoiler-7" id="embed-spoiler-7" value="1">
+<span class="icon-with-fallback">
+<noscript class="b-icon">S</noscript>
+<svg class="icon b-icon yesscript">
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-spoiler"></use>
+</svg>
+</span>
+</label>
+</div>
+</td>
+</tr>
+<tr class="password-row">
+<td class="postblock">
+Пароль</td>
+<td>
+<input class="make-me-readonly" type="password" placeholder="Пароль" name="postpassword" size="28" accesskey="p" /><div><span>(для удаления постов и файлов)</span></div>
+</td>
+</tr>
+<tr class="ttl-row">
+<td class="postblock">
+<abbr title="Время жизни">TTL</abbr>
+</td>
+<td>
+<label for="ttl-enable">
+<input type="checkbox" id="ttl-enable" name="ttl-enable" value="1">
+Удалить через</label>
+<input type="number" value="0" name="ttl" min="0" style="width: 7ch">&nbsp;часов</td>
+</tr>
+<tr class="noko-row">
+<td class="postblock">
+К треду</td>
+<td>
+<label for="gotothread">
+<input id="gotothread" type="checkbox" name="redirecttothread" value="1" style="vertical-align: middle;" checked>&nbsp;(после отправки сообщения переместиться к треду)
+</label>
+</td>
+</tr>
+<tr class="fake-password-row" id="passwordbox" style="display: none;"><td></td><td></td></tr>
+<tr class="simplified-send-row">
+  <td colspan="2">
+    <button class="styled-button s-file" title="Приложить файлы...">
+    <svg class="icon next-to-text"><use xlink:href="#i-clip"></use></svg>
+  </button>
+      <button class="styled-button primary" type="submit">
+      <svg class="icon next-to-text"><use xlink:href="#i-send"></use></svg>
+      <span>Отправить</span>
+    </button>
+    <button class="styled-button" type="submit" title="Sage" name="sagebtn" value="1">
+    <noscript>Sage</noscript>
+      <svg class="icon sage-icon"><use xlink:href="#i-send"></use></svg>
+    </button>
+  </td>
+</tr>
+<tr class="blotter-row">
+<td colspan="2" class="blotter">
+<details>
+<summary style="text-align: center;">[<b class="xlink">Информация</b>]</summary>
+<ul class="blotter-entries">
+<li>Поддерживаемые типы файлов: CSS, GIF, JPG, MP3, MP4, OGG, PNG, SWF, WEBM.
+</li>
+<li>Поддерживаемые типы вложений: Youtube, Vimeo, Coub, Soundcloud.
+</li>
+<li>Для создания нового треда требуется картинка или видео.</li>
+<li>Максимальный суммарный размер всех файлов: 16000 кБ.</li>
+<li>Максимальное количество файлов + вложений: 8.</li>
+<li>Для создания нового треда требуется картинка или видео.</li>
+<li>Разрешено переиспользование файлов и вложений.</li>
+</ul>
+</details>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="formsending-overlay"><div class="form-spinner"></div></div>
+</form><div class="i0svcel">!i0-pb-end</div><hr />
+</div><script type="text/javascript">set_inputs("postform");</script>  <form id="delform" action="/board.php" method="post">
+ <input type="hidden" name="board" value="_cp" /><div class="i0svcel">!i0-page-start</div>    
+    <span id="unhidethread233-_cp">
+   Тред 
+   <a href="/_cp/res/233.html" class="ref|_cp|233|233">233</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('233-_cp');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread233-_cp" data-threadid="233" data-boardid="47">    <div class="i0svcel">!i0-pd:233</div>    <div class="postnode op" data-id="233" data-board="_cp">     <a name="s1"></a>
+ 
+ <div class="posthead">
+    <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="233:_cp" /><span class="filetitle">Loland_Unhoard</span><span class="postername">Педофил</span>      <span class="posttime">
+    Чтв 2024 Фев 15 20:30:50</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="233" data-b="_cp"><a href="/_cp/res/233.html#233" class="shl">No.&nbsp;</a><a href="/_cp/res/233.html#i233">233</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide233" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('233-_cp');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="233-_cp" 
+    data-postnum="233"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_cp/res/233.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody233-_cp" class="postbody" data-htmlength="86">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="14097">
+                                  <figcaption class="filesize">
+          <a download="00172 (CCC+24+B)-preview.gif" target="_blank" href="/_cp/src/170801825063.gif" title="00172 (CCC+24+B)-preview.gif"><span class="fc-filename" style="max-width:93px">00172 (CCC+24+B)-preview</span>.gif</a>
+          <br>1.77MB, 452×634          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14097">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14097:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14097', '/_cp/src/170801825063.gif', '/_cp/thumb/170801825063s.gif', '452', '634', '143', '200');" 
+         href="/_cp/src/170801825063.gif">
+         <span id="thumb14097"><img src="/_cp/thumb/170801825063s.gif" alt="233" class="thumb" height="200" width="143" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="14098">
+                                  <figcaption class="filesize">
+          <a download="00173 (CCC+24+B)-preview.gif" target="_blank" href="/_cp/src/170801825046.gif" title="00173 (CCC+24+B)-preview.gif"><span class="fc-filename" style="max-width:93px">00173 (CCC+24+B)-preview</span>.gif</a>
+          <br>2.13MB, 452×634          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14098">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14098:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14098', '/_cp/src/170801825046.gif', '/_cp/thumb/170801825046s.gif', '452', '634', '143', '200');" 
+         href="/_cp/src/170801825046.gif">
+         <span id="thumb14098"><img src="/_cp/thumb/170801825046s.gif" alt="233" class="thumb" height="200" width="143" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="14099">
+                                  <figcaption class="filesize">
+          <a download="00174 (CCC+24+B)-preview.gif" target="_blank" href="/_cp/src/170801825055.gif" title="00174 (CCC+24+B)-preview.gif"><span class="fc-filename" style="max-width:93px">00174 (CCC+24+B)-preview</span>.gif</a>
+          <br>1.87MB, 452×634          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14099">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14099:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14099', '/_cp/src/170801825055.gif', '/_cp/thumb/170801825055s.gif', '452', '634', '143', '200');" 
+         href="/_cp/src/170801825055.gif">
+         <span id="thumb14099"><img src="/_cp/thumb/170801825055s.gif" alt="233" class="thumb" height="200" width="143" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">Loland_Unhoard_2022<br />magnet:?xt=urn:btih:a1fd48a147c24f9d72e6de16b5f3b578d64283ab</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies233-_cp" class="replies">
+       
+    <div class="i0svcel">!i0-pd:234</div>   <table id="postnode234-_cp" class="postnode" data-id="234" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply234">      <a name="234"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('234-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="234:_cp" /><span class="filetitle">Loland Unhoard 2-4</span><span class="postername">Педофил</span>      <span class="posttime">
+    Чтв 2024 Фев 15 20:59:47</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="234" data-b="_cp"><a href="/_cp/res/233.html#234" class="shl">No.&nbsp;</a><a href="/_cp/res/233.html#i234">234</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="233-_cp" 
+    data-postnum="234"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 233">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody234-_cp" class="postbody" data-htmlength="298">
+    <blockquote class="postmessage">Loland Unhoard 2 (2022)<br />magnet:?xt=urn:btih:4f6d718dfdc8a9eb530c3de2ec7b95d20c72de37<br /><br />Loland Unhoard 3 (2022)<br />magnet:?xt=urn:btih:754e32c69e8b73d53dd0c5b33df5dfdde2a07218<br /><br />Loland Unhoard 4 (2022)<br />magnet:?xt=urn:btih:8441b9fe5079a727fb76eac96722adb1e8faf404</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:235</div>   <table id="postnode235-_cp" class="postnode" data-id="235" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply235">      <a name="235"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('235-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="235:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2024 Фев 17 20:01:42</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="235" data-b="_cp"><a href="/_cp/res/233.html#235" class="shl">No.&nbsp;</a><a href="/_cp/res/233.html#i235">235</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="233-_cp" 
+    data-postnum="235"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 233">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody235-_cp" class="postbody" data-htmlength="257">
+    <blockquote class="postmessage">2 раза пытался запостить превью для No. 234 , капча протухает раньше чем сервер получает данные.<br />наверно тор мост медленный, админ мудак, говорил ему чтоб жизнь капчи увеличил&nbsp;— ни хуя, упёрьый как баран.<br /><br />ща из другого моста попробую</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+    
+    <span id="unhidethread209-_cp">
+   Тред 
+   <a href="/_cp/res/209.html" class="ref|_cp|209|209">209</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('209-_cp');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread209-_cp" data-threadid="209" data-boardid="47">    <div class="i0svcel">!i0-pd:209</div>    <div class="postnode op" data-id="209" data-board="_cp">     <a name="s2"></a>
+ 
+ <div class="posthead">
+    <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="209:_cp" /><span class="filetitle">i2p-cp-torrents-2023.12, 6TБ контента , 2705 торентов</span><span class="postername">Педофил</span>      <span class="posttime">
+    Вск 2023 Дек 17 15:46:37</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="209" data-b="_cp"><a href="/_cp/res/209.html#209" class="shl">No.&nbsp;</a><a href="/_cp/res/209.html#i209">209</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide209" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('209-_cp');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="209-_cp" 
+    data-postnum="209"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_cp/res/209.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody209-_cp" class="postbody" data-htmlength="127">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="14027">
+                                  <figcaption class="filesize">
+          <a download="cp.png" target="_blank" href="/_cp/src/170281719789.png" title="cp.png"><span class="fc-filename" style="max-width:150px">cp</span>.png</a>
+          <br>32.08KB, 200×200          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14027">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14027:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14027', '/_cp/src/170281719789.png', '/_cp/thumb/170281719789s.png', '200', '200', '200', '200');" 
+         href="/_cp/src/170281719789.png">
+         <span id="thumb14027"><img src="/_cp/thumb/170281719789s.png" alt="209" class="thumb" height="200" width="200" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">2705 торентов, 6TБ контента<br />i2p-cp-torrents-2023.12.7z<br />magnet:?xt=urn:btih:06712d6131bb6caab9aac096e50b3dd78024d2e8</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies209-_cp" class="replies">
+       <span class="omittedposts">
+     <a href="/_cp/res/209.html" onclick="return expandthread('209','_cp', event)" title="Развернуть тред">
+             3 поста и 1 изображение пропущено.
+           </a>
+    </span>
+       
+    <div class="i0svcel">!i0-pd:219</div>   <table id="postnode219-_cp" class="postnode" data-id="219" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply219">      <a name="219"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('219-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="219:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Дек 23 08:49:12</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="219" data-b="_cp"><a href="/_cp/res/209.html#219" class="shl">No.&nbsp;</a><a href="/_cp/res/209.html#i219">219</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="209-_cp" 
+    data-postnum="219"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 209">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody219-_cp" class="postbody" data-htmlength="15">
+    <blockquote class="postmessage">Как скачать-то?</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:220</div>   <table id="postnode220-_cp" class="postnode" data-id="220" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply220">      <a name="220"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('220-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="220:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Дек 23 10:22:21</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="220" data-b="_cp"><a href="/_cp/res/209.html#220" class="shl">No.&nbsp;</a><a href="/_cp/res/209.html#i220">220</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="209-_cp" 
+    data-postnum="220"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 209">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody220-_cp" class="postbody" data-htmlength="206">
+    <blockquote class="postmessage"><a href="/_cp/res/209.html#219" class="ref|_cp|209|219">&gt;&gt;219</a><br />там торрент файлы. нужен торрент клиент с поддержкой i2p.<br />в i2p-маршрутизаторе первом официальном есть встроенный i2psnark</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:221</div>   <table id="postnode221-_cp" class="postnode" data-id="221" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply221">      <a name="221"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('221-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="221:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Срд 2024 Янв 3 18:06:21</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="221" data-b="_cp"><a href="/_cp/res/209.html#221" class="shl">No.&nbsp;</a><a href="/_cp/res/209.html#i221">221</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="209-_cp" 
+    data-postnum="221"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 209">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody221-_cp" class="postbody" data-htmlength="176">
+    <blockquote class="postmessage"><a href="/_cp/res/209.html#212" class="ref|_cp|209|212">&gt;&gt;212</a><br /><span class="unkfunc">&gt; c4775aa9d7a5640893da5320986673149d16cc36</span><br />СИДЫ!!! СИИИДЫ!!!</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:222</div>   <table id="postnode222-_cp" class="postnode" data-id="222" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply222">      <a name="222"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('222-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="222:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Чтв 2024 Янв 4 14:41:23</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="222" data-b="_cp"><a href="/_cp/res/209.html#222" class="shl">No.&nbsp;</a><a href="/_cp/res/209.html#i222">222</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="209-_cp" 
+    data-postnum="222"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 209">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <br>   </div>
+
+ <div id="postbody222-_cp" class="postbody pb-empty" data-htmlength="0">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="14046">
+                                  <figcaption class="filesize">
+          <a download="изображение.png" target="_blank" href="/_cp/src/170436848326.png" title="изображение.png"><span class="fc-filename" style="max-width:50px">изображение</span>.png</a>
+          <br>482.33KB, 648×807          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14046">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14046:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14046', '/_cp/src/170436848326.png', '/_cp/thumb/170436848326s.png', '648', '807', '100', '125');" 
+         href="/_cp/src/170436848326.png">
+         <span id="thumb14046"><img src="/_cp/thumb/170436848326s.png" alt="222" class="thumb" height="125" width="100" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage"></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:223</div>   <table id="postnode223-_cp" class="postnode" data-id="223" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply223">      <a name="223"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('223-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="223:_cp" /><span class="filetitle">офтоп</span><span class="postername">Педофил</span>      <span class="posttime">
+    Птн 2024 Янв 12 18:06:56</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="223" data-b="_cp"><a href="/_cp/res/209.html#223" class="shl">No.&nbsp;</a><a href="/_cp/res/209.html#i223">223</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="209-_cp" 
+    data-postnum="223"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 209">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody223-_cp" class="postbody" data-htmlength="85">
+    <blockquote class="postmessage">«16 Plus rip»&nbsp;— не по теме/<br />название говорит само за себя.<br /><br />оп</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+    
+    <span id="unhidethread206-_cp">
+   Тред 
+   <a href="/_cp/res/206.html" class="ref|_cp|206|206">206</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('206-_cp');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread206-_cp" data-threadid="206" data-boardid="47">    <div class="i0svcel">!i0-pd:206</div>    <div class="postnode op" data-id="206" data-board="_cp">     <a name="s3"></a>
+ 
+ <div class="posthead">
+    <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="206:_cp" /><span class="filetitle">Spycam Asia Lockker Room Series</span><span class="postername">Педофил</span>      <span class="posttime">
+    Чтв 2023 Дек 14 02:05:06</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="206" data-b="_cp"><a href="/_cp/res/206.html#206" class="shl">No.&nbsp;</a><a href="/_cp/res/206.html#i206">206</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide206" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('206-_cp');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="206-_cp" 
+    data-postnum="206"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_cp/res/206.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody206-_cp" class="postbody pb-long" data-htmlength="1081">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="14020">
+                                  <figcaption class="filesize">
+          <a download="hibijyon_10_preview.jpg" target="_blank" href="/_cp/src/170250870623.jpg" title="hibijyon_10_preview.jpg"><span class="fc-filename" style="max-width:150px">hibijyon_10_preview</span>.jpg</a>
+          <br>299.08KB, 1024×751          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14020">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14020:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14020', '/_cp/src/170250870623.jpg', '/_cp/thumb/170250870623s.jpg', '1024', '751', '200', '147');" 
+         href="/_cp/src/170250870623.jpg">
+         <span id="thumb14020"><img src="/_cp/thumb/170250870623s.jpg" alt="206" class="thumb" height="147" width="200" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="14021">
+                                  <figcaption class="filesize">
+          <a download="hibijyon_38_preview.jpg" target="_blank" href="/_cp/src/170250870682.jpg" title="hibijyon_38_preview.jpg"><span class="fc-filename" style="max-width:150px">hibijyon_38_preview</span>.jpg</a>
+          <br>344.24KB, 1024×751          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14021">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14021:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14021', '/_cp/src/170250870682.jpg', '/_cp/thumb/170250870682s.jpg', '1024', '751', '200', '147');" 
+         href="/_cp/src/170250870682.jpg">
+         <span id="thumb14021"><img src="/_cp/thumb/170250870682s.jpg" alt="206" class="thumb" height="147" width="200" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="14022">
+                                  <figcaption class="filesize">
+          <a download="hibijyon_SC_2_preview.jpg" target="_blank" href="/_cp/src/170250870665.jpg" title="hibijyon_SC_2_preview.jpg"><span class="fc-filename" style="max-width:150px">hibijyon_SC_2_preview</span>.jpg</a>
+          <br>306.32KB, 1024×751          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14022">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14022:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14022', '/_cp/src/170250870665.jpg', '/_cp/thumb/170250870665s.jpg', '1024', '751', '200', '147');" 
+         href="/_cp/src/170250870665.jpg">
+         <span id="thumb14022"><img src="/_cp/thumb/170250870665s.jpg" alt="206" class="thumb" height="147" width="200" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="14023">
+                                  <figcaption class="filesize">
+          <a download="hibijyon_SC_4_preview.jpg" target="_blank" href="/_cp/src/170250870619.jpg" title="hibijyon_SC_4_preview.jpg"><span class="fc-filename" style="max-width:150px">hibijyon_SC_4_preview</span>.jpg</a>
+          <br>299.73KB, 1024×751          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14023">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14023:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14023', '/_cp/src/170250870619.jpg', '/_cp/thumb/170250870619s.jpg', '1024', '751', '200', '147');" 
+         href="/_cp/src/170250870619.jpg">
+         <span id="thumb14023"><img src="/_cp/thumb/170250870619s.jpg" alt="206" class="thumb" height="147" width="200" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">не савсем ср,один ребёнок в кадрре превьюхи попался, можнт они там попадаются<br /><br />dns          50,2 GiB<br />gensenfuro   49,4 GiB<br />gokusen_furo 32,4 GiB<br />hibijyon     113,1 GiB<br />nan          35,7 GiB<br />spa_hdv      41,8 GiB<br />sp_furo      24,8 GiB<br />supa         85,8 GiB<br />supa_sck     79,6 GiB<br /><br />magnet:?xt=urn:btih:25637eb1d394f19afaa957c5c96fb7bced835a25&amp;dn=gensenfuro<br />magnet:?xt=urn:btih:3140141a191ef28fbbff7a147fee793bc2c5de2d&amp;dn=sp_furo<br />magnet:?xt=urn:btih:32c64abe3c360d7edc8ca3d279ea0a0592c63fca&amp;dn=supa<br />magnet:?xt=urn:btih:4629fc476fbabf4005dd29d90f7b308a31ff4b3d&amp;dn=dns<br />magnet:?xt=urn:btih:96f3fc896a2328de81936485fdcca4a9b8fc431f&amp;dn=supa_sck<br />magnet:?xt=urn:btih:9b269a4635711dd5a790820ccefb2517683accda&amp;dn=spa_hdv<br />magnet:?xt=urn:btih:a5f42cf9bee02dc2c91c4e93a2525b288c6368cc&amp;dn=hibijyon<br />magnet:?xt=urn:btih:af181907f39b0a3f7c49cae612b9a025d38dd2e2&amp;dn=gokusen_furo<br />magnet:?xt=urn:btih:e2bafeb2997060872c12c5ee89b6303ccb940f30&amp;dn=nan</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies206-_cp" class="replies">
+       <span class="omittedposts">
+     <a href="/_cp/res/206.html" onclick="return expandthread('206','_cp', event)" title="Развернуть тред">
+             2 поста и 3 изображения пропущено.
+           </a>
+    </span>
+       
+    <div class="i0svcel">!i0-pd:210</div>   <table id="postnode210-_cp" class="postnode" data-id="210" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply210">      <a name="210"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('210-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="210:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Пнд 2023 Дек 18 03:37:40</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="210" data-b="_cp"><a href="/_cp/res/206.html#210" class="shl">No.&nbsp;</a><a href="/_cp/res/206.html#i210">210</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="206-_cp" 
+    data-postnum="210"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 206">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody210-_cp" class="postbody" data-htmlength="97">
+    <blockquote class="postmessage">No. 208 <br />в какой тред. а это что не тред.<br />как только нашол на NK так сразу зарепостил</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:213</div>   <table id="postnode213-_cp" class="postnode" data-id="213" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply213">      <a name="213"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('213-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="213:_cp" /><span class="filetitle">Spycam Asia Lockker Room Series</span><span class="postername">Педофил</span>      <span class="posttime">
+    Втр 2023 Дек 19 04:15:42</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="213" data-b="_cp"><a href="/_cp/res/206.html#213" class="shl">No.&nbsp;</a><a href="/_cp/res/206.html#i213">213</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="206-_cp" 
+    data-postnum="213"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 206">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <br>   </div>
+
+ <div id="postbody213-_cp" class="postbody" data-htmlength="223">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="14028">
+                                  <figcaption class="filesize">
+          <a download="LB9126088139.jpg" target="_blank" href="/_cp/src/170294854235.jpg" title="LB9126088139.jpg"><span class="fc-filename" style="max-width:75px">LB9126088139</span>.jpg</a>
+          <br>75.21KB, 640×360          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14028">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14028:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14028', '/_cp/src/170294854235.jpg', '/_cp/thumb/170294854235s.jpg', '640', '360', '125', '70');" 
+         href="/_cp/src/170294854235.jpg">
+         <span id="thumb14028"><img src="/_cp/thumb/170294854235s.jpg" alt="213" class="thumb" height="70" width="125" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="14029">
+                                  <figcaption class="filesize">
+          <a download="LB26592654061.jpg" target="_blank" href="/_cp/src/170294854262.jpg" title="LB26592654061.jpg"><span class="fc-filename" style="max-width:75px">LB26592654061</span>.jpg</a>
+          <br>69.87KB, 640×360          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14029">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14029:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14029', '/_cp/src/170294854262.jpg', '/_cp/thumb/170294854262s.jpg', '640', '360', '125', '70');" 
+         href="/_cp/src/170294854262.jpg">
+         <span id="thumb14029"><img src="/_cp/thumb/170294854262s.jpg" alt="213" class="thumb" height="70" width="125" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="14030">
+                                  <figcaption class="filesize">
+          <a download="LB32704948646.jpg" target="_blank" href="/_cp/src/170294854231.jpg" title="LB32704948646.jpg"><span class="fc-filename" style="max-width:75px">LB32704948646</span>.jpg</a>
+          <br>65.83KB, 640×480          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14030">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14030:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14030', '/_cp/src/170294854231.jpg', '/_cp/thumb/170294854231s.jpg', '640', '480', '125', '94');" 
+         href="/_cp/src/170294854231.jpg">
+         <span id="thumb14030"><img src="/_cp/thumb/170294854231s.jpg" alt="213" class="thumb" height="94" width="125" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="14031">
+                                  <figcaption class="filesize">
+          <a download="LB98950627407.jpg" target="_blank" href="/_cp/src/170294854210.jpg" title="LB98950627407.jpg"><span class="fc-filename" style="max-width:75px">LB98950627407</span>.jpg</a>
+          <br>92.57KB, 640×360          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14031">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14031:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14031', '/_cp/src/170294854210.jpg', '/_cp/thumb/170294854210s.jpg', '640', '360', '125', '70');" 
+         href="/_cp/src/170294854210.jpg">
+         <span id="thumb14031"><img src="/_cp/thumb/170294854210s.jpg" alt="213" class="thumb" height="70" width="125" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">New magnet added <br /><br />keshikaran<br />magnet:?xt=urn:btih:32165d96e72c9c2f5820cfe2997bd5cc79bd8925&amp;dn=keshikaran&amp;net=I2P&amp;tr=http%3A%2F%2Fw7tpbzncbcocrqtwwm3nezhnnsw4ozadvi2hmvzdhrqzfxfum7wa.b32.i2p%2Fa</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:214</div>   <table id="postnode214-_cp" class="postnode" data-id="214" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply214">      <a name="214"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('214-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="214:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Чтв 2023 Дек 21 12:58:21</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="214" data-b="_cp"><a href="/_cp/res/206.html#214" class="shl">No.&nbsp;</a><a href="/_cp/res/206.html#i214">214</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="206-_cp" 
+    data-postnum="214"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 206">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody214-_cp" class="postbody" data-htmlength="92">
+    <blockquote class="postmessage"><a href="/_cp/res/206.html#213" class="ref|_cp|206|213">&gt;&gt;213</a><br />Дайте скорости</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:215</div>   <table id="postnode215-_cp" class="postnode" data-id="215" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply215">      <a name="215"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('215-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="215:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Чтв 2023 Дек 21 14:07:49</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="215" data-b="_cp"><a href="/_cp/res/206.html#215" class="shl">No.&nbsp;</a><a href="/_cp/res/206.html#i215">215</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="206-_cp" 
+    data-postnum="215"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 206">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody215-_cp" class="postbody" data-htmlength="61">
+    <blockquote class="postmessage">на NK надо просить, врят ли тут сидеры обитают, маловероятно.</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:216</div>   <table id="postnode216-_cp" class="postnode" data-id="216" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply216">      <a name="216"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('216-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="216:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Чтв 2023 Дек 21 19:42:07</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="216" data-b="_cp"><a href="/_cp/res/206.html#216" class="shl">No.&nbsp;</a><a href="/_cp/res/206.html#i216">216</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="206-_cp" 
+    data-postnum="216"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 206">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody216-_cp" class="postbody" data-htmlength="248">
+    <blockquote class="postmessage"><a target="_blank" rel="nofollow noopener noreferrer" href="http://243vnzoix3ct6vowjgakv3pdqrzkfnkoz5plwgta3ar2onqobzhz5jid.onion/viewtopic.php?t=32294">http://243vnzoix3ct6vowjgakv3pdqrzkfnkoz5plwgta3ar2onqobzhz5jid.onion/viewtopic.php?t=32294</a></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+    
+    <span id="unhidethread136-_cp">
+   Тред 
+   <a href="/_cp/res/136.html" class="ref|_cp|136|136">136</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('136-_cp');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread136-_cp" data-threadid="136" data-boardid="47">    <div class="i0svcel">!i0-pd:136</div>    <div class="postnode op" data-id="136" data-board="_cp">     <a name="s4"></a>
+ 
+ <div class="posthead">
+    <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="136:_cp" /><span class="filetitle">Magnets</span><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Окт 28 16:13:18</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="136" data-b="_cp"><a href="/_cp/res/136.html#136" class="shl">No.&nbsp;</a><a href="/_cp/res/136.html#i136">136</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide136" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('136-_cp');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="136-_cp" 
+    data-postnum="136"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_cp/res/136.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody136-_cp" class="postbody pb-long" data-htmlength="1215">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="13927">
+                                  <figcaption class="filesize">
+          <a download="2e8587ecdadb6b957e7e64ab728631df.jpg" target="_blank" href="/_cp/src/169849879823.jpg" title="2e8587ecdadb6b957e7e64ab728631df.jpg"><span class="fc-filename" style="max-width:58px">2e8587ecdadb6b957e7e64ab728631df</span>.jpg</a>
+          <br>157.96KB, 684×1264          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13927">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13927:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13927', '/_cp/src/169849879823.jpg', '/_cp/thumb/169849879823s.jpg', '684', '1264', '108', '200');" 
+         href="/_cp/src/169849879823.jpg">
+         <span id="thumb13927"><img src="/_cp/thumb/169849879823s.jpg" alt="136" class="thumb" height="200" width="108" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">Secret Stars Torrents: magnet:?xt=urn:btih:bcfb2db927e295cac4e85ecd15429aa897e0e357<br />LS Studios Collection Torrents: magnet:?xt=urn:btih:c0b84cb3ea1e870c28af34c70007be901ea6ef48<br />multi studio complete collections.7z: magnet:?xt=urn:btih:c4ea9729ccaef0c42976c11ff111e86671be278e<br />Marisol (Latin, 2022): magnet:?xt=urn:btih:93206cbe71cb58605b1a9dc08791e9a1f21b618d<br />Luisa &amp; Kitty (Full Collection): magnet:?xt=urn:btih:7e76555fae7f52b5bf5b26a53e6f993ac239ea84<br />Elly: magnet:?xt=urn:btih:fae6863d8a55174857a89f79c9359bfa148eab51<br />cp sets by girl 436 albums 1-F.7z: magnet:?xt=urn:btih:73baf2f09ff013f601dc07f0eb4e6a08c92df460<br />cp sets by girl 149 albums G-K.7z: magnet:?xt=urn:btih:8e589d166593df53b4b333947653d3cc04e19912<br />cp girls by name 500 albums L-Z.7z: magnet:?xt=urn:btih:8cf73194ee4d17437b91b9b02091e1e65238bcc1<br />cp sets(themes) 166 albums.7z: magnet:?xt=urn:btih:fd4ac9f2c2f10ddcc927bd81ee887c4e60ba37fc<br />the club kayley.7z: magnet:?xt=urn:btih:ef18697cc6009c1f1ca8f549605ea773edcd6be7<br />Belarus.Studio.7z: magnet:?xt=urn:btih:9c21156140bbeabed6354a87a50fe266857d78e4<br />AI Archive.zip: magnet:?xt=urn:btih:78513913b2a0ea917e0113a8559c47b83dade427</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies136-_cp" class="replies">
+       <span class="omittedposts">
+     <a href="/_cp/res/136.html" onclick="return expandthread('136','_cp', event)" title="Развернуть тред">
+             8 постов и 4 изображения пропущено.
+           </a>
+    </span>
+       
+    <div class="i0svcel">!i0-pd:194</div>   <table id="postnode194-_cp" class="postnode" data-id="194" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply194">      <a name="194"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('194-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="194:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Срд 2023 Ноя 29 04:03:56</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="194" data-b="_cp"><a href="/_cp/res/136.html#194" class="shl">No.&nbsp;</a><a href="/_cp/res/136.html#i194">194</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="136-_cp" 
+    data-postnum="194"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 136">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <br>   </div>
+
+ <div id="postbody194-_cp" class="postbody" data-htmlength="162">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="14005">
+                                  <figcaption class="filesize">
+          <a download="silver-stars-cover_Elona-Angelica-Cosplay-1.jpg" target="_blank" href="/_cp/src/170121983698.jpg" title="silver-stars-cover_Elona-Angelica-Cosplay-1.jpg"><span class="fc-filename" style="max-width:39px">silver-stars-cover_Elona-Angelica-Cosplay-1</span>.jpg</a>
+          <br>413.64KB, 1000×1400          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14005">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14005:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14005', '/_cp/src/170121983698.jpg', '/_cp/thumb/170121983698s.jpg', '1000', '1400', '89', '125');" 
+         href="/_cp/src/170121983698.jpg">
+         <span id="thumb14005"><img src="/_cp/thumb/170121983698s.jpg" alt="194" class="thumb" height="125" width="89" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">из всего перечисленного нашолся только 149 мегабайтный Silver-Stars_Elona-Angelica-cosplay-1.rar<br />не картинке silver-stars-cover_Elona-Angelica-Cosplay-1.jpg</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:195</div>   <table id="postnode195-_cp" class="postnode" data-id="195" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply195">      <a name="195"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('195-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="195:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Срд 2023 Ноя 29 16:10:38</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="195" data-b="_cp"><a href="/_cp/res/136.html#195" class="shl">No.&nbsp;</a><a href="/_cp/res/136.html#i195">195</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="136-_cp" 
+    data-postnum="195"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 136">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody195-_cp" class="postbody" data-htmlength="107">
+    <blockquote class="postmessage"><a href="/_cp/res/136.html#194" class="ref|_cp|136|194">&gt;&gt;194</a><br />Милашки....... Тебе нравится?</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:200</div>   <table id="postnode200-_cp" class="postnode" data-id="200" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply200">      <a name="200"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('200-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="200:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Птн 2023 Дек 1 19:36:16</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="200" data-b="_cp"><a href="/_cp/res/136.html#200" class="shl">No.&nbsp;</a><a href="/_cp/res/136.html#i200">200</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="136-_cp" 
+    data-postnum="200"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 136">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody200-_cp" class="postbody" data-htmlength="92">
+    <blockquote class="postmessage"><a href="/_cp/res/136.html#195" class="ref|_cp|136|195">&gt;&gt;195</a><br />да, симпатяшки</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:202</div>   <table id="postnode202-_cp" class="postnode" data-id="202" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply202">      <a name="202"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('202-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="202:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Втр 2023 Дек 5 12:03:44</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="202" data-b="_cp"><a href="/_cp/res/136.html#202" class="shl">No.&nbsp;</a><a href="/_cp/res/136.html#i202">202</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="136-_cp" 
+    data-postnum="202"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 136">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody202-_cp" class="postbody" data-htmlength="96">
+    <blockquote class="postmessage"><a href="/_cp/res/136.html#194" class="ref|_cp|136|194">&gt;&gt;194</a><br />Как? Магнет скинь.</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:203</div>   <table id="postnode203-_cp" class="postnode" data-id="203" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply203">      <a name="203"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('203-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="203:_cp" /><span class="filetitle">Silver-Stars_Elona-Angelica-cosplay-1</span><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Дек 9 06:01:13</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="203" data-b="_cp"><a href="/_cp/res/136.html#203" class="shl">No.&nbsp;</a><a href="/_cp/res/136.html#i203">203</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="136-_cp" 
+    data-postnum="203"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 136">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody203-_cp" class="postbody" data-htmlength="511">
+    <blockquote class="postmessage"><a href="/_cp/res/136.html#202" class="ref|_cp|136|202">&gt;&gt;202</a> <br /><br />Silver-Stars_Elona-Angelica-cosplay-1<br />Размер: 149,3 MiB<br /><a href="/_cp/res/136.html#194" class="ref|_cp|136|194">&gt;&gt;194</a> превью<br />magnet:?xt=urn:btih:ef086d48ccfab0416c643f350544763db2ab6a43&amp;tr=<a target="_blank" rel="nofollow noopener noreferrer" href="http://w7tpbzncbcocrqtwwm3nezhnnsw4ozadvi2hmvzdhrqzfxfum7wa.b32.i2p/a">http://w7tpbzncbcocrqtwwm3nezhnnsw4ozadvi2hmvzdhrqzfxfum7wa.b32.i2p/a</a></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+    
+    <span id="unhidethread193-_cp">
+   Тред 
+   <a href="/_cp/res/193.html" class="ref|_cp|193|193">193</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('193-_cp');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread193-_cp" data-threadid="193" data-boardid="47">    <div class="i0svcel">!i0-pd:193</div>    <div class="postnode op" data-id="193" data-board="_cp">     <a name="s5"></a>
+ 
+ <div class="posthead">
+    <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="193:_cp" /><span class="filetitle">Stream collection</span><span class="postername">Педофил</span>      <span class="posttime">
+    Втр 2023 Ноя 28 22:53:25</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="193" data-b="_cp"><a href="/_cp/res/193.html#193" class="shl">No.&nbsp;</a><a href="/_cp/res/193.html#i193">193</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide193" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('193-_cp');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="193-_cp" 
+    data-postnum="193"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_cp/res/193.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody193-_cp" class="postbody pb-long" data-htmlength="4174">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="14004">
+                                  <figcaption class="filesize">
+          <a download="RTS0001_2.mp4.jpg" target="_blank" href="/_cp/src/170120120492.jpg" title="RTS0001_2.mp4.jpg"><span class="fc-filename" style="max-width:81px">RTS0001_2.mp4</span>.jpg</a>
+          <br>194.23KB, 1000×1529          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14004">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14004:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14004', '/_cp/src/170120120492.jpg', '/_cp/thumb/170120120492s.jpg', '1000', '1529', '131', '200');" 
+         href="/_cp/src/170120120492.jpg">
+         <span id="thumb14004"><img src="/_cp/thumb/170120120492s.jpg" alt="193" class="thumb" height="200" width="131" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">I collect interesting packs, these are recordings of streams<br />Can share them with you for 10 USD payment in Monero.<br />You can leave your email address in the transfer description.<br />Or contact me farenDex@mail2tor.com<br />Monero: 4A2jeC9W4qx9nGPyUnRAM96x4N5refe37f9fVpiZcWUuEm4oUiAed5pNQ9FcEFq79pWihKo5PaBs8fvwkJGxAVRaKRHXTdg<br />preview:<br /><a target="_blank" rel="nofollow noopener noreferrer" href="http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=s6U8Sf">http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=s6U8Sf</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=daGkWC">http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=daGkWC</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=Bu0iDA">http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=Bu0iDA</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=r2kM3R">http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=r2kM3R</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=L93f4N">http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=L93f4N</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=PwyYmg">http://5figq755l7c55eopjphypkpfj5b4ap5nm6rvie2tygcwtafbjhv3p3id.onion/show?i=PwyYmg</a><br />video:4000+ size:145 gb<br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?xvyr8de1drstrw3uktcl">https://1fichier.com/?xvyr8de1drstrw3uktcl</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?q1o00dyqqzgowovbhj5o">https://1fichier.com/?q1o00dyqqzgowovbhj5o</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?uui3aklniyfjt82o3nsj">https://1fichier.com/?uui3aklniyfjt82o3nsj</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?mderao5t1w706l4xsioc">https://1fichier.com/?mderao5t1w706l4xsioc</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?ei132672d6kcp6h1k1nl">https://1fichier.com/?ei132672d6kcp6h1k1nl</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?ltqappyfq95tr39ipynb">https://1fichier.com/?ltqappyfq95tr39ipynb</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?ruvxwwlq89agjwuxy0v6">https://1fichier.com/?ruvxwwlq89agjwuxy0v6</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?6oqjznbszzmlorx4d450">https://1fichier.com/?6oqjznbszzmlorx4d450</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?ahavzk883x9i1gn4xya7">https://1fichier.com/?ahavzk883x9i1gn4xya7</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?qx3ezoiwapptyd9ogw5g">https://1fichier.com/?qx3ezoiwapptyd9ogw5g</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?vbcdm6jf8uvu3t8njoj6">https://1fichier.com/?vbcdm6jf8uvu3t8njoj6</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?m0afkys04f947jn1szy2">https://1fichier.com/?m0afkys04f947jn1szy2</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?30fi3pdaqbnso5bvo246">https://1fichier.com/?30fi3pdaqbnso5bvo246</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?nv3txpp7r8oxupzeeov3">https://1fichier.com/?nv3txpp7r8oxupzeeov3</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://1fichier.com/?8fol16fe51iue7hgokf0">https://1fichier.com/?8fol16fe51iue7hgokf0</a></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies193-_cp" class="replies">
+       
+    <div class="i0svcel">!i0-pd:196</div>   <table id="postnode196-_cp" class="postnode" data-id="196" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply196">      <a name="196"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('196-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="196:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Птн 2023 Дек 1 14:18:32</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="196" data-b="_cp"><a href="/_cp/res/193.html#196" class="shl">No.&nbsp;</a><a href="/_cp/res/193.html#i196">196</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="193-_cp" 
+    data-postnum="196"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 193">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <br>   </div>
+
+ <div id="postbody196-_cp" class="postbody pb-empty" data-htmlength="0">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="14009">
+                                  <figcaption class="filesize">
+          <a download="RTS0089_2.mp4" target="_blank" href="/_cp/src/17014295096.mp4" title="RTS0089_2.mp4"><span class="fc-filename" style="max-width:63px">RTS0089_2</span>.mp4</a>
+          <br>8.31MB, 360×640          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14009">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14009:_cp">
+         </figcaption>
+                         <a 
+          class="movie" data-id="14009" data-thumb="/_cp/thumb/17014295096s.jpg" data-width="360" data-height="640"                           target="_blank"        
+         href="/_cp/src/17014295096.mp4">
+                            <div id="thumb14009" class="thumb playable-thumb" title="Play"><img src="/_cp/thumb/17014295096s.jpg" alt="196" class="thumb" height="200" width="113" /></div>
+                  </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage"></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:197</div>   <table id="postnode197-_cp" class="postnode" data-id="197" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply197">      <a name="197"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('197-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="197:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Птн 2023 Дек 1 14:39:59</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="197" data-b="_cp"><a href="/_cp/res/193.html#197" class="shl">No.&nbsp;</a><a href="/_cp/res/193.html#i197">197</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="193-_cp" 
+    data-postnum="197"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 193">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <br>   </div>
+
+ <div id="postbody197-_cp" class="postbody pb-empty" data-htmlength="0">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="14010">
+                                  <figcaption class="filesize">
+          <a download="RTS0132_6.mp4" target="_blank" href="/_cp/src/170143079576.mp4" title="RTS0132_6.mp4"><span class="fc-filename" style="max-width:63px">RTS0132_6</span>.mp4</a>
+          <br>10.69MB, 360×640          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14010">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14010:_cp">
+         </figcaption>
+                         <a 
+          class="movie" data-id="14010" data-thumb="/_cp/thumb/170143079576s.jpg" data-width="360" data-height="640"                           target="_blank"        
+         href="/_cp/src/170143079576.mp4">
+                            <div id="thumb14010" class="thumb playable-thumb" title="Play"><img src="/_cp/thumb/170143079576s.jpg" alt="197" class="thumb" height="200" width="113" /></div>
+                  </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage"></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:198</div>   <table id="postnode198-_cp" class="postnode" data-id="198" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply198">      <a name="198"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('198-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="198:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Птн 2023 Дек 1 17:14:07</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="198" data-b="_cp"><a href="/_cp/res/193.html#198" class="shl">No.&nbsp;</a><a href="/_cp/res/193.html#i198">198</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="193-_cp" 
+    data-postnum="198"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 193">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody198-_cp" class="postbody" data-htmlength="93">
+    <blockquote class="postmessage"><a href="/_cp/res/193.html#197" class="ref|_cp|193|197">&gt;&gt;197</a><br />Рожа колхозная.</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:199</div>   <table id="postnode199-_cp" class="postnode" data-id="199" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply199">      <a name="199"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('199-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="199:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Птн 2023 Дек 1 18:39:46</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="199" data-b="_cp"><a href="/_cp/res/193.html#199" class="shl">No.&nbsp;</a><a href="/_cp/res/193.html#i199">199</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="193-_cp" 
+    data-postnum="199"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 193">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody199-_cp" class="postbody" data-htmlength="105">
+    <blockquote class="postmessage"><a href="/_cp/res/193.html#198" class="ref|_cp|193|198">&gt;&gt;198</a><br />Ахахахах сцук чай поставьте</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:201</div>   <table id="postnode201-_cp" class="postnode" data-id="201" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply201">      <a name="201"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('201-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="201:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Дек 2 14:07:56</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="201" data-b="_cp"><a href="/_cp/res/193.html#201" class="shl">No.&nbsp;</a><a href="/_cp/res/193.html#i201">201</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="193-_cp" 
+    data-postnum="201"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 193">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody201-_cp" class="postbody" data-htmlength="43">
+    <blockquote class="postmessage">Дайте нормальный магнит у меня не открывает</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+    
+    <span id="unhidethread190-_cp">
+   Тред 
+   <a href="/_cp/res/190.html" class="ref|_cp|190|190">190</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('190-_cp');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread190-_cp" data-threadid="190" data-boardid="47">    <div class="i0svcel">!i0-pd:190</div>    <div class="postnode op" data-id="190" data-board="_cp">     <a name="s6"></a>
+ 
+ <div class="posthead">
+    <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="190:_cp" /><span class="filetitle">Polly sets 1-75</span><span class="postername">Педофил</span>      <span class="posttime">
+    Птн 2023 Ноя 24 06:25:40</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="190" data-b="_cp"><a href="/_cp/res/190.html#190" class="shl">No.&nbsp;</a><a href="/_cp/res/190.html#i190">190</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide190" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('190-_cp');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="190-_cp" 
+    data-postnum="190"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_cp/res/190.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody190-_cp" class="postbody pb-long" data-htmlength="2734">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="14002">
+                                  <figcaption class="filesize">
+          <a download="00000.png" target="_blank" href="/_cp/src/170079634092.png" title="00000.png"><span class="fc-filename" style="max-width:150px">00000</span>.png</a>
+          <br>97.89KB, 1366×717          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="14002">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="14002:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('14002', '/_cp/src/170079634092.png', '/_cp/thumb/170079634092s.png', '1366', '717', '200', '105');" 
+         href="/_cp/src/170079634092.png">
+         <span id="thumb14002"><img src="/_cp/thumb/170079634092s.png" alt="190" class="thumb" height="105" width="200" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">говорят у некоторых зависло, точнее, то что  у всех 23.9%<br /><br />------------------<br /><a target="_blank" rel="nofollow noopener noreferrer" href="http://xxtbwyb5z5bdvy2f6l2yquu5qilgkjeewno4qfknvb3lkg3nmoklitid.onion/?engine=google&amp;text=I%20tried%20but%20everyone%27s%20still%20stuck%20at%20the%20same%20amount.%0D%0A%0D%0ACrossEyedMary%09%0D%0A%20%20%20%20Member%09%0D%0A%20%20%20%20%D0%A1%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F%3A%209%09Send%20private%20message%0D%0A%20%20%20%20Thanksgiving%0D%0A%20%20%20%20Gobble%20gobble%21%20%3C3%20%0D%0A%0D%0ARe%3A%20Polly%20sets%201-75%0D%0A%0D%0A%D0%9D%D0%B5%D0%BF%D1%80%D0%BE%D1%87%D0%B8%D1%82%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20CrossEyedMary%20%C2%BB%20%D0%9D%D0%BE%D1%8F%D0%B1%D1%80%D1%8C%2022%2C%202023%2C%2011%3A18%0D%0AEveryone%27s%20stuck%20at%2023.9%25.%20Is%20there%20anyone%20out%20there%20who%20could%20help%20us%20out%20with%20a%20reseed%3F%0D%0AVery%20much%20appreciated%20and%20thanks%20in%20advance%21%0D%0A%0D%0AMightyDucks%09%0D%0A%20%20%20%20Member%09%0D%0A%20%20%20%20%D0%A1%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F%3A%2088%09Send%20private%20message%0D%0A%20%20%20%20Thanksgiving%0D%0A%20%20%20%20Gobble%20gobble%21%20%3C3%20%0D%0A%0D%0ARe%3A%20Polly%20sets%201-75%0D%0A%0D%0A%D0%9D%D0%B5%D0%BF%D1%80%D0%BE%D1%87%D0%B8%D1%82%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20MightyDucks%20%C2%BB%20%D0%9D%D0%BE%D1%8F%D0%B1%D1%80%D1%8C%2023%2C%202023%2C%2010%3A59%0D%0AThe%20only%20ones%20that%20can%20help%20you%20is%20anyone%20that%20managed%20to%20download%20that%20archive.%20If%20they%20had%20have%20uploaded%20it%20unarchived%2C%20anyone%20that%20has%20Polly%20on%20their%20drive%20could%20have%20helped%20you%20seed%20it.&amp;sl=en&amp;tl=ru">http://xxtbwyb5z5bdvy2f6l2yquu5qilgkjeewno4qfknvb3lkg3nmoklitid.onion/?engine=google&amp;text=I tried but everyone's still stuck at the same amount.
+
+CrossEyedMary
+    Member
+    Сообщения: 9Send private message
+    Thanksgiving
+    Gobble gobble! <3 
+
+Re: Polly sets 1-75
+
+Непрочитанное сообщение CrossEyedMary » Ноябрь 22, 2023, 11:18
+Everyone's stuck at 23.9%. Is there anyone out there who could help us out with a reseed?
+Very much appreciated and thanks in advance!
+
+MightyDucks
+    Member
+    Сообщения: 88Send private message
+    Thanksgiving
+    Gobble gobble! <3 
+
+Re: Polly sets 1-75
+
+Непрочитанное сообщение MightyDucks » Ноябрь 23, 2023, 10:59
+The only ones that can help you is anyone that managed to download that archive. If they had have uploaded it unarchived, anyone that has Polly on their drive could have helped you seed it.&amp;sl=en&amp;tl=ru</a></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies190-_cp" class="replies">
+       
+    <div class="i0svcel">!i0-pd:191</div>   <table id="postnode191-_cp" class="postnode" data-id="191" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply191">      <a name="191"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('191-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="191:_cp" /><span class="filetitle">яша ман</span><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Ноя 25 13:38:41</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="191" data-b="_cp"><a href="/_cp/res/190.html#191" class="shl">No.&nbsp;</a><a href="/_cp/res/190.html#i191">191</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="190-_cp" 
+    data-postnum="191"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 190">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody191-_cp" class="postbody" data-htmlength="7">
+    <blockquote class="postmessage">Встанем</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+    
+    <span id="unhidethread180-_cp">
+   Тред 
+   <a href="/_cp/res/180.html" class="ref|_cp|180|180">180</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('180-_cp');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread180-_cp" data-threadid="180" data-boardid="47">    <div class="i0svcel">!i0-pd:180</div>    <div class="postnode op" data-id="180" data-board="_cp">     <a name="s7"></a>
+ 
+ <div class="posthead">
+    <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="180:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Ноя 11 18:14:49</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="180" data-b="_cp"><a href="/_cp/res/180.html#180" class="shl">No.&nbsp;</a><a href="/_cp/res/180.html#i180">180</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide180" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('180-_cp');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="180-_cp" 
+    data-postnum="180"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_cp/res/180.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody180-_cp" class="postbody" data-htmlength="162">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="13985">
+                                  <figcaption class="filesize">
+          <a download="8.jpg" target="_blank" href="/_cp/src/169911741759.jpg" title="8.jpg"><span class="fc-filename" style="max-width:62px">8</span>.jpg</a>
+          <br>66.19KB, 719×1280          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13985">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13985:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13985', '/_cp/src/169911741759.jpg', '/_cp/thumb/169911741759s.jpg', '719', '1280', '112', '200');" 
+         href="/_cp/src/169911741759.jpg">
+         <span id="thumb13985"><img src="/_cp/thumb/169911741759s.jpg" alt="180" class="thumb" height="200" width="112" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">У кого нибудь есть полный пак с ней?<br />У меня был полный сборник с ней но жесткий диск приказал долго жить и я проебал все что там было в том числе пак с ней.</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies180-_cp" class="replies">
+       
+    <div class="i0svcel">!i0-pd:181</div>   <table id="postnode181-_cp" class="postnode" data-id="181" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply181">      <a name="181"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('181-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="181:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Ноя 11 18:37:24</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="181" data-b="_cp"><a href="/_cp/res/180.html#181" class="shl">No.&nbsp;</a><a href="/_cp/res/180.html#i181">181</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="180-_cp" 
+    data-postnum="181"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 180">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody181-_cp" class="postbody" data-htmlength="43">
+    <blockquote class="postmessage">Пиздец, взрослая кобыла с сисяндрами уже цп</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:182</div>   <table id="postnode182-_cp" class="postnode" data-id="182" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply182">      <a name="182"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('182-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="182:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Ноя 11 19:27:53</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="182" data-b="_cp"><a href="/_cp/res/180.html#182" class="shl">No.&nbsp;</a><a href="/_cp/res/180.html#i182">182</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="180-_cp" 
+    data-postnum="182"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 180">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody182-_cp" class="postbody" data-htmlength="185">
+    <blockquote class="postmessage"><a href="/postbynumber.php?b=_cp&p=180" class="ref|_cp|180|180">&gt;&gt;180</a><br />Это Алина, ей то ли 14 или 15. Жаль полного нету, только то, что тут. Но можешь на катчане поискать</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:183</div>   <table id="postnode183-_cp" class="postnode" data-id="183" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply183">      <a name="183"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('183-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="183:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Вск 2023 Ноя 12 02:56:33</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="183" data-b="_cp"><a href="/_cp/res/180.html#183" class="shl">No.&nbsp;</a><a href="/_cp/res/180.html#i183">183</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="180-_cp" 
+    data-postnum="183"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 180">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody183-_cp" class="postbody" data-htmlength="123">
+    <blockquote class="postmessage"><a href="/_cp/res/180.html#182" class="ref|_cp|180|182">&gt;&gt;182</a><br />Не смог выгуглить линк на катчан. Поделишься?</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:184</div>   <table id="postnode184-_cp" class="postnode" data-id="184" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply184">      <a name="184"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('184-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="184:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Пнд 2023 Ноя 13 00:38:50</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="184" data-b="_cp"><a href="/_cp/res/180.html#184" class="shl">No.&nbsp;</a><a href="/_cp/res/180.html#i184">184</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="180-_cp" 
+    data-postnum="184"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 180">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody184-_cp" class="postbody" data-htmlength="217">
+    <blockquote class="postmessage"><a href="/_cp/res/180.html#183" class="ref|_cp|180|183">&gt;&gt;183</a><br /><a target="_blank" rel="nofollow noopener noreferrer" href="https://catchan.pk/site/index.html">https://catchan.pk/site/index.html</a> лови</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:185</div>   <table id="postnode185-_cp" class="postnode" data-id="185" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply185">      <a name="185"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('185-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="185:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Пнд 2023 Ноя 13 21:50:42</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="185" data-b="_cp"><a href="/_cp/res/180.html#185" class="shl">No.&nbsp;</a><a href="/_cp/res/180.html#i185">185</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="180-_cp" 
+    data-postnum="185"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 180">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody185-_cp" class="postbody" data-htmlength="110">
+    <blockquote class="postmessage"><a href="/_cp/res/180.html#184" class="ref|_cp|180|184">&gt;&gt;184</a><br />Не открывайте пацаны, там вирус!</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+    
+    <span id="unhidethread175-_cp">
+   Тред 
+   <a href="/_cp/res/175.html" class="ref|_cp|175|175">175</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('175-_cp');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread175-_cp" data-threadid="175" data-boardid="47">    <div class="i0svcel">!i0-pd:175</div>    <div class="postnode op" data-id="175" data-board="_cp">     <a name="s8"></a>
+ 
+ <div class="posthead">
+    <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="175:_cp" /><span class="filetitle">ss</span><span class="postername">Педофил</span>      <span class="posttime">
+    Пнд 2023 Ноя 6 19:01:41</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="175" data-b="_cp"><a href="/_cp/res/175.html#175" class="shl">No.&nbsp;</a><a href="/_cp/res/175.html#i175">175</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide175" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('175-_cp');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="175-_cp" 
+    data-postnum="175"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_cp/res/175.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody175-_cp" class="postbody" data-htmlength="0">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="13973">
+                                  <figcaption class="filesize">
+          <a download="al3.webm" target="_blank" href="/_cp/src/169928649746.webm" title="al3.webm"><span class="fc-filename" style="max-width:150px">al3</span>.webm</a>
+          <br>1.62MB, 1920×1080          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13973">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13973:_cp">
+         </figcaption>
+                         <a 
+          class="movie" data-id="13973" data-thumb="/_cp/thumb/169928649746s.jpg" data-width="1920" data-height="1080"                           target="_blank"        
+         href="/_cp/src/169928649746.webm">
+                            <div id="thumb13973" class="thumb playable-thumb" title="Play"><img src="/_cp/thumb/169928649746s.jpg" alt="175" class="thumb" height="113" width="200" /></div>
+                  </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage"></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies175-_cp" class="replies">
+       
+    <div class="i0svcel">!i0-pd:176</div>   <table id="postnode176-_cp" class="postnode" data-id="176" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply176">      <a name="176"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('176-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="176:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Пнд 2023 Ноя 6 20:43:34</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="176" data-b="_cp"><a href="/_cp/res/175.html#176" class="shl">No.&nbsp;</a><a href="/_cp/res/175.html#i176">176</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="175-_cp" 
+    data-postnum="176"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 175">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody176-_cp" class="postbody" data-htmlength="13">
+    <blockquote class="postmessage">Скример падла</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:177</div>   <table id="postnode177-_cp" class="postnode" data-id="177" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply177">      <a name="177"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('177-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="177:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Втр 2023 Ноя 7 05:36:03</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="177" data-b="_cp"><a href="/_cp/res/175.html#177" class="shl">No.&nbsp;</a><a href="/_cp/res/175.html#i177">177</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="175-_cp" 
+    data-postnum="177"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 175">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody177-_cp" class="postbody" data-htmlength="82">
+    <blockquote class="postmessage"><a href="/_cp/res/175.html#176" class="ref|_cp|175|176">&gt;&gt;176</a><br />Где?</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+    
+    <span id="unhidethread166-_cp">
+   Тред 
+   <a href="/_cp/res/166.html" class="ref|_cp|166|166">166</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('166-_cp');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread166-_cp" data-threadid="166" data-boardid="47">    <div class="i0svcel">!i0-pd:166</div>    <div class="postnode op" data-id="166" data-board="_cp">     <a name="s9"></a>
+ 
+ <div class="posthead">
+    <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="166:_cp" /><span class="filetitle">Teen</span><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Ноя 4 20:03:37</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="166" data-b="_cp"><a href="/_cp/res/166.html#166" class="shl">No.&nbsp;</a><a href="/_cp/res/166.html#i166">166</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide166" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('166-_cp');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="166-_cp" 
+    data-postnum="166"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_cp/res/166.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody166-_cp" class="postbody" data-htmlength="40">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="13957">
+                                  <figcaption class="filesize">
+          <a download="9.jpg" target="_blank" href="/_cp/src/169911741655.jpg" title="9.jpg"><span class="fc-filename" style="max-width:62px">9</span>.jpg</a>
+          <br>68.44KB, 719×1280          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13957">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13957:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13957', '/_cp/src/169911741655.jpg', '/_cp/thumb/169911741655s.jpg', '719', '1280', '112', '200');" 
+         href="/_cp/src/169911741655.jpg">
+         <span id="thumb13957"><img src="/_cp/thumb/169911741655s.jpg" alt="166" class="thumb" height="200" width="112" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="13958">
+                                  <figcaption class="filesize">
+          <a download="8.jpg" target="_blank" href="/_cp/src/169911741759.jpg" title="8.jpg"><span class="fc-filename" style="max-width:62px">8</span>.jpg</a>
+          <br>66.19KB, 719×1280          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13958">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13958:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13958', '/_cp/src/169911741759.jpg', '/_cp/thumb/169911741759s.jpg', '719', '1280', '112', '200');" 
+         href="/_cp/src/169911741759.jpg">
+         <span id="thumb13958"><img src="/_cp/thumb/169911741759s.jpg" alt="166" class="thumb" height="200" width="112" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="13959">
+                                  <figcaption class="filesize">
+          <a download="16.jpg" target="_blank" href="/_cp/src/169911741719.jpg" title="16.jpg"><span class="fc-filename" style="max-width:150px">16</span>.jpg</a>
+          <br>78.24KB, 1280×719          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13959">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13959:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13959', '/_cp/src/169911741719.jpg', '/_cp/thumb/169911741719s.jpg', '1280', '719', '200', '112');" 
+         href="/_cp/src/169911741719.jpg">
+         <span id="thumb13959"><img src="/_cp/thumb/169911741719s.jpg" alt="166" class="thumb" height="112" width="200" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="13960">
+                                  <figcaption class="filesize">
+          <a download="18.jpg" target="_blank" href="/_cp/src/169911741723.jpg" title="18.jpg"><span class="fc-filename" style="max-width:150px">18</span>.jpg</a>
+          <br>116.07KB, 1280×960          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13960">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13960:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13960', '/_cp/src/169911741723.jpg', '/_cp/thumb/169911741723s.jpg', '1280', '960', '200', '150');" 
+         href="/_cp/src/169911741723.jpg">
+         <span id="thumb13960"><img src="/_cp/thumb/169911741723s.jpg" alt="166" class="thumb" height="150" width="200" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">Накидайте тянов 14-17, по типу Никитиной</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies166-_cp" class="replies">
+       
+    <div class="i0svcel">!i0-pd:167</div>   <table id="postnode167-_cp" class="postnode" data-id="167" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply167">      <a name="167"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('167-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="167:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Ноя 4 20:04:38</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="167" data-b="_cp"><a href="/_cp/res/166.html#167" class="shl">No.&nbsp;</a><a href="/_cp/res/166.html#i167">167</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="166-_cp" 
+    data-postnum="167"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 166">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <br>   </div>
+
+ <div id="postbody167-_cp" class="postbody pb-empty" data-htmlength="0">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="13961">
+                                  <figcaption class="filesize">
+          <a download="21.jpg" target="_blank" href="/_cp/src/169911747879.jpg" title="21.jpg"><span class="fc-filename" style="max-width:75px">21</span>.jpg</a>
+          <br>41.08KB, 750×399          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13961">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13961:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13961', '/_cp/src/169911747879.jpg', '/_cp/thumb/169911747879s.jpg', '750', '399', '125', '67');" 
+         href="/_cp/src/169911747879.jpg">
+         <span id="thumb13961"><img src="/_cp/thumb/169911747879s.jpg" alt="167" class="thumb" height="67" width="125" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="13962">
+                                  <figcaption class="filesize">
+          <a download="23.jpg" target="_blank" href="/_cp/src/169911747883.jpg" title="23.jpg"><span class="fc-filename" style="max-width:75px">23</span>.jpg</a>
+          <br>354.11KB, 2560×1440          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13962">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13962:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13962', '/_cp/src/169911747883.jpg', '/_cp/thumb/169911747883s.jpg', '2560', '1440', '125', '70');" 
+         href="/_cp/src/169911747883.jpg">
+         <span id="thumb13962"><img src="/_cp/thumb/169911747883s.jpg" alt="167" class="thumb" height="70" width="125" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="13963">
+                                  <figcaption class="filesize">
+          <a download="28.jpg" target="_blank" href="/_cp/src/169911747843.jpg" title="28.jpg"><span class="fc-filename" style="max-width:75px">28</span>.jpg</a>
+          <br>90.37KB, 1280×719          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13963">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13963:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13963', '/_cp/src/169911747843.jpg', '/_cp/thumb/169911747843s.jpg', '1280', '719', '125', '70');" 
+         href="/_cp/src/169911747843.jpg">
+         <span id="thumb13963"><img src="/_cp/thumb/169911747843s.jpg" alt="167" class="thumb" height="70" width="125" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="13964">
+                                  <figcaption class="filesize">
+          <a download="27.jpg" target="_blank" href="/_cp/src/169911747816.jpg" title="27.jpg"><span class="fc-filename" style="max-width:75px">27</span>.jpg</a>
+          <br>91.92KB, 1280×719          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13964">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13964:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13964', '/_cp/src/169911747816.jpg', '/_cp/thumb/169911747816s.jpg', '1280', '719', '125', '70');" 
+         href="/_cp/src/169911747816.jpg">
+         <span id="thumb13964"><img src="/_cp/thumb/169911747816s.jpg" alt="167" class="thumb" height="70" width="125" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage"></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:168</div>   <table id="postnode168-_cp" class="postnode" data-id="168" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply168">      <a name="168"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('168-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="168:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Ноя 4 20:05:59</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="168" data-b="_cp"><a href="/_cp/res/166.html#168" class="shl">No.&nbsp;</a><a href="/_cp/res/166.html#i168">168</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="166-_cp" 
+    data-postnum="168"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 166">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <br>   </div>
+
+ <div id="postbody168-_cp" class="postbody pb-empty" data-htmlength="0">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="13965">
+                                  <figcaption class="filesize">
+          <a download="19.jpg" target="_blank" href="/_cp/src/169911755957.jpg" title="19.jpg"><span class="fc-filename" style="max-width:75px">19</span>.jpg</a>
+          <br>109.98KB, 1280×960          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13965">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13965:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13965', '/_cp/src/169911755957.jpg', '/_cp/thumb/169911755957s.jpg', '1280', '960', '125', '94');" 
+         href="/_cp/src/169911755957.jpg">
+         <span id="thumb13965"><img src="/_cp/thumb/169911755957s.jpg" alt="168" class="thumb" height="94" width="125" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="13966">
+                                  <figcaption class="filesize">
+          <a download="14.jpg" target="_blank" href="/_cp/src/169911755959.jpg" title="14.jpg"><span class="fc-filename" style="max-width:44px">14</span>.jpg</a>
+          <br>107.68KB, 960×1280          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13966">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13966:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13966', '/_cp/src/169911755959.jpg', '/_cp/thumb/169911755959s.jpg', '960', '1280', '94', '125');" 
+         href="/_cp/src/169911755959.jpg">
+         <span id="thumb13966"><img src="/_cp/thumb/169911755959s.jpg" alt="168" class="thumb" height="125" width="94" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="13967">
+                                  <figcaption class="filesize">
+          <a download="0a6a5d3c2ca2778c4863a0b04d5d8b7e7e8d9c77.jpg" target="_blank" href="/_cp/src/169911755945.jpg" title="0a6a5d3c2ca2778c4863a0b04d5d8b7e7e8d9c77.jpg"><span class="fc-filename" style="max-width:44px">0a6a5d3c2ca2778c4863a0b04d5d8b7e7e8d9c77</span>.jpg</a>
+          <br>49.00KB, 545×727          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13967">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13967:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13967', '/_cp/src/169911755945.jpg', '/_cp/thumb/169911755945s.jpg', '545', '727', '94', '125');" 
+         href="/_cp/src/169911755945.jpg">
+         <span id="thumb13967"><img src="/_cp/thumb/169911755945s.jpg" alt="168" class="thumb" height="125" width="94" /></span>
+         </a>
+               </figure>
+                                 <figure class="multiembed" data-fileid="13968">
+                                  <figcaption class="filesize">
+          <a download="ee621e085eed5be3af7c3df8c4f170b86aaf40ef.jpg" target="_blank" href="/_cp/src/169911755919.jpg" title="ee621e085eed5be3af7c3df8c4f170b86aaf40ef.jpg"><span class="fc-filename" style="max-width:44px">ee621e085eed5be3af7c3df8c4f170b86aaf40ef</span>.jpg</a>
+          <br>52.30KB, 545×727          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13968">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13968:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13968', '/_cp/src/169911755919.jpg', '/_cp/thumb/169911755919s.jpg', '545', '727', '94', '125');" 
+         href="/_cp/src/169911755919.jpg">
+         <span id="thumb13968"><img src="/_cp/thumb/169911755919s.jpg" alt="168" class="thumb" height="125" width="94" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage"></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:169</div>   <table id="postnode169-_cp" class="postnode" data-id="169" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply169">      <a name="169"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('169-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="169:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Сбт 2023 Ноя 4 23:37:47</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="169" data-b="_cp"><a href="/_cp/res/166.html#169" class="shl">No.&nbsp;</a><a href="/_cp/res/166.html#i169">169</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="166-_cp" 
+    data-postnum="169"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 166">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <br>   </div>
+
+ <div id="postbody169-_cp" class="postbody pb-empty" data-htmlength="0">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="13969">
+                                  <figcaption class="filesize">
+          <a download="hard-tm.su 4.mp4" target="_blank" href="/_cp/src/169913026375.mp4" title="hard-tm.su 4.mp4"><span class="fc-filename" style="max-width:150px">hard-tm.su 4</span>.mp4</a>
+          <br>10.25MB, 640×360          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13969">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13969:_cp">
+         </figcaption>
+                         <a 
+          class="movie" data-id="13969" data-thumb="/_cp/thumb/169913026375s.jpg" data-width="640" data-height="360"                           target="_blank"        
+         href="/_cp/src/169913026375.mp4">
+                            <div id="thumb13969" class="thumb playable-thumb" title="Play"><img src="/_cp/thumb/169913026375s.jpg" alt="169" class="thumb" height="113" width="200" /></div>
+                  </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage"></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:170</div>   <table id="postnode170-_cp" class="postnode" data-id="170" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply170">      <a name="170"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('170-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="170:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Вск 2023 Ноя 5 00:11:31</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="170" data-b="_cp"><a href="/_cp/res/166.html#170" class="shl">No.&nbsp;</a><a href="/_cp/res/166.html#i170">170</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="166-_cp" 
+    data-postnum="170"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 166">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <br>   </div>
+
+ <div id="postbody170-_cp" class="postbody pb-empty" data-htmlength="0">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="13970">
+                                  <figcaption class="filesize">
+          <a download="hard-tm.su 6.mp4" target="_blank" href="/_cp/src/169913228665.mp4" title="hard-tm.su 6.mp4"><span class="fc-filename" style="max-width:150px">hard-tm.su 6</span>.mp4</a>
+          <br>11.53MB, 640×350          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13970">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13970:_cp">
+         </figcaption>
+                         <a 
+          class="movie" data-id="13970" data-thumb="/_cp/thumb/169913228665s.jpg" data-width="640" data-height="350"                           target="_blank"        
+         href="/_cp/src/169913228665.mp4">
+                            <div id="thumb13970" class="thumb playable-thumb" title="Play"><img src="/_cp/thumb/169913228665s.jpg" alt="170" class="thumb" height="109" width="200" /></div>
+                  </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage"></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:171</div>   <table id="postnode171-_cp" class="postnode" data-id="171" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply171">      <a name="171"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('171-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="171:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Вск 2023 Ноя 5 00:18:50</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="171" data-b="_cp"><a href="/_cp/res/166.html#171" class="shl">No.&nbsp;</a><a href="/_cp/res/166.html#i171">171</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="166-_cp" 
+    data-postnum="171"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 166">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <br>   </div>
+
+ <div id="postbody171-_cp" class="postbody pb-empty" data-htmlength="0">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="13971">
+                                  <figcaption class="filesize">
+          <a download="hard-tm.su 8.mp4" target="_blank" href="/_cp/src/169913272758.mp4" title="hard-tm.su 8.mp4"><span class="fc-filename" style="max-width:150px">hard-tm.su 8</span>.mp4</a>
+          <br>7.39MB, 848×464          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13971">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13971:_cp">
+         </figcaption>
+                         <a 
+          class="movie" data-id="13971" data-thumb="/_cp/thumb/169913272758s.jpg" data-width="848" data-height="464"                           target="_blank"        
+         href="/_cp/src/169913272758.mp4">
+                            <div id="thumb13971" class="thumb playable-thumb" title="Play"><img src="/_cp/thumb/169913272758s.jpg" alt="171" class="thumb" height="109" width="200" /></div>
+                  </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage"></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+    
+    <span id="unhidethread28-_cp">
+   Тред 
+   <a href="/_cp/res/28.html" class="ref|_cp|28|28">28</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('28-_cp');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread28-_cp" data-threadid="28" data-boardid="47">    <div class="i0svcel">!i0-pd:28</div>    <div class="postnode op" data-id="28" data-board="_cp">     <a name="s10"></a>
+ 
+ <div class="posthead">
+    <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="28:_cp" /><span class="filetitle">CandyDoll</span><span class="postername">Педофил</span>      <span class="posttime">
+    Вск 2023 Сен 24 12:12:25</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="28" data-b="_cp"><a href="/_cp/res/28.html#28" class="shl">No.&nbsp;</a><a href="/_cp/res/28.html#i28">28</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide28" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('28-_cp');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="28-_cp" 
+    data-postnum="28"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_cp/res/28.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody28-_cp" class="postbody" data-htmlength="507">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="13691">
+                                  <figcaption class="filesize">
+          <a download="w.png" target="_blank" href="/_cp/src/169554674528.png" title="w.png"><span class="fc-filename" style="max-width:150px">w</span>.png</a>
+          <br>109.61KB, 1289×603          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13691">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13691:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13691', '/_cp/src/169554674528.png', '/_cp/thumb/169554674528s.png', '1289', '603', '200', '94');" 
+         href="/_cp/src/169554674528.png">
+         <span id="thumb13691"><img src="/_cp/thumb/169554674528s.png" alt="28" class="thumb" height="94" width="200" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">126 объектов, общий размер 384,6 ГБ (358GiB)<br /><br />magnet:?xt=urn:btih:f962494e5d0a24a95e7bc61c97e262aa5dad9d11<br /><br />magnet:?xt=urn:btih:f962494e5d0a24a95e7bc61c97e262aa5dad9d11&amp;dn=Candydoll-358-F962&amp;net=I2P&amp;tr=http%3A%2F%2Fopentracker.dg2.i2p%2Fa&amp;tr=http%3A%2F%2Fopentracker.skank.i2p%2Fa<br /><br />накачал помнится кэндидолок несколько лет назад, с клирнета. попался в biglybt/находки_в_рое этот же магнет без сида, с двумя личами.<br /><br />встал на раздачу, сидирую.</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies28-_cp" class="replies">
+       <span class="omittedposts">
+     <a href="/_cp/res/28.html" onclick="return expandthread('28','_cp', event)" title="Развернуть тред">
+             16 постов и 2 изображения пропущено.
+           </a>
+    </span>
+       
+    <div class="i0svcel">!i0-pd:47</div>   <table id="postnode47-_cp" class="postnode" data-id="47" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply47">      <a name="47"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('47-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="47:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Чтв 2023 Сен 28 00:25:24</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="47" data-b="_cp"><a href="/_cp/res/28.html#47" class="shl">No.&nbsp;</a><a href="/_cp/res/28.html#i47">47</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="28-_cp" 
+    data-postnum="47"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 28">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <br>   </div>
+
+ <div id="postbody47-_cp" class="postbody" data-htmlength="115">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="13775">
+                                  <figcaption class="filesize">
+          <a download="photo1695849793.jpg" target="_blank" href="/_cp/src/169584992494.jpg" title="photo1695849793.jpg"><span class="fc-filename" style="max-width:75px">photo1695849793</span>.jpg</a>
+          <br>34.11KB, 604×436          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="13775">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="13775:_cp">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('13775', '/_cp/src/169584992494.jpg', '/_cp/thumb/169584992494s.jpg', '604', '436', '125', '90');" 
+         href="/_cp/src/169584992494.jpg">
+         <span id="thumb13775"><img src="/_cp/thumb/169584992494s.jpg" alt="47" class="thumb" height="90" width="125" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage"><a href="/postbynumber.php?b=_cp&p=28" class="ref|_cp|28|28">&gt;&gt;28</a><br />Какие тяночки там самые красивые?</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:48</div>   <table id="postnode48-_cp" class="postnode" data-id="48" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply48">      <a name="48"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('48-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="48:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Чтв 2023 Сен 28 19:04:18</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="48" data-b="_cp"><a href="/_cp/res/28.html#48" class="shl">No.&nbsp;</a><a href="/_cp/res/28.html#i48">48</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="28-_cp" 
+    data-postnum="48"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 28">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody48-_cp" class="postbody" data-htmlength="35">
+    <blockquote class="postmessage">там нет тянок. только лольки(белки)</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:49</div>   <table id="postnode49-_cp" class="postnode" data-id="49" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply49">      <a name="49"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('49-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="49:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Птн 2023 Сен 29 14:35:44</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="49" data-b="_cp"><a href="/_cp/res/28.html#49" class="shl">No.&nbsp;</a><a href="/_cp/res/28.html#i49">49</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="28-_cp" 
+    data-postnum="49"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 28">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody49-_cp" class="postbody" data-htmlength="150">
+    <blockquote class="postmessage">В какой качалке можно выбирать файло для скачки из всей пачки? А то штандартный и2п качатель только целым кусом льёт, а 400 гиг качать&nbsp;— охуеешь.</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:50</div>   <table id="postnode50-_cp" class="postnode" data-id="50" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply50">      <a name="50"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('50-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="50:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Птн 2023 Сен 29 16:00:19</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="50" data-b="_cp"><a href="/_cp/res/28.html#50" class="shl">No.&nbsp;</a><a href="/_cp/res/28.html#i50">50</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="28-_cp" 
+    data-postnum="50"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 28">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody50-_cp" class="postbody" data-htmlength="124">
+    <blockquote class="postmessage">в стандартнос  снекре можно  выбрать файлы которые не надо скачивать. и приоритеты.<br />только место он всёравно выделяет.</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:149</div>   <table id="postnode149-_cp" class="postnode" data-id="149" data-board="_cp"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply149">      <a name="149"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('149-_cp');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="149:_cp" /><span class="postername">Педофил</span>      <span class="posttime">
+    Птн 2023 Ноя 3 15:34:59</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="149" data-b="_cp"><a href="/_cp/res/28.html#149" class="shl">No.&nbsp;</a><a href="/_cp/res/28.html#i149">149</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="28-_cp" 
+    data-postnum="149"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 28">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody149-_cp" class="postbody" data-htmlength="115">
+    <blockquote class="postmessage">Здрасте, спасибо за раздачу <br />Здесь их видео есть? У меня уже есть 100000 фотографий но только 3 видео в итоге</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+  <div class="i0svcel">!i0-page-end</div><table class="userdelete"><tbody>
+<tr><td>
+<input placeholder="Пароль" type="password" name="postpassword" size="8" class="make-me-readonly"/>
+</td></tr>
+<noscript><tr><td><details>
+<summary>Капча</summary>
+<iframe class="captchawrap" src="/nojscaptcha.php" frameborder="0" width="150" height="32" style="vertical-align: middle;"></iframe><br>
+<input type="text" name="captcha" placeholder="Капча" style="margin-top:4px" accesskey="c" style="vertical-align: middle" autocomplete="off">
+</details></td></tr></noscript>
+<tr><td>
+<input name="deletepost" value="Удалить пост" type="submit" class="styled-button bad-button" /></td></tr>
+<tr><td>
+<input name="reportpost" value="Пожаловаться" type="submit" class="styled-button" />
+</td></tr>
+<tr><td>
+<input name="cancel_timer" value="Отменить таймер" type="submit" class="styled-button" />
+</td></tr>
+<noscript><tr><td><details>
+<summary>Модерация</summary>
+<input name="moddelete" value="Удалить (Модератор)" type="submit" class="styled-button bad-button" />
+</details></td></tr></noscript>
+</tbody></table>
+</form>
+
+<script type="text/javascript"><!--
+set_delpass("delform");
+//--></script>
+<table border="1" id="pagination">
+<tbody>
+<tr>
+<td>
+<form method="get" action="/_cp/">
+<input value="Назад" type="submit" /></form>
+</td>
+<td>
+&#91;<a href="/_cp/">0</a>&#93;
+&#91;1&#93;
+&#91;<a href="/_cp/2.html">2</a>&#93;
+
+</td>
+<td>
+<form method="get" action="/_cp/2.html"><input value="Дальше" type="submit" /></form>
+
+</td>
+</tr>
+</tbody>
+</table>
+<br />
+<div id="boardlist_footer" class="navbar boardlist">[<a title="Overboard" href="/over/">over</a>]
+[<label class="collapsible-menu">
+<input type="checkbox"  checked>
+<span class="collapsible-menu-name">all</span>
+<span class="collapsed-menu-contents">
+<a title="Meta" href="/meta/">meta</a></span>
+</label>]
+[<label class="collapsible-menu">
+<input type="checkbox" >
+<span class="collapsible-menu-name">2.0</span>
+<span class="collapsed-menu-contents">
+<a title="долгожданное слияние и2п и метарта)" href="/_2chzoii2p/">_2chzoii2p</a> / <a title="олдскул" href="/_8/">_8</a> / <a title="Аниме" href="/_a/">_a</a> / <a title="Разговоры про аниме" href="/_ad/">_ad</a> / <a title="Бред" href="/_b/">_b</a> / <a title="Бред+" href="/_bb/">_bb</a> / <a title="blackhat" href="/_blackhat/">_blackhat</a> / <a title="bred" href="/_bred/">_bred</a> / <a title="complaint received" href="/_c/">_c</a> / <a title="Центральные Процессоры" href="/_cp/">_cp</a> / <a title="Рисунки" href="/_d/">_d</a> / <a title="Наркотики" href="/_drag/">_drag</a> / <a title="Flash" href="/_f/">_f</a> / <a title="Хентай" href="/_h/">_h</a> / <a title="Курятник" href="/_ko/">_ko</a> / <a title="Dialectics." href="/_leftypol/">_leftypol</a> / <a title="Музыка" href="/_m/">_m</a> / <a title="me" href="/_me/">_me</a> / <a title="милые мамуличьки" href="/_milf/">_milf</a> / <a title="My Little Pony" href="/_mlp/">_mlp</a> / <a title="жирный омега хуесос" href="/_oa/">_oa</a> / <a title="Питурд" href="/_pitard/">_pitard</a> / <a title="sosnooly" href="/_s/">_s</a> / <a title="мой личный саит." href="/_skakdollar/">_skakdollar</a> / <a title="(раздел для геев)" href="/_vg/">_vg</a> / <a title="Творчество" href="/_webm/">_webm</a></span>
+</label>]
+[<label class="collapsible-menu">
+<input type="checkbox">
+<span class="collapsible-menu-name"><i>Стиль</i></span>
+<span class="collapsed-menu-contents">
+<a href='/setstylesheet.php?style=Thorium' onclick="javascript:Styles.change('Thorium');return false;">Thorium</a>
+ / <a href='/setstylesheet.php?style=Modern' onclick="javascript:Styles.change('Modern');return false;">Modern</a>
+ / <a href='/setstylesheet.php?style=Newdark' onclick="javascript:Styles.change('Newdark');return false;">Newdark</a>
+ / <a href='/setstylesheet.php?style=Photon' onclick="javascript:Styles.change('Photon');return false;">Photon</a>
+</span>
+</label>]</div>
+</div><!-- /.content --><a name="bottom"></a>
+<noscript><img src="/board.php" style="display: none"></noscript>
+<script>$(document).ready(readyset); console.info("Затрачено 0.14669704437256 cек.")</script>
+</body>
+</html>

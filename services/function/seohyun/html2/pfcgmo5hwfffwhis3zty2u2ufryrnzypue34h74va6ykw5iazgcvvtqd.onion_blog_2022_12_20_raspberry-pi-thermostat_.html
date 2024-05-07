@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Raspberry Pi thermostat</title><style>
+body{margin:auto;max-width:50em;padding-left:0.5em;padding-right:0.5em}
+img{max-width:100%}
+#banner h1{font-size:2.5em;margin-top:5px;margin-bottom:5px;text-align:center}
+#banner h1 a:link,#banner h1 a:visited{color:#111;text-decoration:none}
+pre{padding:0.5em;background:#ddd;border:1px solid #000;overflow:auto}
+.entry-title{font-size:2em;margin-bottom:0.5em}
+.tags{margin-top:0px;margin-bottom:0px}
+.article-link{font-weight:bold}
+.post-info{float:right;margin:0.5em;padding:0.5em;border:1px solid #000;max-width:16em}
+footer div{column-count:3;column-width:18em;column-rule:1px solid #ddd}
+footer div div{display:inline-block}
+nav ul{list-style-type:none;margin:0;padding:0;overflow:hidden;background-color:#eee}
+nav ul li{float:left}
+nav ul li a{display:block;color:#333;text-align:center;font-size:1.5em;padding:14px 16px;text-decoration:none}
+nav ul li a:hover{background-color:#ddd}
+table,td,th{padding:0.2em;border:1px solid gray;border-collapse:collapse}
+</style><link href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tomas' place in cyber&shy;space Atom Feed"/><link href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Tomas' place in cyber&shy;space RSS Feed"/></head><body>
+<header id="banner">
+<h1><a href="../../../../../">Tomas' place in cyber&shy;space </a></h1>
+<nav><ul>
+<li><a href="/">Home</a></li>
+<li><a href="/category/blog.html">Blog</a></li>
+<li><a href="/category/demoscene.html">Demoscene</a></li>
+<li><a href="/files">Files</a></li>
+<li><a href="/pages/consulting.html">Consulting</a></li>
+<li><a href="/pages/contact.html">Contact</a></li>
+</ul></nav>
+</header>
+<section><article><header>
+<aside class="post-info">
+<abbr class="published" title="2022-12-20T12:04:27+01:00">
+Published: 2022-12-20</abbr>
+in <a href="../../../../../category/blog.html">Blog</a>
+<p class="tags">Tags: <a href="../../../../../tag/electronics.html">electronics</a> <a href="../../../../../tag/raspberrypi.html">raspberrypi</a> <a href="../../../../../tag/1wire.html">1wire</a> </p>
+</aside><h1 class="entry-title">
+<a href="../../../../../blog/2022/12/20/raspberry-pi-thermostat/" rel="bookmark"
+title="Permalink to Raspberry Pi thermostat">Raspberry Pi thermostat</a></h1>
+</header>
+<div class="entry-content"><p>Due to various compounding personal reasons I was not able to winterize my house in time this year.
+Usually I do this some time in November, before much snow has fallen so it is still accessible by car.
+It is a process that involves draining the water system and setting a thermostat to keep the basement from freezing.
+I got delayed until December 16th which means over half a meter of snow had already fallen.
+This meant I had to resort to skis to access my house and do the winterization.
+Luckily temperatures in the basement hadn't fallen below 2°C despite the delay.</p>
+<p><a href="../../../../../images/thermostat/strip-IMG_20221216_132141.jpg"><img alt="Ski tracks up to my house" src="../../../../../images/thermostat/tstrip-IMG_20221216_132141.jpg"></a></p>
+<p>The distance from my house to my neighbor is 300 meters and takes around 20 minutes by skis, 45 minutes with snow shoes.
+Not the greatest thing to be forced to do.
+I therefore took the opportunity to install a thermostat that can be controlled remotely.
+Since I know quite a bit of electronics and how to do computer stuff this felt like a perfect less-than-a-week project.
+The result is shown in the two pictures below:</p>
+<p><a href="../../../../../images/thermostat/strip-IMG_20221216_140923.jpg"><img alt="Box with wall sockets, raspberry pi and relay board" src="../../../../../images/thermostat/tstrip-IMG_20221216_140923.jpg"></a></p>
+<p><a href="../../../../../images/thermostat/strip-IMG_20221216_140957.jpg"><img alt="Box, heater and power strip" src="../../../../../images/thermostat/tstrip-IMG_20221216_140957.jpg"></a></p>
+<p>A heater is connected to a box which has a wall socket on it and a Raspberry Pi and some relays inside.
+A schematic is shown below:</p>
+<p><a href="../../../../../images/thermostat/thermostat.png"><img alt="Schematic" src="../../../../../images/thermostat/thermostat.png"></a></p>
+<p>Both relays use 24 V coils and are capable of switching 16 A 230 VAC.
+24 V is given by a wall wart.
+I use both a 1N4148 and a 1N4007 as freewheeling diodes to get both quick switching and higher current handling capability. It is likely overkill but doesn't hurt.</p>
+<p>The circuit board that the relays are soldered to has had copper drilled away in relevant places to improve isolation. In addition the 100 kΩ resistors in series with each MOSFET gate provide extra protection.
+Only one relay is used at the moment.</p>
+<p>I have two 1-Wire DS18B20 temperature sensors connected.
+One sensor is connected via a 3.5 mm mono (TS) phone jack and the other is connected directly via a 3-wire ribbon cable.
+I had initially wanted to use parasitically powered sensors but there is currently some kind of bug with the Pi's 1-Wire driver that makes this unreliable. More on that later.</p>
+<p>The Pi is connected to the WiFi in my house and can be logged into over SSH by jumping via two other machines.
+I hope to reduce this to just one intermediate machine in the future.</p>
+<h2>Control, minimizing electricity cost</h2>
+<p>One thing that a computerized and internet connected thermostat enables is better temperature control.
+Especially with how high electricity prices are at the moment, I want to run the heater when the electricity is the cheapest.
+Such information is provided by <a href="https://www.nordpoolgroup.com/">Nord Pool</a>, via a public API for dayahead electricity prices.</p>
+<p>Given a thermal model of the basement, optimal heater control can be realized given dayahead prices and the weather forecast.
+Doing so involves solving a linear program on the form "minimize cost subject to basement temperature ≥ 4°C".
+This program can then be re-formulated and re-solved every hour, yielding desired heater power.
+It is tempting to think one should just run the highest power heater at full blast when the electricity is cheapest, but higher basement temperature also means higher thermal leakage.
+There is likely an optimal solution between this extreme and just setting a constant thermostat set point.</p>
+<p>Currently I have the heater configured to run a bit warmer between 22:00-06:00 on the assumption that electricity is reasonably cheap during these off-hours.
+The current setting is +9°C during these hours vs +5°C the rest of the day, with +-1°C hysteresis.</p>
+<p>Besides the above, one problem with my current setup is the limited thermal inertia available.
+I only have the air as a thermal mass besides the basement itself, and the basement's concrete walls conduct heat away relatively quickly.
+I'd prefer something like a sand "battery" that is heated up at optimal times.
+Another possibility is to run the water heater since it's already available and water is a good thermal mass.
+Whichever mass is used, they provide a "buffer" between heater power applied, the basement's air + water pipes and the walls of the basement.
+They therefore allow moving closer to the "max power at the cheapest hour" mode of heating.</p>
+<p>Based on statistics over the years I know that roughly 10 kWh/day is necessary to keep the basement above 4°C.
+I may write a post in the future diving further into this once I have more statistics.</p>
+<h2>Code</h2>
+<p>The following Python program is used to control the relay.
+It is executed by the pi user on startup by adding the following with <code>crontab -e</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">@reboot</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nf">pi</span><span class="o">/</span><span class="n">thermostat</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div>
+
+<p>And the code itself:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">gpiozero</span> <span class="kn">import</span> <span class="n">LED</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">localtime</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">exists</span>
+
+<span class="n">relay_lower</span> <span class="o">=</span> <span class="n">LED</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">relay_upper</span> <span class="o">=</span> <span class="n">LED</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">relay</span> <span class="o">=</span> <span class="n">relay_upper</span>
+<span class="n">relay</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+<span class="n">on</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">csv</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/home/pi/thermostat_log.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_temp</span><span class="p">():</span>
+ <span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">&#39;/sys/bus/w1/devices/28-000008d67211/w1_slave&#39;</span><span class="p">,</span> <span class="c1"># trs</span>
+  <span class="s1">&#39;/sys/bus/w1/devices/28-000008d6526e/w1_slave&#39;</span><span class="p">,</span> <span class="c1"># backup</span>
+ <span class="p">]</span>
+ <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+   <span class="c1"># read temperature</span>
+   <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">1000</span>
+    <span class="k">return</span> <span class="n">t</span>
+ <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;No DS18B20&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">set_relay</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+ <span class="k">global</span> <span class="n">on</span>
+ <span class="k">global</span> <span class="n">csv</span>
+
+ <span class="k">if</span> <span class="n">on</span> <span class="o">!=</span> <span class="n">state</span><span class="p">:</span>
+  <span class="n">on</span> <span class="o">=</span> <span class="n">state</span>
+  <span class="k">if</span> <span class="n">state</span><span class="p">:</span>
+   <span class="n">relay</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+   <span class="n">relay</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+  <span class="n">csv</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1">,</span><span class="si">%.3f</span><span class="s1">,</span><span class="si">%i</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">(),</span> <span class="n">t</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">state</span><span class="p">)))</span>
+  <span class="n">csv</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+<span class="c1"># returns (t_on, t_off)</span>
+<span class="k">def</span> <span class="nf">limits_per_hour</span><span class="p">(</span><span class="n">hour</span><span class="p">):</span>
+ <span class="n">cheap_hours</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+ <span class="k">if</span> <span class="n">hour</span> <span class="ow">in</span> <span class="n">cheap_hours</span><span class="p">:</span>
+  <span class="k">return</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+ <span class="k">else</span><span class="p">:</span>
+  <span class="k">return</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">get_temp</span><span class="p">()</span>
+<span class="n">set_relay</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+ <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+  <span class="k">try</span><span class="p">:</span>
+      <span class="n">t</span> <span class="o">=</span> <span class="n">get_temp</span><span class="p">()</span>
+      <span class="n">t_on</span><span class="p">,</span> <span class="n">t_off</span> <span class="o">=</span> <span class="n">limits_per_hour</span><span class="p">(</span><span class="n">localtime</span><span class="p">()</span><span class="o">.</span><span class="n">tm_hour</span><span class="p">)</span>
+      <span class="c1">#print(t_on, t_off, t)</span>
+      <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">85</span><span class="p">:</span>
+       <span class="c1"># sensor is broken</span>
+       <span class="k">continue</span>
+      <span class="k">elif</span> <span class="p">(</span><span class="n">t_on</span> <span class="o">&lt;</span> <span class="n">t_off</span> <span class="ow">and</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="n">t_off</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">t_on</span> <span class="o">&gt;=</span> <span class="n">t_off</span> <span class="ow">and</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t_off</span><span class="p">):</span>
+       <span class="n">set_relay</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+      <span class="k">elif</span> <span class="p">(</span><span class="n">t_on</span> <span class="o">&lt;</span> <span class="n">t_off</span> <span class="ow">and</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t_on</span> <span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">t_on</span> <span class="o">&gt;=</span> <span class="n">t_off</span> <span class="ow">and</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="n">t_on</span><span class="p">):</span>
+       <span class="n">set_relay</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+  <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exception: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+   <span class="n">set_relay</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+   <span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+ <span class="n">set_relay</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+ <span class="k">raise</span> <span class="n">e</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+ <span class="n">set_relay</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+ <span class="k">raise</span> <span class="n">e</span>
+</code></pre></div>
+
+<p>The above code will need adapting to your own situation, especially the sensor filenames.</p>
+<h2>1-Wire over phone connectors</h2>
+<p>There is no official specification for 1-Wire connectors, less so for 1-Wire over phone connectors.
+There is a semi-official RJ-11 standard <a href="http://www.midondesign.com/Documents/1-WireApplicationGuide103.pdf">documented here</a>.
+There is also a proposed phone connector standard <a href="https://samepins.github.io/doc/1wire.html">here</a> but it suffers from not being usable with mono connectors for parasitically powered devices.
+The table below describes what I think would be a sensible standard:</p>
+<table>
+<tr><th></th><th>Mono (TS)<br/><img src="../../../../../images/thermostat/ts-opt.svg" style="width:10em"/></th><th>Stereo (TRS)<br/><img src="../../../../../images/thermostat/trs-opt.svg" style="width:10em"/></th><th>TRRS<br/><img src="../../../../../images/thermostat/trrs-opt.svg" style="width:10em"/></th></tr>
+<tr><td>Tip</td><td>DQ</td><td>DQ</td><td>DQ</td></tr>
+<tr><td>Ring</td><td></td><td>VCC</td><td>VCC</td></tr>
+<tr><td>Ring</td><td></td><td></td><td>Interrupt</td></tr>
+<tr><td>Sleeve</td><td>GND</td><td>GND</td><td>GND</td></tr>
+</table>
+
+<p>We can see that the above proposal uses a mono plug for parasitically powered 1-wire devices and a stereo plug for cases where VCC is required, and a TRRS connector when interrupt is available.</p>
+<p>Currently the Raspberry Pi 1-wire driver does not appear to follow <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/DS18B20.pdf">Maxim's specifications</a> when it comes to parasitically powered devices.
+When using devices that draw considerable power such as the DS18B20 during temperature conversion, the DQ line should be tied to VCC during the conversion.
+In fact it appears best to connect DQ to VCC whenever no communication is being done.
+This is the reason why many users only get a +85°C reading. Web searching "raspberry pi 1-wire t=85000" gives lots of hits relating to this issue.
+Somehow I got parasitic power to work by connecting GPIO3 and GPIO4 together.</p>
+<h2>Ways to get get parasitically powered 1-Wire to work on the Raspberry Pi</h2>
+<p>The DS18B20 datasheet states that the device uses ~1 mA (1.5 mA max) during temperature conversions, which takes between 93.75 to 750 ms depending on resolution.
+A minimum of 3.0 V is required.
+The device accepts 5 V but the Raspberry Pi's GPIO pins do not.
+Finally the DS18B20 is guaranteed to be able to sink at least 4 mA.</p>
+<p>Most of these methods have not been tested yet.</p>
+<h3>5 V DQ, lower pullup resistance and Zener</h3>
+<p>The DQ line can be driven at 5 V which is readily available on the Raspberry Pi's GPIO header.
+With a 1.3 kΩ pullup resistor then DQ will drop no lower than 3.05 V during temperature conversion.
+5 V / 1.3 kΩ = 3.85 mA which the device is perfectly capable of sinking.
+One might be tempted to think the Pi's GPIO pins can deal with 5 V through a resistor since the pins are capable of sinking up to 16 mA (<a href="http://www.mosaic-industries.com/embedded-systems/microcontroller-projects/raspberry-pi/gpio-pin-electrical-specifications">source</a>).
+But this does not apply to the protection diodes.
+A Zener diode or five 1N4148's in series can be used instead.</p>
+<p><img alt="A circuit corresponding the above" src="../../../../../images/thermostat/resistor-diodes.png"></p>
+<h3>Capacitor buffered VCC</h3>
+<p>A diode and a capacitor can be used to feed VCC.
+A limitation to this approach is that the capacitor must be allowed to recharge between conversions.
+Its voltage must not drop below 3.0 V during conversion.
+Assuming the charge on the capacitor is 3.2 V then its capacitance must be at least <math>
+<mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">.</mo><mn>5</mn><mspace width="0.167em"/><mtext>mA</mtext><mo lspace="0.222em" rspace="0.222em">&ast;</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>75</mn><mspace width="0.167em"/><mtext>s</mtext><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>2</mn><mspace width="0.167em"/><mtext>V</mtext><mo lspace="0.278em" rspace="0.278em">&#x2248;</mo><mn>5</mn><mo lspace="0" rspace="0">.</mo><mn>6</mn><mspace width="0.167em"/><mtext>mF</mtext></mrow>
+</math>.
+The pullup resistor can be as low as <math>
+<mrow><mn>3</mn><mo lspace="0" rspace="0">.</mo><mn>3</mn><mspace width="0.167em"/><mtext>V</mtext><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>4</mn><mspace width="0.167em"/><mtext>mA</mtext><mo lspace="0.278em" rspace="0.278em">=</mo><mn>825</mn><mspace width="0.167em"/><mtext>&#x3a9;</mtext></mrow>
+</math>.
+The time necessary to recharge the capacitor is therefore <math>
+<mrow><mi>&#x3c4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>825</mn><mspace width="0.167em"/><mtext>&#x3a9;</mtext><mo lspace="0.222em" rspace="0.222em">&ast;</mo><mn>5</mn><mo lspace="0" rspace="0">.</mo><mn>6</mn><mspace width="0.167em"/><mtext>mF</mtext><mo lspace="0.222em" rspace="0.222em">&ast;</mo><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0.222em" rspace="0.222em">-</mo><mn>2</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>3</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">&#x2248;</mo><mn>5</mn><mspace width="0.167em"/><mtext>s</mtext></mrow>
+</math>.
+If the standard 4.7 kΩ resistor and a more available 10 mF capacitor are used, then the time comes to <math>
+<mrow><mn>4700</mn><mo lspace="0.222em" rspace="0.222em">&ast;</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>01</mn><mo lspace="0.222em" rspace="0.222em">&ast;</mo><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>3</mn><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">&#x2248;</mo><mn>52</mn><mspace width="0.167em"/><mtext>s</mtext></mrow>
+</math>.
+The <math>
+<mrow><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>3</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> is due to 3.2 V being three times "closer" to 3.3 V than 3.0 V is.</p>
+<p>I have not taken the voltage drop across the diode into account here.
+As the capacitor gets close to fully charge the current across the diode drops and therefore also its forward voltage drop.
+The diode drop is logarithmic in the current, <math>
+<mrow><msub><mi>V</mi><mi>d</mi></msub><mo lspace="0.278em" rspace="0.278em">&#x221d;</mo><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><msub><mi>I</mi><mi>d</mi></msub><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math>, so charging the capacitor to 3.2 V likely takes longer than calculated here. Experimentation is required.
+A Schottky diode would likely be more appropriate than a 1N4148.</p>
+<p><img alt="A circuit corresponding the above" src="../../../../../images/thermostat/diode-capacitor.png"></p>
+<h3>Connect GPIO3 to GPIO4</h3>
+<p>This is what I did. I'm not sure why it works, but it does.
+Possibly because pullup is enabled on GPIO3 which supplies just enough extra current for everything to work.</p>
+<p><img alt="A circuit corresponding the above" src="../../../../../images/thermostat/gpio3.png"></p>
+<p>I am not sure how reliable this is, so for now I am using the sensor connected with three wires.
+I did not have any TRS jacks on hand, only TS, hence a direct cable connection rather than some nice connectors.</p>
+<h3>Lower pullup resistance</h3>
+<p>As shown above, as little as 825 Ω should still work.
+During conversion DQ may drop as low as 2.06 V.
+While this is lower than the minimal voltage specified, the charge stored inside the sensor may be enough to make up the difference, especially when using lower resolution.
+The datasheet unfortunately does not specify the value of C<sub>pp</sub>.</p>
+<h3>Fixing the driver</h3>
+<p>The w1 driver appears to be a binary blob, so I'm not sure if it can be patched.
+But if it can, then I would suggest that the GPIO pin output logic high when not communicating with any device.
+The GPIO pins are able to supply more than sufficient current for the job.</p></div>
+</article></section>
+<hr />
+<footer>
+<div>
+<div><h2>Useful links</h2><ul><li><a href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> Atom feed</a></li><li><a href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> RSS feed</a></li><li><a href="http://pfcgmo5hwfffwhis3zty2u2ufryrnzypue34h74va6ykw5iazgcvvtqd.onion/"><img src="/theme/images/icons/onion.png" alt="Tor logo"/> Tor .onion service</a></li></ul></div>
+<div><h2>Comments</h2>Got comments? E-mail them to comments at haerdin dot se</div>
+</div>
+<hr/>
+<p>This site is 100% PHP free and is <a href="https://anybrowser.org/campaign/"><img src="/theme/images/icons/w3cab.gif" alt="W3C any browser logo"/> viewable with any browser</a>!</p>
+</footer><script type="text/javascript">
+var d=document.createElement("div"),b;d.innerHTML="<math><mpadded height='23px' width='77px'/></math>";document.body.appendChild(d);b=d.firstChild.firstChild.getBoundingClientRect();document.body.removeChild(d);if(Math.abs(b.height-23)>1||Math.abs(b.width-77)>1){b=document.createElement("script");b.setAttribute("src","/theme/mathjax/mml-chtml.js");document.getElementsByTagName("head")[0].appendChild(b);}
+</script></body></html>

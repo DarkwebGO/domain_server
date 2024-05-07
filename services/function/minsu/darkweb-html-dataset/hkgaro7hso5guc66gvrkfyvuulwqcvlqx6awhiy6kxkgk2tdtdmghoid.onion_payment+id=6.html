@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>LordPay Payment System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="/LordPayMarket/payment/index/material-design-iconic-font.css">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="/LordPayMarket/payment/index/style.css">
+</head>
+
+<body>
+
+<div class="wrapper">
+    <div class="inner">
+        <form action="/checkout" method="post">
+            <h3>Purchase a Product</h3>
+            <p>Enter a valid email , You will be contacted after the invoice is paid to get information for your order to be processed</p>
+            <label class="form-group">
+                <input type="text" name="name" class="form-control" required="">
+                <span>Your Name</span>
+                <span class="border"></span>
+            </label>
+            <label class="form-group">
+                <input type="email" name="email" class="form-control" required="">
+                <span for="">Your Mail</span>
+                <span class="border"></span>
+            </label>
+            <label class="form-group">
+                <select name="id" placeholder="Choose your product" class="form-control">
+                    <!--<option selected="selected">None</option>-->
+                    <option value="1" >$500 PayPal Transfer - $49</option>
+                    <option value="2" >Paypal $1100 Transfer - $89</option>
+                    <option value="3" >Paypal $2100 Transfer - $129</option>
+                    <option value="4" >PerfectMoney $500 Transfer - $59</option>
+                    <option value="5" >PerfectMoney $1000 Transfer - $99</option>
+                    <option value="6" selected>PerfectMoney $2000 Transfer - $139</option>
+                    <option value="10" >Amazon $200 Giftcard - $69</option>
+                    <option value="11" >Amazon $500 Giftcard - $129</option>
+                    <option value="12" >Amazon $1000 Giftcard - $249</option>
+                    <option value="7" >BTC Wallet 1.7 BTC Balance - 0.17 BTC</option>
+                    <option value="8" >BTC Wallet 0.87 BTC Balance - 0.087 BTC</option>
+                    <option value="9" >BTC Wallet 2.9 BTC Balance - 0.29 BTC</option>
+                </select>
+                <span for="">Choose the product</span>
+                <span class="border"></span>
+            </label>
+            <button type="submit" name="submit" value="submit">Submit Order <img src="/LordPayMarket/payment/right.jpg" />
+                <!--<i class="zmdi zmdi-arrow-right"></i>-->
+            </button>
+        </form>
+
+        <br>
+<!--        <center><a href="/payment">Reset</a></center><br>-->
+        <center><a href="">Homepage</a></center>
+
+    </div>
+</div>
+
+
+</body></html>

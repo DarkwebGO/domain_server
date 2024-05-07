@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AnonLeaks Fileshare</title>
+        <meta charset="utf-8">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="icon" type="image/png" href="/img/favicon.png">
+        <link rel="icon" sizes="128x128" href="/img/lufi128.png">
+        <link rel="icon" sizes="196x196" href="/img/lufi196.png">
+        <link rel="apple-touch-icon" href="/img/lufi60.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/lufi76.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/lufi120.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/lufi152.png">
+        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/img/lufi128.png">
+        <link href="/css/materialize.min.css" rel="stylesheet">
+        <link href="/css/lufi.css" rel="stylesheet">
+        <script src="/js/ie-detection.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <nav class="cyan">
+            <div class="nav-wrapper container">
+                <a href="/" class="brand-logo">&nbsp;<img src="/img/lufi-min.png" alt="logo"> AnonLeaks Fileshare</a>
+                <a href="#" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="mailto:anonleaks.net@protonmail.com">Report file</a></li>
+                    <li><a href="/">Upload files</a></li>
+                    <li><a href="/files">My files</a></li>
+                    <li>
+                        <div class="input-field select-lang">
+                            <label class="hiddendiv">Language</label>
+                            <select>
+                                <option value="" disabled selected>Language</option>
+                                <option value="ar">العربية</option>
+                                <option value="ca">Català</option>
+                                <option value="de">Deutsch</option>
+                                <option value="el">Ελληνικά</option>
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="fr_FR">Français (FR)</option>
+                                <option value="it">Italiano</option>
+                                <option value="nl">Nederlands, Vlaams</option>
+                                <option value="oc">Occitan, lenga d&#39;òc</option>
+                                <option value="pt">Português</option>
+                                <option value="ru">Русский</option>
+                                <option value="sv">Svenska</option>
+                                <option value="zh_Hans">中文 (Zhōngwén), 汉语, 漢語 (HANS)</option>
+                                <option value="zh_Hant">中文 (Zhōngwén), 汉语, 漢語 (HANT)</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="active"><a href="/about">About</a></li>
+                </ul>
+                <ul id="mobile" class="side-nav">
+                    <li><a href="mailto:anonleaks.net@protonmail.com">Report file</a></li>
+                    <li><a href="/">Upload files</a></li>
+                    <li><a href="/files">My files</a></li>
+                    <li>
+                        <div class="input-field select-lang-mobile">
+                            <label class="hiddendiv">Language</label>
+                            <select>
+                                <option value="" disabled selected>Language</option>
+                                <option value="ar">العربية</option>
+                                <option value="ca">Català</option>
+                                <option value="de">Deutsch</option>
+                                <option value="el">Ελληνικά</option>
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="fr_FR">Français (FR)</option>
+                                <option value="it">Italiano</option>
+                                <option value="nl">Nederlands, Vlaams</option>
+                                <option value="oc">Occitan, lenga d&#39;òc</option>
+                                <option value="pt">Português</option>
+                                <option value="ru">Русский</option>
+                                <option value="sv">Svenska</option>
+                                <option value="zh_Hans">中文 (Zhōngwén), 汉语, 漢語 (HANS)</option>
+                                <option value="zh_Hant">中文 (Zhōngwén), 汉语, 漢語 (HANT)</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="active"><a href="/about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <script src="/js/jquery-2.2.4.min.js"></script>
+            <script src="/partial/layout.js"></script>
+            <script src="/js/lufi-common.js"></script>
+            <div class="text-left">
+    <h3>What is Lufi?</h3>
+    <p>Lufi is a free (as in free speech) file hosting software.</p>
+    <h3>Privacy</h3>
+    <p>The files uploaded on a Lufi instance are encrypted before the upload to the server: the administrator of the server can not see the file&#39;s content.<br>
+    The administrator can only see the file&#39;s name, its size and its mimetype (what kind of file it is: video, text, etc.).</p>
+    <h3>How does it work?</h3>
+    <p>Drag and drop files in the appropriate area or use the traditional way to send files and the files will be chunked, encrypted and sent to the server. You will get two links per file: a download link, that you give to the people you want to share the file with and a deletion link, allowing you to delete the file whenever you want.</p>
+    <p>You can see the list of your files by clicking on the &quot;My files&quot; link at the top right of this page.</p>
+    <h3>How to report an illegal file?</h3>
+    <p>Please contact the administrator: <a href="https://anonleaks.net/contact/">Contact</a></p>
+    <h3>Who wrote this software?</h3>
+    <p>The original (and only for now) author is <a href="https://fiat-tux.fr" class="classic">Luc Didry</a>.</p>
+    <h3>How to install the software on my server?</h3>
+    <p>As Lufi is a free software licensed under of the terms of the <a href="https://gnu.org/licenses/agpl.html" class="classic">AGPLv3</a>, you can install it on you own server. Have a look on the <a href="https://framagit.org/fiat-tux/hat-softwares/lufi/wikis/home" class="classic">Wiki</a> for the procedure.<br>
+       Get the source code on <a href="https://framagit.org/fiat-tux/hat-softwares/lufi" class="classic">the official repository</a> or on its <a href="https://github.com/ldidry/lufi" class="classic">Github mirror</a>
+    </p>
+    <h3>Version</h3>
+    <p>Latest tag of this instance: <a href="https://framagit.org/fiat-tux/hat-softwares/lufi/-/releases/0.05.13" class="classic">0.05.13</a></p>
+    <p>Latest commit of this instance: <a href="https://framagit.org/fiat-tux/hat-softwares/lufi/-/commit/a7bb414025a872af6f7f30e03531fd10981f15af" class="classic">a7bb414025a872af6f7f30e03531fd10981f15af</a></p>
+    <p><a class="btn waves-effect waves-light cyan" href="/">Back to homepage</a></p>
+</div>
+
+        </div>
+            <script src="/js/materialize.js"></script>
+            <script src="/js/sidenav.js"></script>
+    </body>
+</html>

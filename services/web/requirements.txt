@@ -1,0 +1,3 @@
+    !pip install requests beautifulsoup4 rake-nltk matplotlib pandas
+    !pip install matplotlib
+    !pip install wordcloud

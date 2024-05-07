@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es-ES" dir="ltr">
+
+<head>
+  <title>Bienvenido | The Guardian | SecureDrop</title>
+
+  <link rel="stylesheet" href="/static/css/source.css">
+  <link rel="icon" type="image/png" href="/static/i/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+
+  <!-- nosemgrep: generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var -->
+  <script src="/static/js/source.js"></script>
+</head>
+
+<body id="source-index">
+  <div id="browser-security-level" class="warning" role="alert">
+    <p>El <a id="disable-js" href=""><b>Nivel de Seguridad</b></a> de tu Navegador Tor está demasiado bajo. Usa el botón <img src="/static/i/font-awesome/white/guard.svg" alt="&quot;Security Level&quot;"> en la barra de herramientas de tu navegador para cambiarlo.</p>
+  </div>
+  <dialog open id="security-level-info" aria-labelledby="security-level-heading"
+    aria-describedby="security-level-instructions">
+    <h2 id="security-level-heading" hidden>Cómo cambiar tu nivel de seguridad</h2>
+    <ol id="security-level-instructions">
+      <li>
+        Haz clic en el botón <img src="/static/i/font-awesome/black/guard.svg" alt="&quot;Security Level&quot;">, arriba en la barra de herramientas
+      </li>
+      <li>Haz clic en <b>Cambiar</b> para abrir las preferencias de Nivel de Seguridad</li>
+      <li>Selecciona <b>El más seguro</b> y cierra la pestaña de preferencias</li>
+    </ol>
+    <p>
+      ¡<a href="/" aria-label="Sigue estas instrucciones, luego refresca esta página">Refresca esta página</a>, y está listo!
+    </p>
+  </dialog>
+  <div id="browser-tb" class="warning" role="alert">
+    <p><strong>Se recomienda que uses el Navegador Tor para acceder a SecureDrop:</strong><a class="recommend-tor" href="/use-tor">Aprende cómo instalarlo</a>, o ignora esta advertencia para continuar.
+    <span id="browser-tb-close" aria-label="Cerrar">×</span></p>
+  </div>
+  <div id="browser-android" class="warning" role="alert">
+    <p><strong>Se recomienda que uses la versión de escritorio del Navegador Tor para acceder a SecureDrop, ya que Orfox no proporciona el mismo nivel de seguridad y anonimato.</strong><a class="recommend-tor" href="/use-tor"> Aprende cómo instalarlo</a>, o ignora esta advertencia para continuar.
+    <span id="browser-android-close" aria-label="Cerrar">×</span></p>
+  </div>
+
+  <div class="content">
+    <header>
+      <h1><img src="/static/i/custom_logo.png" alt="logotipo de The Guardian"></h1>
+<section id="locales-menu" aria-labelledby="locales-menu-heading">
+  <h2 id="locales-menu-heading" hidden>
+    Idioma selecciondo: español
+  </h2>
+  <input id="locales-menu-checkbox" type="checkbox" role="button"
+    aria-label="Elegir idioma" aria-haspopup="menu" aria-controls="locales-menu-list" aria-pressed="true">
+  <label for="locales-menu-checkbox" aria-hidden="true">
+    español
+  </label>
+
+  <ul id="locales-menu-list" role="menu" aria-labelledby="locales-menu-checkbox">
+    <li role="none">
+      <!-- nosemgrep: generic.html-templates.security.var-in-href.var-in-href -->
+      <a href="/?l=ar" rel="nofollow" lang="ar" hreflang="ar"
+        role="menuitemradio" aria-checked="false">
+        العربية
+      </a>
+    </li>
+    <li role="none">
+      <!-- nosemgrep: generic.html-templates.security.var-in-href.var-in-href -->
+      <a href="/?l=de_DE" rel="nofollow" lang="de-DE" hreflang="de-DE"
+        role="menuitemradio" aria-checked="false">
+        Deutsch
+      </a>
+    </li>
+    <li role="none">
+      <!-- nosemgrep: generic.html-templates.security.var-in-href.var-in-href -->
+      <a href="/?l=en_US" rel="nofollow" lang="en-US" hreflang="en-US"
+        role="menuitemradio" aria-checked="false">
+        English
+      </a>
+    </li>
+    <li role="none">
+      <!-- nosemgrep: generic.html-templates.security.var-in-href.var-in-href -->
+      <a href="" rel="nofollow" lang="es-ES" hreflang="es-ES"
+        role="menuitemradio" aria-checked="true">
+        español
+      </a>
+    </li>
+    <li role="none">
+      <!-- nosemgrep: generic.html-templates.security.var-in-href.var-in-href -->
+      <a href="/?l=fr_FR" rel="nofollow" lang="fr-FR" hreflang="fr-FR"
+        role="menuitemradio" aria-checked="false">
+        français
+      </a>
+    </li>
+    <li role="none">
+      <!-- nosemgrep: generic.html-templates.security.var-in-href.var-in-href -->
+      <a href="/?l=hi" rel="nofollow" lang="hi" hreflang="hi"
+        role="menuitemradio" aria-checked="false">
+        हिन्दी
+      </a>
+    </li>
+    <li role="none">
+      <!-- nosemgrep: generic.html-templates.security.var-in-href.var-in-href -->
+      <a href="/?l=pt_BR" rel="nofollow" lang="pt-BR" hreflang="pt-BR"
+        role="menuitemradio" aria-checked="false">
+        português
+      </a>
+    </li>
+    <li role="none">
+      <!-- nosemgrep: generic.html-templates.security.var-in-href.var-in-href -->
+      <a href="/?l=ru" rel="nofollow" lang="ru" hreflang="ru"
+        role="menuitemradio" aria-checked="false">
+        русский
+      </a>
+    </li>
+    <li role="none">
+      <!-- nosemgrep: generic.html-templates.security.var-in-href.var-in-href -->
+      <a href="/?l=tr" rel="nofollow" lang="tr" hreflang="tr"
+        role="menuitemradio" aria-checked="false">
+        Türkçe
+      </a>
+    </li>
+    <li role="none">
+      <!-- nosemgrep: generic.html-templates.security.var-in-href.var-in-href -->
+      <a href="/?l=zh_Hant" rel="nofollow" lang="zh-Hant" hreflang="zh-Hant"
+        role="menuitemradio" aria-checked="false">
+        中文
+      </a>
+    </li>
+  </ul>
+</section>
+    </header>
+
+    <main>
+      <section id="first-submission" aria-labelledby="first-submission-heading">
+        <h2 id="first-submission-heading">Primer envío</h2>
+        <p>¿Primera vez enviando a nuestro SecureDrop? Comienza aquí.</p>
+        <form id="started-form" method="post" action="/generate" autocomplete="off">
+          <input name="csrf_token" type="hidden" value="ImVjOGFjNjFhMmNlOWQyZDI2NzdmZmJlNWQxOTY0NTJmYTIzZDFjOGMi.ZjiBiw.16jAdKOUwLy76grAeuM4kMmjV8A">
+          <input name="tor2web_check" type="hidden" value='href="fake.onion"'>
+          <button type="submit" aria-label="Empezar">
+            PRIMEROS PASOS
+          </button>
+        </form>
+      </section>
+
+      <section id="return-visit" aria-labelledby="return-visit-heading">
+          <h2 id="return-visit-heading">Nueva visita</h2>
+          <p>¿Ya tienes un nombre clave? Revisa si hay respuestas o envía algo nuevo.</p>
+          <a href="/login" class="btn secondary"
+            aria-label="Iniciar Sesión">
+            INICIAR SESIÓN
+          </a>
+      </section>
+    </main>
+  </div>
+<footer>
+  <p id="footer-powered-by">
+    Con tecnología de <b>SecureDrop 2.8.0</b>.
+  </p>
+  <p id="footer-advisory">
+    Por favor ten en cuenta: compartir información confidencial puede ponerte en riesgo, incluso si lo haces a través de Tor y SecureDrop.
+  </p>
+  <p id="footer-fpf">
+    SecureDrop es un proyecto de la Freedom of the Press Foundation.
+  </p>
+</footer>
+
+</body>
+
+</html>

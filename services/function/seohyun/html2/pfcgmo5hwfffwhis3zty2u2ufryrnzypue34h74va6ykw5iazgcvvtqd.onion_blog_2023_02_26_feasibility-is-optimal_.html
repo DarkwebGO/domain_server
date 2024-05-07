@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Feasibility is optimal</title><style>
+body{margin:auto;max-width:50em;padding-left:0.5em;padding-right:0.5em}
+img{max-width:100%}
+#banner h1{font-size:2.5em;margin-top:5px;margin-bottom:5px;text-align:center}
+#banner h1 a:link,#banner h1 a:visited{color:#111;text-decoration:none}
+pre{padding:0.5em;background:#ddd;border:1px solid #000;overflow:auto}
+.entry-title{font-size:2em;margin-bottom:0.5em}
+.tags{margin-top:0px;margin-bottom:0px}
+.article-link{font-weight:bold}
+.post-info{float:right;margin:0.5em;padding:0.5em;border:1px solid #000;max-width:16em}
+footer div{column-count:3;column-width:18em;column-rule:1px solid #ddd}
+footer div div{display:inline-block}
+nav ul{list-style-type:none;margin:0;padding:0;overflow:hidden;background-color:#eee}
+nav ul li{float:left}
+nav ul li a{display:block;color:#333;text-align:center;font-size:1.5em;padding:14px 16px;text-decoration:none}
+nav ul li a:hover{background-color:#ddd}
+table,td,th{padding:0.2em;border:1px solid gray;border-collapse:collapse}
+</style><link href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tomas' place in cyber&shy;space Atom Feed"/><link href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Tomas' place in cyber&shy;space RSS Feed"/></head><body>
+<header id="banner">
+<h1><a href="../../../../../">Tomas' place in cyber&shy;space </a></h1>
+<nav><ul>
+<li><a href="/">Home</a></li>
+<li><a href="/category/blog.html">Blog</a></li>
+<li><a href="/category/demoscene.html">Demoscene</a></li>
+<li><a href="/files">Files</a></li>
+<li><a href="/pages/consulting.html">Consulting</a></li>
+<li><a href="/pages/contact.html">Contact</a></li>
+</ul></nav>
+</header>
+<section><article><header>
+<aside class="post-info">
+<abbr class="published" title="2023-02-26T21:17:20+01:00">
+Published: 2023-02-26</abbr>
+in <a href="../../../../../category/blog.html">Blog</a>
+<p class="tags">Tags: <a href="../../../../../tag/cybernetics.html">cybernetics</a> <a href="../../../../../tag/math.html">math</a> </p>
+</aside><h1 class="entry-title">
+<a href="../../../../../blog/2023/02/26/feasibility-is-optimal/" rel="bookmark"
+title="Permalink to Feasibility is optimal">Feasibility is optimal</a></h1>
+</header>
+<div class="entry-content"><p>In this post I will critique some points I have made in favor of optimality.
+Examples can be seen <a href="../../../../../blog/2021/02/24/planning-complexity-for-model-economies/">here</a> and <a href="../../../../../blog/2022/02/04/towards-large-scale-linear-planning/">here</a>.</p>
+<p>In the literature and present discourse on calculation in kind there is much debate around optimization.
+Leonid Kantorovich's "plan rays" is the start of this discussion as far as I can tell.
+They get picked up again by Paul Cockshott and Allin Cottrell in <em>Towards a New Socialism</em>, and more recently by Phillip Dapprich.
+I have suggested optimizing on labour, for example <a href="../../../../../blog/2021/02/08/some-example-economic-linear-programs/">here</a>.
+More recently in our <a href="../../../../../blog/2022/12/20/marx22-presentation-video/">Marx22 presentation</a> me and Dave Zachariah have suggested that different regions might optimize on different things.
+But there are some problems with these notions of optimization.</p>
+<h2>Bad data</h2>
+<p>A major problem with pushing too hard for "optimal" plans is that they depend on the quality of the data.
+Whatever you have in your database is only ever an approximation of reality.
+The map is not the terrain.</p>
+<p>In real systems with humans in the loop there will inevitably be incorrect data entered either by accident or deliberately in order to game the system.
+These situations can to some extent be detected using statistics, but it's never perfect.</p>
+<p>Incorrect data directly results in incorrect constraints, which in turn may result in plans that cannot be satisfied in the real world.
+Assuming perfect data therefore threatens viability.</p>
+<p>Unexpected things may also happen, and if the currently computed plan is too close to a constraint that is affected by such events then it will be more difficult to plan around them.
+A concrete example could be a solver that optimizes on labour choosing to centralize distribution in a continent to a single location because it is more economic in terms of labour to do so.
+As soon as such a distribution hub is hit by a disaster the problem with that approach will quickly become apparent.</p>
+<p>Graphically these situations look something like this:</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/against_optimality/extreme.svg" alt="An ill-conditioned linear program represented by a very acute triangle with an X near the tip"/></p>
+<p>We are optimizing in the direction of <math>
+<mi>c</mi>
+</math> and <span style="color:#e82626ff;font-weight:bold">x</span> marks the current plan, quite close to optimum.
+The sides <em>E</em> and <em>F</em> of the triangle form an acute angle.
+In a situation like this the linear program that the triangle <em>DEF</em> represents is called <em>ill-conditioned</em>.
+A small change to the system may cause a large change in the solution.</p>
+<p>Suppose that <em>E</em> is is disturbed for some reason such that its angle relative to <em>D</em> decreases.
+In that case we will get a situation like this:</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/against_optimality/extreme2.svg" alt="The new linear program with the X moved a large distance"/></p>
+<p>In order for the plan to still be viable it has to be updated so that it sits in the triangle <em>DE'F</em>.
+It should be apparent that this requires that the plan changes considerably.</p>
+<h2>Stay in the middle (or: Keep these constraints away from me!)</h2>
+<p>If the corners are dangerous then the thought arises that perhaps it is best if we stay as far away from them as possible?
+One way to achieve this is to stay as far away from any constraint as possible.
+This is an idea central to so-called barrier methods for linear programming.</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/against_optimality/interior.svg" alt="The triangle is filled with an elliptic gradient. The X sits in the center of the gradient towards the short side D"/></p>
+<p>A function is defined that for each point in the triangle expresses how far it is from all constraints.
+This function can be defined such that there is one and only one point in the system that is the "furthest" away from all constraints.
+This point is known as the <em>centroid</em> of the system.
+The mathematics of this is elaborated on further down.</p>
+<p>Suppose the same thing happens to this system, namely that the angle between <em>D</em> and <em>E</em> decreases:</p>
+<p><img style="display:block;width:50%;margin-left:auto;margin-right:auto;" src="../../../../../images/against_optimality/interior2.svg" alt="A similar situation as last time, except X has to move much less"/></p>
+<p>The solution will have to move much less in this case in order to reach its desired position.
+Our ill-conditioned system is suddenly well-conditioned.
+In practical terms this may mean that the solver deliberately chooses to spread goods out a bit in order to have sufficient leeway.
+This leeway also has political implications.
+It allows for greater autonomy in workplaces without this imposing huge hanges to the overall plan.
+Local <em>variety</em> thereby gets attenuated.</p>
+<p>The middle is good. The middle is safe.</p>
+<h2>Computational aspects</h2>
+<p>One practical reason to reconsider optimality is the computational cost of it.
+Due to Nesterov and Todd it is known that barrier methods for solving convex programming require at most <math>
+<mrow><mi>O</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>L</mi><msqrt><mi>m</mi></msqrt><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> Newton steps for <math>
+<mi>L</mi>
+</math> bits of accuracy.
+Todd and Ye have shown that the problem requires <math>
+<mrow><mi mathvariant="normal">&#x3a9;</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>L</mi><mroot><mi>m</mi><mn>3</mn></mroot><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> Newton steps for some (not all) programs when using predictor-corrector methods.
+In other words convex programming cannot be guaranteed to require fewer Newton steps than somewhere between the cube root and square root of the number of constraints, times some constant, times the desired digits of accuracy.
+In practice the problem is easier than this,
+but it is also much more difficult than the point I am getting to.</p>
+<p>If we abandon optimality for a moment and take from barrier methods only the concept of centrality,
+then we'll have reduced the required computations immensely.
+This means we can offer faster feedback to users.
+To see why this is the case it is necessary to know that barrier methods rely on Newton iteration, which has quadratic convergence near the solution.
+This means that after each iteration the number of digits that are correct <em>doubles</em>.</p>
+<p>One key question is what is meant by being "near" the solution.
+Renegar shows that it is possible to move a constraint at least <math>
+<mrow><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>13</mn><msqrt><mi>m</mi></msqrt></mrow>
+</math> of the way toward the current center of the system and that one needs only a single Newton step to re-center in the new system.
+With <math>
+<mrow><mi>m</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>46</mn><mo lspace="0.222em" rspace="0.222em">&ast;</mo><msup><mn>10</mn><mn>9</mn></msup></mrow>
+</math> this is quite a short distance, less than one millionth.
+In practice it is possible to move the constraints much further at the cost of more Newton iterations.
+But it is also known that for some programs performing such aggressive updates will yield Newton steps that end up outside the feasible region.</p>
+<p>In a draft version of this text I had an estimate what the required computations will have shrunk to (3¼ hours),
+but after re-reading Renegar I realized that estimate was too optimistic.
+For planning it may still be valid, but I prefer more guarded language.</p>
+<h2>In favor of optimality</h2>
+<p>Now that I have spilled some ink critiquing optimality in favor of centrality,
+why is the title of this section pro-optimality?
+The reason is because the above amounts to optimizing on feasibility.</p>
+<p>Barrier methods approach finding the solution that maximizes <math>
+<mrow><msup><mi>c</mi><mi>T</mi></msup><mspace width="0"/><mi>x</mi></mrow>
+</math> by defining a barrier function <math>
+<mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> that quantifies "how far" <math>
+<mi>x</mi>
+</math> is from all constraints in the system <math>
+<mrow><mi>A</mi><mspace width="0"/><mi>x</mi><mo lspace="0.278em" rspace="0.278em">&#x2265;</mo><mi>b</mi></mrow>
+</math>.
+It looks as follows:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">=</mo><msub><mo lspace="0" rspace="0.167em" stretchy="false">&#x2211;</mo><mi>i</mi></msub><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><mi>x</mi><mo lspace="0.222em" rspace="0.222em">-</mo><msub><mi>b</mi><mi>i</mi></msub><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math>
+</span></p>
+<p>where <math>
+<msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup>
+</math> is each row in <math>
+<mi>A</mi>
+</math>.</p>
+<p>Renegar shows that <math>
+<mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> is upward convex (strictly concave), and because of this there exists a unique solution that maximizes <math>
+<mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> which Renegar calls <math>
+<mi>&#x3be;</mi>
+</math>.</p>
+<!-- Renegar further shows that the Newton method always converges so long as <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">&lt;</mo><mi>f</mi><mspace width="0"/><mi>o</mi><mspace width="0"/><mi>o</mi></mrow>
+</math> -->
+
+<p>If one has a measure of uncertainty associated with each constraint then the system can be rescaled such that the optimal solution <math>
+<mi>&#x3be;</mi>
+</math> is the one that maximizes certainty.
+I consider such certainty maximization to be equivalent to maximizing feasibility, which in turn is useful for ensuring viability.</p>
+<p>Some readers may wonder what the point of defining <math>
+<mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> is when it comes to solving linear programs.
+The answer is that if one adds a constraint <math>
+<mrow><msup><mi>c</mi><mi>T</mi></msup><mspace width="0"/><mi>x</mi><mo lspace="0.278em" rspace="0.278em">&#x2265;</mo><msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup></mrow>
+</math> and continually increases <math>
+<msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math> then the resulting <math>
+<msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math> will eventually maximize <math>
+<mrow><msup><mi>c</mi><mi>T</mi></msup><mspace width="0"/><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup></mrow>
+</math>.
+The increasing of <math>
+<mi>k</mi>
+</math> acts as a "broom" that pushes <math>
+<mi>&#x3be;</mi>
+</math> towards the optimum along what is known as the <em>central path</em>.
+Predictor-corrector methods speed this process up via extrapolation.
+But we're of course not seeking to maximize <math>
+<mrow><msup><mi>c</mi><mi>T</mi></msup><mspace width="0"/><mi>x</mi></mrow>
+</math> but to maximize peace of mind.</p>
+<p>A pedagogical point struck me the other day which I will elaborate on.
+The definition of <math>
+<mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> looks somewhat arbitrary and doesn't lend itself to much intuition at first glance.
+But if we rearrange it a bit then we get the following:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">=</mo><msub><mo lspace="0" rspace="0.167em" stretchy="false">&#x2211;</mo><mi>i</mi></msub><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><mi>x</mi><mo lspace="0.222em" rspace="0.222em">-</mo><msub><mi>b</mi><mi>i</mi></msub><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">=</mo><mi>log</mi><msub><mo lspace="0.167em" rspace="0.167em" stretchy="false">&#x220f;</mo><mi>i</mi></msub><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><mi>x</mi><mo lspace="0.222em" rspace="0.222em">-</mo><msub><mi>b</mi><mi>i</mi></msub></mrow>
+</math>
+</span></p>
+<p>Maximizing <math>
+<mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> is equivalent to maximizing</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>F</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">=</mo><msup><mi>e</mi><mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.278em" rspace="0.278em">=</mo><msub><mo lspace="0" rspace="0.167em" stretchy="false">&#x220f;</mo><mi>i</mi></msub><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><mi>x</mi><mo lspace="0.222em" rspace="0.222em">-</mo><msub><mi>b</mi><mi>i</mi></msub></mrow>
+</math>
+</span></p>
+<p>In other words what we're doing is multiplying together the distances from the current solution to all constraints and looking for the solution that maximizes that product!
+This means that <math>
+<mrow><mi>F</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> is in units of the products of the units of all constraints.
+If we have two constraints in terms of volume (m³) and five constraints in terms of mass (kg) then <math>
+<mrow><mi>F</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> has units of m⁶kg⁵.</p>
+<p>In a system with <math>
+<mi>m</mi>
+</math> constraints doubling the distance to one constraint only requires reducing the distance to the others by roughly a factor <math>
+<mrow><mroot><mn>2</mn><mrow><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow></mroot><mo lspace="0.278em" rspace="0.278em">&#x2248;</mo><mn>1</mn><mo lspace="0.222em" rspace="0.222em">+</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>69</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mi>m</mi></mrow>
+</math>.
+This is the source of the "attenuation" I spoke of earlier.
+With a million workplaces, each workplace has to shoulder less than one millionth of the burden of a change to any other workplace.</p>
+<p>What we have is effectively a <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality">blessing of dimensionality</a>.
+The extreme points of the system get factorially further and further away from the central ellipsoid the higher the number of dimensions.
+When an extreme solution is sought, as is typically the case in linear programming, this fact is a huge problem and part of why solving LP is so difficult.
+If one instead seeks centrality this fact becomes a benefit.
+It no longer becomes possible that multiple disasters occurring at the same time should threaten the viability of the system,
+precisely because the extreme points are very far away from the center.</p>
+<p>Finally all this does not exclude that it might be necessary to push for very "stiff" plans in certain locations, especially locations where rapid industrialization is deemed necessary.
+In other locations, for example here in Sweden, a more lax approach as I describe above may be called for.
+Both approaches can be accommodated within this formalism.</p>
+<h3>Another barrier?</h3>
+<p>I suspect that it is possible to pick another barrier function such that Newton convergence can be guaranteed for more aggresive updates.
+If this can be done then the required solver time drops from months to hours.
+One barrier function I have in mind looks like this:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">=</mo><msub><mo lspace="0" rspace="0.167em" stretchy="false">&#x2211;</mo><mi>i</mi></msub><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><mi>x</mi><mo lspace="0.222em" rspace="0.222em">-</mo><msub><mi>b</mi><mi>i</mi></msub><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><msub><mi>g</mi><mi>i</mi></msub><mo lspace="0" rspace="0" stretchy="false">[</mo><msub><mi>d</mi><mi>i</mi></msub><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>2</mn><mo lspace="0.222em" rspace="0.222em">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><mi>x</mi><mo lspace="0.222em" rspace="0.222em">-</mo><msub><mi>b</mi><mi>i</mi></msub><mo lspace="0" rspace="0" stretchy="false">)</mo><msup><mo lspace="0" rspace="0" stretchy="false">]</mo><mn>2</mn></msup></mrow>
+</math>
+</span></p>
+<p>where <math>
+<msub><mi>d</mi><mi>i</mi></msub>
+</math> is a vector of "diameters" computed by tracing lines from the current solution in the direction towards and away from each constraint.
+The square term thus is likely (but not guaranteed) to have its maximum within the feasible region.
+What I suspect is that with appropriately chosen large-ish <math>
+<msub><mi>g</mi><mi>i</mi></msub>
+</math> convergence will be rapid, because without the log term Newton iteration finds the maximum in a single step.
+The log term is there only to guarantee that this maximum is within the feasible region.</p>
+<p>Whether this barrier function is worthwhile is something I would have to investigate.</p></div>
+</article></section>
+<hr />
+<footer>
+<div>
+<div><h2>Useful links</h2><ul><li><a href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> Atom feed</a></li><li><a href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> RSS feed</a></li><li><a href="http://pfcgmo5hwfffwhis3zty2u2ufryrnzypue34h74va6ykw5iazgcvvtqd.onion/"><img src="/theme/images/icons/onion.png" alt="Tor logo"/> Tor .onion service</a></li></ul></div>
+<div><h2>Comments</h2>Got comments? E-mail them to comments at haerdin dot se</div>
+</div>
+<hr/>
+<p>This site is 100% PHP free and is <a href="https://anybrowser.org/campaign/"><img src="/theme/images/icons/w3cab.gif" alt="W3C any browser logo"/> viewable with any browser</a>!</p>
+</footer><script type="text/javascript">
+var d=document.createElement("div"),b;d.innerHTML="<math><mpadded height='23px' width='77px'/></math>";document.body.appendChild(d);b=d.firstChild.firstChild.getBoundingClientRect();document.body.removeChild(d);if(Math.abs(b.height-23)>1||Math.abs(b.width-77)>1){b=document.createElement("script");b.setAttribute("src","/theme/mathjax/mml-chtml.js");document.getElementsByTagName("head")[0].appendChild(b);}
+</script></body></html>

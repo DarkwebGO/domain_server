@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>/over/ - Overboard</title>
+<link rel="apple-touch-icon" sizes="57x57" href="/fav/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/fav/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/fav/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/fav/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/fav/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/fav/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/fav/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/fav/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="/fav/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="/fav/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="/fav/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/fav/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/fav/favicon-16x16.png" sizes="16x16">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-TileImage" content="/fav/mstile-144x144.png">
+	<link rel="gettext" type="application/x-po" href="/inc/lang/ru/LC_MESSAGES/kusaba.po" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="Sat, 17 Mar 1990 00:00:01 GMT" /><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+<meta property="i0:buildtime" content="1714969771"/>
+<script type="text/javascript">
+	var captchaTimeout = 150 - 0.5;
+	var liveupd_api = 'http://127.0.0.1:1337';
+	var liveupd_ena = '';
+	var liveupd_sitename = 'your_chan_id:';
+	var this_board_dir = 'over';
+	var ku_boardspath = '';
+	var ku_boardsfolder = '/';
+	var ku_cgipath = '';
+	var style_cookie = "kustyle";
+	var locale = 'ru';
+				var is_overboard = true;
+		var overboard_dir = "over";
+		var overboard_desc = "Overboard";
+				var force_html_nocache = !!'1';
+	var ispage =  true ;
+</script>
+<noscript><style>.yesscript { display: none!important; }</style></noscript>
+<link rel="stylesheet" type="text/css" href="/css/img_global.css?v=001" />
+<script>document.write('<link rel="stylesheet" type="text/css"href="/css/thorium.css?v=001"title="Thorium"/><link rel="alternate stylesheet" type="text/css"href="/css/modern.css?v=001"title="Modern"/><link rel="alternate stylesheet" type="text/css"href="/css/newdark.css?v=001"title="Newdark"/><link rel="alternate stylesheet" type="text/css"href="/css/photon.css?v=001"title="Photon"/>')</script>
+<noscript><link rel="stylesheet" href="/getpreferredstylesheet.php?allowed=thorium,modern,newdark,photon&default=thorium&v=001"></noscript>
+<link href="/css/prettify.css" type="text/css" rel="stylesheet" />
+<script src="/lib/javascript/gettext.js"></script>
+<script src="/lib/javascript/head.load.min.js"></script>
+<script src="/lib/javascript/jquery-3.6.3.min.js"></script>
+<script src="/lib/javascript/lodash.min.js"></script>
+<script src="/lib/javascript/prettify/prettify.js"></script>
+<script src="/lib/javascript/Sortable.min.js"></script>
+<script src="/inc/javascript/kusaba.new.js?v=001"></script>
+<script>if(localStorage['constrainWidth']=='true') document.write('<style id="injector:constrainWidth">body\{max-width:960px;margin:0px auto\}</style>')</script>
+</head>
+<body>
+<script>
+	document.body.classList.add('js-supported')
+	$.get("/css/icons/icons.svg?v=001", function(data) {
+	  var div = document.createElement("div");
+	  div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
+	  document.body.insertBefore(div, document.body.childNodes[0]);
+	});
+</script>
+<div class="content-background content">
+<header class="decor-header" style="display: none"></header>
+<div class="adminbar">
+[<a href="/modlog.php"><b>Лог модераторов</b></a>]&nbsp;[<a href="/kusaba.php" target="_top">Фреймы</a>]&nbsp;[<a href="/manage.php" target="_top">Админка</a>]
+<svg class="icon b-icon history-toggle yesscript" onclick="pups.historyToggle()"><use title="Показать историю уведомлений" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-bell"></use></svg>
+</div>
+<div id="boardlist_header">
+			<noscript id="ns_oldmenu">
+				[<a title="Overboard" href="/over/">over</a>]
+					[<label class="collapsible-menu">
+			<input type="checkbox"  checked>
+			<span class="collapsible-menu-name">all</span>
+			<span class="collapsed-menu-contents">
+																																									<a title="Meta" href="/meta/">meta</a>												</span>
+		</label>]
+							[<label class="collapsible-menu">
+			<input type="checkbox" >
+			<span class="collapsible-menu-name">2.0</span>
+			<span class="collapsed-menu-contents">
+																																									<a title="долгожданное слияние и2п и метарта)" href="/_2chzoii2p/">_2chzoii2p</a> / 																			<a title="олдскул" href="/_8/">_8</a> / 																			<a title="Аниме" href="/_a/">_a</a> / 																			<a title="Разговоры про аниме" href="/_ad/">_ad</a> / 																			<a title="Бред" href="/_b/">_b</a> / 																			<a title="Бред+" href="/_bb/">_bb</a> / 																			<a title="blackhat" href="/_blackhat/">_blackhat</a> / 																			<a title="bred" href="/_bred/">_bred</a> / 																			<a title="complaint received" href="/_c/">_c</a> / 																			<a title="Центральные Процессоры" href="/_cp/">_cp</a> / 																			<a title="Рисунки" href="/_d/">_d</a> / 																			<a title="Наркотики" href="/_drag/">_drag</a> / 																			<a title="Flash" href="/_f/">_f</a> / 																			<a title="Хентай" href="/_h/">_h</a> / 																			<a title="Курятник" href="/_ko/">_ko</a> / 																			<a title="Dialectics." href="/_leftypol/">_leftypol</a> / 																			<a title="Музыка" href="/_m/">_m</a> / 																			<a title="me" href="/_me/">_me</a> / 																			<a title="милые мамуличьки" href="/_milf/">_milf</a> / 																			<a title="My Little Pony" href="/_mlp/">_mlp</a> / 																			<a title="жирный омега хуесос" href="/_oa/">_oa</a> / 																			<a title="Питурд" href="/_pitard/">_pitard</a> / 																			<a title="sosnooly" href="/_s/">_s</a> / 																			<a title="мой личный саит." href="/_skakdollar/">_skakdollar</a> / 																			<a title="(раздел для геев)" href="/_vg/">_vg</a> / 																			<a title="Творчество" href="/_webm/">_webm</a>												</span>
+		</label>]
+			[<label class="collapsible-menu">
+	<input type="checkbox">
+	<span class="collapsible-menu-name"><i>Стиль</i></span>
+	<span class="collapsed-menu-contents">
+					<a href='/setstylesheet.php?style=Thorium' onclick="javascript:Styles.change('Thorium');return false;">Thorium</a>
+			 / 					<a href='/setstylesheet.php?style=Modern' onclick="javascript:Styles.change('Modern');return false;">Modern</a>
+			 / 					<a href='/setstylesheet.php?style=Newdark' onclick="javascript:Styles.change('Newdark');return false;">Newdark</a>
+			 / 					<a href='/setstylesheet.php?style=Photon' onclick="javascript:Styles.change('Photon');return false;">Photon</a>
+						</span>
+</label>]
+		</noscript>
+		<script>
+		if (getCookie('ku_oldmenu') == 'yes') toggle_oldmenu(true)
+		var isTouch = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) || false;
+		if(localStorage['interfaceType'] == 'desktop')
+		  isTouch = false;
+		if(localStorage['interfaceType'] == 'touch')
+		  isTouch = true;
+		if (isTouch) {
+			injector.inject('mb', `
+				#overlay_menu {
+					display: none;
+				}
+			  body {
+			    margin-bottom: 350px;
+			  }
+			  #postclone {
+			    bottom: 0px;
+			    left: 0px;
+			    position: fixed;
+			    opacity: 1
+			  }
+			  .logo {
+			    margin-left: 40px;
+			  }
+			  @media only screen and (max-width: 768px) {
+			    .logo {
+			      margin-left: 60px;
+			    }
+			  }`)
+		}
+	</script>
+	<div id="overlay_menu" class="content-background overlay-menu yesscript">
+		<span style="display: none" class="olm-link mgoback">[<a href="/over/"> &lt; </a>]</span>
+		<span class="olm-link">[<a href="/">home</a>]</span>
+		<span class="olm-link">[<a title="Overboard" href="/over/">over</a>]</span>				<b  class="olm-link">[<a href="/register" class="sect-exr" data-toexpand="all">all</a>]</b>
+				<b  class="olm-link">[<a href="/register" class="sect-exr" data-toexpand="20">2.0</a>]</b>
+				<span class="olm-link">[<a href="#" class="sect-exr" data-toexpand="_options">options</a>]</span>
+				<div class="menu-sect" id="ms-all">
+																																												<a class="menu-item" title="Meta" href="/meta/">/meta/ - Meta</a>
+														</div>
+				<div class="menu-sect" id="ms-20">
+							<input type="text" id="boardselect" placeholder="Фильтр" />
+				<div id="boards20">
+				</div>
+					</div>
+				<div class="menu-sect" id="ms-_options">
+			Стили:
+						[<a href="#" onclick="javascript:Styles.change('Thorium');return false;">Thorium</a>]
+						[<a href="#" onclick="javascript:Styles.change('Modern');return false;">Modern</a>]
+						[<a href="#" onclick="javascript:Styles.change('Newdark');return false;">Newdark</a>]
+						[<a href="#" onclick="javascript:Styles.change('Photon');return false;">Photon</a>]
+			<br />
+			<a href="#" onclick="javascript:menu_pin();return false;">Прикрепить/Открепить</a>  |
+			<a href="#" onclick="javascript:toggle_oldmenu(true);return false;">Обычный список</a>
+			<div id="js_settings"></div>
+		</div>
+	</div>
+</div>
+<table style="width:100%" border="0">
+<tbody><tr><td valign="center">
+	<div class="logo">/over/ - Overboard</div>
+</td><td align="right"></td></tr></tbody></table>
+<hr /><form id="delform" action="/board.php" method="post"><input type="hidden" name="board" value="over"><div class="i0svcel">!i0-page-start</div>    
+    <span id="unhidethread1-_a">
+   Тред 
+   <a href="/_a/res/1.html" class="ref|_a|1|1">/_a/1</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('1-_a');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread1-_a" data-threadid="1" data-boardid="18">    <div class="i0svcel">!i0-pd:1</div>    <div class="postnode op" data-id="1" data-board="_a">     <a name="s1"></a>
+ 
+ <div class="posthead">
+  <a href="/_a" target="_blank" class="over-boardlabel">/_a/ — Аниме</a>  <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="1:_a" /><span class="postername">Аноним</span>      <span class="posttime">
+    Втр 2020 Май 26 22:08:04</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="1" data-b="_a"><a href="/_a/res/1.html#1" class="shl">No.&nbsp;</a><a href="/_a/res/1.html#i1">1</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide1" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('1-_a');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="1-_a" 
+    data-postnum="1"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_a/res/1.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody1-_a" class="postbody" data-htmlength="14">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="6901">
+                                  <figcaption class="filesize">
+          <a download="344277_p0.jpg" target="_blank" href="/_a/src/15905200843.jpg" title="344277_p0.jpg"><span class="fc-filename" style="max-width:150px">344277_p0</span>.jpg</a>
+          <br>304.29KB, 780×545          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="6901">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="6901:_a">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('6901', '/_a/src/15905200843.jpg', '/_a/thumb/15905200843s.jpg', '780', '545', '200', '140');" 
+         href="/_a/src/15905200843.jpg">
+         <span id="thumb6901"><img src="/_a/thumb/15905200843s.jpg" alt="1" class="thumb" height="140" width="200" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">Куклотред где?</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies1-_a" class="replies">
+       <span class="omittedposts">
+     <a href="/_a/res/1.html" onclick="return expandthread('1','_a', event)" title="Развернуть тред">
+             8 постов и 1 изображение пропущено.
+           </a>
+    </span>
+       
+    <div class="i0svcel">!i0-pd:10</div>   <table id="postnode10-_a" class="postnode" data-id="10" data-board="_a"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply10">      <a name="10"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('10-_a');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="10:_a" /><span class="postername">Аноним</span>      <span class="posttime">
+    Срд 2020 Май 27 11:02:10</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="10" data-b="_a"><a href="/_a/res/1.html#10" class="shl">No.&nbsp;</a><a href="/_a/res/1.html#i10">10</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="1-_a" 
+    data-postnum="10"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 1">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody10-_a" class="postbody" data-htmlength="85">
+    <blockquote class="postmessage"><a href="/_a/res/1.html#9" class="ref|_a|1|9">&gt;&gt;9</a><br />аниме место в аниме</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:11</div>   <table id="postnode11-_a" class="postnode" data-id="11" data-board="_a"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply11">      <a name="11"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('11-_a');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="11:_a" /><span class="postername">Аноним</span>      <span class="posttime">
+    Чтв 2020 Май 28 11:59:19</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="11" data-b="_a"><a href="/_a/res/1.html#11" class="shl">No.&nbsp;</a><a href="/_a/res/1.html#i11">11</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="1-_a" 
+    data-postnum="11"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 1">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody11-_a" class="postbody" data-htmlength="149">
+    <blockquote class="postmessage"><span class="unkfunc">&gt; 7</span><br />Почти 20 лет дрочить на кукол... Даже не заняю кем надо быть. Или это ньюфаг-подражатель, косящий под олда?</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:12</div>   <table id="postnode12-_a" class="postnode" data-id="12" data-board="_a"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply12">      <a name="12"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('12-_a');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="12:_a" /><span class="postername">Аноним</span>      <span class="posttime">
+    Чтв 2020 Май 28 14:30:38</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="12" data-b="_a"><a href="/_a/res/1.html#12" class="shl">No.&nbsp;</a><a href="/_a/res/1.html#i12">12</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="1-_a" 
+    data-postnum="12"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 1">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody12-_a" class="postbody" data-htmlength="83">
+    <blockquote class="postmessage"><a href="/_a/res/1.html#10" class="ref|_a|1|10">&gt;&gt;10</a><br />соси хуй быдло</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:13</div>   <table id="postnode13-_a" class="postnode" data-id="13" data-board="_a"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply13">      <a name="13"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('13-_a');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="13:_a" /><span class="postername">Аноним</span>      <span class="posttime">
+    Чтв 2020 Май 28 14:51:05</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="13" data-b="_a"><a href="/_a/res/1.html#13" class="shl">No.&nbsp;</a><a href="/_a/res/1.html#i13">13</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="1-_a" 
+    data-postnum="13"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 1">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody13-_a" class="postbody" data-htmlength="101">
+    <blockquote class="postmessage"><a href="/_a/res/1.html#11" class="ref|_a|1|11">&gt;&gt;11</a><br />Это мой хуй в твоем рте, пиздюк.</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>   
+    <div class="i0svcel">!i0-pd:14</div>   <table id="postnode14-_a" class="postnode" data-id="14" data-board="_a"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply14">      <a name="14"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('14-_a');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="14:_a" /><span class="postername">Аноним</span>      <span class="posttime">
+    Птн 2020 Май 29 20:14:17</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="14" data-b="_a"><a href="/_a/res/1.html#14" class="shl">No.&nbsp;</a><a href="/_a/res/1.html#i14">14</a>
+</span>
+      <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="1-_a" 
+    data-postnum="14"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 1">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody14-_a" class="postbody" data-htmlength="100">
+    <blockquote class="postmessage"><a href="/_a/res/1.html#13" class="ref|_a|1|13">&gt;&gt;13</a><br />И как? Тебе нравится, дорогуша?</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+      
+    <span id="unhidethread5-_leftypol">
+   Тред 
+   <a href="/_leftypol/res/5.html" class="ref|_leftypol|5|5">/_leftypol/5</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('5-_leftypol');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread5-_leftypol" data-threadid="5" data-boardid="31">    <div class="i0svcel">!i0-pd:5</div>    <div class="postnode op" data-id="5" data-board="_leftypol">     <a name="s1"></a>
+ 
+ <div class="posthead">
+  <a href="/_leftypol" target="_blank" class="over-boardlabel">/_leftypol/ — Dialectics.</a>  <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="5:_leftypol" /><span class="postername">Rebel</span>      <span class="posttime">
+    Птн 2020 Май 29 11:13:00</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="5" data-b="_leftypol"><a href="/_leftypol/res/5.html#5" class="shl">No.&nbsp;</a><a href="/_leftypol/res/5.html#i5">5</a>
+</span>
+       <img class="hashpic" src="data:image/gif;base64,R0lGODlhEAAQAKIAAAQKHMQCRGRCJNxKxAAAAAAAAAAAAAAAACH5BAEAAAQALAAAAAAQABAAAAM3SLoK/o6tAKEkgdbIst6dt3GY91WKmY1AqbKqN8z0fBFCXV9Crg+83i8o3El6SCMDmbQdmcVLAgA7" alt="8e93b831b31291243fb04f157c734991">
+    <span class="extrabtns yesscript">
+                <span id="hide5" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('5-_leftypol');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="5-_leftypol" 
+    data-postnum="5"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+       <img class="_country_" src="/images/flags/xx.png">
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_leftypol/res/5.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody5-_leftypol" class="postbody" data-htmlength="61">
+    <blockquote class="postmessage">К Р А С U В О<br />Р<br />А<br />С<br />U<br />В<br />О</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies5-_leftypol" class="replies">
+       
+    <div class="i0svcel">!i0-pd:6</div>   <table id="postnode6-_leftypol" class="postnode" data-id="6" data-board="_leftypol"><tbody>
+   <tr>
+    <td class="doubledash">&gt;&gt;</td>
+    <td class="reply" id="reply6">      <a name="6"></a>
+ 
+ <div class="posthead">
+    <span class="extrabtns yesscript"><a href="#" onclick="javascript:HiddenItems.togglePost('6-_leftypol');return false;" title="Скрыть пост" class="hide-post-btn"><svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg></a></span><label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="6:_leftypol" /><span class="postername">Rebel</span>      <span class="posttime">
+    Птн 2020 Май 29 11:37:16</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="6" data-b="_leftypol"><a href="/_leftypol/res/5.html#6" class="shl">No.&nbsp;</a><a href="/_leftypol/res/5.html#i6">6</a>
+</span>
+       <img class="hashpic" src="data:image/gif;base64,R0lGODlhEAAQAKIAAAQKHMQCRGRCJNxKxAAAAAAAAAAAAAAAACH5BAEAAAQALAAAAAAQABAAAAM3SLoK/o6tAKEkgdbIst6dt3GY91WKmY1AqbKqN8z0fBFCXV9Crg+83i8o3El6SCMDmbQdmcVLAgA7" alt="8e93b831b31291243fb04f157c734991">
+    <span class="extrabtns yesscript">
+       <a href="#" 
+   data-parent="5-_leftypol" 
+    data-postnum="6"
+   class="qrl" 
+   title="Быстрый ответ&nbsp;в тред 5">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+       <img class="_country_" src="/images/flags/xx.png">
+      
+  </span>
+  
+        </div>
+
+ <div id="postbody6-_leftypol" class="postbody" data-htmlength="5">
+    <blockquote class="postmessage">хуйня</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+     </td>    </tr>
+  </tbody></table>   <div class="i0svcel">!i0-pd-end</div>    
+   </div>   </div>
+  <br clear="left">
+  <hr>
+      
+    <span id="unhidethread3-_vg">
+   Тред 
+   <a href="/_vg/res/3.html" class="ref|_vg|3|3">/_vg/3</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('3-_vg');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread3-_vg" data-threadid="3" data-boardid="34">    <div class="i0svcel">!i0-pd:3</div>    <div class="postnode op" data-id="3" data-board="_vg">     <a name="s1"></a>
+ 
+ <div class="posthead">
+  <a href="/_vg" target="_blank" class="over-boardlabel">/_vg/ — (раздел для геев)</a>  <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="3:_vg" /><span class="postername">Токсик</span>      <span class="posttime">
+    Птн 2020 Май 29 11:11:37</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="3" data-b="_vg"><a href="/_vg/res/3.html#3" class="shl">No.&nbsp;</a><a href="/_vg/res/3.html#i3">3</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide3" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('3-_vg');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="3-_vg" 
+    data-postnum="3"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_vg/res/3.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody3-_vg" class="postbody" data-htmlength="216">
+    <blockquote class="postmessage"><a href="/_vg/res/2.html#2" class="ref|_vg|2|2">&gt;&gt;2</a><br /><span class="unkfunc">&gt; ПРРРРРР</span><br /><span class="unkfunc">&gt; посрал в вырвиглазную парашу</span><br />Ну и зачем ты посрал на 2ch.pm?</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies3-_vg" class="replies">
+        
+   </div>   </div>
+  <br clear="left">
+  <hr>
+      
+    <span id="unhidethread2-_vg">
+   Тред 
+   <a href="/_vg/res/2.html" class="ref|_vg|2|2">/_vg/2</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('2-_vg');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread2-_vg" data-threadid="2" data-boardid="34">    <div class="i0svcel">!i0-pd:2</div>    <div class="postnode op" data-id="2" data-board="_vg">     <a name="s1"></a>
+ 
+ <div class="posthead">
+  <a href="/_vg" target="_blank" class="over-boardlabel">/_vg/ — (раздел для геев)</a>  <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="2:_vg" /><span class="postername">Токсик</span>      <span class="posttime">
+    Птн 2020 Май 29 09:51:53</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="2" data-b="_vg"><a href="/_vg/res/2.html#2" class="shl">No.&nbsp;</a><a href="/_vg/res/2.html#i2">2</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide2" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('2-_vg');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="2-_vg" 
+    data-postnum="2"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_vg/res/2.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody2-_vg" class="postbody" data-htmlength="42">
+    <blockquote class="postmessage">ПРРРРРР<br />посрал в вырвиглазную парашу</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies2-_vg" class="replies">
+        
+   </div>   </div>
+  <br clear="left">
+  <hr>
+      
+    <span id="unhidethread1-_vg">
+   Тред 
+   <a href="/_vg/res/1.html" class="ref|_vg|1|1">/_vg/1</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('1-_vg');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread1-_vg" data-threadid="1" data-boardid="34">    <div class="i0svcel">!i0-pd:1</div>    <div class="postnode op" data-id="1" data-board="_vg">     <a name="s1"></a>
+ 
+ <div class="posthead">
+  <a href="/_vg" target="_blank" class="over-boardlabel">/_vg/ — (раздел для геев)</a>  <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="1:_vg" /><span class="postername">Токсик</span>      <span class="posttime">
+    Чтв 2020 Май 28 22:55:16</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="1" data-b="_vg"><a href="/_vg/res/1.html#1" class="shl">No.&nbsp;</a><a href="/_vg/res/1.html#i1">1</a>
+</span>
+      <span class="extrabtns yesscript">
+                <span id="hide1" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('1-_vg');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="1-_vg" 
+    data-postnum="1"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_vg/res/1.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody1-_vg" class="postbody" data-htmlength="97">
+    <blockquote class="postmessage"><span class="unkfunc">&gt; 2200</span><br /><span class="unkfunc">&gt; играть в дрочильни</span></blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies1-_vg" class="replies">
+        
+   </div>   </div>
+  <br clear="left">
+  <hr>
+      
+    <span id="unhidethread4-_leftypol">
+   Тред 
+   <a href="/_leftypol/res/4.html" class="ref|_leftypol|4|4">/_leftypol/4</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('4-_leftypol');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread4-_leftypol" data-threadid="4" data-boardid="31">    <div class="i0svcel">!i0-pd:4</div>    <div class="postnode op" data-id="4" data-board="_leftypol">     <a name="s1"></a>
+ 
+ <div class="posthead">
+  <a href="/_leftypol" target="_blank" class="over-boardlabel">/_leftypol/ — Dialectics.</a>  <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="4:_leftypol" /><span class="postername">Rebel</span>      <span class="posttime">
+    Чтв 2020 Май 28 15:37:43</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="4" data-b="_leftypol"><a href="/_leftypol/res/4.html#4" class="shl">No.&nbsp;</a><a href="/_leftypol/res/4.html#i4">4</a>
+</span>
+       <img class="hashpic" src="data:image/gif;base64,R0lGODlhEAAQAKIAABQGBJyKhKQShMQCRAAAAAAAAAAAAAAAACH5BAEAAAQALAAAAAAQABAAAAM2SLoq/o6tAaEkg1Zxs7aS90WhCDJi9nSpdgVwDHOvHF8EYMM4oNs9H/DiE96IxV8gmOQhk4AEADs=" alt="13e594b0966d7dbf7808a4990cb2b053">
+    <span class="extrabtns yesscript">
+                <span id="hide4" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('4-_leftypol');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="4-_leftypol" 
+    data-postnum="4"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+       <img class="_country_" src="/images/flags/xx.png">
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_leftypol/res/4.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody4-_leftypol" class="postbody" data-htmlength="10">
+    <blockquote class="postmessage">прет сниви</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies4-_leftypol" class="replies">
+        
+   </div>   </div>
+  <br clear="left">
+  <hr>
+      
+    <span id="unhidethread3-_leftypol">
+   Тред 
+   <a href="/_leftypol/res/3.html" class="ref|_leftypol|3|3">/_leftypol/3</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('3-_leftypol');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread3-_leftypol" data-threadid="3" data-boardid="31">    <div class="i0svcel">!i0-pd:3</div>    <div class="postnode op" data-id="3" data-board="_leftypol">     <a name="s1"></a>
+ 
+ <div class="posthead">
+  <a href="/_leftypol" target="_blank" class="over-boardlabel">/_leftypol/ — Dialectics.</a>  <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="3:_leftypol" /><span class="postername">Rebel</span>      <span class="posttime">
+    Чтв 2020 Май 28 15:01:08</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="3" data-b="_leftypol"><a href="/_leftypol/res/3.html#3" class="shl">No.&nbsp;</a><a href="/_leftypol/res/3.html#i3">3</a>
+</span>
+       <img class="hashpic" src="data:image/gif;base64,R0lGODlhEAAQAKIAAAQSJETmlOyiZCz61AAAAAAAAAAAAAAAACH5BAEAAAQALAAAAAAQABAAAAM2OLoq/o4xCOWijthGid6dtw2QJ4KZ+VmpOgJwDKtmIMs0Edg3kO88HA0YnA2JQhVxF/stebkEADs=" alt="ff10d1bdb45bd4fe400ef714a1292b71">
+    <span class="extrabtns yesscript">
+                <span id="hide3" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('3-_leftypol');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="3-_leftypol" 
+    data-postnum="3"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+       <img class="_country_" src="/images/flags/xx.png">
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_leftypol/res/3.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody3-_leftypol" class="postbody" data-htmlength="5">
+     <div class="embedgroup">
+                      <figure class="multiembed" data-fileid="7121">
+                                  <figcaption class="filesize">
+          <a download="159066726897.jpg" target="_blank" href="/_leftypol/src/159066726897.jpg" title="159066726897.jpg"><span class="fc-filename" style="max-width:150px">159066726897</span>.jpg</a>
+          <br>42.72KB, 700×700          <button type="submit" class="yesscript file-control file-menu-toggle emb-button post-menu-toggle" value="7121">
+           <svg class="icon b-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg>
+          </button>
+          <input title="Удалить файл" type="checkbox" name="delete-file[]" class="file-control emb-button noscript multidel" value="7121:_leftypol">
+         </figcaption>
+                         <a 
+                   target="_blank" 
+                  onclick="javascript:return expandimg('7121', '/_leftypol/src/159066726897.jpg', '/_leftypol/thumb/159066726897s.jpg', '700', '700', '200', '200');" 
+         href="/_leftypol/src/159066726897.jpg">
+         <span id="thumb7121"><img src="/_leftypol/thumb/159066726897s.jpg" alt="3" class="thumb" height="200" width="200" /></span>
+         </a>
+               </figure>
+                      </div>
+    <blockquote class="postmessage">/test</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies3-_leftypol" class="replies">
+        
+   </div>   </div>
+  <br clear="left">
+  <hr>
+      
+    <span id="unhidethread2-_leftypol">
+   Тред 
+   <a href="/_leftypol/res/2.html" class="ref|_leftypol|2|2">/_leftypol/2</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('2-_leftypol');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread2-_leftypol" data-threadid="2" data-boardid="31">    <div class="i0svcel">!i0-pd:2</div>    <div class="postnode op" data-id="2" data-board="_leftypol">     <a name="s1"></a>
+ 
+ <div class="posthead">
+  <a href="/_leftypol" target="_blank" class="over-boardlabel">/_leftypol/ — Dialectics.</a>  <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="2:_leftypol" /><span class="postername">Rebel</span>      <span class="posttime">
+    Чтв 2020 Май 28 14:47:36</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="2" data-b="_leftypol"><a href="/_leftypol/res/2.html#2" class="shl">No.&nbsp;</a><a href="/_leftypol/res/2.html#i2">2</a>
+</span>
+       <img class="hashpic" src="data:image/gif;base64,R0lGODlhEAAQAKIAAIQSpATGlKQShPSSPAAAAAAAAAAAAAAAACH5BAEAAAQALAAAAAAQABAAAAM8SLoK/A+4J6CcS1R2MdFb02Xg0kkKqInnp1bn9WqxNNz4DRFBnkOBnk/HCAqHReOQyDMefQpncDloSqkJADs=" alt="83f81992915e8e66ead0f8c394ac0b41">
+    <span class="extrabtns yesscript">
+                <span id="hide2" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('2-_leftypol');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="2-_leftypol" 
+    data-postnum="2"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+       <img class="_country_" src="/images/flags/xx.png">
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_leftypol/res/2.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody2-_leftypol" class="postbody" data-htmlength="21">
+    <blockquote class="postmessage">Чмамух в пизде протух</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies2-_leftypol" class="replies">
+        
+   </div>   </div>
+  <br clear="left">
+  <hr>
+      
+    <span id="unhidethread1-_leftypol">
+   Тред 
+   <a href="/_leftypol/res/1.html" class="ref|_leftypol|1|1">/_leftypol/1</a> 
+   скрыт.   <a href="#" onclick="javascript:HiddenItems.unhideThread('1-_leftypol');return false;" title="Раскрыть тред">
+    <svg class="icon b-icon"><use xlink:href="#i-unhide"></use></svg>
+   </a>
+  </span>
+  <div id="thread1-_leftypol" data-threadid="1" data-boardid="31">    <div class="i0svcel">!i0-pd:1</div>    <div class="postnode op" data-id="1" data-board="_leftypol">     <a name="s1"></a>
+ 
+ <div class="posthead">
+  <a href="/_leftypol" target="_blank" class="over-boardlabel">/_leftypol/ — Dialectics.</a>  <label class="postinfo"><svg class="icon b-icon post-menu-toggle yesscript"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-dots"></use></svg><input type="checkbox" name="post[]" class="multidel noscript" value="1:_leftypol" /><span class="postername">Rebel</span>      <span class="posttime">
+    Чтв 2020 Май 28 14:31:50</a>
+   </span>
+  </label>
+  <span class="reflink" data-id="1" data-b="_leftypol"><a href="/_leftypol/res/1.html#1" class="shl">No.&nbsp;</a><a href="/_leftypol/res/1.html#i1">1</a>
+</span>
+       <img class="hashpic" src="data:image/gif;base64,R0lGODlhEAAQAJEAAAQGFETCTIQChAAAACH5BAEAAAMALAAAAAAQABAAAAIxnG+hq3jCmBsCxoaqvVlfTGlbZIjVF4QmanrfNADoBMicU9sSnpN8v6DlasHfEHQoAAA7" alt="ebfcc89a1d66e674e759c61c27754343">
+    <span class="extrabtns yesscript">
+                <span id="hide1" class="inthread-hide">
+     <a href="#" onclick="javascript:HiddenItems.hideThread('1-_leftypol');return false;" title="Спрятать тред">
+      <svg class="icon b-icon"><use xlink:href="#i-hide"></use></svg>
+     </a>
+    </span>
+       <a href="#" 
+   data-parent="1-_leftypol" 
+    data-postnum="1"
+   class="qrl" 
+   title="Быстрый ответ">
+    <svg class="icon b-icon"><use xlink:href="#i-qr"></use></svg>
+   </a>
+       <img class="_country_" src="/images/flags/xx.png">
+      
+  </span>
+  
+     <span class="inthread-hide">[<a href="/_leftypol/res/1.html">Ответ</a>]</span>
+            <br>
+   </div>
+
+ <div id="postbody1-_leftypol" class="postbody" data-htmlength="90">
+    <blockquote class="postmessage">Должно быть, очень интересная доска. Правда, потом трусы стирать придётся, но это не беда.</blockquote>
+   </div>
+ <div class="postbutt replieslist"></div>
+
+   </div>   <div class="i0svcel">!i0-pd-end</div>      <div id="replies1-_leftypol" class="replies">
+        
+   </div>   </div>
+  <br clear="left">
+  <hr>
+  <div class="i0svcel">!i0-page-end</div>	<table class="userdelete"><tbody>
+	<tr><td>
+		<input placeholder="Пароль" type="password" name="postpassword" size="8" class="make-me-readonly"/>
+	</td></tr>
+	<noscript><tr><td><details>
+		<summary>Капча</summary>
+		<iframe class="captchawrap" src="/nojscaptcha.php" frameborder="0" width="150" height="32" style="vertical-align: middle;"></iframe><br>
+		<input type="text" name="captcha" placeholder="Капча" style="margin-top:4px" accesskey="c" style="vertical-align: middle" autocomplete="off">
+	</details></td></tr></noscript>
+	<tr><td>
+	<input name="deletepost" value="Удалить пост" type="submit" class="styled-button bad-button" />	</td></tr>
+		<tr><td>
+		<input name="cancel_timer" value="Отменить таймер" type="submit" class="styled-button" />
+	</td></tr>
+	<noscript><tr><td><details>
+		<summary>Модерация</summary>
+		<input name="moddelete" value="Удалить (Модератор)" type="submit" class="styled-button bad-button" />
+	</details></td></tr></noscript>
+	</tbody></table>
+	</form>
+
+	<script type="text/javascript"><!--
+		set_delpass("delform");
+	//--></script>
+	<table border="1" id="pagination">
+	<tbody>
+		<tr>
+			<td>
+									<form method="get" action="/over/55.html">
+						<input value="Назад" type="submit" /></form>
+							</td>
+			<td>
+				&#91;<a href="/over/">0</a>&#93;
+								&#91;<a href="/over/1.html">1</a>&#93;
+								&#91;<a href="/over/2.html">2</a>&#93;
+								&#91;<a href="/over/3.html">3</a>&#93;
+								&#91;<a href="/over/4.html">4</a>&#93;
+								&#91;<a href="/over/5.html">5</a>&#93;
+								&#91;<a href="/over/6.html">6</a>&#93;
+								&#91;<a href="/over/7.html">7</a>&#93;
+								&#91;<a href="/over/8.html">8</a>&#93;
+								&#91;<a href="/over/9.html">9</a>&#93;
+								&#91;<a href="/over/10.html">10</a>&#93;
+								&#91;<a href="/over/11.html">11</a>&#93;
+								&#91;<a href="/over/12.html">12</a>&#93;
+								&#91;<a href="/over/13.html">13</a>&#93;
+								&#91;<a href="/over/14.html">14</a>&#93;
+								&#91;<a href="/over/15.html">15</a>&#93;
+								&#91;<a href="/over/16.html">16</a>&#93;
+								&#91;<a href="/over/17.html">17</a>&#93;
+								&#91;<a href="/over/18.html">18</a>&#93;
+								&#91;<a href="/over/19.html">19</a>&#93;
+								&#91;<a href="/over/20.html">20</a>&#93;
+								&#91;<a href="/over/21.html">21</a>&#93;
+								&#91;<a href="/over/22.html">22</a>&#93;
+								&#91;<a href="/over/23.html">23</a>&#93;
+								&#91;<a href="/over/24.html">24</a>&#93;
+								&#91;<a href="/over/25.html">25</a>&#93;
+								&#91;<a href="/over/26.html">26</a>&#93;
+								&#91;<a href="/over/27.html">27</a>&#93;
+								&#91;<a href="/over/28.html">28</a>&#93;
+								&#91;<a href="/over/29.html">29</a>&#93;
+								&#91;<a href="/over/30.html">30</a>&#93;
+								&#91;<a href="/over/31.html">31</a>&#93;
+								&#91;<a href="/over/32.html">32</a>&#93;
+								&#91;<a href="/over/33.html">33</a>&#93;
+								&#91;<a href="/over/34.html">34</a>&#93;
+								&#91;<a href="/over/35.html">35</a>&#93;
+								&#91;<a href="/over/36.html">36</a>&#93;
+								&#91;<a href="/over/37.html">37</a>&#93;
+								&#91;<a href="/over/38.html">38</a>&#93;
+								&#91;<a href="/over/39.html">39</a>&#93;
+								&#91;<a href="/over/40.html">40</a>&#93;
+								&#91;<a href="/over/41.html">41</a>&#93;
+								&#91;<a href="/over/42.html">42</a>&#93;
+								&#91;<a href="/over/43.html">43</a>&#93;
+								&#91;<a href="/over/44.html">44</a>&#93;
+								&#91;<a href="/over/45.html">45</a>&#93;
+								&#91;<a href="/over/46.html">46</a>&#93;
+								&#91;<a href="/over/47.html">47</a>&#93;
+								&#91;<a href="/over/48.html">48</a>&#93;
+								&#91;<a href="/over/49.html">49</a>&#93;
+								&#91;<a href="/over/50.html">50</a>&#93;
+								&#91;<a href="/over/51.html">51</a>&#93;
+								&#91;<a href="/over/52.html">52</a>&#93;
+								&#91;<a href="/over/53.html">53</a>&#93;
+								&#91;<a href="/over/54.html">54</a>&#93;
+								&#91;<a href="/over/55.html">55</a>&#93;
+								&#91;56&#93;
+					
+			</td>
+			<td>
+									Дальше					
+			</td>
+		</tr>
+	</tbody>
+	</table>
+<br />
+	<div id="boardlist_footer" class="navbar boardlist">	[<a title="Overboard" href="/over/">over</a>]
+					[<label class="collapsible-menu">
+			<input type="checkbox"  checked>
+			<span class="collapsible-menu-name">all</span>
+			<span class="collapsed-menu-contents">
+																																									<a title="Meta" href="/meta/">meta</a>												</span>
+		</label>]
+							[<label class="collapsible-menu">
+			<input type="checkbox" >
+			<span class="collapsible-menu-name">2.0</span>
+			<span class="collapsed-menu-contents">
+																																									<a title="долгожданное слияние и2п и метарта)" href="/_2chzoii2p/">_2chzoii2p</a> / 																			<a title="олдскул" href="/_8/">_8</a> / 																			<a title="Аниме" href="/_a/">_a</a> / 																			<a title="Разговоры про аниме" href="/_ad/">_ad</a> / 																			<a title="Бред" href="/_b/">_b</a> / 																			<a title="Бред+" href="/_bb/">_bb</a> / 																			<a title="blackhat" href="/_blackhat/">_blackhat</a> / 																			<a title="bred" href="/_bred/">_bred</a> / 																			<a title="complaint received" href="/_c/">_c</a> / 																			<a title="Центральные Процессоры" href="/_cp/">_cp</a> / 																			<a title="Рисунки" href="/_d/">_d</a> / 																			<a title="Наркотики" href="/_drag/">_drag</a> / 																			<a title="Flash" href="/_f/">_f</a> / 																			<a title="Хентай" href="/_h/">_h</a> / 																			<a title="Курятник" href="/_ko/">_ko</a> / 																			<a title="Dialectics." href="/_leftypol/">_leftypol</a> / 																			<a title="Музыка" href="/_m/">_m</a> / 																			<a title="me" href="/_me/">_me</a> / 																			<a title="милые мамуличьки" href="/_milf/">_milf</a> / 																			<a title="My Little Pony" href="/_mlp/">_mlp</a> / 																			<a title="жирный омега хуесос" href="/_oa/">_oa</a> / 																			<a title="Питурд" href="/_pitard/">_pitard</a> / 																			<a title="sosnooly" href="/_s/">_s</a> / 																			<a title="мой личный саит." href="/_skakdollar/">_skakdollar</a> / 																			<a title="(раздел для геев)" href="/_vg/">_vg</a> / 																			<a title="Творчество" href="/_webm/">_webm</a>												</span>
+		</label>]
+			[<label class="collapsible-menu">
+	<input type="checkbox">
+	<span class="collapsible-menu-name"><i>Стиль</i></span>
+	<span class="collapsed-menu-contents">
+					<a href='/setstylesheet.php?style=Thorium' onclick="javascript:Styles.change('Thorium');return false;">Thorium</a>
+			 / 					<a href='/setstylesheet.php?style=Modern' onclick="javascript:Styles.change('Modern');return false;">Modern</a>
+			 / 					<a href='/setstylesheet.php?style=Newdark' onclick="javascript:Styles.change('Newdark');return false;">Newdark</a>
+			 / 					<a href='/setstylesheet.php?style=Photon' onclick="javascript:Styles.change('Photon');return false;">Photon</a>
+						</span>
+</label>]</div>
+</div><!-- /.content --><a name="bottom"></a>
+<noscript><img src="/board.php" style="display: none"></noscript>
+<script>$(document).ready(readyset); console.info("Затрачено 1.3651020526886 cек.")</script>
+</body>
+</html>

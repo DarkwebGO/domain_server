@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Co-simulation and feedforward planning</title><style>
+body{margin:auto;max-width:50em;padding-left:0.5em;padding-right:0.5em}
+img{max-width:100%}
+#banner h1{font-size:2.5em;margin-top:5px;margin-bottom:5px;text-align:center}
+#banner h1 a:link,#banner h1 a:visited{color:#111;text-decoration:none}
+pre{padding:0.5em;background:#ddd;border:1px solid #000;overflow:auto}
+.entry-title{font-size:2em;margin-bottom:0.5em}
+.tags{margin-top:0px;margin-bottom:0px}
+.article-link{font-weight:bold}
+.post-info{float:right;margin:0.5em;padding:0.5em;border:1px solid #000;max-width:16em}
+footer div{column-count:3;column-width:18em;column-rule:1px solid #ddd}
+footer div div{display:inline-block}
+nav ul{list-style-type:none;margin:0;padding:0;overflow:hidden;background-color:#eee}
+nav ul li{float:left}
+nav ul li a{display:block;color:#333;text-align:center;font-size:1.5em;padding:14px 16px;text-decoration:none}
+nav ul li a:hover{background-color:#ddd}
+table,td,th{padding:0.2em;border:1px solid gray;border-collapse:collapse}
+</style><link href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tomas' place in cyber&shy;space Atom Feed"/><link href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Tomas' place in cyber&shy;space RSS Feed"/></head><body>
+<header id="banner">
+<h1><a href="../../../../../">Tomas' place in cyber&shy;space </a></h1>
+<nav><ul>
+<li><a href="/">Home</a></li>
+<li><a href="/category/blog.html">Blog</a></li>
+<li><a href="/category/demoscene.html">Demoscene</a></li>
+<li><a href="/files">Files</a></li>
+<li><a href="/pages/consulting.html">Consulting</a></li>
+<li><a href="/pages/contact.html">Contact</a></li>
+</ul></nav>
+</header>
+<section><article><header>
+<aside class="post-info">
+<abbr class="published" title="2024-04-14T22:05:07+01:00">
+Published: 2024-04-14</abbr>
+in <a href="../../../../../category/blog.html">Blog</a>
+<p class="tags">Tags: <a href="../../../../../tag/cybernetics.html">cybernetics</a> <a href="../../../../../tag/fmigo.html">fmigo</a> </p>
+</aside><h1 class="entry-title">
+<a href="../../../../../blog/2024/04/14/co-simulation-and-feedforward-planning/" rel="bookmark"
+title="Permalink to Co-simulation and feedforward planning">Co-simulation and feedforward planning</a></h1>
+</header>
+<div class="entry-content"><p>In this post I will make the argument that error control (feedback) is not sufficient for good planning and that feedforward control is indispensable for good planning.
+To understand my motivation around this it is necessary to take a detour and talk about co-simulation, cyberphysical systems and my work on <a href="https://www.fmigo.net/">FmiGo</a>.
+This post may seem meandering and in a sense it is, because it touches on some interrelated concepts.</p>
+<h2>Co-simulation and cyberphysical systems</h2>
+<p>Co-simulation revolves around coupling simulators written in different toolchains.
+A company like Scania that manufactures trucks will have different departments working on different parts of a truck.
+Each of these departments use different simulation toolchains for the parts that they develop.
+The engine department might use one toolchain to do its simulations and the chassis department might use another.
+Without some way to couple the simulations, each department must use a simplified model of the other departments' parts.
+The idea of co-simulation is that each department's actual simulator is used as part of the simulations carried out by every other department.
+The goal is to run all simulators as a whole, despite each simulator having its own internal solver.
+Another example where co-simulation is desireable is when splitting up simulations for parallelization.
+This turns out to be non-trivial for reasons that I will get to.</p>
+<p>Cyberphysical systems are systems that feature these kinds of simulators but where real physical systems can be plugged into the loop, such as an engine in a test cell coupled to a road model and a driver model.
+A planned economy is such a cyberphysical system.
+Another example is a human operator interacting with a simulation, also known as human-in-the-loop (or, humorously, monkey-in-the-loop).</p>
+<h2>FMI</h2>
+<p>The <a href="https://fmi-standard.org/">Functional Mock-up Interface</a> (FMI) is a standard for wrapping simulators like those described in the previous section.
+Each such simulator is called a functional mock-up unit (FMU) in FMI parlance.
+An FMU is a .zip file with metadata stored as XML and the simultor itself stored as either shared object file (.so, .dylib and/or .dll) or as source code, or both.
+The simulator uses a standardized API.
+A master stepper uses this API to exchange information between FMUs and also to step time forward, to save/restore FMU state, to get partial derivatives and many other tasks.
+Not all FMUs implement all this functionality, which is where part of the challenge of co-simulation starts.</p>
+<p>Besides co-simulation, FMI also supports model exchange, where each FMU exposes the system of ordinary differential equations (ODEs) that defines their behavior.
+All inputs, including time, can be changed at will, and the resulting derivatives read off.
+This allows the master stepper to integrate all FMUs as a whole.
+While very useful for accurate simulation, such a model is unrealistic for the behavior of real workplaces (though it may be useful for planning).
+Co-simulation, where an FMU/workplace is allowed to "do its thing" for a period before communicating again, is a more realistic model.</p>
+<h2>FmiGo</h2>
+<p>FmiGo is a master stepper developed at <a href="https://www.umu.se/en/umit-research-lab/">UMIT Research Lab</a>.
+The work was led by Claude Lacoursière. I entered the project some time after it began and have been maintaining the code ever since.
+It is free software, and we'd like to see more people use it, so feel free to check out <a href="https://www.fmigo.net/">the FmiGo website</a> if co-simulation is your thing.</p>
+<h2>Co-simulation by example</h2>
+<p>A concrete example of the problem of co-simulation is keeping the output shaft of an engine FMU locked to the input shaft of a driveline FMU.
+See the image below.</p>
+<p><img style="display:block;width:66%;margin-left:auto;margin-right:auto;" src="../../../../../images/feedforward/model.svg" alt="The FMUs described"/></p>
+<p>The engine FMU models the inner workings of the engine, clutch and gearbox whereas the driveline FMU models the behavior of the driveshaft, differential and wheels.
+There are multiple modes at play in the system that happen at different timescales.
+Fast modes of the system include the driveshaft and engine internals while slower modes are the behavior of the wheels and the gas pedal.</p>
+<p>A system that has a large ratio between its fastest and its slowest modes is called <em>stiff</em>, and the ratio is called the system's <em>stiffness ratio</em>.
+Stiff systems are notoriously hard to deal with, especially in co-simulation.
+This is because each system cannot be stepped with a timestep longer than a fraction of the period of the fastest relevant mode.
+If for example the engine runs at 3000 RPM, the gear ratio is 1:5 and we need 1000 steps per revolution of the driveshaft, then each <em>global</em> timestep cannot be longer than 100 µs.
+This is a huge amount of overhead.
+Each simulator can only be run for 100 µs, then data must be exchanged, and only then can each simulator be let loose on another 100 µs.
+Meanwhile the monkey in the loop only cares about things that happen on timescales around 100 ms or slower.
+If we didn't need 1000 steps per revolution but instead could get away with say 10 steps, then we only need a much more reasonable 10 ms per global timestep.</p>
+<h3>Force-velocity coupling</h3>
+<p>One way to couple the two simulators is to use something called <em>force-velocity coupling</em>.</p>
+<p><img style="display:block;width:66%;margin-left:auto;margin-right:auto;" src="../../../../../images/feedforward/fv.svg" alt="Force-velocity coupling"/></p>
+<p>In the image above the angular speed <math>
+<msub><mi>&#x3c9;</mi><mtext>gearbox</mtext></msub>
+</math> of the gearbox' output shaft is fed to the driveline FMU, and a torque <em>τ</em> is fed back to the engine FMU.
+<em>τ</em> is computed by inserting a spring and a damper inside the driveline FMU between the driveshaft and an "immovable wall" or "connector" with infinite inertia rotating with angular speed <math>
+<msub><mi>&#x3c9;</mi><mtext>gearbox</mtext></msub>
+</math>.
+In the figure above this is illustrated as a spring and a dashpot respectively, and a small "plate" representing the immovable wall.
+Those who prefer rotational rather than linear parts may think of these as a clockspring and a hydrodynamic damper respectively.</p>
+<p>The damper contributes to the torque proportional to the difference in angular speed, and the spring contributes torque proportional to the difference in accumulated angle, which is computed by integrating the difference in angular speed, like so:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>&#x3c4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mi>d</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><msub><mi>&#x3c9;</mi><mtext>driveshaft</mtext></msub><mo lspace="0.222em" rspace="0.222em">-</mo><msub><mi>&#x3c9;</mi><mtext>gearbox</mtext></msub><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">+</mo><mi>k</mi><mo lspace="0.167em" rspace="0" stretchy="false">&#x222b;</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><msub><mi>&#x3c9;</mi><mtext>driveshaft</mtext></msub><mo lspace="0.222em" rspace="0.222em">-</mo><msub><mi>&#x3c9;</mi><mtext>gearbox</mtext></msub><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>d</mi><mspace width="0"/><mi>t</mi></mrow>
+</math>
+</span></p>
+<p>where <math>
+<mi>d</mi>
+</math> is the damping coefficient and <math>
+<mi>k</mi>
+</math> is the spring coefficient.
+This is called force-velocity coupling in the literature.
+<em>τ</em> is fed back to the engine FMU at each global step.
+One can use (from the driveline FMU) either <em>τ</em>'s instantaneous value at the start of the current timestep, the end of the current timestep, or an integrated average over the entire timestep.
+On the gearbox side, the received <em>τ</em> is typically held constant.
+Note the similarity to proportional-integral (PI) control.</p>
+<p>If the timestep, <em>k</em> and <em>d</em> are chosen appropriately, then the entire ensemble will behave as one would expect.
+If the truck is driving up a hill, the driveshaft will start slowing down.
+This will cause a mismatch in angular speed between gearbox and driveshaft which will result in a higher counter-torque being fed back to the engine.
+The engine will then slow down and both sides of the shaft constraint will eventually converge as the truck finds its new equilibrium speed given the current gas pedal input.
+The choice of coefficients is non-trivial and depends on the global timestep and the inertia of all parts of the system, both of which may vary considerably.</p>
+<p>If <math>
+<mi>d</mi>
+</math> and <math>
+<mi>k</mi>
+</math> are set too low then the resulting system behaves as if the driftshaft is a highly flexible torsion spring (or a wet noodle).
+Step on the gas pedal and nothing happens for several seconds as the violation between the two sides of the shaft coupling builds, until sufficient torque develops and the truck finally starts moving.
+Once the truck does move, the pent up energy in the coupling will cause the speed on the input side of the driveline to overshoot and oscillate, and the system will overall behave as if there's no causal link between the gas pedal and the wheels.
+An undesired dynamic has been added to the system which is entirely an artifact of the coupling.
+Me and Claude use the term "pneumatics" for this undesired compressibility, to distinguish it from the incompressible "hydraulic" behavior of the preferred method used by FmiGo (SPOOK) which I will get to.</p>
+<p>If on the other hand <math>
+<mi>d</mi>
+</math> and <math>
+<mi>k</mi>
+</math> are set too high then the system will become numerically unstable and quickly explode.
+This can be thought of as the system overcorrecting for errors in each timestep.</p>
+<p>A final option is to decrease the global time step, increasing the number of times <em>ω</em> and <em>τ</em> are exchanged per second.
+This degrades performance but can bring the violation between both sides of the coupling arbitrarily low if <math>
+<mi>d</mi>
+</math> and <math>
+<mi>k</mi>
+</math> and are also increased appropriately.</p>
+<p>What is described above amounts to <em>error control</em>.
+There is no way the system as a whole can anticipate and correct for errors before they happen.
+Even when errors do occur, it takes a long time for the system to converge to a coherent state.
+Finally, convergence is linear, meaning the error shrinks as <math>
+<mrow><mi>O</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><msup><mi>e</mi><mrow><mi mathvariant="normal">&#x394;</mi><mspace width="0"/><mi>t</mi></mrow></msup><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> where <math>
+<mrow><mi mathvariant="normal">&#x394;</mi><mspace width="0"/><mi>t</mi></mrow>
+</math> is the global time step.</p>
+<h3>SPOOK</h3>
+<p>The SPOOK solver used by FmiGo achieves quadratic convergence, <math>
+<mrow><mi>O</mi><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><msup><mi>e</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi mathvariant="normal">&#x394;</mi><mspace width="0"/><mi>t</mi><msup><mo lspace="0" rspace="0" stretchy="false">)</mo><mn>2</mn></msup></mrow></msup></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math><sup><a href="#foot1">[1]</a></sup>.
+It revolves around computing a set of forces at each time step that, when applied, keeps the whole system together.
+The way it achieves this is by modelling the behavior of each FMU, and through a bit of time travel.
+Let's start with the time travel.</p>
+<p>SPOOK makes use of the ability of some FMUs to save their internal state and to restore it at a later time.
+It saves the state of all FMUs, holds their inputs constant and steps them one time step into the future.
+It then reads the velocities of all relevant connectors, and then resets all FMUs to the present time step.
+This allows the solver to compute the velocity of the <em>future</em> violations of all constraints.
+In other words, if during the current timestep the truck starts going uphill, this will result in a future discrepancy between the two ends of the shaft constraint in the present example, meaning the shaft constraint itself acquires a velocity in the future.
+The solver may optionally also make use of the <em>present</em> violations of the constraints, including both the position and the velocity of the connectors.
+The economic equivalent of this would be to ask each workplace what they will do for the foreseeable future, <em>all else being equal</em>.
+Any imbalances between supply and demand can then be treated as constraint violations.</p>
+<p>The modelling part of the process asks each FMU for partial derivatives of each connector's acceleration with respect to each force input (<math>
+<mrow><mi>&#x3b4;</mi><mspace width="0"/><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">/</mo><mi>&#x3b4;</mi><mspace width="0"/><mi>F</mi></mrow>
+</math>).
+This results in a set of <em>mobilities</em>, the inverse of mass, through the Newtonian <math>
+<mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mi>m</mi><mspace width="0"/><mi>a</mi><mo lspace="0.278em" rspace="0.278em">&#x21d4;</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">/</mo><mi>F</mi><mo lspace="0.278em" rspace="0.278em">=</mo><msup><mi>m</mi><mrow><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow></msup></mrow>
+</math>.
+The rotational equivalent is <math>
+<mrow><mi>&#x3c4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mi>I</mi><mspace width="0"/><mi>&#x3b1;</mi><mo lspace="0.278em" rspace="0.278em">&#x21d4;</mo><mi>&#x3b1;</mi><mo lspace="0" rspace="0" stretchy="false">/</mo><mi>&#x3c4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><msup><mi>I</mi><mrow><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow></msup></mrow>
+</math>, or <math>
+<mrow><mi>&#x3b4;</mi><mspace width="0"/><mi>&#x3b1;</mi><mo lspace="0" rspace="0" stretchy="false">/</mo><mi>&#x3b4;</mi><mspace width="0"/><mi>&#x3c4;</mi></mrow>
+</math> in derivative form.
+Because the solver asks for partial derivatives of <em>all</em> connectors with respect to <em>all</em> force inputs, the resulting set of mobilities contain a set of <em>cross-mobilities</em>.
+A gearbox has a 2x2 mobility matrix, where the off-diagonal elements are its cross-mobilities, which depends on the chosen gear.
+A differential has a 3x3 mobility matrix. And so on.
+The economic equivalent of this would be workplaces reporting their technical coefficients, which can be had either via bills of materials (BOMs) or via statistics.</p>
+<p>The existence of cross-mobilities allows the solver to "trace" the action of any part of the system on all other parts of the system, anticipating and applying the necessary corrections.
+This amounts to a form of <em>feedforward control</em>, as opposed to the error control (feedback) used by force-velocity coupling and by the market.
+Specifically the equation that is solved looks as follows:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>S</mi><mspace width="0"/><mi>&#x3bb;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0">-</mo><mi>a</mi><mspace width="0"/><mi>&#x3d5;</mi><mo lspace="0.222em" rspace="0.222em">+</mo><mi>b</mi><mspace width="0"/><mi>&#x3c9;</mi><mo lspace="0.222em" rspace="0.222em">-</mo><msup><mi>&#x3c9;</mi><mo>&ast;</mo></msup></mrow>
+</math>
+</span></p>
+<p>On the right hand
+side, <math>
+<mi>&#x3d5;</mi>
+</math>
+and <math>
+<mi>&#x3c9;</mi>
+</math> are the present violation and speed of all constraints,
+and <math>
+<msup><mi>&#x3c9;</mi><mo>&ast;</mo></msup>
+</math> are the future
+velocities. <math>
+<mi>a</mi>
+</math>
+and <math>
+<mi>b</mi>
+</math> are
+constants. <math>
+<mi>S</mi>
+</math> is a matrix assembled from the mobilities in a way that is too involved to go into here.
+Finally <math>
+<mi>&#x3bb;</mi>
+</math> is the sought after set of impulses that keep the system together.
+Dimensions can be chosen for the elements of the matrix, the rows of the vectors and the constants such that the dimensions in the equation become commensurate.
+The impulses are converted to forces/torques by dividing by the global time step:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>&#x3c4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mfrac><mi>&#x3bb;</mi><mrow><mi mathvariant="normal">&#x394;</mi><mspace width="0"/><mi>t</mi></mrow></mfrac></mrow>
+</math>
+</span></p>
+<p>After this, <math>
+<mi>&#x3c4;</mi>
+</math>
+and <math>
+<mrow><mo lspace="0" rspace="0">-</mo><mi>&#x3c4;</mi></mrow>
+</math> and sent to the relevant sides of each constraint.
+The figure below illustrates how the FMUs are connected to the solver.</p>
+<p><img style="display:block;width:66%;margin-left:auto;margin-right:auto;" src="../../../../../images/feedforward/spook.svg" alt="SPOOK"/></p>
+<p>For brevity <math>
+<mi>&#x3d5;</mi>
+</math>
+and <math>
+<mi>&#x3c9;</mi>
+</math> are not shown.</p>
+<p>In the above system, <math>
+<mi>S</mi>
+</math> is a 1x1 "matrix" and so the entire exercise seems perhaps a bit silly.
+Things become more interesting when we have a more granular system like the one below with 7 separate FMUs and 6 shaft constraints:</p>
+<p><img style="display:block;width:66%;margin-left:auto;margin-right:auto;" src="../../../../../images/feedforward/spookchain.svg" alt="SPOOK used on a more granular system"/></p>
+<p>In this case <math>
+<mi>S</mi>
+</math> is a 6x6 matrix with the following structure:</p>
+<p><img style="display:block;width:66%;margin-left:auto;margin-right:auto;" src="../../../../../images/feedforward/S6x6.png" alt="The 6x6 S matrix"/></p>
+<p>The off-diagonal elements are what ensure that for example increased load on one of the tires are propagated instantly to the engine.
+The economic equivalent is a change in demand for some final good instantly propagating to all workplaces that supply all inputs necessary to make that good, directly or indirectly.
+Hence the tug-of-war between consumers and workplaces becomes a hydraulic one, with immediate effects, as opposed to a pneumatic one with delayed effects.</p>
+<h3>Other solvers/methods for co-simulation</h3>
+<p>There are other methods for dealing with the co-simulation problem.
+These include the transmission line model (TLM), Edo Drenth's NEPCE and others.
+I will not go into these here.</p>
+<h2>Why does feedforward work so much better than feedback?</h2>
+<p>In previous sections I pointed out that SPOOK is an instance of feedforward control whereas force-velocity relies on plain old feedback.
+But <em>why</em> does SPOOK work so much better?
+The reason it works better is because SPOOK models the system under regulation.
+In fact any regulator that accurately models the system under regulation will deviate much less from the desired "set point" than a regulator that lacks such modelling.
+In the examples above the set point is "all constraint violations = zero".
+In planning we could have "supply ≥ demand" and "supply ≤ environmental limits".
+More formally, the system's behavior exhibits lower entropy than regulators that lack modelling.
+Hence modelling is not only beneficial, but mandatory for good regulation.
+This is the essence of the <em>good regulator theorem</em> formulated by Conant and Ashby<sup><a href="#foot1">[2]</a></sup>.</p>
+<h2>The connection to the market and to planning</h2>
+<p>Knowing what makes for good regulation, or good cybernetics, and what makes for bad regulation, or bad cybernetics, also allows us insight into why the market behaves the way it does and why the market is so unstable.
+The market exhibits a number of modes that we call <em>business cycles</em>.
+Why is this?
+It is because the market is a decentralized control system,
+where due to corporate secrecy each part of the system has little idea what the other is doing.
+In Marxian terms this is called <em>anarchy in production</em> (anarchist readers may prefer the wording "chaos in production").
+It is equivalent to the <math>
+<mi>S</mi>
+</math> matrix above having no off-diagonal elements.
+Each workplace is thus forced to resort to error control (feedback).
+The same is true of any economic system that relies on local control, regardless of the relations of production.
+In the terminology of Conant and Ashby, this lack of information and coordination results in a high-entropy regulator.</p>
+<p>A similar argument can be made against a common appeal to nature,
+namely that nature is self-regulating.
+This is true in a sense, but it doesn't mean that nature is a <em>good</em> regulator.
+Nature is harsh.
+Take for example the <a href="https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations">Lotka–Volterra predator–prey model</a>, which is backed by observational data.
+There are two populations, predator and prey, which oscillate.
+The predator population lags the prey population by 90°.
+Without sufficient damping, the predator population will experience periods of extreme starvation.
+Beyond this being bad for the predators, it also affects humans when said predators start attacking livestock for lack of prey.
+The prey population, experiencing periods of extreme growth, are also a hassle to humans, as the prey too will eventually encroach on human settlements in search of food.
+Technically this is a dynamic equilibrium, which is certainly better complete failure, but it is still not <em>good</em>.
+Examples of even worse regulation in nature include overgrazing by Australian brumbies (wild horses), the Great Oxidation Event and other Great Dyings throughout Earth's existance.</p>
+<p>Planning by comparison must take into account how each part of the economy interacts with every other part of the economy, and with the ecology of the planet.
+This is planning's strength, and also its main challenge.</p>
+<h2>The unreasonable effectiveness of the Soviet system</h2>
+<p>The effectiveness of feedforward regulation explains how the Soviet economy could work as well as it did, despite its lack of computational power and despite significant delays in the system due to its pen-and-paper and monkey-in-the-loop nature.
+It is precisely because demand for goods across the system could be predicted ex-ante that the Soviet system could get away with a large step size.
+The system was also not as hierarchical as many people seem to think, and in some cases the plan could be partially adjusted surprisingly quickly.
+According to email correspondence with Elena Veduta, during the Great Patriotic War such re-planning could be done within ten days or so for certain goods.</p>
+<p>The good regulator theorem also explains some of the Soviet system's problems.
+Feedforward regulation can only work as well as the underlying model, which is only as accurate as the data that are given.
+If the data are wrong, either by deliberate sabotage or by accident, then feedforward cannot function properly.
+The result is a mismatch between supply and demand, known as <em>imbalance</em> in Soviet parlance.
+I suspect that even if Gosplan had electronic computers from day one, and even if all data were centralized such that all computations could be done in one place, which would permit perfect balance <em>on paper</em>, this would not guarantee balance <em>in practice</em>.
+Achieving real-world balance, or the relaxed condition of demand not exceeding supply, is more difficult.
+This is not news to anyone who's ever built any real-world control system.</p>
+<h2>Conclusions</h2>
+<p>My views on planning are influenced by my experience with co-simulation.
+Black box coordination is difficult, but can be made easier by making the boxes slightly more transparent.
+We can never make any labour process completely transparent however, because people aren't linear operators.</p>
+<p>From Conant and Ashby we know that we cannot dispense with modelling if we are to effect good regulation,
+where <em>good regulation</em> is taken to mean <em>keeping the system near some set point</em>.
+For the challenge that faces the human species we could take this set point to be "human flourishing within environmental bounds".</p>
+<p>Feedforward control can effect excellent regulation, but only if we have good data.
+We must quantify the quality of the data we collect.
+We must provide tools that ease the collection of the necessary data,
+including automatic sanity checks (<em>gates</em> in Soviet parlance).
+This data should be accessible to all, which implies <em>logical centralization</em>.
+In other words, a <em>data commons</em>.</p>
+<p>Accounting is the source of much data, which by its nature tends to be of high quality.
+Therefore we cannot dispense with accounting.
+We also need information on the use of actual resources, which I posit can be done with in-kind accounting.
+I plan on writing a text on in-kind accounting in the future, so stay tuned for that!</p>
+<p>Finally, because every part of the human economy affects every other part, we cannot rely on the vagaries of human judgement to guide it.
+Only the blessed machine can ensure orders placed on the production of fuel, lumber, clothes, steel and so on are within global environmental bounds, quickly enough to effect good regulation.
+The Soviet experience is ample evidence of this.
+Those who think we can replace computation with meetings must explain whether they think the Soviets were idiots, since they too built their system on a foundation of meetings.
+One cannot get around this problem by gesturing towards horizontal coordination, since the Soviet system too had plenty of horizontal coordination, as does the market.</p>
+<h2>References</h2>
+<p><span id="foot1">[1] C. Lacoursière, T. Härdin (2018). <em><a href="https://webapps.cs.umu.se/uminf/reports/2018/003/part1.pdf">FMIGo! A runtime environment for FMI based simulation</a></em>. Report for Department of Computing Science. ISSN 0348-0542. Fetched 2024-03-16.</span></p>
+<p><span id="foot2">[2] R. C. Conant and W. R. Ashby, <em><a href="http://pespmc1.vub.ac.be/books/Conant_Ashby.pdf">Every good regulator of a system must be a model of that system</a></em>, Int. J. Systems Sci., 1970, vol 1, No 2, pp. 89–97. Fetched 2024-03-16.</span></p></div>
+</article></section>
+<hr />
+<footer>
+<div>
+<div><h2>Useful links</h2><ul><li><a href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> Atom feed</a></li><li><a href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> RSS feed</a></li><li><a href="http://pfcgmo5hwfffwhis3zty2u2ufryrnzypue34h74va6ykw5iazgcvvtqd.onion/"><img src="/theme/images/icons/onion.png" alt="Tor logo"/> Tor .onion service</a></li></ul></div>
+<div><h2>Comments</h2>Got comments? E-mail them to comments at haerdin dot se</div>
+</div>
+<hr/>
+<p>This site is 100% PHP free and is <a href="https://anybrowser.org/campaign/"><img src="/theme/images/icons/w3cab.gif" alt="W3C any browser logo"/> viewable with any browser</a>!</p>
+</footer><script type="text/javascript">
+var d=document.createElement("div"),b;d.innerHTML="<math><mpadded height='23px' width='77px'/></math>";document.body.appendChild(d);b=d.firstChild.firstChild.getBoundingClientRect();document.body.removeChild(d);if(Math.abs(b.height-23)>1||Math.abs(b.width-77)>1){b=document.createElement("script");b.setAttribute("src","/theme/mathjax/mml-chtml.js");document.getElementsByTagName("head")[0].appendChild(b);}
+</script></body></html>
