@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>Лог модераторов</title>
+<link rel="apple-touch-icon" sizes="57x57" href="/fav/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/fav/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/fav/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/fav/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/fav/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/fav/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/fav/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/fav/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="/fav/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="/fav/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="/fav/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/fav/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/fav/favicon-16x16.png" sizes="16x16">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-TileImage" content="/fav/mstile-144x144.png">
+	<link rel="gettext" type="application/x-po" href="inc/lang/ru/LC_MESSAGES/kusaba.po" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="Sat, 17 Mar 1990 00:00:01 GMT" /><link rel="stylesheet" type="text/css" href="/css/site_thorium.css" title="Futaba">
+</head>
+<h1>Metator</h1>
+<h3><em>Freedom Will Prevail</em></h3>
+<div style="margin: 3em;">
+<style>
+	.id-col {
+		max-width: 8ch;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	td:first-child {
+		font-size: smaller;
+	}
+		body {
+		margin: 0 auto;
+	}
+	.mentions-me {
+		color:  red;
+	}
+	</style>
+<h2>Лог модераторов</h2>
+ <h4>Ваш ID <span class="mentions-me">05ChDHZemmZdbTwr2JotrQ</span> (ID зашифрованы)</h4><table cellspacing="2" cellpadding="1" border="1" width="100%"><tbody>
+	<tr>
+	  <th>Время</th>
+	  <th>Пользователь</th>
+	  <th title="ID зашифрованы">ID*</th>
+	  <th>Доска</th>
+	  <th width="100%">Действие</th>
+	</tr>
+	</tbody></table>
+</div>
+<script>
+	[].forEach.call(document.querySelectorAll('.id-col'), function(c) {
+		c.addEventListener('mouseenter', function() {
+			[].forEach.call(document.querySelectorAll('.id-col[title="'+this.title+'"]'), function(sc) {
+				sc.style.color = 'red'
+			})
+		})
+		c.addEventListener('mouseleave', function() {
+			[].forEach.call(document.querySelectorAll('.id-col'), function(sc) {
+				sc.style.color = null
+			})
+		})
+	})
+	
+</script>
+</body></html>

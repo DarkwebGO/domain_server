@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>All BTC .:. Wallets And Private Keys</title>
+    <meta name="description" content="All BTC .:. Everything you needed Wallets And Private Keys">
+    <meta name="keywords" content="All BTC .:. Everything you needed Wallets And Private Keys">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet" />
+    <link href="/allbtcshop/fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="/allbtcshop/css/tooplate-chilling-cafe.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+    </style>
+    <style>
+        body {font-family: Arial;}
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+    </style>
+    <style>
+        .dropbtn {
+            background-color: #000000;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #9F7100;}
+    </style>
+</head>
+<body>
+<div class="tm-container">
+    <div class="tm-text-white tm-page-header-container">
+
+        <center><a href="/"><img src="/allbtcshop/img/logo.png"></a></center>
+    </div>
+<div class="tm-main-content">
+    <img src="/allbtcshop/img/Banner.jpg">
+    <!-- Coffee Menu -->
+    <center> <img src="/allbtcshop/img/menu.png">
+
+        <a href="/WPK" target="_blank"><div class="dropdown">
+            <button class="dropbtn"><i class="fas fa-wallet"></i>&nbsp;BTC Wallets</button>
+        </div></a>
+        <a href="/WPK" target="_blank"><div class="dropdown">
+            <button class="dropbtn"><i class="fas fa-key"></i>&nbsp;Private Keys</button>
+        </div></a>
+        <a href="/#ts-fers"><div class="dropdown">
+            <button class="dropbtn"><i class="fab fa-btc"></i>&nbsp;BTC Transfers</button>
+        </div></a>
+
+        <a href="/FAQ"><div class="dropdown">
+            <button class="dropbtn"><i class="fas fa-question"></i>&nbsp;FAQ</button>
+        </div></a>
+
+    </center>
+    <section class="tm-section">
+        <h2 id="bc-wall" class="tm-section-header"><img src="/allbtcshop/img/wallets.png"></h2>
+        <table bgcolor="#828282"><tbody><tr><td>
+            <center><i class="fas fa-bullhorn"></i> Only 7 Bitcoin wallets left. if you are a vendor contact us.<br>
+                <i class="fas fa-caret-right"></i>&nbsp;all prices were changed to usd for easy calculate<br>
+                <i class="fas fa-caret-right"></i>&nbsp;Wallet Addresses Were Removed For Customers privacy<br><br>
+
+                <i class="fas fa-exclamation"></i>&nbsp;Import .dat File Here and Get Your Wallet Easily: <a href="https://login.blockchain.com/wallet/import-wallet">login.blockchain.com/wallet/import-wallet</a><br>
+                <i class="fas fa-exclamation"></i>&nbsp;How To Import Private Key?:<br>
+                tutorial for Exodus wallet : <a href="https://support.exodus.io/article/87-can-i-import-a-private-key">Click</a>
+                for Electrum Bitcoin Wallet : <a href="https://bitcoinelectrum.com/importing-your-private-keys-into-electrum/">Click</a>
+
+                .
+            </center></td></tr></tbody></table><br>
+        <div class="tab">
+            <button class="tablinks active" onclick="openCity(event, 'wallets')"><img src="/allbtcshop/img/bw.png"></button>
+            <button class="tablinks" onclick="openCity(event, 'keys')"><img src="/allbtcshop/img/pk.png"></button>
+        </div>
+        <div id="wallets" class="tabcontent" style="display: block;">
+            <div class="tm-responsive-table">
+                <table>
+                    <tbody><tr class="tm-tr-header">
+                        <th><i class="fas fa-wallet"></i>&nbsp;<font size="2">Wallet Address</font></th>
+                        <th><i class="fab fa-btc"></i>&nbsp;<font size="2">Ballance</font></th>
+                        <th><i class="fas fa-tag"></i>&nbsp;<font size="2">Price</font></th>
+                        <th><i class="fas fa-shopping-cart"></i><font size="2">Buy</font></th>
+                    </tr>
+
+
+                    <tr>
+                        <td class="tm-text-left"><a href="https://www.blockchain.com/btc/address/185qA7ZUfYnp8NC64xgaeaXNfN5jJioEq5">185qA****jJioEq5</a></td>
+                        <td>0.268 BTC</td>
+                        <td>0.020 BTC</td>
+                        <td>
+                            <a href="" class="blockoPayBtn" data-toggle="modal" data-uid="b7cc9053e5fa46f7"><img width="160" src="/allbtcshop/img/BUYWALLET.png"></a>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tm-text-left"><a href="https://www.blockchain.com/btc/address/1AyvkXMabuiYsv2wF7WUes8gB38K1wCtCR">1AyvkX***1wCtCR</a></td>
+                        <td>0.247 BTC</td>
+                        <td>0.020 BTC</td>
+                        <td><a href="" class="blockoPayBtn" data-toggle="modal" data-uid="1e3a2b118c664586"><img width="160" src="/allbtcshop/img/BUYWALLET.png"></a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tm-text-left"><a href="https://www.blockchain.com/btc/address/1Dfws62ER8DwsN1mjJ8JiStgEgrucRt3K2">1Dfws***rucRt3K2</a></td>
+                        <td>1.002 BTC</td>
+                        <td>0.060 BTC</td>
+                        <td><a href="" class="blockoPayBtn" data-toggle="modal" data-uid="3c5850abc77d4e31"><img width="160" src="/allbtcshop/img/BUYWALLET.png"></a></td>
+                    </tr>
+                    <tr>
+                        <td class="tm-text-left"><a href="https://www.blockchain.com/btc/address/17VaKAc3dUKLGbeG5u3c1PCCEZawqZr75b">17VaK***qZr75b</a></td>
+                        <td>0.2000 BTC</td>
+                        <td>0.019 BTC</td>
+                        <td><a href="" class="blockoPayBtn" data-toggle="modal" data-uid="1ab3e3af6c1d4647"><img width="160" src="/allbtcshop/img/BUYWALLET.png"></a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tm-text-left"><a href="https://www.blockchain.com/btc/address/3ByoPHxUtPHz4LeX2ri1Lv7cHMrj82xxBi">3ByoP***Mrj82xxBi</a></td>
+                        <td>0.2000 BTC</td>
+                        <td>0.020 BTC</td>
+                        <td><a href="" class="blockoPayBtn" data-toggle="modal" data-uid="e86c9bfa788a463b"><img width="160" src="/allbtcshop/img/BUYWALLET.png"></a></td>
+                    </tr>
+                    <tr>
+                        <td class="tm-text-left"><a href="https://www.blockchain.com/btc/address/3MJgDFuZBMsj65R7SNtUCiXQBginHabuYJ">3MJgD***HabuYJ</a></td>
+                        <td>0.290 BTC</td>
+                        <td>0.025 BTC</td>
+                        <td><a href="" class="blockoPayBtn" data-toggle="modal" data-uid="cd46feaa2a6e4698"><img width="160" src="/allbtcshop/img/BUYWALLET.png"></a></td>
+                    </tr>
+
+                    </tbody></table>
+            </div>
+        </div>
+
+        <div id="keys" class="tabcontent">
+            <div class="tm-responsive-table">
+                <table>
+                    <tbody><tr class="tm-tr-header">
+                        <th><i class="fas fa-key"></i>&nbsp;<font size="2">PrivKey</font></th>
+                        <th><i class="fab fa-btc"></i>&nbsp;<font size="2">Ballance</font></th>
+                        <th><i class="fas fa-tag"></i>&nbsp;<font size="2">Price</font></th>
+                        <th><i class="fas fa-shopping-cart"></i><font size="2">Buy</font></th>
+                    </tr>
+
+
+                    <tr>
+                        <td class="tm-text-left"><a href="https://www.blockchain.com/btc/address/1HbSwoayWYjAE3BRn3vS5KJU68FpdDACA8">1Hb*****CA8</a></td>
+                        <td>1.42556591</td>
+                        <td>0.025</td>
+                        <td>
+                            <a href="" class="blockoPayBtn" data-toggle="modal" data-uid="b59e0a8eac9311ea"><img width="160" src="/allbtcshop/img/BUYPK.png"></a>
+
+
+                        </td>
+                    </tr>
+
+
+                    </tbody></table>
+            </div>
+        </div>
+
+
+        <br>
+
+    </section>
+    <hr>
+    <!-- Talk to us -->
+    <section class="tm-section tm-section-small">
+        <h2 class="tm-section-header">The second way to purchase is email!</h2>
+        <p class="tm-mb-0">
+        </p><center>You can buy our transfers or wallets with your email <b>allbtcshop@firemail.cc</b></center>
+        <p></p>
+        <center><a href="/"><h2>Go To HomePage</h2></a></center>
+        <center><img src="/allbtcshop/img/Footer.png"></center>
+    </section></div>
+<footer>
+    <center><img src="/allbtcshop/img/Sell.png"></center>
+    <p class="tm-text-white tm-footer-text">
+        Copyright &copy; 2024 AllBTC
+    </p>
+</footer>
+</div></div>
+<script src="https://www.blockonomics.co/js/pay_button.js"></script>
+<script>
+    $(function() {
+        // Adjust intro image height based on width.
+        $(window).resize(function() {
+            var img = $("#tm-intro-img");
+            var imgWidth = img.width();
+
+            // 640x425 ratio
+            var imgHeight = (imgWidth * 425) / 640;
+
+            if (imgHeight < 300) {
+                imgHeight = 300;
+            }
+
+            img.css("min-height", imgHeight + "px");
+        });
+    });
+</script>
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

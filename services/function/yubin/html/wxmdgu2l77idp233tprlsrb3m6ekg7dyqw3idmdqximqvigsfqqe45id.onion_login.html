@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Login</title>
+
+
+    <link href="/CPVideos/file/login.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<div class="login-page">
+    <div class="form">
+        <form class="register-form">
+            <input type="text" placeholder="name">
+            <input type="password" placeholder="password">
+            <input type="text" placeholder="email address">
+            <button>create</button>
+            <p class="message">Already registered? <a href="/member">Sign In</a></p>
+        </form>
+        <form action="/login" class="login-form" method="post">
+            <p style="font-size: 16px; font-weight: bold;">To get access, log in to your account or <a style="color: #072646" href="member">buy a subscription</a></p>
+            <input name="username" type="text" placeholder="username" required>
+            <input name="password" type="password" placeholder="password" required>
+            <button type="submit">login</button>
+            <p class="message">Not registered? <a href="/member">Buy access</a></p>
+        </form>
+    </div>
+</div>
+
+</body></html>

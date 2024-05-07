@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AnonLeaks Fileshare</title>
+        <meta charset="utf-8">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="icon" type="image/png" href="/img/favicon.png">
+        <link rel="icon" sizes="128x128" href="/img/lufi128.png">
+        <link rel="icon" sizes="196x196" href="/img/lufi196.png">
+        <link rel="apple-touch-icon" href="/img/lufi60.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/lufi76.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/lufi120.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/lufi152.png">
+        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/img/lufi128.png">
+        <link href="/css/materialize.min.css" rel="stylesheet">
+        <link href="/css/lufi.css" rel="stylesheet">
+        <script src="/js/ie-detection.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <nav class="cyan">
+            <div class="nav-wrapper container">
+                <a href="/" class="brand-logo">&nbsp;<img src="/img/lufi-min.png" alt="logo"> AnonLeaks Fileshare</a>
+                <a href="#" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="mailto:anonleaks.net@protonmail.com">Report file</a></li>
+                    <li><a href="/">Upload files</a></li>
+                    <li class="active"><a href="/files">My files</a></li>
+                    <li>
+                        <div class="input-field select-lang">
+                            <label class="hiddendiv">Language</label>
+                            <select>
+                                <option value="" disabled selected>Language</option>
+                                <option value="ar">العربية</option>
+                                <option value="ca">Català</option>
+                                <option value="de">Deutsch</option>
+                                <option value="el">Ελληνικά</option>
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="fr_FR">Français (FR)</option>
+                                <option value="it">Italiano</option>
+                                <option value="nl">Nederlands, Vlaams</option>
+                                <option value="oc">Occitan, lenga d&#39;òc</option>
+                                <option value="pt">Português</option>
+                                <option value="ru">Русский</option>
+                                <option value="sv">Svenska</option>
+                                <option value="zh_Hans">中文 (Zhōngwén), 汉语, 漢語 (HANS)</option>
+                                <option value="zh_Hant">中文 (Zhōngwén), 汉语, 漢語 (HANT)</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+                <ul id="mobile" class="side-nav">
+                    <li><a href="mailto:anonleaks.net@protonmail.com">Report file</a></li>
+                    <li><a href="/">Upload files</a></li>
+                    <li class="active"><a href="/files">My files</a></li>
+                    <li>
+                        <div class="input-field select-lang-mobile">
+                            <label class="hiddendiv">Language</label>
+                            <select>
+                                <option value="" disabled selected>Language</option>
+                                <option value="ar">العربية</option>
+                                <option value="ca">Català</option>
+                                <option value="de">Deutsch</option>
+                                <option value="el">Ελληνικά</option>
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="fr_FR">Français (FR)</option>
+                                <option value="it">Italiano</option>
+                                <option value="nl">Nederlands, Vlaams</option>
+                                <option value="oc">Occitan, lenga d&#39;òc</option>
+                                <option value="pt">Português</option>
+                                <option value="ru">Русский</option>
+                                <option value="sv">Svenska</option>
+                                <option value="zh_Hans">中文 (Zhōngwén), 汉语, 漢語 (HANS)</option>
+                                <option value="zh_Hant">中文 (Zhōngwén), 汉语, 漢語 (HANT)</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <script src="/js/jquery-2.2.4.min.js"></script>
+            <script src="/partial/layout.js"></script>
+            <script src="/js/lufi-common.js"></script>
+            
+<h2>My files</h2>
+<hr>
+
+
+<p>
+    Only the files sent with this browser will be listed here. This list is stored in localStorage: if you delete your localStorage data, you&#39;ll lose this list.<br>
+    Rows in red mean that the files have expired and are no longer available.
+</p>
+<div class="files-buttons">
+    <a href="#" id="exportStorage"   class="btn left-mg cyan">Export localStorage data</a>
+    <a href="#" id="purgeExpired"    class="btn left-mg cyan">Purge expired files from localStorage</a>
+    <a href="#" id="clickImport"     class="btn left-mg cyan">Import localStorage data</a>
+    <span class="file-field input-field">
+        <input type="file" id="import" onchange="importStorage(this.files)">
+    </span>
+    <a href="#" id="invertSelection" class="btn left-mg cyan">Invert selection</a>
+    <a href="#" class="btn left-mg cyan disabled" id="mass-delete" disabled>Delete selected files</a>
+</div>
+
+<div>
+    <table class="responsive-table highlight striped">
+        <thead>
+            <tr>
+                <th class="center-align"></th>
+                <th class="center-align">File name</th>
+                <th class="center-align">Download link</th>
+                <th class="center-align">Onion link</th>
+		<th class="center-align">Counter</th>
+                <th class="center-align">Delete at first download?</th>
+                <th class="center-align">Uploaded at</th>
+                <th class="center-align">Expires at</th>
+                <th class="center-align">Deletion link</th>
+                <th class="center-align">Mail</th>
+            </tr>
+        </thead>
+        <tbody id="myfiles">
+        </tbody>
+    </table>
+</div>
+
+<script src="/partial/files.js.ep"></script>
+<script src="/js/lufi-files.js"></script>
+<script src="/js/moment-with-locales.min.js"></script>
+
+        </div>
+            <script src="/js/materialize.js"></script>
+            <script src="/js/sidenav.js"></script>
+    </body>
+</html>

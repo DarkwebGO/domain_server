@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Installing libreboot on a ThinkPad T420</title><style>
+body{margin:auto;max-width:50em;padding-left:0.5em;padding-right:0.5em}
+img{max-width:100%}
+#banner h1{font-size:2.5em;margin-top:5px;margin-bottom:5px;text-align:center}
+#banner h1 a:link,#banner h1 a:visited{color:#111;text-decoration:none}
+pre{padding:0.5em;background:#ddd;border:1px solid #000;overflow:auto}
+.entry-title{font-size:2em;margin-bottom:0.5em}
+.tags{margin-top:0px;margin-bottom:0px}
+.article-link{font-weight:bold}
+.post-info{float:right;margin:0.5em;padding:0.5em;border:1px solid #000;max-width:16em}
+footer div{column-count:3;column-width:18em;column-rule:1px solid #ddd}
+footer div div{display:inline-block}
+nav ul{list-style-type:none;margin:0;padding:0;overflow:hidden;background-color:#eee}
+nav ul li{float:left}
+nav ul li a{display:block;color:#333;text-align:center;font-size:1.5em;padding:14px 16px;text-decoration:none}
+nav ul li a:hover{background-color:#ddd}
+table,td,th{padding:0.2em;border:1px solid gray;border-collapse:collapse}
+</style><link href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tomas' place in cyber&shy;space Atom Feed"/><link href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Tomas' place in cyber&shy;space RSS Feed"/></head><body>
+<header id="banner">
+<h1><a href="../../../../../">Tomas' place in cyber&shy;space </a></h1>
+<nav><ul>
+<li><a href="/">Home</a></li>
+<li><a href="/category/blog.html">Blog</a></li>
+<li><a href="/category/demoscene.html">Demoscene</a></li>
+<li><a href="/files">Files</a></li>
+<li><a href="/pages/consulting.html">Consulting</a></li>
+<li><a href="/pages/contact.html">Contact</a></li>
+</ul></nav>
+</header>
+<section><article><header>
+<aside class="post-info">
+<abbr class="published" title="2023-03-22T21:39:34+01:00">
+Published: 2023-03-22</abbr>
+in <a href="../../../../../category/blog.html">Blog</a>
+<p class="tags">Tags: <a href="../../../../../tag/electronics.html">electronics</a> <a href="../../../../../tag/libreboot.html">libreboot</a> <a href="../../../../../tag/raspberrypi.html">raspberrypi</a> <a href="../../../../../tag/free-software.html">free software</a> </p>
+</aside><h1 class="entry-title">
+<a href="../../../../../blog/2023/03/22/installing-libreboot-on-a-thinkpad-t420/" rel="bookmark"
+title="Permalink to Installing libreboot on a ThinkPad T420">Installing libreboot on a ThinkPad T420</a></h1>
+</header>
+<div class="entry-content"><p>In this post I have documented my efforts to get <a href="https://libreboot.org/">libreboot</a> running on a pair of Lenovo ThinkPad T420's that I found in <a href="https://umeahackerspace.se/">Umeå Hackerspace</a>.
+The motivation is that I needed a new laptop, the ThinkPads were there, but they didn't support the SSD in my current laptop.
+I could of course just go and buy a new laptop, but <a href="https://en.wikipedia.org/wiki/Free_software">my precious freedoms</a>!</p>
+<p>The following is based on the information on the libreboot website for the Ivybridge and Haswell (and Sandybridge) series of Intel CPUs <a href="https://libreboot.org/docs/install/ivy_has_common.html">here</a>, and the general install instructions <a href="https://libreboot.org/docs/install">here</a>.
+Some inspiration has also been taken from <a href="https://www.instructables.com/Lenovo-T420-Coreboot-WRaspberry-Pi/">this</a> instructables post.
+<a href="https://thinkpads.com/support/hmm/hmm_pdf/t420_t420i_hmm.pdf">The hardware manual</a> will also be of use.</p>
+<p>This post is quite lengthy and some disassembly is required.
+The price of freedom is eternal fiddling.</p>
+<h2>Overview</h2>
+<p>The process involves three major steps:</p>
+<ul>
+<li>Acquiring the current BIOS ROM</li>
+<li>Compiling the new ROM and injecting BUP</li>
+<li>Flashing the new ROM</li>
+</ul>
+<h2>Hardware and tools</h2>
+<ul>
+<li>Lenovo ThinkPad T420</li>
+<li>An x86_64 machine running Debian or Ubuntu</li>
+<li>Raspberry Pi Zero (or any other Pi)</li>
+<li>Pomona SOIC-8 test clip</li>
+<li>Six 1x1 female-female DuPont test leads</li>
+<li>Screwdriver set</li>
+<li>5 mm hex socket</li>
+<li>Pliers</li>
+<li>Tweezers</li>
+<li>Thermal grease</li>
+<li>Isopropanol (IPA aka 2-propanol)</li>
+<li>Compressed air (actually God's gas, propane <img alt="Hank Hill" src="../../../../../images/hank.png" style="height:2em"/>)</li>
+<li>Tape</li>
+</ul>
+<h2>Preparing the Pi, increasing µSD life</h2>
+<p>This section is a bit of a tangent, but I thought it might be useful to someone.
+Here I will sumarize what preparations I did <em>before</em> doing any libreboot stuff on the Pi.</p>
+<p>Whenever you boot a Raspberry Pi for the first time it will ask for things like the WiFi password.
+It will also attempt to upgrade all packages installed, which in my case didn't work automatically.
+Instead I had to do it manually, roughly like so:</p>
+<div class="highlight"><pre><span></span><code>pi@pizero0:~<span class="w"> </span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>--yes<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>dist-upgrade<span class="w"> </span>--yes
+</code></pre></div>
+
+<p>This takes a while.
+The reason for this is that Debian Buster is now oldstable rather than stable.
+I went for coffee at a local book shop while it was running.</p>
+<p>I also set the Pi up to log to RAM, to put temporary files also in RAM, and I disabled the swap.
+This in order to prolong the life of its µSD card.</p>
+<div class="highlight"><pre><span></span><code>pi@pizero0:~<span class="w"> </span>$<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt;EOF | sudo bash -c &quot;cat &gt;&gt; /etc/fstab&quot;</span>
+<span class="s">tmpfs           /tmp            tmpfs   defaults,noatime,nosuid 0 0</span>
+<span class="s">tmpfs           /var/log        tmpfs   defaults,noatime,nosuid,size=16M 0 0</span>
+<span class="s">EOF</span>
+pi@pizero0:~<span class="w"> </span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>--yes<span class="w"> </span>dphys-swapfile
+</code></pre></div>
+
+<p>Jonasbits helpfully informed me that <a href="https://dietpi.com/">DietPi</a> exists which would likely be helpful here.
+For now I use the stock NOOBS.</p>
+<h2>Acquiring the existing ROM</h2>
+<p>Reading the BIOS ROM involves these steps:</p>
+<ul>
+<li>Compiling <code>flashrom</code> on the Pi</li>
+<li>Disassembling the T420</li>
+<li>Connecting the SOIC-8 test clip and reading the ROM</li>
+</ul>
+<h3>Setting up flashrom on the Raspberry Pi</h3>
+<p>Use the Raspberry Pi configuration tool to enable SSH and SPI.
+Make sure you can SSH into the Pi, because having to use a second screen can be annoying.
+Also make sure the device <code>/dev/spidev0.0</code> exists. Reboot.</p>
+<p>SSH into the Pi and follow the instructions <a href="https://libreboot.org/docs/install/spi.html">here</a> for installing <code>flashrom</code>:</p>
+<div class="highlight"><pre><span></span><code>pi@pizero0:~<span class="w"> </span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://notabug.org/libreboot/lbmk<span class="w"> </span>
+pi@pizero0:~<span class="w"> </span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>lbmk/
+pi@pizero0:~/lbmk<span class="w"> </span>$<span class="w"> </span>sudo<span class="w"> </span>./build<span class="w"> </span>dependencies<span class="w"> </span>ubuntu2004
+pi@pizero0:~/lbmk<span class="w"> </span>$<span class="w"> </span>./download<span class="w"> </span>flashrom
+pi@pizero0:~/lbmk<span class="w"> </span>$<span class="w"> </span>./build<span class="w"> </span>module<span class="w"> </span>flashrom
+</code></pre></div>
+
+<h3>Disassembling the T420</h3>
+<p>Get your tools out!</p>
+<p><a href="../../../../../images/libreboot/IMG_20230315_143925.jpg"><img alt="T420 motherboard" src="../../../../../images/libreboot/tIMG_20230315_143925.jpg"></a></p>
+<p>Disassemble the T420 per <a href="https://thinkpads.com/support/hmm/hmm_pdf/t420_t420i_hmm.pdf">the hardware manual</a>.
+Follow in particular the section "1200 Magnesium structure frame" on page 110.
+It in turn points to these sections, to be done in the order given:</p>
+<ul>
+<li>“1010 Battery pack” on page 67</li>
+<li>“1020 ExpressCard blank bezel” on page 68</li>
+<li>“1030 Serial Ultrabay Enhanced device or travel bezel” on page 69</li>
+<li>“1040 Hard disk drive (HDD) and solid state drive (SSD)” on page 70</li>
+<li>“1050 DIMM slot cover” on page 73</li>
+<li>“1070 PCI Express Mini Card for wireless WAN” on page 75</li>
+<li>“1080 Keyboard” on page 77</li>
+<li>“1110 PCI Express Mini Card for wireless LAN” on page 85</li>
+<li>“1120 Keyboard bezel assembly, FPC cable, and Bluethooth daughter card” on page 87</li>
+<li>“1150 Speaker assembly” on page 95</li>
+<li>“1160 LCD unit” on page 97</li>
+<li>“1170 Fan assembly” on page 101</li>
+<li>“1180 CPU” on page 105</li>
+<li>“1190 Base cover assembly and DC-in connector cable” on page 106</li>
+</ul>
+<p>I could not figure out how to remove the SmartCard reader, but luckily disconnecting it is enough.</p>
+<p><a href="../../../../../images/libreboot/IMG_20230315_144025.jpg"><img alt="Location of ROM" src="../../../../../images/libreboot/tIMG_20230315_144025.jpg"></a></p>
+<p>Locate the ROM chip. Its part number is <a href="https://media.digikey.com/pdf/Data%20Sheets/Winbond%20PDFs/W25Q64CV.pdf">Winbond 25Q64CVSFIG</a> (SOIC-8 208-mil variant, 32nd week of 2012).
+Note that the T420 only has one chip, not two chips like other Ivybridge/Haswell machines might have (<a href="https://libreboot.org/docs/install/#target-thinkpad-x220t420t420s">libreboot's install instructions agree on this</a>).</p>
+<p>While you have everything disassembled, give things some compressed air blasts to get rid of dust, especially in and around the cooling fan.
+Don't overdo it though, fans deal poorly with infinite RPMs.</p>
+<h3>Reading the ROM</h3>
+<p>First wire up the SOIC test clip to the Pi.
+The table and picture below hopefully shows how to do this clearly enough:</p>
+<table>
+<tr><th>Name</th><th>Color</th><th>Test clip pin#</th><th>Pi pin#</th></tr>
+<tr><td>/CS</td><td>brown</td><td>1</td><td>24</td></tr>
+<tr><td>MISO (DO)</td><td>yellow</td><td>2</td><td>21</td></tr>
+<tr><td>GND</td><td>black</td><td>4</td><td>6</td></tr>
+<tr><td>MOSI (DI)</td><td>orange</td><td>5</td><td>19</td></tr>
+<tr><td>SCLK (CLK)</td><td>green</td><td>6</td><td>23</td></tr>
+<tr><td>VCC</td><td>red</td><td>8</td><td>1</td></tr>
+</table>
+
+<p>This picture in particular is exactly how I connected the two:</p>
+<p><a href="../../../../../images/libreboot/IMG_20230315_160745.jpg"><img alt="SOIC test clip connections" src="../../../../../images/libreboot/tIMG_20230315_160745.jpg"></a></p>
+<p>Before attaching the clip to the motherboard, make sure the Pi is not connected to power.
+The connect the test clip as shown in the picture below.</p>
+<p><a href="../../../../../images/libreboot/IMG_20230315_161008.jpg"><img alt="SOIC location" src="../../../../../images/libreboot/tIMG_20230315_161008.jpg"></a></p>
+<p>MAKE SURE THE ORIENTATION OF THE TEST CLIP IS CORRECT OR YOU WILL LIKELY FRY THE MOTHERBOARD.
+The VCC pin is in the upper right corner, opposite the indentation on the package.
+The indentation indicates pin 1, and IC pins are counted counterclockwise.
+This is a holdover from the vacuum tube days.
+Pin 8 is therefore the top-right pin.
+GND is the bottom-left.</p>
+<p>After this, connect power to the Pi.
+SSH into the Pi and probe the ROM using flashrom:</p>
+<div class="highlight"><pre><span></span><code>pi@pizero0:~<span class="w"> </span>$<span class="w"> </span>sudo<span class="w"> </span>flashrom<span class="w"> </span>-p<span class="w"> </span>linux_spi:dev<span class="o">=</span>/dev/spidev0.0,spispeed<span class="o">=</span><span class="m">32768</span>
+flashrom<span class="w">  </span>on<span class="w"> </span>Linux<span class="w"> </span><span class="m">5</span>.10.103+<span class="w"> </span><span class="o">(</span>armv6l<span class="o">)</span>
+flashrom<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software,<span class="w"> </span>get<span class="w"> </span>the<span class="w"> </span><span class="nb">source</span><span class="w"> </span>code<span class="w"> </span>at<span class="w"> </span>https://flashrom.org
+
+Using<span class="w"> </span>clock_gettime<span class="w"> </span><span class="k">for</span><span class="w"> </span>delay<span class="w"> </span>loops<span class="w"> </span><span class="o">(</span>clk_id:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>resolution:<span class="w"> </span>1ns<span class="o">)</span>.
+Found<span class="w"> </span>Winbond<span class="w"> </span>flash<span class="w"> </span>chip<span class="w"> </span><span class="s2">&quot;W25Q64.V&quot;</span><span class="w"> </span><span class="o">(</span><span class="m">8192</span><span class="w"> </span>kB,<span class="w"> </span>SPI<span class="o">)</span><span class="w"> </span>on<span class="w"> </span>linux_spi.
+No<span class="w"> </span>operations<span class="w"> </span>were<span class="w"> </span>specified.
+</code></pre></div>
+
+<p><code>flashrom</code> successfully identified the chip.
+Dump the ROM:</p>
+<div class="highlight"><pre><span></span><code>pi@pizero0:~<span class="w"> </span>$<span class="w"> </span>sudo<span class="w"> </span>flashrom<span class="w"> </span>-p<span class="w"> </span>linux_spi:dev<span class="o">=</span>/dev/spidev0.0,spispeed<span class="o">=</span><span class="m">32768</span><span class="w"> </span>-r<span class="w"> </span>dump.bin
+</code></pre></div>
+
+<p>I ran four more dumps using a bash loop like so:</p>
+<div class="highlight"><pre><span></span><code>pi@pizero0:~<span class="w"> </span>$<span class="w"> </span><span class="k">for</span><span class="w"> </span>x<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>sudo<span class="w"> </span>flashrom<span class="w"> </span>-p<span class="w"> </span>linux_spi:dev<span class="o">=</span>/dev/spidev0.0,spispeed<span class="o">=</span><span class="m">32768</span><span class="w"> </span>-r<span class="w"> </span>dump<span class="nv">$x</span>.bin<span class="w"> </span><span class="p">;</span><span class="k">done</span>
+</code></pre></div>
+
+<p>Use <code>sha1sum</code> to verify that they're all the same:</p>
+<div class="highlight"><pre><span></span><code>pi@pizero0:~<span class="w"> </span>$<span class="w"> </span>sha1sum<span class="w"> </span>*.bin
+d92c6217cb7dbc3e8cf5bbd1cd59ade4b10aef4e<span class="w">  </span>dump1.bin
+d92c6217cb7dbc3e8cf5bbd1cd59ade4b10aef4e<span class="w">  </span>dump2.bin
+d92c6217cb7dbc3e8cf5bbd1cd59ade4b10aef4e<span class="w">  </span>dump3.bin
+d92c6217cb7dbc3e8cf5bbd1cd59ade4b10aef4e<span class="w">  </span>dump4.bin
+d92c6217cb7dbc3e8cf5bbd1cd59ade4b10aef4e<span class="w">  </span>dump.bin
+</code></pre></div>
+
+<p>A dump of another T420 had the SHA-1 hash 4f006fff0a1e7e2613e15dbb452b7009d19d00e6, so ROMs are definitely different across laptops.
+I renamed <code>blob.bin</code> to <code>t420.bin</code> after this.
+Finally copy <code>t420.bin</code> to your main machine using for example <code>scp</code>.</p>
+<h2>Building the new BIOS ROM</h2>
+<p>In order for libreboot's <code>lbmk</code> to be able to do its thing you will need to use Debian sid or similar.
+Since I didn't want to bring my machine to a potentially unstable state I decided to make use of <a href="https://www.docker.com/">docker</a> instead.</p>
+<p>On the x86 machine, in the same directory that you have <code>t420.bin</code> paste the following into a file called <code>Dockerfile</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">debian:sid</span>
+<span class="k">RUN</span><span class="w"> </span>apt<span class="w"> </span>update
+<span class="k">RUN</span><span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>gettext<span class="w"> </span>git
+<span class="k">RUN</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://notabug.org/libreboot/lbmk
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/lbmk</span>
+<span class="k">RUN</span><span class="w"> </span>./build<span class="w"> </span>dependencies<span class="w"> </span>debian
+<span class="k">RUN</span><span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="k">RUN</span><span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;root&quot;</span>
+<span class="k">COPY</span><span class="w"> </span>t420.bin<span class="w"> </span>/lbmk
+<span class="k">RUN</span><span class="w"> </span>./blobutil<span class="w"> </span>extract<span class="w"> </span>t420_8mb<span class="w"> </span>t420.bin
+<span class="k">RUN</span><span class="w"> </span>./build<span class="w"> </span>boot<span class="w"> </span>roms<span class="w"> </span>t420_8mb
+<span class="k">RUN</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>f<span class="w"> </span><span class="k">in</span><span class="w"> </span>bin/t420_8mb/*.rom<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>./blobutil<span class="w"> </span>inject<span class="w"> </span>-r<span class="w"> </span><span class="nv">$f</span><span class="w"> </span>-b<span class="w"> </span>t420_8mb<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</code></pre></div>
+
+<p>Apart from building a bunch of ROMs this will also inject the one disgusting but unfortunately necessary Intel ME blob, BUP (bringup), taken from <code>t420.bin</code>.
+The gettext install may currently (as of <code>f9e20b8a1d93dec3b6389ca9a7575765c9cc733d</code>) be necessary due to some kind of change in Debian.
+This issue has been fixed as of the commit after that (<code>ebd9ec96c464d73e5667acf0a0735afec10e961a</code>) but some readers may be using older lbmk's.</p>
+<p>Moving on, to build the ROMs and copy them out of docker run the following:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>t420<span class="w"> </span>-f<span class="w"> </span>Dockerfile<span class="w"> </span>.
+<span class="nv">ID</span><span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span>create<span class="w"> </span>t420<span class="k">)</span>
+docker<span class="w"> </span>cp<span class="w"> </span><span class="nv">$ID</span>:/lbmk/bin/t420_8mb<span class="w"> </span>.
+docker<span class="w"> </span>rm<span class="w"> </span><span class="nv">$ID</span>
+</code></pre></div>
+
+<p>After quite some time (50 minutes on my machine) this will create a directory <code>t420_8mb</code> with the following files inside:</p>
+<ul>
+<li>grub_t420_8mb_libgfxinit_corebootfb_colemak.rom</li>
+<li>grub_t420_8mb_libgfxinit_corebootfb_deqwertz.rom</li>
+<li>grub_t420_8mb_libgfxinit_corebootfb_esqwerty.rom</li>
+<li>grub_t420_8mb_libgfxinit_corebootfb_frazerty.rom</li>
+<li>grub_t420_8mb_libgfxinit_corebootfb_frdvbepo.rom</li>
+<li>grub_t420_8mb_libgfxinit_corebootfb_itqwerty.rom</li>
+<li>grub_t420_8mb_libgfxinit_corebootfb_svenska.rom</li>
+<li>grub_t420_8mb_libgfxinit_corebootfb_trqwerty.rom</li>
+<li>grub_t420_8mb_libgfxinit_corebootfb_ukdvorak.rom</li>
+<li>grub_t420_8mb_libgfxinit_corebootfb_ukqwerty.rom</li>
+<li>grub_t420_8mb_libgfxinit_corebootfb_usdvorak.rom</li>
+<li>grub_t420_8mb_libgfxinit_corebootfb_usqwerty.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_colemak.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_deqwertz.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_esqwerty.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_frazerty.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_frdvbepo.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_itqwerty.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_svenska.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_trqwerty.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_ukdvorak.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_ukqwerty.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_usdvorak.rom</li>
+<li>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_usqwerty.rom</li>
+</ul>
+<p>I used <code>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_svenska.rom</code>.</p>
+<h3>Flashing the new ROM</h3>
+<p>Re-attach the test clip, again BEING CAREFUL THAT IT IS IN THE RIGHT ORIENTATION.
+Test that the connection is good:</p>
+<div class="highlight"><pre><span></span><code>pi@pizero0:~<span class="w"> </span>$<span class="w"> </span>sudo<span class="w"> </span>flashrom<span class="w"> </span>-p<span class="w"> </span>linux_spi:dev<span class="o">=</span>/dev/spidev0.0,spispeed<span class="o">=</span><span class="m">32768</span>
+flashrom<span class="w">  </span>on<span class="w"> </span>Linux<span class="w"> </span><span class="m">5</span>.10.103+<span class="w"> </span><span class="o">(</span>armv6l<span class="o">)</span>
+flashrom<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software,<span class="w"> </span>get<span class="w"> </span>the<span class="w"> </span><span class="nb">source</span><span class="w"> </span>code<span class="w"> </span>at<span class="w"> </span>https://flashrom.org
+
+Using<span class="w"> </span>clock_gettime<span class="w"> </span><span class="k">for</span><span class="w"> </span>delay<span class="w"> </span>loops<span class="w"> </span><span class="o">(</span>clk_id:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>resolution:<span class="w"> </span>1ns<span class="o">)</span>.
+Found<span class="w"> </span>Winbond<span class="w"> </span>flash<span class="w"> </span>chip<span class="w"> </span><span class="s2">&quot;W25Q64.V&quot;</span><span class="w"> </span><span class="o">(</span><span class="m">8192</span><span class="w"> </span>kB,<span class="w"> </span>SPI<span class="o">)</span><span class="w"> </span>on<span class="w"> </span>linux_spi.
+No<span class="w"> </span>operations<span class="w"> </span>were<span class="w"> </span>specified.
+</code></pre></div>
+
+<p>Finally flash your desired ROM:</p>
+<div class="highlight"><pre><span></span><code>pi@pizero0:~<span class="w"> </span>$<span class="w"> </span>sudo<span class="w"> </span>flashrom<span class="w"> </span>-p<span class="w"> </span>linux_spi:dev<span class="o">=</span>/dev/spidev0.0,spispeed<span class="o">=</span><span class="m">32768</span><span class="w"> </span>-w<span class="w"> </span>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_svenska.rom<span class="w"> </span>
+flashrom<span class="w">  </span>on<span class="w"> </span>Linux<span class="w"> </span><span class="m">5</span>.10.103+<span class="w"> </span><span class="o">(</span>armv6l<span class="o">)</span>
+flashrom<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software,<span class="w"> </span>get<span class="w"> </span>the<span class="w"> </span><span class="nb">source</span><span class="w"> </span>code<span class="w"> </span>at<span class="w"> </span>https://flashrom.org
+
+Using<span class="w"> </span>clock_gettime<span class="w"> </span><span class="k">for</span><span class="w"> </span>delay<span class="w"> </span>loops<span class="w"> </span><span class="o">(</span>clk_id:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>resolution:<span class="w"> </span>1ns<span class="o">)</span>.
+Found<span class="w"> </span>Winbond<span class="w"> </span>flash<span class="w"> </span>chip<span class="w"> </span><span class="s2">&quot;W25Q64.V&quot;</span><span class="w"> </span><span class="o">(</span><span class="m">8192</span><span class="w"> </span>kB,<span class="w"> </span>SPI<span class="o">)</span><span class="w"> </span>on<span class="w"> </span>linux_spi.
+Reading<span class="w"> </span>old<span class="w"> </span>flash<span class="w"> </span>chip<span class="w"> </span>contents...<span class="w"> </span><span class="k">done</span>.
+Erasing<span class="w"> </span>and<span class="w"> </span>writing<span class="w"> </span>flash<span class="w"> </span>chip...<span class="w"> </span>Erase/write<span class="w"> </span><span class="k">done</span>.
+Verifying<span class="w"> </span>flash...<span class="w"> </span>VERIFIED.
+</code></pre></div>
+
+<p>Even though <code>flashrom</code> says that it verified the ROM I wanted to be extra sure:</p>
+<div class="highlight"><pre><span></span><code>pi@pizero0:~<span class="w"> </span>$<span class="w"> </span>sudo<span class="w"> </span>flashrom<span class="w"> </span>-p<span class="w"> </span>linux_spi:dev<span class="o">=</span>/dev/spidev0.0,spispeed<span class="o">=</span><span class="m">32768</span><span class="w"> </span>-r<span class="w"> </span>read.bin
+flashrom<span class="w">  </span>on<span class="w"> </span>Linux<span class="w"> </span><span class="m">5</span>.10.103+<span class="w"> </span><span class="o">(</span>armv6l<span class="o">)</span>
+flashrom<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software,<span class="w"> </span>get<span class="w"> </span>the<span class="w"> </span><span class="nb">source</span><span class="w"> </span>code<span class="w"> </span>at<span class="w"> </span>https://flashrom.org
+
+Using<span class="w"> </span>clock_gettime<span class="w"> </span><span class="k">for</span><span class="w"> </span>delay<span class="w"> </span>loops<span class="w"> </span><span class="o">(</span>clk_id:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>resolution:<span class="w"> </span>1ns<span class="o">)</span>.
+Found<span class="w"> </span>Winbond<span class="w"> </span>flash<span class="w"> </span>chip<span class="w"> </span><span class="s2">&quot;W25Q64.V&quot;</span><span class="w"> </span><span class="o">(</span><span class="m">8192</span><span class="w"> </span>kB,<span class="w"> </span>SPI<span class="o">)</span><span class="w"> </span>on<span class="w"> </span>linux_spi.
+Reading<span class="w"> </span>flash...<span class="w"> </span><span class="k">done</span>.
+pi@pizero0:~<span class="w"> </span>$<span class="w"> </span>sha1sum<span class="w"> </span>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_svenska.rom<span class="w"> </span>read.bin<span class="w"> </span>
+e62ee26ab046d567004b907ba1950e819b60d252<span class="w">  </span>seabios_withgrub_t420_8mb_libgfxinit_corebootfb_svenska.rom
+e62ee26ab046d567004b907ba1950e819b60d252<span class="w">  </span>read.bin
+</code></pre></div>
+
+<p>Congratulations! Your T420 is now librebooted!</p>
+<p>At this point it may be useful to solder some thin wires to the programming header next to the BIOS ROM and making them accessible via the DIMM slot cover.
+I didn't end up doing this, but readers who plan on flashing many times may want to do so to save on having to disassemble more than once.</p>
+<p>Now the only thing left to do is reassemble the T420. Remember to apply new thermal compound, and remember to re-enable the WiFi by sliding the kill switch on the right edge forward.
+I forgot this last step and was very confused why my WiFi wasn't working 😑
+I also had an issue with the my second 8 GiB DDR3 stick not being detected, but reseating it fixed that issue.</p>
+<p>I did the same procedure to a second T420 and it seems to have worked mostly fine.
+There is some kind of issue with SeaBIOS not being able to boot from its drive, but telling SeaBIOS to start grub instead allows booting.
+I'm not sure why. Might have something to do with how Debian was installed on that machine. Oh well.</p></div>
+</article></section>
+<hr />
+<footer>
+<div>
+<div><h2>Useful links</h2><ul><li><a href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> Atom feed</a></li><li><a href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> RSS feed</a></li><li><a href="http://pfcgmo5hwfffwhis3zty2u2ufryrnzypue34h74va6ykw5iazgcvvtqd.onion/"><img src="/theme/images/icons/onion.png" alt="Tor logo"/> Tor .onion service</a></li></ul></div>
+<div><h2>Comments</h2>Got comments? E-mail them to comments at haerdin dot se</div>
+</div>
+<hr/>
+<p>This site is 100% PHP free and is <a href="https://anybrowser.org/campaign/"><img src="/theme/images/icons/w3cab.gif" alt="W3C any browser logo"/> viewable with any browser</a>!</p>
+</footer><script type="text/javascript">
+var d=document.createElement("div"),b;d.innerHTML="<math><mpadded height='23px' width='77px'/></math>";document.body.appendChild(d);b=d.firstChild.firstChild.getBoundingClientRect();document.body.removeChild(d);if(Math.abs(b.height-23)>1||Math.abs(b.width-77)>1){b=document.createElement("script");b.setAttribute("src","/theme/mathjax/mml-chtml.js");document.getElementsByTagName("head")[0].appendChild(b);}
+</script></body></html>

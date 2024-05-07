@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>All BTC .:. News: We were Under Attack!</title>
+    <meta name="description" content="All BTC .:. Everything you needed News: We were Under Attack!">
+    <meta name="keywords" content="All BTC .:. Everything you needed News: We were Under Attack!">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet" />
+    <link href="/allbtcshop/fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="/allbtcshop/css/tooplate-chilling-cafe.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+    </style>
+    <style>
+        body {font-family: Arial;}
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+    </style>
+    <style>
+        .dropbtn {
+            background-color: #000000;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #9F7100;}
+    </style>
+</head>
+<body>
+<div class="tm-container">
+    <div class="tm-text-white tm-page-header-container">
+
+        <center><a href="/"><img src="/allbtcshop/img/logo.png"></a></center>
+    </div>
+<div class="tm-main-content">
+    <img src="/allbtcshop/img/attack.jpg">
+    <!-- Coffee Menu -->
+    <center><h2>We were Under Attack!</h2>
+        <p> (2024.04.19) </p></center>
+    <hr>
+
+    <!-- About our cafe -->
+    <section class="tm-section tm-section-small">
+        <p>Given that we are the only real and reputable store in this field, we also have many enemies and competitors, and they do everything to harass us and steal from us.<br>
+
+            Over the past two weeks, there have been several attacks on our servers and wallets, which fortunately did not work, but disrupted access to the website. <br>
+            From today, we will start to strengthen the infrastructure of the website.</p>
+    </section>
+    <hr>
+    <!-- Talk to us -->
+    <section class="tm-section tm-section-small">
+        <h2 class="tm-section-header">The second way to purchase is email!</h2>
+        <p class="tm-mb-0">
+        </p><center>You can buy our transfers or wallets with your email <b>allbtcshop@firemail.cc</b></center>
+        <p></p>
+        <center><a href="/"><h2>Go To HomePage</h2></a></center>
+        <center><img src="/allbtcshop/img/Footer.png"></center>
+    </section></div>
+<footer>
+    <center><img src="/allbtcshop/img/Sell.png"></center>
+    <p class="tm-text-white tm-footer-text">
+        Copyright &copy; 2024 AllBTC
+    </p>
+</footer>
+</div></div>
+<script src="https://www.blockonomics.co/js/pay_button.js"></script>
+<script>
+    $(function() {
+        // Adjust intro image height based on width.
+        $(window).resize(function() {
+            var img = $("#tm-intro-img");
+            var imgWidth = img.width();
+
+            // 640x425 ratio
+            var imgHeight = (imgWidth * 425) / 640;
+
+            if (imgHeight < 300) {
+                imgHeight = 300;
+            }
+
+            img.css("min-height", imgHeight + "px");
+        });
+    });
+</script>
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
