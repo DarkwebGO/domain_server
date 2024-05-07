@@ -64,30 +64,33 @@ def init_onion(db):
 
 def import_excel_to_db(db):
     base_directory = os.path.join(os.path.dirname(__file__), '..', '..', 'function')
-    dir_names = []
+    
     for root, dirs, files in os.walk(base_directory):
-        # function의 바로 아래 하위 폴더인 경우 변수 direct_function_dir_name에 저장. 
-        for directory in dirs:
-            directory_path = os.path.join(root, directory)
-            dir_name = os.path.basename(root)  # 상위 폴더의 이름 추출
-            if dir_name not in dir_names and dir_name != "function":  # 중복 방지를 위해 확인
-                dir_names.append(dir_name)  # 새로운 상위 폴더 이름 추가
-                print(dir_name)
-            for file in os.listdir(directory_path):
+        # 'function' 바로 아래의 폴더에서 시작
+        parts = root.split(os.sep)
+        if 'function' in parts:
+            # 'function' 바로 다음 폴더의 인덱스를 찾고, 그 폴더 이름을 구합니다
+            function_index = parts.index('function')
+            if function_index + 1 < len(parts):
+                dir_name = parts[function_index + 1]
+            else:
+                continue  # 'function' 바로 아래 폴더가 아니면 처리하지 않음
+
+            for file in files:
                 if file.endswith('.xlsx'):
-                    excel_path = os.path.join(directory_path, file)
+                    excel_path = os.path.join(root, file)
                     df = pd.read_excel(excel_path)
                     for _, row in df.iterrows():
                         darkweb_entry = Darkweb.query.filter_by(domain=row['Domain']).first()
                         if not darkweb_entry:
-                            conductor = dir_name
+                            conductor = dir_name  # 여기서 dir_name은 'function' 바로 아래 폴더의 이름
                             darkweb_entry = Darkweb(
-                                conductor= conductor,
+                                conductor=role[conductor],
                                 domain=row['Domain']
                             )
                             db.session.add(darkweb_entry)
                             db.session.commit()
-                        # URL이 문자열이 아닌 경우 처리
+
                         url = str(row['URL']) if not isinstance(row['URL'], str) else row['URL']
                         html_content = url.replace('http://', '').replace('/', '_')
                         urlweb_entry = DomainToURL(
@@ -101,5 +104,7 @@ def import_excel_to_db(db):
                         )
                         db.session.add(urlweb_entry)
                     db.session.commit()
+
+
 
 

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>GoBiGas technical coefficients</title><style>
+body{margin:auto;max-width:50em;padding-left:0.5em;padding-right:0.5em}
+img{max-width:100%}
+#banner h1{font-size:2.5em;margin-top:5px;margin-bottom:5px;text-align:center}
+#banner h1 a:link,#banner h1 a:visited{color:#111;text-decoration:none}
+pre{padding:0.5em;background:#ddd;border:1px solid #000;overflow:auto}
+.entry-title{font-size:2em;margin-bottom:0.5em}
+.tags{margin-top:0px;margin-bottom:0px}
+.article-link{font-weight:bold}
+.post-info{float:right;margin:0.5em;padding:0.5em;border:1px solid #000;max-width:16em}
+footer div{column-count:3;column-width:18em;column-rule:1px solid #ddd}
+footer div div{display:inline-block}
+nav ul{list-style-type:none;margin:0;padding:0;overflow:hidden;background-color:#eee}
+nav ul li{float:left}
+nav ul li a{display:block;color:#333;text-align:center;font-size:1.5em;padding:14px 16px;text-decoration:none}
+nav ul li a:hover{background-color:#ddd}
+table,td,th{padding:0.2em;border:1px solid gray;border-collapse:collapse}
+</style><link href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tomas' place in cyber&shy;space Atom Feed"/><link href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Tomas' place in cyber&shy;space RSS Feed"/></head><body>
+<header id="banner">
+<h1><a href="../../../../../">Tomas' place in cyber&shy;space </a></h1>
+<nav><ul>
+<li><a href="/">Home</a></li>
+<li><a href="/category/blog.html">Blog</a></li>
+<li><a href="/category/demoscene.html">Demoscene</a></li>
+<li><a href="/files">Files</a></li>
+<li><a href="/pages/consulting.html">Consulting</a></li>
+<li><a href="/pages/contact.html">Contact</a></li>
+</ul></nav>
+</header>
+<section><article><header>
+<aside class="post-info">
+<abbr class="published" title="2022-06-20T16:30:13+02:00">
+Published: 2022-06-20</abbr>
+in <a href="../../../../../category/blog.html">Blog</a>
+<p class="tags">Tags: <a href="../../../../../tag/cybernetics.html">cybernetics</a> <a href="../../../../../tag/climate.html">climate</a> <a href="../../../../../tag/chemistry.html">chemistry</a> </p>
+</aside><h1 class="entry-title">
+<a href="../../../../../blog/2022/06/20/gobigas-technical-coefficients/" rel="bookmark"
+title="Permalink to GoBiGas technical coefficients">GoBiGas technical coefficients</a></h1>
+</header>
+<div class="entry-content"><p><a href="../../../../../images/gobigas/-000.jpg"><img alt="Picture of the GiBoGas plant" src="../../../../../images/gobigas/t-000.jpg"></a></p>
+<p>I recently learned of <a href="https://www.chalmers.se/hosted/cigb-en/gobigas">the GoBiGas project</a>,
+an experimental <a href="https://en.wikipedia.org/wiki/Gasification">gasification</a> plant constructed by <a href="https://www.goteborgenergi.se/">Göteborg Energi</a> operated between 2014-2018 and mothballed since then.
+The idea is to turn biomass in the form of wood pellets and bark into methane (CH<sub>4</sub>) at a rate of 20 MW (0.55 m³/s or 0.36 kg/s).
+This ties heavily into something called <a href="https://en.wikipedia.org/wiki/Bioenergy_with_carbon_capture_and_storage">bioenergy with carbon capture and storage</a> (BECCS), which is likely to be one of many important technologies to reverse global warming.</p>
+<p>Since GoBiGas is a publicly funded project, lots of useful information is available in its English-language final report <a href="https://www.goteborgenergi.se/Files/Webb20/Kategoriserad%20information/Forskningsprojekt/The%20GoBiGas%20Project%20-%20Demonstration%20of%20the%20Production%20of%20Biomethane%20from%20Biomass%20v%20230507_6_0.pdf">here</a>.
+In this post I turn the in-kind data available in the report into technical coefficients.</p>
+<h2>Chemistry</h2>
+<p><a href="../../../../../images/gobigas/-016.jpg"><img alt="Schematic picture of the gasification section" src="../../../../../images/gobigas/t-016.jpg"></a></p>
+<p>The gasification process can be summarized as follows:</p>
+<ol>
+<li>Heat dry biomass in a low-oxygen environment, releasing H<sub>2</sub> + CO (<a href="https://en.wikipedia.org/wiki/Syngas">syngas</a>) and other gasses like CO<sub>2</sub> and steam</li>
+<li>Cool, dry and filter the syngas and do something useful with it</li>
+<li>Besides turning into syngas, some biomass remains as carbon (C) that can be buried</li>
+</ol>
+<p>The mix between H<sub>2</sub>, CO<sub>x</sub> and C can be controlled by varying the amount of O<sub>2</sub> and H<sub>2</sub>O injected into the gasifier in proportion to the carbon in the biomass:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>C</mi><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>H</mi><mn>2</mn></msub><mspace width="0"/><mi>O</mi><mo lspace="0.278em" rspace="0.278em">&#x2192;</mo><mi>C</mi><mspace width="0"/><mi>O</mi><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>H</mi><mn>2</mn></msub><mspace width="1.333em"/><msub><mi mathvariant="normal">&#x394;</mi><mi>r</mi></msub><mspace width="0"/><mi>H</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0">+</mo><mn>131</mn><mo lspace="0" rspace="0">.</mo><mn>3</mn><mspace width="0.167em"/><mtext>kJ/mol</mtext></mrow>
+</math>
+</span>
+<span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>C</mi><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>O</mi><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">&#x2192;</mo><mi>C</mi><mspace width="0"/><msub><mi>O</mi><mn>2</mn></msub><mspace width="1.333em"/><msub><mi mathvariant="normal">&#x394;</mi><mi>r</mi></msub><mspace width="0"/><mi>H</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0">-</mo><mn>393</mn><mo lspace="0" rspace="0">.</mo><mn>5</mn><mspace width="0.167em"/><mtext>kJ/mol</mtext></mrow>
+</math>
+</span></p>
+<p>Note that the reduction of H<sub>2</sub>O to H<sub>2</sub> + O<sup>2-</sup> is endothermic.
+Obviously the less water and oxygen that is injected the more carbon is produced.
+The biomass itself contains oxygen and hydrogen chemically bound in cellulose and lignin, and water as moisture.
+It is beneficial to dry the biomass prior to gasification, both in case of biochar production but also for gasification as the report reveals.</p>
+<p><a href="../../../../../images/gobigas/-012.jpg"><img alt="Picture of the GiBoGas plant" src="../../../../../images/gobigas/t-012.jpg"></a></p>
+<p>In the GoBiGas plant the syngas is turned into CH<sub>4</sub> by hydrogenating the CO<sub>x</sub> gas.
+This is done in the methanation section shown in figure 2.5 in the report.
+These chemical processes can be summed up as:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>C</mi><mspace width="0"/><mi>O</mi><mo lspace="0.222em" rspace="0.222em">+</mo><mn>3</mn><msub><mi>H</mi><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">&#x2192;</mo><mi>C</mi><mspace width="0"/><msub><mi>H</mi><mn>4</mn></msub><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>H</mi><mn>2</mn></msub><mspace width="0"/><mi>O</mi><mspace width="1.333em"/><msub><mi mathvariant="normal">&#x394;</mi><mi>r</mi></msub><mspace width="0"/><mi>H</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0">-</mo><mn>206</mn><mspace width="0.167em"/><mtext>kJ/mol</mtext></mrow>
+</math>
+</span>
+<span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>C</mi><mspace width="0"/><msub><mi>O</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">+</mo><mn>4</mn><msub><mi>H</mi><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">&#x2192;</mo><mi>C</mi><mspace width="0"/><msub><mi>H</mi><mn>4</mn></msub><mo lspace="0.222em" rspace="0.222em">+</mo><mn>2</mn><msub><mi>H</mi><mn>2</mn></msub><mspace width="0"/><mi>O</mi><mspace width="1.333em"/><msub><mi mathvariant="normal">&#x394;</mi><mi>r</mi></msub><mspace width="0"/><mi>H</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0">-</mo><mn>164</mn><mspace width="0.167em"/><mtext>kJ/mol</mtext></mrow>
+</math>
+</span></p>
+<p>Alternatives to methanation are burning the syngas or turning it into oil in a <a href="https://en.wikipedia.org/wiki/Fischer%E2%80%93Tropsch_process">Fischer-Tropsch reactor</a>.
+The latter is useful as an alternative to liquid fossil fuels.</p>
+<p>Extra H<sub>2</sub> could be supplied via for example electrolysis of water, resulting in more hydrocarbons and less CO<sub>2</sub>, if the electricity comes from a fossil free source like on-site photovoltaics.</p>
+<p>The plant also produces various other chemicals as byproducts including BTX (benzene, toluene and xylenes).
+These are useful in their own right, but are presently simply fed back into the reactor and burned.</p>
+<h3>Solar gasification</h3>
+<p><a href="../../../../../images/gobigas/-Parkent_BSP.jpg"><img alt="Picture of the solar furnace of Uzbekistan" src="../../../../../images/gobigas/t-Parkent_BSP.jpg"></a></p>
+<p>The heat for the gasification step can come from anywhere, so long as it is of high enough temperature (&gt; 700°C).
+In the GoBiGas plant part of the feedstock is burned for this purpose, releasing CO<sub>2</sub>.
+The report reveals that as much as 70% of the carbon is wasted in this way.
+If solar heat is used instead then the carbon sequestration potential increases.
+If my calculations are correct then these 70% correspond to somewhere between 24-28 MW of heat.
+Assuming a solar constant of 1 kW/m² this is no more than 2.8 ha of (normal) solar collecting area.</p>
+<p>A plant utilizing solar heat has the potential to be superior to more low-tech alternatives like <a href="https://en.wikipedia.org/wiki/Slash-and-char">slash-and-char</a>.</p>
+<h2>Economics</h2>
+<p>Gasification can be carbon negative, especially if done together with comprehensive economic planning.
+The GoBiGas plant is merely carbon neutral.
+Furthermore it is limited by being embedded in bourgeois society.
+This limitation is revealed in <a href="https://www.goteborgenergi.se/om-oss/vad-vi-gor/forskning-utveckling/gobigas">the project's page on the Göteborg Energi website</a>:</p>
+<blockquote>
+<p>The plans for the second stage were shelved in 2015 when the biogas market had not reached the development that was forecasted in order to reach profitability in the project. </p>
+</blockquote>
+<p>In other words: new public management demands that even efforts toward climate change <em>mitigation</em> be subservient to the whims of the market.
+Nevermind climate change <em>reversal</em>.</p>
+<h2>Technical coefficients</h2>
+<p>For working out the technical coefficients we need to know what temporal granularity we're after.
+The plant has a start-up time of "a couple of days" (section 3.5) or "5–7 days" (chapter 18).
+Whatever the number, this is a non-convexity as far as planning goes.
+Regular maintenance would have to be scheduled, and it would likely be beneficial if the plan solver had the flexibility of setting the maintenance schedule within given constraints.
+For now I presume steady-state operation.</p>
+<p><a href="https://www.gp.se/nyheter/g%C3%B6teborg/anst%C3%A4llda-flyr-gobigas-1.108608">At least three people were required to run the plant</a>.
+Despite the poor work environment with so few people, I will use this number for lack of a better one.
+Three people per shift means that each hour corresponds to 10,800 worker seconds.
+Section 3.4 of the report provides information on consumables from which we can construct the following table:</p>
+<table>
+<tr><th>What</th><th>Amount</th><th>Unit</th><th>Comment</th></tr>
+<tr><td>Wood pellets</td><td>-600</td><td>g</td><td>120*12/16/0.3/0.5</td></tr>
+<tr><td>Electricity</td><td>-733</td><td>kJ</td><td> </td></tr>
+<tr><td>H<sub>2</sub>O</td><td>-450.06</td><td>g</td><td>(-(<abbr title="fresh water">4e6</abbr>+<abbr title="process water">1e6</abbr>+<abbr title="K2CO3 solution">6e3*1.415</abbr>)+<abbr title="steam production">100e3*0.657/16*2*18)/3600/3</abbr></td></tr>
+<tr><td>CaCO<sub>3</sub></td><td>-11.111</td><td>g</td><td>Product gas filter</td></tr>
+<tr><td>RME</td><td>-6.4815</td><td>g</td><td>Biodiesel in tar scrubber</td></tr>
+<tr><td>Olivine</td><td>-6.0185</td><td>g</td><td>Potassium-activated olivine</td></tr>
+<tr><td>K<sub>2</sub>CO<sub>3</sub></td><td>-0.5241</td><td>g</td><td>40% by mass -> <a href="https://www.engineeringtoolbox.com/density-aqueous-solution-inorganic-potassium-salt-concentration-d_1956.html">1.415 kg/l</a></td></tr>
+<tr><td>N<sub>2</sub></td><td>-0.4632</td><td>g</td><td>Purge gas</td></tr>
+<tr><td>Ash</td><td>+17.13</td><td>g</td><td> </td></tr>
+<tr><td>CH<sub>4</sub></td><td>+120</td><td>g</td><td>Net output, 360/3, 20/3 = 6.67 MW</td></tr>
+<tr><td>CO<sub>2</sub></td><td>+786.73</td><td>g</td><td><abbr title="gasifier">600*0.5*0.7*44/12</abbr> + <abbr title="steam production">100e3*0.657/3600/3*44/16</abbr></td></tr>
+</table>
+
+<p>Where the table in the report has a range of values I have used the larger values in all cases.</p>
+<p>The wood pellet consumption figure is based on a carbon utilization of <math>
+<mrow><msub><mi>&#x3bc;</mi><mi>C</mi></msub><mo lspace="0.278em" rspace="0.278em">=</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>3</mn></mrow>
+</math> (section 3.5), the 0.36 kg/s figure at the start of this post and dry wood being 50% carbon by mass (<a href="https://www.fpl.fs.fed.us/documnts/pdf1984/pette84a.pdf">source</a>), all divided by three.
+CO<sub>2</sub> is similarly based on <math>
+<mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">-</mo><msub><mi>&#x3bc;</mi><mi>C</mi></msub><mo lspace="0.278em" rspace="0.278em">=</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>7</mn></mrow>
+</math>.
+In this <a href="https://www.youtube.com/watch?v=XuaL0XyUW2c">presentation</a> at 36:40 it is stated that the plant consumes 6 tons of fuel per hour which translates to 556 g compared to the 600 g figure above.
+Close enough.</p>
+<p>Some of the materials listed here, like the olivine and potassium carbonate, act as catalysts that would likely be recycled over time.
+In particular the potassium acts to suppress the formation of tars.
+In the presentation linked in the previous paragraph sulfur is also mentioned as a catalyst, but I find no mention of added sulfur in the report.
+Presumably the biomass contains enough sulfur as is.</p>
+<p>There is also waste heat that can be used for municipal heating. Making use of this heat (co-generation) supposedly brings the efficiency of the plant to 90%.</p>
+<h3>Biochar</h3>
+<p>As mentioned in the chemistry section, if less water and oxygen is introduced into the reactor then biochar (carbon) tends to be formed.
+With an appropriately designed plant one could have a "dial" that controls how much of the biomass gets turned into hydrocarbons and how much gets turned into char.
+GoBiGas is not designed for this particular use case, but for illustrative purposes I will try and guesstimate technical coefficients for this application as well.</p>
+<p>The report mentions a theoretical maximum carbon utilization of <math>
+<mrow><msub><mi>&#x3bc;</mi><mrow><mi>C</mi><mo lspace="0" rspace="0">,</mo><mtext>theoretical</mtext></mrow></msub><mo lspace="0.278em" rspace="0.278em">=</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>52</mn></mrow>
+</math>.
+Let's assume things work exactly like this for biochar since it makes for more interesting technical coefficients.
+The reactor can be powered by the syngas given off naturally by the oxygen and hydrogen chemically bound in the fuel.
+Everything coming off the fuel gets burned, including tars, so there is no need for filtration.
+This removes the need for olivine and potassium carbonate as well.
+Presumably process water and purge gas aren't necessary either.
+This leads to a very much simpler set of technical coefficients:</p>
+<table>
+<tr><th>What</th><th>Amount</th><th>Unit</th><th>Comment</th></tr>
+<tr><td>Wood pellets</td><td>-600</td><td>g</td><td></td></tr>
+<tr><td>Ash</td><td>+17.13</td><td>g</td><td> </td></tr>
+<tr><td>C</td><td>+156</td><td>g</td><td>Char, 600*0.5*0.52</td></tr>
+<tr><td>H<sub>2</sub>O</td><td>+324</td><td>g</td><td>600*0.06*18/2</td></tr>
+<tr><td>CO<sub>2</sub></td><td>+528</td><td>g</td><td>600*0.5*0.48*44/12</td></tr>
+</table>
+
+<p>There is a mass discrepancy in this table due to oxygen from the atmosphere not being accounted for.
+The oxygen in the carbon dioxide and water adds up to 672 g while the wood only contains 264 g.
+We could therefore if we like add a row for -408 g atmospheric O<sub>2</sub>.</p>
+<h3>Combined table</h3>
+<table>
+<tr><th>What</th><th>x<sub>CH<sub>4</sub></sub></th><th>x<sub>C</sub></th><th>Unit</th></tr>
+<tr><td>Wood pellets</td><td>-600</td><td>-600</td><td>g</td></tr>
+<tr><td>Electricity</td><td>-733</td><td></td><td>kJ</td></tr>
+<tr><td>H<sub>2</sub>O</td><td>-450.06</td><td>+324</td><td>g</td></tr>
+<tr><td>CaCO<sub>3</sub></td><td>-11.111</td><td></td><td>g</td></tr>
+<tr><td>RME</td><td>-6.4815</td><td></td><td>g</td></tr>
+<tr><td>Olivine</td><td>-6.0185</td><td></td><td>g</td></tr>
+<tr><td>K<sub>2</sub>CO<sub>3</sub></td><td>-0.5241</td><td></td><td>g</td></tr>
+<tr><td>N<sub>2</sub></td><td>-0.4632</td><td></td><td>g</td></tr>
+<tr><td>Ash</td><td>+17.13</td><td>+17.13</td><td>g</td></tr>
+<tr><td>CH<sub>4</sub></td><td>+120</td><td></td><td>g</td></tr>
+<tr><td>C</td><td></td><td>+156</td><td>g</td></tr>
+<tr><td>CO<sub>2</sub></td><td>+786.73</td><td>+528</td><td>g</td></tr>
+</table>
+
+<p>Subject to <math>
+<mrow><msub><mi>x</mi><mrow><mi>C</mi><mspace width="0"/><msub><mi>H</mi><mn>4</mn></msub></mrow></msub><mo lspace="0.278em" rspace="0.278em">&#x2265;</mo><mn>0</mn></mrow>
+</math>, <math>
+<mrow><msub><mi>x</mi><mi>C</mi></msub><mo lspace="0.278em" rspace="0.278em">&#x2265;</mo><mn>0</mn></mrow>
+</math> and <math>
+<mrow><msub><mi>x</mi><mrow><mi>C</mi><mspace width="0"/><msub><mi>H</mi><mn>4</mn></msub></mrow></msub><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>x</mi><mi>C</mi></msub><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mn>3</mn></mrow>
+</math>.</p>
+<h2>Biomass supply</h2>
+<p>The average site productivity (bonitet) for forests in Sweden is 5.5 <abbr title="skogskubikmeter, forest cubic meters">m³sk</abbr>/(ha*y) distributed over 22,125,000 ha (<a href="https://www.slu.se/globalassets/ew/org/centrb/rt/dokument/skogsdata/skogsdata_2022_webb.pdf">SLU</a>, table 3.11a) or 122 Mm³sk/y.
+This corresponds to roughly 44.7 Mton carbon or 164 Mton CO<sub>2</sub> per year if all parts of the trees are used and burned (<a href="https://www.skogssverige.se/hur-mycket-co2-tar-ett-tradm3sk-upp-under-15-ar">skogssverige.se</a>).
+Sweden's emissions as of 2020 are 46.3 Mton CO<sub>2</sub> equivalent (<a href="https://www.naturvardsverket.se/data-och-statistik/klimat/vaxthusgaser-territoriella-utslapp-och-upptag">naturvardsverket.se</a>).
+Clearly there is great potential here even for a country that gets comparatively little sunlight as Sweden.</p>
+<p>Some readers might object that most of these trees get turned into useful lumber that shouldn't be burned or charred, and they'd almost certainly be right.
+But eventually that lumber turns into scrap wood which is burned at present rather than charred.
+So when looking at the whole lifecycle of forest products it appears that a net sequestration of <math>
+<mrow><mn>44</mn><mo lspace="0" rspace="0">.</mo><mn>7</mn><mo lspace="0.222em" rspace="0.222em">&ast;</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>52</mn><mo lspace="0.222em" rspace="0.222em">&ast;</mo><mn>44</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>12</mn><mo lspace="0.278em" rspace="0.278em">=</mo><mn>85</mn><mo lspace="0" rspace="0">.</mo><mn>2</mn></mrow>
+</math> Mton CO<sub>2</sub> per year may be possible, which is clearly more than 46.3 Mton.
+There is even enough room there to turn some of the wood into biofuel.</p>
+<p>Finally there are other potential sources of biomass.
+Hemp in particular seems able to sequester 20 tons of CO<sub>2</sub> per hectare per harvest (<a href="https://www2.jordbruksverket.se/webdav/files/SJV/trycksaker/Pdf_jo/jo06_5.pdf">jordbruksverket.se</a>, <a href="https://hemp.inc/carbon-sequestration-how-hemp-can-help-save-the-world/">hemp.inc</a>) compared to wood's <math>
+<mrow><mn>5</mn><mo lspace="0" rspace="0">.</mo><mn>5</mn><mo lspace="0.222em" rspace="0.222em">&ast;</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>735</mn><mo lspace="0.222em" rspace="0.222em">&ast;</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>5</mn><mo lspace="0.222em" rspace="0.222em">&ast;</mo><mn>44</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>12</mn><mo lspace="0.278em" rspace="0.278em">=</mo><mn>7</mn><mo lspace="0" rspace="0">.</mo><mn>4</mn></mrow>
+</math> tons/(ha*y).
+Unfortunately the powers that be in Sweden hate hemp and do all in their power to defy legalization directives from the EU.</p>
+<p>Addendum (2022-06-23): I see in my notes that algea is another possibility which I think I should bring up here.
+<a href="https://www.massey.ac.nz/~ychisti/Biodiesel.pdf">This paper</a> by Yusuf Chisti suggests that CO<sub>2</sub> sequestration could be as high as 50 t/(ha*y) in an algea farm.
+Optimal bioractor design is still somewhat of an open question.
+But a simpler alternative might be possible: harvesting algal blooms.
+This would have a dual benefit: sequestering greenhouse gasses and reversing eutrophication.
+Various systems for doing this already exist on the market.
+The resulting algal sludge can be further dried in the sun and then gasified.</p>
+<h2>News articles, seminars and other material</h2>
+<p>There is a bunch of coverage of the GoBiGas project, some positive, some negative and some inbetween.
+Most of these are in Swedish. I have translated the titles to English.
+There are more articles than these but they were paywalled and so I have not linked them.</p>
+<ul>
+<li><a href="https://www.gp.se/nyheter/g%C3%B6teborg/anst%C3%A4llda-flyr-gobigas-1.108608">Anställda flyr Gobigas</a> (<em>Employees flee Gobigas</em>), Göteborgsposten, 2015-06-29</li>
+<li><a href="https://www.gp.se/debatt/gobigas-en-del-av-l%C3%B6sningen-1.175661">Gobigas en del av lösningen</a> (<em>Gobigas a part of the solution</em>), Göteborgsposten, 2015-12-12</li>
+<li><a href="https://www.youtube.com/watch?v=XuaL0XyUW2c">GoBiGas – Framtiden eller fiasko av episka proportioner</a> (<em>GoBiGas – The future or failure of epic proportions</em>), YouTube (<a href="https://vid.puffyan.us/watch?v=XuaL0XyUW2c">invidious link</a>), 2017-02-21</li>
+<li><a href="https://www.ieabioenergy.com/wp-content/uploads/2018/06/GoBiGas_Webinar_20_june_final.pdf">GoBiGas: An Industry Relevant State-of-The-Art Reference for Advanced Biofuel Production via Gasification</a>, slides for part of the above video, in English</li>
+<li><a href="https://www.etc.se/inrikes/gobigas-satsningen-som-kom-av-sig">Gobigas - satsningen som kom av sig</a> (<em>Gobigas - the investment that floundered</em>), ETC, 2017-06-15</li>
+<li><a href="https://www.svt.se/nyheter/lokalt/vast/investerade-nastan-tva-miljarder-i-biogasanlaggning-nu-laggs-projektet-ner">Investerade nästan två miljarder i Gobigas – nu läggs projektet ner</a> (<em>Invested nearly two billion SEK (200M USD) in GoBiGas – now the project is being shut down</em>), Sveriges Television, 2018-04-03</li>
+<li><a href="https://www.svt.se/nyheter/lokalt/vast/gobigas-projektet-en-succe">Professor: ”Gobigas-projektet en teknisk succé”</a> (<em>Professor: ”The GoBiGas project a technological success”</em>), Sveriges Television, 2018-04-04</li>
+<li><a href="https://www.gp.se/debatt/%C3%A5teruppstarta-gobigas-och-fasa-ut-beroendet-av-rysk-gas-1.73334121">Återuppstarta GoBiGas och fasa ut beroendet av rysk gas</a> (<em>Restart GoBiGas and phase out the dependence on Russian gas</em>), Göteborgsposten, 2022-05-25</li>
+</ul></div>
+</article></section>
+<hr />
+<footer>
+<div>
+<div><h2>Useful links</h2><ul><li><a href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> Atom feed</a></li><li><a href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> RSS feed</a></li><li><a href="http://pfcgmo5hwfffwhis3zty2u2ufryrnzypue34h74va6ykw5iazgcvvtqd.onion/"><img src="/theme/images/icons/onion.png" alt="Tor logo"/> Tor .onion service</a></li></ul></div>
+<div><h2>Comments</h2>Got comments? E-mail them to comments at haerdin dot se</div>
+</div>
+<hr/>
+<p>This site is 100% PHP free and is <a href="https://anybrowser.org/campaign/"><img src="/theme/images/icons/w3cab.gif" alt="W3C any browser logo"/> viewable with any browser</a>!</p>
+</footer><script type="text/javascript">
+var d=document.createElement("div"),b;d.innerHTML="<math><mpadded height='23px' width='77px'/></math>";document.body.appendChild(d);b=d.firstChild.firstChild.getBoundingClientRect();document.body.removeChild(d);if(Math.abs(b.height-23)>1||Math.abs(b.width-77)>1){b=document.createElement("script");b.setAttribute("src","/theme/mathjax/mml-chtml.js");document.getElementsByTagName("head")[0].appendChild(b);}
+</script></body></html>

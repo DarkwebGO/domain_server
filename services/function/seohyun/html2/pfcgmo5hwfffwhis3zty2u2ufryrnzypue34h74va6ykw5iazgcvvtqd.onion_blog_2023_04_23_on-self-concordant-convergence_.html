@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>On self-concordant convergence</title><style>
+body{margin:auto;max-width:50em;padding-left:0.5em;padding-right:0.5em}
+img{max-width:100%}
+#banner h1{font-size:2.5em;margin-top:5px;margin-bottom:5px;text-align:center}
+#banner h1 a:link,#banner h1 a:visited{color:#111;text-decoration:none}
+pre{padding:0.5em;background:#ddd;border:1px solid #000;overflow:auto}
+.entry-title{font-size:2em;margin-bottom:0.5em}
+.tags{margin-top:0px;margin-bottom:0px}
+.article-link{font-weight:bold}
+.post-info{float:right;margin:0.5em;padding:0.5em;border:1px solid #000;max-width:16em}
+footer div{column-count:3;column-width:18em;column-rule:1px solid #ddd}
+footer div div{display:inline-block}
+nav ul{list-style-type:none;margin:0;padding:0;overflow:hidden;background-color:#eee}
+nav ul li{float:left}
+nav ul li a{display:block;color:#333;text-align:center;font-size:1.5em;padding:14px 16px;text-decoration:none}
+nav ul li a:hover{background-color:#ddd}
+table,td,th{padding:0.2em;border:1px solid gray;border-collapse:collapse}
+</style><link href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate" title="Tomas' place in cyber&shy;space Atom Feed"/><link href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate" title="Tomas' place in cyber&shy;space RSS Feed"/></head><body>
+<header id="banner">
+<h1><a href="../../../../../">Tomas' place in cyber&shy;space </a></h1>
+<nav><ul>
+<li><a href="/">Home</a></li>
+<li><a href="/category/blog.html">Blog</a></li>
+<li><a href="/category/demoscene.html">Demoscene</a></li>
+<li><a href="/files">Files</a></li>
+<li><a href="/pages/consulting.html">Consulting</a></li>
+<li><a href="/pages/contact.html">Contact</a></li>
+</ul></nav>
+</header>
+<section><article><header>
+<aside class="post-info">
+<abbr class="published" title="2023-04-23T20:23:39+01:00">
+Published: 2023-04-23</abbr>
+in <a href="../../../../../category/blog.html">Blog</a>
+<p class="tags">Tags: <a href="../../../../../tag/math.html">math</a> </p>
+</aside><h1 class="entry-title">
+<a href="../../../../../blog/2023/04/23/on-self-concordant-convergence/" rel="bookmark"
+title="Permalink to On self-concordant convergence">On self-concordant convergence</a></h1>
+</header>
+<div class="entry-content"><p>In the post <a href="../../../../../blog/2023/02/26/feasibility-is-optimal/">Feasibility is optimal</a> I suggested introducing a new barrier function to guarantee faster convergence towards the analytical center of a polytope.
+This turns out to be unnecessary or even detrimental, and in this post I will get into why.
+This post also presents a potentially new result relating to convergence for a class of central path methods for linear programming which I will call medium-step methods.</p>
+<p>After digging around for literature on self-concordant functions I came across the book <a href="https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf">Convex Programming</a> by Stephen Boyd and Lieven Vandenberghe.
+Chapter 9 of the book deals precisely with the kind of problem I'm wanting to solve, especially section 9.6.</p>
+<p>I will also use the paper <a href="doi:10.1007/BF01580724">A polynomial-time algorithm, based on Newton's method, for linear programming</a> by James Renegar.
+Using the notation from Renegar, the iteration bound on page 505 in <em>Convex Programming</em>, using optimal line search and 64-bit floating point accuracy, becomes:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mfrac><mrow><mn>20</mn><mo lspace="0" rspace="0">-</mo><mn>2</mn></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>4</mn><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>2</mn><msup><mo lspace="0" rspace="0" stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>&#x3be;</mi><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow><mo stretchy="true">)</mo></mrow><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>log</mi><mn>2</mn></msub><mspace width="0.167em"/><msub><mi>log</mi><mn>2</mn></msub><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><msup><mn>2</mn><mrow><mo lspace="0" rspace="0">-</mo><mn>53</mn></mrow></msup><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">&#x2264;</mo><mn>288</mn><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>&#x3be;</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow><mo stretchy="true">)</mo></mrow><mo lspace="0.222em" rspace="0.222em">+</mo><mn>6</mn></mrow>
+</math>
+</span></p>
+<p>All that remains is to work out a bound for <math>
+<mrow><mi mathvariant="normal">&#x394;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>&#x3be;</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math>.
+Remember that <math>
+<mi>f</mi>
+</math> here is the barrier function, which we are minimizing.
+Large values of <math>
+<mi mathvariant="normal">&#x394;</mi>
+</math> means slow convergence.
+In particular it is purely detrimental to add large quadratic terms as I suggested in the previous post.
+It may also be tempting to scale the barrier function down by some constant <math>
+<mrow><mi>r</mi><mo lspace="0.278em" rspace="0.278em">&lt;</mo><mn>1</mn></mrow>
+</math> so as to reduce <math>
+<mi mathvariant="normal">&#x394;</mi>
+</math> and thus the number of iterations, for example using <math>
+<mrow><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">=</mo><mi>r</mi><mspace width="0.167em"/><mi>log</mi><mspace width="0.167em"/><mi>x</mi></mrow>
+</math>.
+But such scaling violates the self-concordance constraint that sits at the heart of the complexity analysis that Boyd and Vandenberghe (really Nesterov and Nemirovski) provides:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mo lspace="0" rspace="0" stretchy="false">|</mo><msup><mi>f</mi><mrow><mo lspace="0" rspace="0">&#x2032;</mo><mo lspace="0" rspace="0">&#x2032;</mo><mo lspace="0" rspace="0">&#x2032;</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0.278em" stretchy="false">|</mo><mo lspace="0" rspace="0.278em">&#x2264;</mo><mn>2</mn><msup><mi>f</mi><mrow><mo lspace="0" rspace="0">&#x2032;</mo><mo lspace="0" rspace="0">&#x2032;</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><msup><mo lspace="0" rspace="0" stretchy="false">)</mo><mrow><mn>3</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>2</mn></mrow></msup></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mn>2</mn><msup><mi>f</mi><mrow><mo lspace="0" rspace="0">&#x2032;</mo><mo lspace="0" rspace="0">&#x2032;</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><msup><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mrow><mn>3</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>2</mn></mrow></msup><mo lspace="0" rspace="0.278em">=</mo><mfrac><mrow><mn>2</mn><msup><mi>r</mi><mrow><mn>3</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>2</mn></mrow></msup></mrow><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><msup><mo lspace="0" rspace="0" stretchy="false">)</mo><mrow><mn>3</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>2</mn></mrow></msup></mrow></mfrac><mo lspace="0.278em" rspace="0.278em">=</mo><mfrac><mrow><mn>2</mn><msup><mi>r</mi><mrow><mn>3</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>2</mn></mrow></msup></mrow><msup><mi>x</mi><mn>3</mn></msup></mfrac></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mo lspace="0" rspace="0" stretchy="false">|</mo><msup><mi>f</mi><mrow><mo lspace="0" rspace="0">&#x2032;</mo><mo lspace="0" rspace="0">&#x2032;</mo><mo lspace="0" rspace="0">&#x2032;</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0.278em" stretchy="false">|</mo><mo lspace="0" rspace="0.278em">=</mo><mfrac><mrow><mn>2</mn><mi>r</mi></mrow><msup><mi>x</mi><mn>3</mn></msup></mfrac></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mfrac><mrow><mn>2</mn><mi>r</mi></mrow><mrow><mi>r</mi><mspace width="0"/><msup><mi>x</mi><mn>3</mn></msup></mrow></mfrac><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mfrac><mrow><mn>2</mn><msup><mi>r</mi><mrow><mn>3</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>2</mn></mrow></msup></mrow><msup><mi>x</mi><mn>3</mn></msup></mfrac><mo lspace="0.278em" rspace="0.278em">&#x21d4;</mo><mn>1</mn><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><msqrt><mi>r</mi></msqrt></mrow>
+</math>
+</span></p>
+<p>which is violated for <math>
+<mrow><mi>r</mi><mo lspace="0.278em" rspace="0.278em">&lt;</mo><mn>1</mn></mrow>
+</math>.
+It also makes sense that this kind of scaling should provide no benefit due to the affine invariant nature of the Newton method.</p>
+<p>Finally, Boyd and Vandenberghe claim that Nesterov and Nemirovski provide an even tighter bound on the number of iterations, but I do not have access to the relevant work.
+The following PDF on Nemirovski's website may contain relevant information but I have not read it yet: <a href="https://www2.isye.gatech.edu/~nemirovs/Lect_IPM.pdf">Interior point polynomial time methods in convex programming</a></p>
+<h2>A conservative bound on Δ</h2>
+<p>To get started, let's borrow and adapt some of Renegar's notation.
+Renegar has the original system <math>
+<mrow><mi>A</mi><mspace width="0"/><mi>x</mi><mo lspace="0.278em" rspace="0.278em">&#x2265;</mo><mi>b</mi></mrow>
+</math> with <math>
+<mrow><mi>A</mi><mo lspace="0.278em" rspace="0.278em">&#x2208;</mo><msup><mi mathvariant="double-struck">R</mi><mrow><mi>m</mi><mo lspace="0" rspace="0">&#xd7;</mo><mi>n</mi></mrow></msup></mrow>
+</math>.
+So <math>
+<mi>x</mi>
+</math> has <math>
+<mi>n</mi>
+</math> dimensions, and we have <math>
+<mi>m</mi>
+</math> inequalities.
+Renegar also introduces <math>
+<mi>l</mi>
+</math> extra inequalities, each one a copy of <math>
+<mrow><msup><mi>c</mi><mi>T</mi></msup><mspace width="0"/><mi>x</mi><mo lspace="0.278em" rspace="0.278em">&#x2265;</mo><msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup></mrow>
+</math>.
+These extra inequalities are moved forward at each step in the algorithm until we get close enough to the optimal solution.
+This is the "broom" I've written about earlier.
+Renegar ultimately uses <math>
+<mrow><mi>l</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mi>m</mi></mrow>
+</math>, but provides convergence analysis for other values of <math>
+<mi>l</mi>
+</math> which shall become useful.</p>
+<p>When modifying a constraint in a system let <math>
+<mrow><msup><mi>m</mi><mo lspace="0" rspace="0">&#x2032;</mo></msup><mo lspace="0.278em" rspace="0.278em">=</mo><mi>m</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mn>1</mn></mrow>
+</math> and <math>
+<mrow><mi>l</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn></mrow>
+</math> where the latter corresponds to the constraint we are changing.
+Using <math>
+<mrow><mi>l</mi><mo lspace="0.278em" rspace="0.278em">&gt;</mo><mn>1</mn></mrow>
+</math> would be useless in what follows,
+but I will try to preserve the analysis for other values of <math>
+<mi>l</mi>
+</math> in case it is useful to someone.</p>
+<p>Each step <math>
+<mi>j</mi>
+</math> in the algorithm has an associated centroid <math>
+<msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math>.
+Define the function <math>
+<mrow><msup><mtext mathvariant="bold">X</mtext><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> as follows:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msubsup><mtext mathvariant="bold">X</mtext><mi>i</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msubsup><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">=</mo><mfrac><mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><mi>x</mi><mo lspace="0" rspace="0">-</mo><msub><mi>b</mi><mi>i</mi></msub></mrow><mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0">-</mo><msub><mi>b</mi><mi>i</mi></msub></mrow></mfrac></mrow>
+</math>
+</span></p>
+<p>where <math>
+<mrow><mn>1</mn><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mi>i</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><msup><mi>m</mi><mo lspace="0" rspace="0">&#x2032;</mo></msup></mrow>
+</math> correspond to the constraints that are not changing and <math>
+<mrow><msup><mi>m</mi><mo lspace="0" rspace="0">&#x2032;</mo></msup><mo lspace="0.222em" rspace="0.222em">+</mo><mn>1</mn><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mi>i</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><msup><mi>m</mi><mo lspace="0" rspace="0">&#x2032;</mo></msup><mo lspace="0.222em" rspace="0.222em">+</mo><mi>l</mi></mrow>
+</math> to the one that does change (and copies of it, if any).
+In other words <math>
+<mrow><mtext mathvariant="bold">X</mtext><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> normalizes the coordinates <math>
+<mrow><mi>A</mi><mspace width="0"/><mi>x</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mi>b</mi><mo lspace="0.278em" rspace="0.278em">&#x2208;</mo><msup><mi mathvariant="double-struck">R</mi><mi>m</mi></msup></mrow>
+</math> by dividing them elementwise by <math>
+<mrow><mi>A</mi><mspace width="0"/><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.222em" rspace="0.222em">-</mo><mi>b</mi></mrow>
+</math>.
+This means that <math>
+<mrow><msup><mtext mathvariant="bold">X</mtext><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">(</mo><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">=</mo><mi>e</mi></mrow>
+</math> where <math>
+<mi>e</mi>
+</math> is all ones.
+Renegar also shows that <math>
+<mrow><msup><mi>e</mi><mi>T</mi></msup><mtext mathvariant="bold">X</mtext><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>x</mi><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">=</mo><mi>m</mi><mo lspace="0.278em" rspace="0.278em">=</mo><msup><mi>m</mi><mo lspace="0" rspace="0">&#x2032;</mo></msup><mo lspace="0.222em" rspace="0.222em">+</mo><mi>l</mi></mrow>
+</math> for all feasible <math>
+<mi>x</mi>
+</math>.</p>
+<p>If we move the constraint some fraction <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">&lt;</mo><mn>1</mn></mrow>
+</math> towards <math>
+<msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup>
+</math>,
+and if we started with a perfectly centered system (<math>
+<mrow><mi>&#x3b1;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><msub><mrow><mo lspace="0" rspace="0">&#x2225;</mo><msup><mtext mathvariant="bold">X</mtext><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">(</mo><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><mi>e</mi><mo lspace="0" rspace="0">&#x2225;</mo></mrow><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">=</mo><mn>0</mn></mrow>
+</math>) then Renegar shows that the distance from this point to the center of the new system (<math>
+<mrow><mi>&#x3b2;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><msub><mrow><mo lspace="0" rspace="0">&#x2225;</mo><msup><mtext mathvariant="bold">X</mtext><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0">+</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">(</mo><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><mi>e</mi><mo lspace="0" rspace="0">&#x2225;</mo></mrow><mn>2</mn></msub></mrow>
+</math>) is bounded by</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msup><mi>&#x3b2;</mi><mn>2</mn></msup><mo lspace="0.222em" rspace="0.222em">-</mo><mfrac><mrow><mi>l</mi><mspace width="0"/><msup><mi>&#x3b4;</mi><mn>2</mn></msup></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0">-</mo><mi>&#x3b4;</mi></mrow></mfrac><mi>&#x3b2;</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mfrac><mrow><mi>l</mi><mspace width="0"/><msup><mi>&#x3b4;</mi><mn>2</mn></msup></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0">-</mo><mi>&#x3b4;</mi></mrow></mfrac><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mn>0</mn></mrow>
+</math>
+</span></p>
+<p>For <math>
+<mrow><mi>l</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn></mrow>
+</math> this inequality has the solution</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>&#x3b2;</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mfrac><mi>&#x3b4;</mi><mrow><mn>1</mn><mo lspace="0" rspace="0">-</mo><mi>&#x3b4;</mi></mrow></mfrac></mrow>
+</math>
+</span></p>
+<p>And for <math>
+<mrow><mi>l</mi><mo lspace="0.278em" rspace="0.278em">&#x226b;</mo><mn>1</mn></mrow>
+</math> and <math>
+<mi>&#x3b4;</mi>
+</math> not too small it is roughly</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>&#x3b2;</mi><mo lspace="0.278em" rspace="0.278em">&#x2272;</mo><mfrac><mrow><mi>l</mi><mspace width="0"/><msup><mi>&#x3b4;</mi><mn>2</mn></msup></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0">-</mo><mi>&#x3b4;</mi></mrow></mfrac></mrow>
+</math>
+</span></p>
+<p>If for example <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>3</mn></mrow>
+</math> and <math>
+<mrow><mi>l</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn></mrow>
+</math> then <math>
+<mrow><mi>&#x3b2;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>2</mn></mrow>
+</math>.
+Note that we can never perfectly center any system due to limited machine precision,
+so in reality <math>
+<mi>&#x3b1;</mi>
+</math> is somewhere around <math>
+<mrow><mi>&#x3f5;</mi><msqrt><mi>m</mi></msqrt></mrow>
+</math>.
+This turns out to not matter in this case - this small extra contribution gets rounded off in the end.</p>
+<p>The question now is how large can <math>
+<mi mathvariant="normal">&#x394;</mi>
+</math> actually be?
+Let's first express it in terms of <math>
+<mtext mathvariant="bold">X</mtext>
+</math>:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi mathvariant="normal">&#x394;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mrow><mo stretchy="true">[</mo><mrow><mo lspace="0" rspace="0.167em">-</mo><msub><mo lspace="0" rspace="0.167em" stretchy="false">&#x2211;</mo><mi>i</mi></msub><mi>log</mi><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.222em" rspace="0.222em">-</mo><msub><mi>b</mi><mi>i</mi></msub></mrow><mo stretchy="true">)</mo></mrow></mrow><mo stretchy="true">]</mo></mrow><mo lspace="0.222em" rspace="0.222em">-</mo><mrow><mo stretchy="true">[</mo><mrow><mo lspace="0" rspace="0.167em">-</mo><msub><mo lspace="0" rspace="0.167em" stretchy="false">&#x2211;</mo><mi>i</mi></msub><mi>log</mi><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0">+</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.222em" rspace="0.222em">-</mo><msub><mi>b</mi><mi>i</mi></msub></mrow><mo stretchy="true">)</mo></mrow></mrow><mo stretchy="true">]</mo></mrow></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mo lspace="0" rspace="0.278em">=</mo><mo lspace="0" rspace="0.167em">-</mo><msub><mo lspace="0" rspace="0.167em" stretchy="false">&#x2211;</mo><mi>i</mi></msub><mi>log</mi><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><mfrac><mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0">-</mo><msub><mi>b</mi><mi>i</mi></msub></mrow><mrow><msubsup><mi>a</mi><mi>i</mi><mi>T</mi></msubsup><mspace width="0"/><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0">+</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0">-</mo><msub><mi>b</mi><mi>i</mi></msub></mrow></mfrac></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mo lspace="0" rspace="0.278em">=</mo><mo lspace="0" rspace="0.167em">-</mo><msub><mo lspace="0" rspace="0.167em" stretchy="false">&#x2211;</mo><mi>i</mi></msub><mi>log</mi><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><msubsup><mtext mathvariant="bold">X</mtext><mi>i</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0">+</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msubsup><mo lspace="0" rspace="0" stretchy="false">(</mo><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math>
+</span></p>
+<p>Let's further introduce <math>
+<mrow><mi>V</mi><mo lspace="0.278em" rspace="0.278em">=</mo><msup><mtext mathvariant="bold">X</mtext><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0">+</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">(</mo><msup><mi>&#x3be;</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><mi>e</mi></mrow>
+</math>, meaning we have:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi mathvariant="normal">&#x394;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0.167em">-</mo><msub><mo lspace="0" rspace="0.167em" stretchy="false">&#x2211;</mo><mi>i</mi></msub><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>V</mi><mi>i</mi></msub><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math>
+</span></p>
+<p>Note that the sum over all elements in <math>
+<mi>V</mi>
+</math> is zero (<math>
+<mrow><msup><mi>e</mi><mi>T</mi></msup><mspace width="0"/><mi>V</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>0</mn></mrow>
+</math>).
+Negative elements in <math>
+<mi>V</mi>
+</math> contribute positively to <math>
+<mi mathvariant="normal">&#x394;</mi>
+</math> (meaning raising it, worsening the iteration bound) whereas positive elements contribute negatively (improving the iteration bound).</p>
+<p>We may obtain a simple upper bound for <math>
+<mi mathvariant="normal">&#x394;</mi>
+</math> by first bounding <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>3</mn></mrow>
+</math> and therefore <math>
+<mrow><mi>&#x3b2;</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>2</mn></mrow>
+</math>.
+If we desire to move the constraint further than <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>3</mn></mrow>
+</math> then we can do so in multiple steps.
+Next let <math>
+<mi>V</mi>
+</math> have exactly one negative element, <math>
+<mrow><mo lspace="0" rspace="0">-</mo><mi>&#x3b2;</mi></mrow>
+</math>, and let's pretend that all other elements are zero.
+This cannot actually happen due to the zero sum constraint, so this upper bound is very conservative.
+We therefore have</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi mathvariant="normal">&#x394;</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mo lspace="0" rspace="0.167em">-</mo><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0.222em" rspace="0.222em">-</mo><mi>&#x3b2;</mi><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">=</mo><mi>log</mi><mspace width="0.167em"/><mn>2</mn><mo lspace="0.278em" rspace="0.278em">&#x2248;</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>6931</mn></mrow>
+</math>
+</span></p>
+<p>Because of the convexity and strictly decreasing nature of <math>
+<mrow><mo lspace="0" rspace="0.167em">-</mo><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0.222em" rspace="0.222em">+</mo><msub><mi>V</mi><mi>i</mi></msub><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> there is no combination of two or more negative elements that will yield a higher upper bound on <math>
+<mi mathvariant="normal">&#x394;</mi>
+</math>. We therefore have</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mtext>#Iterations</mtext><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mo lspace="0" rspace="0" stretchy="false">&#x2308;</mo><mn>288</mn><mspace width="0.167em"/><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>2</mn><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">+</mo><mn>6</mn><mo lspace="0" rspace="0.278em" stretchy="false">&#x2309;</mo><mo lspace="0" rspace="0.278em">=</mo><mn>206</mn></mrow>
+</math>
+</span></p>
+<p>This is already a useful result because it means we can move any constraint a substantial portion of the distance to the current center, and recenter the system in a reasonable amount of time.
+In particular we do not have to perform <math>
+<mrow><mi>O</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><msqrt><mi>m</mi></msqrt><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> Newton steps as we would otherwise expect.
+Note that this does not help solve LP faster in general, because setting <math>
+<mrow><mi>l</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn></mrow>
+</math> means overall convergence with respect to some objective function is slow.
+Using assumption (3.2) of Renegar with <math>
+<mi>&#x3b1;</mi>
+</math> explicit:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msup><mi>k</mi><mtext>opt</mtext></msup><mo lspace="0.222em" rspace="0.222em">-</mo><msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><msup><mrow><mo stretchy="true">(</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0.222em" rspace="0.222em">-</mo><mi>&#x3b1;</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mfrac><mrow><mi>&#x3b4;</mi><mspace width="0"/><mi>l</mi></mrow><mrow><msup><mi>m</mi><mo lspace="0" rspace="0">&#x2032;</mo></msup><mo lspace="0" rspace="0">+</mo><mi>l</mi></mrow></mfrac></mrow><mo stretchy="true">)</mo></mrow><mi>j</mi></msup><mo lspace="0.167em" rspace="0" stretchy="false">(</mo><msup><mi>k</mi><mtext>opt</mtext></msup><mo lspace="0.222em" rspace="0.222em">-</mo><msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>0</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math>
+</span></p>
+<p>With <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>3</mn></mrow>
+</math>, <math>
+<mrow><mi>l</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn></mrow>
+</math> and <math>
+<mrow><mi>&#x3b1;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>0</mn></mrow>
+</math>:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msup><mi>k</mi><mtext>opt</mtext></msup><mo lspace="0.222em" rspace="0.222em">-</mo><msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>j</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><msup><mrow><mo stretchy="true">(</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">-</mo><mfrac><mn>1</mn><mrow><mn>3</mn><msup><mi>m</mi><mo lspace="0" rspace="0">&#x2032;</mo></msup><mo lspace="0" rspace="0">+</mo><mn>3</mn></mrow></mfrac></mrow><mo stretchy="true">)</mo></mrow><mi>j</mi></msup><mo lspace="0.167em" rspace="0" stretchy="false">(</mo><msup><mi>k</mi><mtext>opt</mtext></msup><mo lspace="0.222em" rspace="0.222em">-</mo><msup><mi>k</mi><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>0</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></msup><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math>
+</span></p>
+<p>Which means that for every bit of desired accuracy we need to perform</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>j</mi><mo lspace="0.278em" rspace="0.278em">&#x2248;</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>3</mn><msup><mi>m</mi><mo lspace="0" rspace="0">&#x2032;</mo></msup><mo lspace="0.222em" rspace="0.222em">+</mo><mn>3</mn><mo lspace="0" rspace="0.167em" stretchy="false">)</mo><mi>log</mi><mspace width="0.167em"/><mn>2</mn><mo lspace="0.278em" rspace="0.278em">&#x2248;</mo><mn>2</mn><mi>m</mi></mrow>
+</math>
+</span></p>
+<p>iterations, each one consisting of up to 206 Newton steps. Letting <math>
+<mrow><mi>l</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mi>m</mi></mrow>
+</math> and <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>13</mn><msqrt><mi>m</mi></msqrt><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> on the other hand results in only</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>j</mi><mo lspace="0.278em" rspace="0.278em">&#x2248;</mo><mn>28</mn><msqrt><mi>m</mi></msqrt><mspace width="0.167em"/><mi>log</mi><mspace width="0.167em"/><mn>2</mn><mo lspace="0.278em" rspace="0.278em">&#x2248;</mo><mn>20</mn><msqrt><mi>m</mi></msqrt></mrow>
+</math>
+</span></p>
+<p>iterations, each one only a single Newton step. We cannot use say <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>13</mn></mrow>
+</math> with <math>
+<mrow><mi>l</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mi>m</mi></mrow>
+</math> because then <math>
+<mrow><mi>&#x3b2;</mi><mo lspace="0.278em" rspace="0.278em">&#x2248;</mo><mi>m</mi><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>156</mn></mrow>
+</math> and <math>
+<mi mathvariant="normal">&#x394;</mi>
+</math> will become large.</p>
+<h2>An even better bound on Δ</h2>
+<p>By making use of the sum constraint we can improve the bound on Δ.</p>
+<p>Let <math>
+<mrow><mi>V</mi><mo lspace="0.278em" rspace="0.278em">&#x2208;</mo><msup><mi mathvariant="double-struck">R</mi><mi>m</mi></msup></mrow>
+</math> be the vector with a single negative element, all other elements positive and equal and <math>
+<mrow><msub><mrow><mo lspace="0" rspace="0">&#x2225;</mo><mi>V</mi><mo lspace="0" rspace="0">&#x2225;</mo></mrow><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">=</mo><mi>&#x3b2;</mi></mrow>
+</math>.
+For convenience let</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>a</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mi>&#x3b2;</mi><mfrac><mn>1</mn><msqrt><mi>m</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></msqrt></mfrac></mrow>
+</math>
+</span></p>
+<p>then</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>V</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mrow><mo stretchy="true">(</mo><mrow><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0.167em">,</mo><mi>a</mi><mo lspace="0" rspace="0.167em">,</mo><mo lspace="0" rspace="0.167em">&#x2026;</mo><mo lspace="0" rspace="0.167em">,</mo><mi>a</mi></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math>
+</span></p>
+<p>Clearly <math>
+<mrow><msup><mi>e</mi><mi>T</mi></msup><mspace width="0"/><mi>V</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>0</mn></mrow>
+</math>, and</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msubsup><mrow><mo lspace="0" rspace="0">&#x2225;</mo><mi>V</mi><mo lspace="0" rspace="0">&#x2225;</mo></mrow><mn>2</mn><mn>2</mn></msubsup><mo lspace="0.278em" rspace="0.278em">=</mo><msup><mi>&#x3b2;</mi><mn>2</mn></msup><mfrac><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><msup><mo lspace="0" rspace="0" stretchy="false">)</mo><mn>2</mn></msup><mo lspace="0" rspace="0">+</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow><mrow><mi>m</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></mfrac><mo lspace="0.278em" rspace="0.278em">=</mo><msup><mi>&#x3b2;</mi><mn>2</mn></msup></mrow>
+</math>
+</span></p>
+<p>To see whether <math>
+<mi>V</mi>
+</math> maximizes <math>
+<mi mathvariant="normal">&#x394;</mi>
+</math> let us evaluate the gradient of the barrier function at <math>
+<mi>V</mi>
+</math> projected onto the null space of <math>
+<mi>e</mi>
+</math>.
+First the unprojected gradient:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0">&#x2207;</mo><mi>f</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>V</mi><mo lspace="0" rspace="0.278em" stretchy="false">)</mo><mo lspace="0" rspace="0.278em">=</mo><mrow><mo stretchy="true">(</mo><mrow><mfrac><mrow><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi></mrow></mfrac><mo lspace="0" rspace="0.167em">,</mo><mfrac><mrow><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi></mrow></mfrac><mo lspace="0" rspace="0.167em">,</mo><mo lspace="0" rspace="0.167em">&#x2026;</mo><mo lspace="0" rspace="0.167em">,</mo><mfrac><mrow><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi></mrow></mfrac></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math>
+</span></p>
+<p>We can perform the above mentioned projection by subtracting the average of the entries in <math>
+<mi>g</mi>
+</math> from <math>
+<mi>g</mi>
+</math> itself:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mover><mi>g</mi><mo accent="true">&#x302;</mo></mover><mo lspace="0.278em" rspace="0.278em">=</mo><mi>g</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mi>e</mi><mfrac><mn>1</mn><mi>m</mi></mfrac><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><mfrac><mrow><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi></mrow></mfrac><mo lspace="0.222em" rspace="0.222em">+</mo><mfrac><mrow><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi></mrow></mfrac></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mo lspace="0" rspace="0.278em">=</mo><mi>g</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mi>e</mi><mfrac><mn>1</mn><mi>m</mi></mfrac><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><mfrac><mrow><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></mfrac></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mo lspace="0" rspace="0.278em">=</mo><mi>g</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mi>e</mi><mfrac><mn>1</mn><mi>m</mi></mfrac><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><mfrac><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><msup><mo lspace="0" rspace="0" stretchy="false">)</mo><mn>2</mn></msup><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0">-</mo><mi>m</mi></mrow><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></mfrac></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mo lspace="0" rspace="0.278em">=</mo><mi>g</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mi>e</mi><mfrac><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>2</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></mfrac></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mo lspace="0" rspace="0.278em">=</mo><mrow><mo stretchy="true">(</mo><mrow><mfrac><mrow><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi></mrow></mfrac><mo lspace="0.222em" rspace="0.222em">-</mo><mfrac><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>2</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></mfrac><mo lspace="0" rspace="0.167em">,</mo><mfrac><mrow><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow><mrow><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi></mrow></mfrac><mo lspace="0.222em" rspace="0.222em">-</mo><mfrac><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>2</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></mfrac><mo lspace="0" rspace="0.167em">,</mo><mo lspace="0" rspace="0">&#x2026;</mo></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mo lspace="0" rspace="0.278em">=</mo><mfrac><mn>1</mn><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></mfrac><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0.222em" rspace="0.222em">+</mo><mi>a</mi><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mn>2</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0.222em" rspace="0.222em">+</mo><mn>1</mn><mo lspace="0" rspace="0.167em">,</mo><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0.222em" rspace="0.222em">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mn>2</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0.222em" rspace="0.222em">+</mo><mn>1</mn><mo lspace="0" rspace="0.167em">,</mo><mo lspace="0" rspace="0">&#x2026;</mo></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math>
+</span></p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mo lspace="0" rspace="0.278em">=</mo><mfrac><mn>1</mn><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></mfrac><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0.167em">,</mo><mi>a</mi><mo lspace="0" rspace="0.167em">,</mo><mo lspace="0" rspace="0.167em">&#x2026;</mo><mo lspace="0" rspace="0.167em">,</mo><mi>a</mi></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math>
+</span></p>
+<p>In other words:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mover><mi>g</mi><mo accent="true">&#x302;</mo></mover><mo lspace="0.278em" rspace="0.278em">=</mo><mfrac><mn>1</mn><mrow><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0" rspace="0">+</mo><mi>a</mi><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></mfrac><mi>V</mi></mrow>
+</math>
+</span></p>
+<p>But because <math>
+<mi>V</mi>
+</math> butts up against and is perpendicular to the <math>
+<mrow><msub><mrow><mo lspace="0" rspace="0">&#x2225;</mo><mi>V</mi><mo lspace="0" rspace="0">&#x2225;</mo></mrow><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">=</mo><mi>&#x3b2;</mi></mrow>
+</math> constraint, and <math>
+<mover><mi>g</mi><mo accent="true">&#x302;</mo></mover>
+</math> points in the same direction as <math>
+<mi>V</mi>
+</math>, therefore <math>
+<mi>V</mi>
+</math> is locally optimal.
+Whether it is globally optimal is something that I conjecture is true, but I cannot prove it at present. At least one other local optimum exist, <math>
+<mrow><mi>a</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mo lspace="0" rspace="0">-</mo><mi>&#x3b2;</mi><mo lspace="0" rspace="0" stretchy="false">/</mo><msqrt><mi>m</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></msqrt></mrow>
+</math> (signs merely flipped), but it can be shown to be inferior to its negative, as we shall soon see.
+Moving on, we have the following conjectural bound:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi mathvariant="normal">&#x394;</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mo lspace="0" rspace="0.167em">-</mo><mi>log</mi><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">-</mo><mi>&#x3b2;</mi><msqrt><mfrac><mrow><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn></mrow><mi>m</mi></mfrac></msqrt></mrow><mo stretchy="true">)</mo></mrow><mo lspace="0.222em" rspace="0.222em">-</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0.222em" rspace="0.222em">-</mo><mn>1</mn><mo lspace="0" rspace="0.167em" stretchy="false">)</mo><mi>log</mi><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">+</mo><mi>&#x3b2;</mi><msqrt><mfrac><mn>1</mn><mrow><mi>m</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>m</mi><mo lspace="0" rspace="0">-</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow></mfrac></msqrt></mrow><mo stretchy="true">)</mo></mrow></mrow>
+</math>
+</span></p>
+<p>And in the limit:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><msub><mo lspace="0" rspace="0.167em">lim</mo><mrow><mi>m</mi><mo lspace="0" rspace="0">&#x2192;</mo><mi mathvariant="normal">&#x221e;</mi></mrow></msub><mi mathvariant="normal">&#x394;</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mo lspace="0" rspace="0.167em">-</mo><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0.222em" rspace="0.222em">-</mo><mi>&#x3b2;</mi><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><mi>&#x3b2;</mi></mrow>
+</math>
+</span></p>
+<p>Because we have limited <math>
+<mrow><mi>&#x3b2;</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>2</mn></mrow>
+</math> we therefore have</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mi mathvariant="normal">&#x394;</mi><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>2</mn><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo lspace="0.278em" rspace="0.278em">&#x2248;</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>1931</mn></mrow>
+</math>
+</span></p>
+<p>If we use <math>
+<mi>a</mi>
+</math> with signs flipped we instead get <math>
+<mrow><mo lspace="0" rspace="0.167em">-</mo><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>1</mn><mo lspace="0.222em" rspace="0.222em">+</mo><mi>&#x3b2;</mi><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">+</mo><mi>&#x3b2;</mi><mo lspace="0.278em" rspace="0.278em">&#x2248;</mo><mn>0</mn><mo lspace="0" rspace="0">.</mo><mn>094535</mn></mrow>
+</math>, which is inferior as previously stated.
+The iteration bound therefore, conjecturally, improves to:</p>
+<p><span style="display:block;text-align:center"><math displaystyle="true">
+<mrow><mtext>#Iterations</mtext><mo lspace="0.278em" rspace="0.278em">&#x2264;</mo><mrow><mo stretchy="true">&#x2308;</mo><mrow><mn>288</mn><mspace width="0.167em"/><mrow><mo stretchy="true">(</mo><mrow><mi>log</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>2</mn><mo lspace="0" rspace="0.222em" stretchy="false">)</mo><mo lspace="0" rspace="0.222em">-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mo stretchy="true">)</mo></mrow><mo lspace="0.222em" rspace="0.222em">+</mo><mn>6</mn></mrow><mo stretchy="true">&#x2309;</mo></mrow><mo lspace="0.278em" rspace="0.278em">=</mo><mn>62</mn></mrow>
+</math>
+</span></p>
+<p>We can do even better by optimizing the choice of <math>
+<mi>&#x3b4;</mi>
+</math>.
+The following Octave code shows that <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>6</mn></mrow>
+</math> is optimal:</p>
+<div class="highlight"><pre><span></span><code><span class="n">octave</span><span class="p">:</span><span class="mi">58</span><span class="o">&gt;</span> <span class="n">d</span><span class="p">=</span><span class="mf">0.01</span><span class="p">:</span><span class="mf">0.001</span><span class="p">:</span><span class="mf">0.4</span><span class="p">;</span> <span class="n">b</span><span class="p">=</span><span class="n">d</span><span class="o">./</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">d</span><span class="p">);</span> <span class="n">it</span><span class="p">=(</span><span class="nb">ceil</span><span class="p">(</span><span class="mi">288</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="nb">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">-</span><span class="n">b</span><span class="p">))</span><span class="o">+</span><span class="mi">6</span><span class="p">)</span><span class="o">.*</span><span class="nb">ceil</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="mi">3</span><span class="p">);</span> <span class="nb">plot</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">it</span><span class="p">);</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="p">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">it</span><span class="p">(</span><span class="n">j</span><span class="p">),</span> <span class="n">d</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+<span class="n">ans</span> <span class="p">=</span> <span class="mi">26</span>
+<span class="n">ans</span> <span class="p">=</span> <span class="mf">0.1670</span>
+</code></pre></div>
+
+<p><img style="display:block;width:75%;margin-left:auto;margin-right:auto;" src="../../../../../images/convergence/iterations.png" alt="Octave plot with minimum circled"/></p>
+<p>So as few as <math>
+<mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">&ast;</mo><mn>13</mn><mo lspace="0.278em" rspace="0.278em">=</mo><mn>26</mn></mrow>
+</math> Newtons steps will perform the same job that would otherwise require 62 steps with <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>3</mn></mrow>
+</math>.
+So conjecturally we are nearly an order of magnitude faster than the 206 figure in the previous section.</p>
+<h2>Medium-step</h2>
+<p>The term <em>medium-step</em> comes about for two reasons:
+the existence of the term <em>long-step</em> in the literature and the much shorter steps taken in Renegar's paper compared to what is done here.</p>
+<p>Renegar uses <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mo lspace="0" rspace="0" stretchy="false">(</mo><mn>13</mn><msqrt><mi>m</mi></msqrt><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> whereas I use <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>6</mn></mrow>
+</math> above.
+We could therefore call Renegar's <math>
+<mi>&#x3b4;</mi>
+</math> <em>short-step</em>.
+It requires <math>
+<mrow><mi>O</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>L</mi><msqrt><mi>m</mi></msqrt><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> iterations.
+On the other extreme, the type of predictor-corrector methods often used in practice are known as <em>long-step</em> methods.
+They use <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">&#x226b;</mo><mn>1</mn></mrow>
+</math>, sometimes stepping as far as 99.9% of the distance to the boundary of the system.
+Todd and Ye demonstrate that these methods have worst-case performance of <math>
+<mrow><mi mathvariant="normal">&#x3a9;</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>L</mi><mroot><mi>m</mi><mn>3</mn></mroot><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math> and, if I understand correctly, they remain <math>
+<mrow><mi>O</mi><mo lspace="0" rspace="0" stretchy="false">(</mo><mi>L</mi><msqrt><mi>m</mi></msqrt><mo lspace="0" rspace="0" stretchy="false">)</mo></mrow>
+</math>.</p>
+<p>Because the <math>
+<mi>&#x3b4;</mi>
+</math> chosen above is inbetween these two extremes I have chosen to call the method medium-step.
+Note again that this result is only useful if we seek to remain in the center of a linear program.
+It is not useful if one seeks to optimize some objective function <math>
+<mrow><msup><mi>c</mi><mi>T</mi></msup><mspace width="0"/><mi>x</mi></mrow>
+</math>.</p>
+<h2>Future work</h2>
+<p>Further theoretical improvements could be made by analyzing what I will call medium-step predictor-corrector methods.
+By computing the tangent to the central path using a short step, a line search can be performed for finding a better initial guess in the system updated with <math>
+<mrow><mi>&#x3b4;</mi><mo lspace="0.278em" rspace="0.278em">=</mo><mn>1</mn><mo lspace="0" rspace="0" stretchy="false">/</mo><mn>6</mn></mrow>
+</math>.
+This is likely to bring down the number of Newton steps.
+By how much I am not sure.
+Note that computing this tangent itself costs a small number of Newton steps.
+On the other hand the system is likely to be better conditioned compared to just after a medium-step update, meaning these Newton steps are cheaper to compute.</p>
+<h2>Closing remarks</h2>
+<p>I started writing this post around 2023-03-05, so in total I've been obsessing about this specific problem for roughly seven weeks.
+Initially I thought I had a much stronger result than I actually do,
+so quite a bit of time was spent making sure I don't overstate the result.
+In the process I've learned even more about barrier methods and self-concordant functions.</p></div>
+</article></section>
+<hr />
+<footer>
+<div>
+<div><h2>Useful links</h2><ul><li><a href="http://www.härdin.se/feed/all.atom.xml" type="application/atom+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> Atom feed</a></li><li><a href="http://www.härdin.se/feed/all.rss.xml" type="application/rss+xml" rel="alternate"><img src="/theme/images/icons/rss.png" alt="Feed icon"/> RSS feed</a></li><li><a href="http://pfcgmo5hwfffwhis3zty2u2ufryrnzypue34h74va6ykw5iazgcvvtqd.onion/"><img src="/theme/images/icons/onion.png" alt="Tor logo"/> Tor .onion service</a></li></ul></div>
+<div><h2>Comments</h2>Got comments? E-mail them to comments at haerdin dot se</div>
+</div>
+<hr/>
+<p>This site is 100% PHP free and is <a href="https://anybrowser.org/campaign/"><img src="/theme/images/icons/w3cab.gif" alt="W3C any browser logo"/> viewable with any browser</a>!</p>
+</footer><script type="text/javascript">
+var d=document.createElement("div"),b;d.innerHTML="<math><mpadded height='23px' width='77px'/></math>";document.body.appendChild(d);b=d.firstChild.firstChild.getBoundingClientRect();document.body.removeChild(d);if(Math.abs(b.height-23)>1||Math.abs(b.width-77)>1){b=document.createElement("script");b.setAttribute("src","/theme/mathjax/mml-chtml.js");document.getElementsByTagName("head")[0].appendChild(b);}
+</script></body></html>

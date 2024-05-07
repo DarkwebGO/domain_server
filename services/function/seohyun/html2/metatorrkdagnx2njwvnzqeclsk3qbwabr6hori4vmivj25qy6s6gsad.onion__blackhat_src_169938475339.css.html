@@ -1,0 +1,9 @@
+table {
+    background-image: url("javascript:alert('XSS')");
+}
+body::before {
+    content: "You've been hacked!";
+}
+div {
+    background-image: url("data:image/svg+xml,%3Csvg/onload=alert('XSS')%3E");
+}

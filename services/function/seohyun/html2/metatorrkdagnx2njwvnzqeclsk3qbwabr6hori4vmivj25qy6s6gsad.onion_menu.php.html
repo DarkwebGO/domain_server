@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Metator Navigation</title>
+	<link rel="stylesheet" type="text/css" href="/css/menu_global.css" />
+				<link rel="alternate stylesheet" type="text/css" href="/css/site_modern.css" title="Modern"/>
+		<link rel="alternate stylesheet" type="text/css" href="/css/sitemenu_modern.css" title="Modern" pref="newdark"/>
+			<link rel="stylesheet" type="text/css" href="/css/site_newdark.css" title="Newdark"/>
+		<link rel="stylesheet" type="text/css" href="/css/sitemenu_newdark.css" title="Newdark" pref="newdark"/>
+			<link rel="alternate stylesheet" type="text/css" href="/css/site_photon.css" title="Photon"/>
+		<link rel="alternate stylesheet" type="text/css" href="/css/sitemenu_photon.css" title="Photon" pref="newdark"/>
+	
+
+<script type="text/javascript"><!--
+			// var style_cookie_site = "kustyle_site";
+			var style_cookie = "kustyle";
+		//--></script>
+<link rel="shortcut icon" href="/favicon.ico" />
+<script type="text/javascript" src="/lib/javascript/gettext.js"></script>
+<!-- <script type="text/javascript" src="/inc/javascript/menu.js"></script> -->
+<script type="text/javascript" src="/lib/javascript/jquery-3.6.3.min.js"></script>
+<script type="text/javascript" src="/lib/javascript/lodash.min.js"></script>
+<script type="text/javascript" src="/inc/javascript/kusaba.new.js"></script>
+<script type="text/javascript"><!--
+var ku_boardspath = '';
+
+function toggle(label, area) {
+	let span = label.children[0]
+	console.log(span)
+	let show = !document.getElementById(label.getAttribute('for')).checked
+	if (show)
+		span.textContent = '-'
+	else 
+		span.textContent = '+'
+	set_cookie('nav_show_'+area, show ? '1' : '0', 30);
+}
+function removeframes() {
+	var boardlinks = document.getElementsByTagName("a");
+	for(var i=0;i<boardlinks.length;i++) if(boardlinks[i].className == "boardlink") boardlinks[i].target = "_top";
+
+	document.getElementById("removeframes").innerHTML = 'Фреймы убраны.';
+
+	return false;
+}
+function reloadmain() {
+	if (parent.main) {
+		parent.main.location.reload();
+	}
+}
+
+function hidedirs() {
+	set_cookie('tcshowdirs', '', 30);
+			location.reload(true)
+	}
+function showdirs() {
+	set_cookie('tcshowdirs', 'yes', 30);
+			location.reload(true)
+	}
+
+function updatenewpostscount() {
+    $.ajax({
+        url: '/newpostscount.php',
+        data: localStorage['lastvisits'] ? (JSON.parse(localStorage['lastvisits']) || { }) : { },
+        dataType: 'json',
+        success: function(data) {
+            iter_obj(data, function(brd, val) {
+            	if(val != 0 || $('#newposts_'+brd).text() !== '') {
+            		var newtext = (val == 0) ? '' : ' ('+val+')';
+            		$('#newposts_'+brd).text(newtext);
+            	}
+            });
+        },
+        error: function() {
+            alert(_.oops);
+        }
+    });
+}
+function iter_obj(object, callback) {
+    for (var property in object) {
+        if (object.hasOwnProperty(property)) {
+            callback(property, object[property]);
+        }
+    }
+}
+//--></script>
+<base target="main" />
+</head>
+<body>
+<h1><a href="/" target="_top" title="Главная">Metator</a></h1>
+<ul>
+<script>document.write('<li><a onclick="javascript:showdirs();" href="menu.php" target="_self">[Показать директории]</a></li>')</script>
+	<li id="sitestyles">
+		<label for="showstyleswitcher" class="pseudo-link">[Стили сайта]</label>
+		<input type="checkbox" id="showstyleswitcher">
+		<div id="style_switcher">
+			Стили:
+							[<a href="/setstylesheet.php?site=1&style=Modern" onclick="javascript:Styles.change('Modern', false, true);reloadmain();return false;" style="display: inline;" target="_self">M</a>] 							[<a href="/setstylesheet.php?site=1&style=Newdark" onclick="javascript:Styles.change('Newdark', false, true);reloadmain();return false;" style="display: inline;" target="_self">N</a>] 							[<a href="/setstylesheet.php?site=1&style=Photon" onclick="javascript:Styles.change('Photon', false, true);reloadmain();return false;" style="display: inline;" target="_self">P</a>]					</div>
+	</li>
+<script>document.write('<li id="refreshnewposts"><a href="#" onclick="javascript:updatenewpostscount();return false" target="_self">Обновить</a></li>')</script>
+</ul>
+
+		
+					<h2>
+							<label for="toggle_20" onclick="toggle(this, '20');">
+				<span class="plus" title="Нажмите Показать/Скрыть">+</span>&nbsp;
+			</label>
+				2.0</h2>
+					<input type="checkbox" id="toggle_20" class="menu-checkbox" >
+			<div id="20">
+				<ul>
+									<li><a href="/_2chzoii2p/" class="boardlink">
+								долгожданное слияние и2п и метарта)
+								<span id="newposts__2chzoii2p"></span>
+				</a></li>
+							<li><a href="/_8/" class="boardlink">
+								олдскул
+								<span id="newposts__8"></span>
+				</a></li>
+							<li><a href="/_a/" class="boardlink">
+								Аниме
+								<span id="newposts__a"></span>
+				</a></li>
+							<li><a href="/_ad/" class="boardlink">
+								Разговоры про аниме
+								<span id="newposts__ad"></span>
+				</a></li>
+							<li><a href="/_b/" class="boardlink">
+								Бред
+								<span id="newposts__b"></span>
+				</a></li>
+							<li><a href="/_bb/" class="boardlink">
+								Бред+
+								<span id="newposts__bb"></span>
+				</a></li>
+							<li><a href="/_blackhat/" class="boardlink">
+								blackhat
+								<span id="newposts__blackhat"></span>
+				</a></li>
+							<li><a href="/_bred/" class="boardlink">
+								bred
+								<span id="newposts__bred"></span>
+				</a></li>
+							<li><a href="/_c/" class="boardlink">
+								complaint received
+								<span id="newposts__c"></span>
+				</a></li>
+							<li><a href="/_cp/" class="boardlink">
+								Центральные Процессоры
+								<span id="newposts__cp"></span>
+				</a></li>
+							<li><a href="/_d/" class="boardlink">
+								Рисунки
+								<span id="newposts__d"></span>
+				</a></li>
+							<li><a href="/_drag/" class="boardlink">
+								Наркотики
+								<span id="newposts__drag"></span>
+				</a></li>
+							<li><a href="/_f/" class="boardlink">
+								Flash
+								<span id="newposts__f"></span>
+				</a></li>
+							<li><a href="/_h/" class="boardlink">
+								Хентай
+								<span id="newposts__h"></span>
+				</a></li>
+							<li><a href="/_ko/" class="boardlink">
+								Курятник
+								<span id="newposts__ko"></span>
+				</a></li>
+							<li><a href="/_leftypol/" class="boardlink">
+								Dialectics.
+								<span id="newposts__leftypol"></span>
+				</a></li>
+							<li><a href="/_m/" class="boardlink">
+								Музыка
+								<span id="newposts__m"></span>
+				</a></li>
+							<li><a href="/_me/" class="boardlink">
+								me
+								<span id="newposts__me"></span>
+				</a></li>
+							<li><a href="/_milf/" class="boardlink">
+								милые мамуличьки
+								<span id="newposts__milf"></span>
+				</a></li>
+							<li><a href="/_mlp/" class="boardlink">
+								My Little Pony
+								<span id="newposts__mlp"></span>
+				</a></li>
+							<li><a href="/_oa/" class="boardlink">
+								жирный омега хуесос
+								<span id="newposts__oa"></span>
+				</a></li>
+							<li><a href="/_pitard/" class="boardlink">
+								Питурд
+								<span id="newposts__pitard"></span>
+				</a></li>
+							<li><a href="/_s/" class="boardlink">
+								sosnooly
+								<span id="newposts__s"></span>
+				</a></li>
+							<li><a href="/_skakdollar/" class="boardlink">
+								мой личный саит.
+								<span id="newposts__skakdollar"></span>
+				</a></li>
+							<li><a href="/_vg/" class="boardlink">
+								(раздел для геев)
+								<span id="newposts__vg"></span>
+				</a></li>
+							<li><a href="/_webm/" class="boardlink">
+								Творчество
+								<span id="newposts__webm"></span>
+				</a></li>
+							</ul>
+					</div>
+				
+					<h2>
+							<label for="toggle_all" onclick="toggle(this, 'all');">
+				<span class="plus" title="Нажмите Показать/Скрыть">&minus;</span>&nbsp;
+			</label>
+				all</h2>
+					<input type="checkbox" id="toggle_all" class="menu-checkbox"  checked>
+			<div id="all">
+				<ul>
+									<li><a href="/meta/" class="boardlink">
+								Meta
+								<span id="newposts_meta"></span>
+				</a></li>
+							</ul>
+					</div>
+			<script type="text/javascript">
+$(document).ready(function() {
+	updatenewpostscount();
+	$('#refreshnewposts').click(updatenewpostscount);
+	$('.menu-checkbox').each(function() {
+		var sect = this.id.split('toggle_')[1]
+		, userCookie = getCookie('nav_show_'+sect)
+		, show = (userCookie!=='')
+			? !!(+userCookie)
+			: this.checked
+		this.checked = show
+		$('label[for="'+this.id+'"] span').text(show ? '-' : '+')
+	})
+})</script>
+</body>
+</html>
+
+

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AnonLeaks Fileshare</title>
+        <meta charset="utf-8">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="icon" type="image/png" href="/img/favicon.png">
+        <link rel="icon" sizes="128x128" href="/img/lufi128.png">
+        <link rel="icon" sizes="196x196" href="/img/lufi196.png">
+        <link rel="apple-touch-icon" href="/img/lufi60.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/lufi76.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/lufi120.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/lufi152.png">
+        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/img/lufi128.png">
+        <link href="/css/materialize.min.css" rel="stylesheet">
+        <link href="/css/lufi.css" rel="stylesheet">
+        <script src="/js/ie-detection.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <nav class="cyan">
+            <div class="nav-wrapper container">
+                <a href="/" class="brand-logo">&nbsp;<img src="/img/lufi-min.png" alt="logo"> AnonLeaks Fileshare</a>
+                <a href="#" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="mailto:anonleaks.net@protonmail.com">Report file</a></li>
+                    <li class="active"><a href="/">Upload files</a></li>
+                    <li><a href="/files">My files</a></li>
+                    <li>
+                        <div class="input-field select-lang">
+                            <label class="hiddendiv">Language</label>
+                            <select>
+                                <option value="" disabled selected>Language</option>
+                                <option value="ar">العربية</option>
+                                <option value="ca">Català</option>
+                                <option value="de">Deutsch</option>
+                                <option value="el">Ελληνικά</option>
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="fr_FR">Français (FR)</option>
+                                <option value="it">Italiano</option>
+                                <option value="nl">Nederlands, Vlaams</option>
+                                <option value="oc">Occitan, lenga d&#39;òc</option>
+                                <option value="pt">Português</option>
+                                <option value="ru">Русский</option>
+                                <option value="sv">Svenska</option>
+                                <option value="zh_Hans">中文 (Zhōngwén), 汉语, 漢語 (HANS)</option>
+                                <option value="zh_Hant">中文 (Zhōngwén), 汉语, 漢語 (HANT)</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+                <ul id="mobile" class="side-nav">
+                    <li><a href="mailto:anonleaks.net@protonmail.com">Report file</a></li>
+                    <li class="active"><a href="/">Upload files</a></li>
+                    <li><a href="/files">My files</a></li>
+                    <li>
+                        <div class="input-field select-lang-mobile">
+                            <label class="hiddendiv">Language</label>
+                            <select>
+                                <option value="" disabled selected>Language</option>
+                                <option value="ar">العربية</option>
+                                <option value="ca">Català</option>
+                                <option value="de">Deutsch</option>
+                                <option value="el">Ελληνικά</option>
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="fr_FR">Français (FR)</option>
+                                <option value="it">Italiano</option>
+                                <option value="nl">Nederlands, Vlaams</option>
+                                <option value="oc">Occitan, lenga d&#39;òc</option>
+                                <option value="pt">Português</option>
+                                <option value="ru">Русский</option>
+                                <option value="sv">Svenska</option>
+                                <option value="zh_Hans">中文 (Zhōngwén), 汉语, 漢語 (HANS)</option>
+                                <option value="zh_Hant">中文 (Zhōngwén), 汉语, 漢語 (HANT)</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <script src="/js/jquery-2.2.4.min.js"></script>
+            <script src="/partial/layout.js"></script>
+            <script src="/js/lufi-common.js"></script>
+                <form class="row">
+        <noscript>
+            <div class="col s12">
+                <div class="card pink">
+                    <div class="card-content white-text">
+                        <strong>Javascript is disabled. You won&#39;t be able to use Lufi.</strong>
+                    </div>
+                </div>
+            </div>
+        </noscript>
+        <div class="col s12 hiddendiv" id="not-enough-entropy">
+            <div class="card pink">
+                <div class="card-content white-text">
+                    <strong>Your browser does not have enough entropy to generate a strong encryption key. Please wait (it&#39;s better if you do things on your computer while waiting).</strong>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div class="input-field">
+                <a class="waves-effect waves-light modal-trigger prefix" href="#delays-info" title="Important: more information on delays"><i class="mdi-action-info small"></i></a>
+                <select id="delete-day">
+                    <option value="1" >24 hours</option>
+                    <option value="7" selected="selected">7 days</option>
+                    <option value="30" >30 days</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-field">
+            <p class="col s12 m6 text-left">
+                <input
+                    type="checkbox"
+                    id="first-view"
+                    data-checked=""
+                    
+                >
+                <label for="first-view">Delete at first download?</label>
+            </p>
+        </div>
+        <div class="input-field">
+            <p class="col s12 m6 text-left">
+                <input
+                    type="checkbox"
+                    id="zip-files"
+                    data-checked=""
+                >
+                <label for="zip-files">Create a zip archive with the files before uploading?</label>
+            </p>
+        </div>
+        <div class="col s12 m6">
+            <div class="input-field">
+                <input type="password" id="file_pwd" placeholder="Password" class="validate" autocomplete="off">
+                <label for="file_pwd">Add a password to file(s)</label>
+            </div>
+        </div>
+        <div class="col s12 m12 hide" id="zipname-input">
+            <div class="col s12 m6">
+                <div class="input-field">
+                    <input type="text" id="zipname" placeholder="documents.zip" value="documents.zip" class="validate">
+                    <label for="zipname">Name of the zip file</label>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div id="files" class="col s12 m12">
+            <h2>Drop files here</h2>
+            <p id="max-file-size"></p>
+            <p><small>or</small></p>
+            <label>
+                <span id="file-browser-span" class="btn disabled waves-effect waves-light">Click to open the file browser</span>
+                <input type="file" id="file-browser-button" multiple disabled>
+            </label>
+        </div>
+        <div id="zipping" class="col s12 m6 hide">
+            <div class="card">
+                <div>
+                    <a href="#" id="reset-zipping">
+                        <i class="right mdi-navigation-close small"></i>
+                    </a>
+                    <div class="card-content">
+                        <span class="card-title" id="zip-name">documents.zip</span> (<span id="zip-size"></span>)
+                        <p id="zip-compressing" class="hide">
+                            <button class="btn-floating pulse"><i class="mdi-content-archive"></i></button>
+                            Compressing zip file…
+                        </p>
+                        <ul id="zip-parts">
+                        </ul>
+                        <div class="right-align">
+                            <a href="#" id="uploadZip" class="btn waves-effect waves-light">Upload generated zip file</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="results">
+        <h2>Uploaded files</h2>
+        <div id="misc"></div>
+        <ul class="list-group" id="ul-results">
+        </ul>
+    </div>
+<div id="delays-info" class="modal">
+    <div class="modal-content">
+        <h1>Information about delays</h1>
+        <div class="text-left">
+            <p>
+                If you choose a delay, the file will be deleted after that delay.<br>
+                Don&#39;t worry: if a user begins to download the file before the expiration and the download ends after the expiration, he will be able to get the file.
+            </p>
+                <p>
+                    This server sets limitations according to the file size. The expiration delay of your file will be the minimum between what you choose and the following limitations:
+                </p>
+                <ul>
+                            <li>between 0 and 10M, the file will be kept 30 day(s).</li>
+                            <li>between 10M and 50M, the file will be kept 15 day(s).</li>
+                            <li>between 50M and 1.0G, the file will be kept 10 day(s).</li>
+                            <li>for 1.0G and more, the file will be kept 1 day(s)</li>
+                </ul>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+
+<script src="/partial/index.js"></script>
+<script src="/js/sjcl.js"></script>
+<script src="/js/moment-with-locales.min.js"></script>
+<script src="/js/filesize.min.js"></script>
+<script src="/js/jszip.min.js"></script>
+<script src="/js/lufi-notifications.js"></script>
+<script src="/js/lufi-up.js"></script>
+
+        </div>
+            <script src="/js/materialize.js"></script>
+            <script src="/js/sidenav.js"></script>
+    </body>
+</html>
