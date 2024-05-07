@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, send_from_directory
-from .services import get_all_entries, get_active_tasks, get_inactive_tasks, get_random_false_domain, update_false_domain_to_true,get_all_keywords
+from .services import get_all_entries, get_active_tasks, get_inactive_tasks, get_random_false_domain, update_false_domain_to_true,get_all_keywords, conductor_count
 from .models import Darkweb, DomainToURL, UrlWeb
 import os
 from .util.visualize import plot_combined_charts, word_cloud
@@ -13,7 +13,8 @@ def home():
     # 키워드 시각화를 위한 이미지 URL 생성
     plot_url = plot_combined_charts(keywords)
     cloud = word_cloud(keywords)
-    return render_template('index.html', entries=entries,plot_url=plot_url, cloud=cloud)
+    conductors= conductor_count()
+    return render_template('index.html', entries=entries,plot_url=plot_url, cloud=cloud, conductors=conductors)
 
 @main.route('/visualize/<int:darkweb_id>')
 def visualize_combined(darkweb_id):
