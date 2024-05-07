@@ -1,4 +1,4 @@
 **/onions.txt
 
-services/web/app/instance
+instance/
 __pycache__/
