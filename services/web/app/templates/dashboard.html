@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[구름망] 다크웹 크롤러</title>
+    <meta name="viewport" content="width-device-width,initial-scale=1.0">
+    
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+</head>
+<body>
+    <div class="grid-container">
+        <!-- header -->
+        <header class="header">
+            <div class="menu-icon" onclick="openSlidebar()">
+                <span class="material-symbols-outlined">menu</span>
+            </div>
+            <div class="header-left">
+                <span class="material-symbols-outlined">search</span>
+            </div>
+            <div class="header-right">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="material-symbols-outlined">mail</span>
+                <span class="material-symbols-outlined">account_circle</span>
+            </div>
+        </header>
+        <!-- sidebar -->
+        <aside id="sidebar">
+            <div class="sidebar-title">
+                <div class="sidebar-brand">
+                    <span class="material-symbols-outlined">dark_mode</span> DarkwebGo
+                </div>
+                <span class="material-symbols-outlined" onclick="closeSidebar()">close</span>
+            </div>
+
+            <ui class="sidebar-list">
+                <li class="sidebar-list-item" onclick="location.href='/'">
+                    <span class="material-symbols-outlined">dashboard</span> Dashboard
+                </li>  
+                <li class="sidebar-list-item" onclick="location.href='/todo'">
+                    <span class="material-symbols-outlined">check</span> Todo
+                </li>
+                <li class="sidebar-list-item" onclick="location.href='/demo'">
+                    <span class="material-symbols-outlined">settings</span> Demo
+                </li>
+            </ui>
+        </aside>
+
+        <!-- main -->
+        <main class="main-container">
+            <div class="main-title">
+                <h1 style="margin: 0;">DARKWEB DASHBOARD</h1>
+            </div>
+
+            <div class="main-cards">
+                <div class="card">
+                    <div class="card-inner">
+                        <span class="material-symbols-outlined text-yellow symbols-border">dark_mode</span>
+                        <p class="text-primary font-weight-bold">다크웹크롤링 총합</p>
+                    </div>
+                    <span class="text-primary">{{ domain_total }}</span>
+                </div>
+                <div class="card">
+                    <div id="angle-chart-min" class="angle-chart"></div>
+                    <div class="card-inner">
+                        <span class="material-symbols-outlined symbols-border">person</span>
+                        <p class="text-primary font-weight-bold">{{ conductors[0][0] }}</p>
+                    </div>
+                    <span class="text-primary">{{ conductors[0][1] }}</span>
+                </div>
+                <div class="card">
+                    <div id="angle-chart-se"  class="angle-chart"></div>
+                    <div class="card-inner">
+                        <span class="material-symbols-outlined symbols-border">person</span>
+                        <p class="text-primary font-weight-bold">{{ conductors[1][0] }}</p>
+                    </div>
+                    <span class="text-primary">{{ conductors[1][1] }}</span>
+                </div>
+                <div class="card">
+                    <div id="angle-chart-yu" class="angle-chart"></div>
+                    <div class="card-inner">
+                        <span class="material-symbols-outlined symbols-border">person</span>
+                        <p class="text-primary font-weight-bold">{{ conductors[2][0] }}</p>
+                    </div>
+                    <span class="text-primary">{{ conductors[2][1] }}</span>
+                </div>
+            </div>
+
+            <!-- jinja2 var를 js파일 변수에 옮기기 -->
+            <script>
+                var min_per = "{{ (conductors[0][1] / domain_total) * 100 }}"
+                var se_per = "{{ (conductors[1][1] / domain_total) * 100 }}"
+                var yu_per = "{{ (conductors[2][1] / domain_total) * 100 }}"
+                var mcw_label = "{{ mcw_label }}"
+                var mcw_count = "{{ mcw_count }}"
+            </script>
+
+            <!-- charts -->
+            <div class="charts">
+                <p class="chart-title">기간동안 조사한 크롤링사이트 분류</p>
+                <div class="charts-card">
+                    <div id="bar-chart"></div>
+                </div>
+                <div class="charts-card">
+                    <div id="pie-chart"></div>
+                </div> 
+            </div>
+
+            <!-- list -->
+            <section class="attendance">
+                <div class="cloud">
+                    <h1>워드클라우드</h1>
+                    <img src="data:image/png;base64,{{ cloud }}" class="cloud-img" alt="word_cloud">
+                </div>
+
+                <div class="table-container attendance-list font-weight-bold">
+                    <h1>조사한 onion 엔트리</h1>
+                    <table class="table">
+                        <thead>
+                            <tr class="font-weight-bold">
+                                <th>ID</th>
+                                <th>Crawler</th>
+                                <th>Domain</th>
+                                <th>Details</th>
+                                <th>Summary</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for entry in entries %}
+                            <tr>
+                                <td class="text-align-center">{{ entry.id }}</td>
+                                <td class="text-align-center">{{ entry.conductor }}</td>
+                                <td>{{ entry.domain }}</td>
+                                <td class="toggle-details text-align-center" onclick="toggleDomain('domain{{ entry.id }}', event)">▼</td>
+                                <td><button class="visualize-button text-align-center" data-entry-id="{{ entry.id }}">View</button></td>
+                            </tr>
+                            {% for url in entry.urls %}
+                            <tr class="domain{{ entry.id }}" style="display: none;">
+                                <td colspan="5">
+                                    <div class="details">
+                                        <strong>URL:</strong> {{ url.url }}<br>
+                                        <strong>Depth:</strong> {{ url.depth }}<br>
+                                        <strong>Parameter:</strong> {{ url.parameter }}<br>
+                                        <strong>Title:</strong> {{ url.title }}<br>
+                                        <strong>Keyword:</strong> {{ url.keyword }}<br>
+                                        <strong>HTML Content:</strong> <a href="{{ url_for('main.crawl_html', html_content=url.html_content) }}" target="_blank">바로가기</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <p id="summaryText">여기에 요약 정보가 표시됩니다.</p>
+                            <img id="modalImageContainer" style="width:100%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="domain-chart">
+                    <div id="treemap-chart"></div>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+    
+    <!-- ApexChart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.49.0/apexcharts.min.js"></script>
+    <!-- custom js -->
+    <script src="{{ url_for('static', filename='javascript/dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+</body>
+</html>

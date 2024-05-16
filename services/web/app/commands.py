@@ -13,13 +13,13 @@ role = {
 }
 
 def setup_app_commands(app, db):
-    @app.cli.command("init-db")
+    @app.cli.command("init-db") ## db 데이베이스생성.
     def init_db():
         db.drop_all()
         db.create_all()
         print('Initialized the database.')
 
-    @app.cli.command("import-data")
+    @app.cli.command("import-data") ## 데이터 db에 저장
     def import_data():
         """Import data from Excel files and other sources."""
         import_excel_to_db(db)
