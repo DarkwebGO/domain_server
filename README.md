@@ -28,7 +28,7 @@
 
 &nbsp;&nbsp;- **TODO**: 분석해야할 총 도메인과 분석한 도메인의 정보를 제공합니다.
 
-&nbsp;&nbsp;- **DEMO**: 분석해야할 총 도메인과 분석한 도메인의 정보를 제공합니다.
+&nbsp;&nbsp;- **DEMO**: 초기 버전의 다크웹 크롤러 정적 웹페이지입니다.
 
 
 ## R&R (Roles & Responsibilities)
