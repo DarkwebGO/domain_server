@@ -1,11 +1,12 @@
 from flask import Blueprint, render_template, request, jsonify, send_from_directory
 from .services import get_all_entries, get_active_tasks, get_inactive_tasks, get_random_false_domain, update_false_domain_to_true,get_all_keywords, conductor_count
 from .models import Darkweb, DomainToURL, UrlWeb
-import os
+from collections import Counter
+import os,json
 from .util.visualize import plot_combined_charts, word_cloud
 main = Blueprint('main', __name__)
 
-@main.route('/')
+@main.route('/demo')
 def home():
     entries = get_all_entries()
     keywords = get_all_keywords()
@@ -16,12 +17,28 @@ def home():
     conductors= conductor_count()
     return render_template('index.html', entries=entries,plot_url=plot_url, cloud=cloud, conductors=conductors)
 
+
 @main.route('/visualize/<int:darkweb_id>')
 def visualize_combined(darkweb_id):
     entry = Darkweb.query.get_or_404(darkweb_id)
     keyword = ' '.join(url.keyword for url in entry.urls)
     plot_url = plot_combined_charts(keyword)
     return jsonify({'plot_url': plot_url})
+
+
+@main.route('/get_entry_dict/<int:darkweb_id>')
+def get_entry_dict(darkweb_id):
+    entry = Darkweb.query.get_or_404(darkweb_id)
+    keyword = ' '.join(url.keyword for url in entry.urls)
+    keyword_list = keyword.split()
+    entry_dict = {}
+    for word in keyword_list:
+        if word in entry_dict:
+            entry_dict[word] += 1
+        else:
+            entry_dict[word] = 1
+    print(entry_dict)
+    return jsonify(entry_dict)
 
 
 @main.route('/todo')
@@ -70,3 +87,20 @@ def crawl_html(html_content):
     
     # 해당하는 HTML 파일을 찾지 못한 경우 404 에러 반환
     return 'Not Found', 404
+
+@main.route('/')
+def dashboard():
+    entries = get_all_entries()
+    keywords = get_all_keywords()
+
+    # 키워드 시각화를 위한 이미지 URL 생성
+    word_list = keywords.split()
+    most_common_words = Counter(word_list).most_common(10)  # 가장 많이 등장하는 10개 단어
+    mcw_label = [word[0] for word in most_common_words]
+    mcw_count = [word[1] for word in most_common_words]
+
+    plot_url = plot_combined_charts(keywords)
+    cloud = word_cloud(keywords)
+    conductors= conductor_count()
+    domain_total = sum([count[1] for count in conductors])
+    return render_template('dashboard.html', entries=entries, conductors=conductors, plot_url=plot_url, domain_total=domain_total, mcw_label=mcw_label, mcw_count=mcw_count, cloud=cloud)
