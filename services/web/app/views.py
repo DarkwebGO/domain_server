@@ -23,7 +23,6 @@ def visualize_combined(darkweb_id):
     plot_url = plot_combined_charts(keyword)
     return jsonify({'plot_url': plot_url})
 
-
 @main.route('/todo')
 def todo_onion():
     page_active = int(request.args.get('page_active', 1))
